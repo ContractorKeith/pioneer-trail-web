@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import init, { TrailEngine } from '../public/wasm/pioneer_trail_web_engine.js'
-import type { GameView } from '../src/engine-types'
-import type { SpatialState } from '../src/game/persistence'
+import type { EngineResult, GameCommand, GameView } from '../src/engine-types'
+import type { SpatialState, WorldSave } from '../src/game/persistence'
 
 type RareCheckpoint = 'illness' | 'letter'
 
@@ -9,6 +9,75 @@ const ready = init({
   module_or_path: await readFile('public/wasm/pioneer_trail_web_engine_bg.wasm'),
 })
 const cache = new Map<RareCheckpoint, { raw: string; view: GameView }>()
+
+/** Advance the browser-accepted letter to its destination; acceptance/delivery stay UI actions. */
+export async function letterDeliveryCheckpoint(acceptedRaw: string) {
+  await ready
+  const outer = JSON.parse(acceptedRaw) as WorldSave
+  const engine = new TrailEngine('1')
+  try {
+    engine.load(outer.campaign)
+    const accepted = (JSON.parse(engine.view()) as GameView).active_letter
+    if (!accepted) throw new Error('Letter arrival requires the browser-accepted letter save')
+    const apply = (command: GameCommand) => {
+      const result = JSON.parse(engine.apply(JSON.stringify(command))) as EngineResult
+      const rejected = result.outcomes.find(
+        (outcome) => typeof outcome === 'object' && 'Rejected' in outcome,
+      )
+      if (rejected)
+        throw new Error(`Letter arrival command rejected: ${JSON.stringify({ command, rejected })}`)
+    }
+    for (let step = 0; step < 500; step++) {
+      const view = JSON.parse(engine.view()) as GameView
+      const status = typeof view.status === 'string' ? view.status : Object.keys(view.status)[0]
+      if (JSON.stringify(view.active_letter) !== JSON.stringify(accepted))
+        throw new Error('Letter arrival changed the accepted letter before UI delivery')
+      if (view.can_deliver_letter) {
+        const spatial: SpatialState = {
+          regionId: view.current_node!.id,
+          terrain: view.terrain,
+          regionIndex: outer.spatial.regionIndex + 1,
+          wagon: { x: 0, z: 20, yaw: 0, speed: 0 },
+          player: { x: -3, z: 20, yaw: 0, pitch: 0 },
+          mode: 'riding',
+          frontierZ: 20,
+          travelRemainder: 0,
+          activity: null,
+        }
+        return {
+          raw: JSON.stringify({ ...outer, campaign: engine.save(), spatial }),
+          view,
+        }
+      }
+      if (status === 'Arrived' || status === 'Failed') break
+      if (view.pending_event) {
+        apply({
+          Respond: {
+            event_id: view.pending_event.id,
+            choice_id: view.pending_event.choices.find((choice) => choice.available)!.id,
+          },
+        })
+      } else if (status === 'AwaitingRiver') {
+        apply({ CrossRiver: { method: view.river?.ferry_cost_cents != null ? 'Ferry' : 'Caulk' } })
+      } else if (status === 'AwaitingFork') {
+        apply({
+          ChooseRoute: {
+            route_id: view.routes.find(
+              (route) => route.available !== false && route.id !== 'columbia',
+            )!.id,
+          },
+        })
+      } else if (view.inventory.food < 120 && view.can_camp) {
+        apply('Forage')
+      } else {
+        apply(status === 'AtLandmark' ? 'Continue' : 'TravelDay')
+      }
+    }
+    throw new Error('The accepted letter did not reach a deliverable destination')
+  } finally {
+    engine.free()
+  }
+}
 
 /** Generate deterministic campaign states with real WASM commands for UI-only rare states. */
 export async function rareCheckpoint(kind: RareCheckpoint) {

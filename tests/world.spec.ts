@@ -230,7 +230,7 @@ test('a missed fishing bite spends its day without a catch', async ({ page }) =>
   expect(after.view.inventory.food).toBeLessThan(before.inventory.food)
 })
 
-test('settings change comfort without reconstructing world; imports preserve failed input', async ({
+test('settings and desktop resize preserve the world, fit the canvas and overlay, and retain usable controls; imports preserve failed input', async ({
   page,
 }) => {
   await start(page)
@@ -259,8 +259,63 @@ test('settings change comfort without reconstructing world; imports preserve fai
   expect(
     await page.evaluate((key) => JSON.parse(localStorage.getItem(key)!).campaign, WORLD_KEY),
   ).toBe(JSON.parse(saved!).campaign)
+  const beforeResize = await state(page)
   await page.setViewportSize({ width: 1024, height: 768 })
   expect((await state(page)).view.seed).toBe(before.view.seed)
+  const canvas = page.locator('canvas.game-canvas')
+  await expect
+    .poll(() =>
+      canvas.evaluate((element: HTMLCanvasElement) => ({
+        width: element.width,
+        height: element.height,
+        clientWidth: element.clientWidth,
+        clientHeight: element.clientHeight,
+      })),
+    )
+    .toEqual({ width: 1024, height: 768, clientWidth: 1024, clientHeight: 768 })
+  const bounds = await canvas.boundingBox()
+  expect(bounds).not.toBeNull()
+  expect(bounds!.x).toBe(0)
+  expect(bounds!.y).toBe(0)
+  expect(bounds!.width / bounds!.height).toBeCloseTo(4 / 3, 5)
+  const resized = await state(page)
+  expect(resized.view).toEqual(after.view)
+  expect(resized.wagon).toEqual(before.wagon)
+  expect(resized.position).toEqual(beforeResize.position)
+  expect(resized.heading).toBe(beforeResize.heading)
+  expect(resized.regionIndex).toBe(before.regionIndex)
+  expect(resized.paused).toBe(true)
+
+  const dialog = page.getByRole('dialog')
+  await expect(dialog).toBeInViewport({ ratio: 1 })
+  await expect(page.getByRole('heading', { name: 'Settings', exact: true })).toBeInViewport({
+    ratio: 1,
+  })
+  expect(
+    await dialog
+      .locator('.dialog-body')
+      .evaluate((element) => element.scrollWidth <= element.clientWidth),
+  ).toBe(true)
+  const fieldOfView = page.getByLabel('Field of view')
+  await fieldOfView.scrollIntoViewIfNeeded()
+  await expect(fieldOfView).toBeInViewport({ ratio: 1 })
+  await expect(fieldOfView).toHaveValue('80')
+  await fieldOfView.fill('84')
+  await expect(fieldOfView).toHaveValue('84')
+  await expect(page.getByRole('button', { name: 'Close panel', exact: true })).toBeInViewport({
+    ratio: 1,
+  })
+  await page.getByRole('button', { name: 'Close panel', exact: true }).click()
+  await expect(dialog).toHaveCount(0)
+  await expect.poll(async () => (await state(page)).paused).toBe(false)
+  await hold(page, 'w', 1800)
+  await hold(page, 'Space', 800)
+  const moved = await state(page)
+  expect(moved.wagon.z).toBeGreaterThan(resized.wagon.z + 1)
+  expect(moved.mode).toBe('riding')
+  expect(moved.speed).toBe(0)
+  expect(moved.view.seed).toBe(before.view.seed)
+  expect(moved.regionIndex).toBe(before.regionIndex)
 })
 
 test('unsupported WebGL gives an honest compatibility message', async ({ page }) => {

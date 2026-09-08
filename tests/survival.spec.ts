@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
-import { rareCheckpoint } from './survival.helpers'
-import { fixture, restore, resume, start, state, walkTo } from './world.helpers'
+import { letterDeliveryCheckpoint, rareCheckpoint } from './survival.helpers'
+import { fixture, restore, resume, start, state, walkTo, WORLD_KEY } from './world.helpers'
 
 async function openCamp(page: Parameters<typeof state>[0]) {
   await page.keyboard.press('e')
@@ -94,7 +94,7 @@ test('R08 treats an ill companion after approaching them in the world', async ({
   expect(treated.view.inventory.medicine).toBe(medicine - 1)
 })
 
-test('R09 keeps physical conversation topics, letters, and recruitment usable', async ({
+test('R09 accepts a letter in conversation, delivers it at its destination once, and retains payment on reload', async ({
   page,
 }) => {
   await restore(page, (await rareCheckpoint('letter')).raw)
@@ -102,6 +102,8 @@ test('R09 keeps physical conversation topics, letters, and recruitment usable', 
   await openCompanionConversation(page)
 
   const beforeConversation = await state(page)
+  const letter = beforeConversation.view.offered_letter!
+  expect(letter).not.toBeNull()
   for (const topic of ['Route', 'Supplies', 'News']) {
     await page.getByRole('button', { name: topic, exact: true }).click()
     await expect(page.locator('.conversation-reply')).not.toBeEmpty()
@@ -110,10 +112,61 @@ test('R09 keeps physical conversation topics, letters, and recruitment usable', 
   await page.getByRole('button', { name: 'Carry it', exact: true }).click()
   await expect.poll(async () => (await state(page)).view.active_letter).not.toBeNull()
   expect((await state(page)).view.offered_letter).toBeNull()
+  expect((await state(page)).view.can_deliver_letter).toBe(false)
+  await expect(page.getByRole('button', { name: 'Deliver letter', exact: true })).toHaveCount(0)
+  const acceptedLetter = (await state(page)).view.active_letter
   await page.reload()
   await resume(page)
   expect((await state(page)).view.active_letter).not.toBeNull()
+  expect((await state(page)).view.active_letter).toEqual(acceptedLetter)
 
+  // Only the journey to the rare destination is arranged; acceptance and delivery use real UI.
+  const acceptedRaw = await page.evaluate((key) => localStorage.getItem(key), WORLD_KEY)
+  expect(acceptedRaw).not.toBeNull()
+  const destination = await letterDeliveryCheckpoint(acceptedRaw!)
+  expect(destination.view.current_node?.id).toBe(letter.destination_id)
+  expect(destination.view.active_letter).toEqual(acceptedLetter)
+  await restore(page, destination.raw)
+  await resume(page)
+  await openCompanionConversation(page)
+  const beforeDelivery = await state(page)
+  expect(beforeDelivery.view.can_deliver_letter).toBe(true)
+  await expect(page.locator('.letter')).toContainText(letter.recipient)
+  await page.getByRole('button', { name: 'Deliver letter', exact: true }).click()
+  const delivered = await state(page)
+  expect(delivered.view.active_letter).toBeNull()
+  expect(delivered.view.can_deliver_letter).toBe(false)
+  expect(delivered.view.cash_cents).toBe(beforeDelivery.view.cash_cents + letter.reward_cents)
+  expect(delivered.view.day).toBe(beforeDelivery.view.day)
+  expect(delivered.view.inventory).toEqual(beforeDelivery.view.inventory)
+  expect(delivered.regionIndex).toBe(beforeDelivery.regionIndex)
+  await expect(page.getByRole('button', { name: 'Deliver letter', exact: true })).toHaveCount(0)
+
+  const deliveryText = `Delivered the sealed letter to ${letter.recipient} at ${destination.view.current_node!.name}`
+  expect(
+    delivered.view.journal.filter((entry) => entry.text.startsWith(deliveryText)),
+  ).toHaveLength(1)
+  await page.getByRole('button', { name: 'Close panel' }).click()
+  await page.getByRole('button', { name: 'Journal', exact: true }).click()
+  await expect(page.locator('.journal-list li').filter({ hasText: deliveryText })).toHaveCount(1)
+  await page.reload()
+  await resume(page)
+  const reloaded = await state(page)
+  expect(reloaded.view.active_letter).toBeNull()
+  expect(reloaded.view.can_deliver_letter).toBe(false)
+  expect(reloaded.view.cash_cents).toBe(delivered.view.cash_cents)
+  expect(reloaded.view.day).toBe(delivered.view.day)
+  expect(reloaded.view.journal.filter((entry) => entry.text.startsWith(deliveryText))).toHaveLength(
+    1,
+  )
+  await page.keyboard.press('e')
+  await expect(page.getByRole('heading', { name: 'Conversation', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Deliver letter', exact: true })).toHaveCount(0)
+})
+
+test('R09 recruits a traveler, parts ways through the party panel, and preserves the dismissal on reload', async ({
+  page,
+}) => {
   await restore(page, (await fixture('trader')).raw)
   await resume(page)
   await page.keyboard.press('e')
@@ -131,6 +184,45 @@ test('R09 keeps physical conversation topics, letters, and recruitment usable', 
   expect(recruited.view.party).toHaveLength(beforeRecruit.view.party.length + 1)
   expect(recruited.view.available_party_slots).toBe(beforeRecruit.view.available_party_slots - 1)
   expect(recruited.view.party.some((member) => member.npc_id)).toBe(true)
+  const companion = recruited.view.party.find(
+    (member) => !beforeRecruit.view.party.some((previous) => previous.name === member.name),
+  )!
+  expect(companion.npc_id).toBeTruthy()
+  await page.getByRole('button', { name: 'Close panel' }).click()
+  await page.getByRole('button', { name: 'Party', exact: true }).click()
+  const companionRow = page.locator('.party-list li').filter({
+    has: page.getByText(companion.name, { exact: true }),
+  })
+  await expect(companionRow).toBeVisible()
+  await companionRow.getByRole('button', { name: 'Part ways', exact: true }).click()
+  const dismissed = await state(page)
+  expect(dismissed.view.party).toHaveLength(beforeRecruit.view.party.length)
+  expect(dismissed.view.party.map((member) => member.name)).toEqual(
+    beforeRecruit.view.party.map((member) => member.name),
+  )
+  expect(dismissed.view.party.some((member) => member.npc_id === companion.npc_id)).toBe(false)
+  expect(dismissed.view.available_party_slots).toBe(recruited.view.available_party_slots + 1)
+  expect(dismissed.view.cash_cents).toBe(recruited.view.cash_cents)
+  expect(dismissed.view.inventory).toEqual(recruited.view.inventory)
+  expect(dismissed.view.day).toBe(recruited.view.day)
+  await expect(companionRow).toHaveCount(0)
+  const departureText = `${companion.name} left the party.`
+  expect(dismissed.view.journal.filter((entry) => entry.text === departureText)).toHaveLength(1)
+  await page.reload()
+  await resume(page)
+  const reloaded = await state(page)
+  expect(reloaded.view.party).toEqual(dismissed.view.party)
+  expect(reloaded.view.available_party_slots).toBe(beforeRecruit.view.available_party_slots)
+  expect(reloaded.view.cash_cents).toBe(dismissed.view.cash_cents)
+  expect(reloaded.view.day).toBe(dismissed.view.day)
+  expect(reloaded.view.journal.filter((entry) => entry.text === departureText)).toHaveLength(1)
+  await page.getByRole('button', { name: 'Party', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'Your party', exact: true })).toBeVisible()
+  await expect(companionRow).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Part ways', exact: true })).toHaveCount(0)
+  await page.getByRole('button', { name: 'Close panel' }).click()
+  await page.getByRole('button', { name: 'Journal', exact: true }).click()
+  await expect(page.locator('.journal-list li').filter({ hasText: departureText })).toHaveCount(1)
 })
 
 test('R13 exposes usable landscape coarse-pointer controls', async ({ browser }) => {
