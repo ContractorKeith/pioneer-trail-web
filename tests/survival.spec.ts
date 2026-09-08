@@ -1,6 +1,15 @@
 import { expect, test } from '@playwright/test'
 import { letterDeliveryCheckpoint, rareCheckpoint } from './survival.helpers'
-import { fixture, restore, resume, start, state, walkTo, WORLD_KEY } from './world.helpers'
+import {
+  fixture,
+  gameplayTimeout,
+  restore,
+  resume,
+  start,
+  state,
+  walkTo,
+  WORLD_KEY,
+} from './world.helpers'
 
 async function openCamp(page: Parameters<typeof state>[0]) {
   await page.keyboard.press('e')
@@ -242,8 +251,16 @@ test('R13 exposes usable landscape coarse-pointer controls', async ({ browser })
     if (!box) throw new Error('The visible Forward control has no bounds')
     await touchPage.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
     await touchPage.mouse.down()
-    await touchPage.waitForTimeout(1200)
-    await touchPage.mouse.up()
+    try {
+      await expect
+        .poll(async () => (await state(touchPage)).wagon.z, {
+          timeout: gameplayTimeout(1200),
+          intervals: [100],
+        })
+        .toBeGreaterThan(beforeMove.wagon.z + 1)
+    } finally {
+      await touchPage.mouse.up()
+    }
     expect((await state(touchPage)).wagon.z).toBeGreaterThan(beforeMove.wagon.z + 1)
   } finally {
     await context.close()
