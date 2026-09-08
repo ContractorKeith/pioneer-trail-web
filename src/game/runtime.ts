@@ -515,6 +515,11 @@ export class GameRuntime {
             distance: Math.hypot(p.x - this.spatial.wagon.x, p.z - this.spatial.wagon.z),
           }
         : null
+    // Boarding has the same priority here as in interact(), so the hint describes E's action.
+    if (closest) {
+      this.interaction = closest
+      return
+    }
     for (const location of this.world.locations) {
       const d = Math.hypot(p.x - location.position[0], p.z - location.position[2])
       if (d <= location.radius && (!closest || d < closest.distance))

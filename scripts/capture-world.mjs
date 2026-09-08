@@ -22,6 +22,7 @@ import {
 const baseURL = process.env.TRAIL_URL ?? 'http://localhost:4173'
 const output = 'docs/evidence/visual-review'
 const videoDirectory = '.artifacts/videos'
+const captureStamp = new Date().toISOString().replaceAll(':', '-').replaceAll('.', '-')
 const run = promisify(execFile)
 await mkdir(output, { recursive: true })
 await mkdir(videoDirectory, { recursive: true })
@@ -144,7 +145,7 @@ const closePage = async (page) => {
   if (video && segments.length) {
     const original = await video.path()
     for (const { began, ...segment } of segments) {
-      const path = `${videoDirectory}/visual-${segment.name}.webm`
+      const path = `${videoDirectory}/visual-${captureStamp}-${segment.name}.webm`
       const offsetSeconds = Math.max(0, (began - createdAt) / 1000 - 0.5)
       await run('ffmpeg', [
         '-y',

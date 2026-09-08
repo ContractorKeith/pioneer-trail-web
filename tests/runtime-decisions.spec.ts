@@ -82,3 +82,25 @@ test('a saved fork encounter presents the deferred route after responding withou
   await restore(page, checkpoint.raw)
   await resolveEncounterThenChooseRoute(page, true)
 })
+
+test('R01/R11 interaction hints match boarding priority and nearby companion actions', async ({ page }) => {
+  const outer = JSON.parse((await fixture('camp')).raw)
+  outer.spatial.wagon = { x: 0, z: 23.5, yaw: 0, speed: 0 }
+  outer.spatial.frontierZ = 23.5
+  outer.spatial.mode = 'walking'
+  outer.spatial.player = { ...outer.spatial.player, x: -3, z: 23.5 }
+  await restore(page, JSON.stringify(outer))
+  await resume(page)
+  await expect(page.locator('.interact-prompt')).toContainText('Board the wagon')
+  await page.keyboard.press('e')
+  await expect.poll(async () => (await state(page)).mode).toBe('riding')
+
+  // Outside the boarding radius, the same nearby companion remains a real interaction.
+  outer.spatial.player = { ...outer.spatial.player, x: -6.5, z: 25 }
+  await restore(page, JSON.stringify(outer))
+  await resume(page)
+  await expect(page.locator('.interact-prompt')).toContainText('Talk with your party')
+  await page.locator('.interact-prompt').click()
+  await expect(page.getByRole('heading', { name: 'Conversation', exact: true })).toBeVisible()
+  expect((await state(page)).mode).toBe('walking')
+})

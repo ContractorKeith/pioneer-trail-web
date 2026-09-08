@@ -207,7 +207,7 @@ export async function finishCrossing(page, report) {
 
 export async function main() {
   const { chromium } = await import('playwright')
-  const { driveTo, hold, resume, state, walkTo, world } = await import('../tests/world.helpers.ts')
+  const { driveTo, hold, resume, state, world } = await import('../tests/world.helpers.ts')
   const baseURL = process.env.TRAIL_URL ?? 'http://localhost:4173'
   const output = process.env.TRAIL_EVIDENCE_DIR ?? 'docs/evidence/campaign'
   const limitMinutes = Number(process.env.TRAIL_LIMIT_MINUTES ?? 45)
@@ -264,6 +264,8 @@ export async function main() {
     independentMemoryReview: 'pending',
     pass: false,
   }
+  // Camp, trader and seat approaches all use the same physical obstacle-aware walking driver.
+  const walk = (page, x, z) => walkPlanned(page, { x, z }, report)
   page.on('pageerror', (error) => report.errors.push(String(error)))
   page.on('crash', () => report.errors.push('Page crashed'))
   page.on('console', (message) => {
@@ -405,7 +407,7 @@ export async function main() {
     const s = await state(page)
     if (s.mode === 'riding') return
     // Interactions/transitions can relocate both bodies: observe the current seat, never assume old coordinates.
-    await walkTo(page, s.wagon.x - Math.cos(s.wagon.yaw) * 3, s.wagon.z + Math.sin(s.wagon.yaw) * 3)
+    await walk(page, s.wagon.x - Math.cos(s.wagon.yaw) * 3, s.wagon.z + Math.sin(s.wagon.yaw) * 3)
     await page.keyboard.press('e')
     assert.equal((await state(page)).mode, 'riding', 'Return to the actual driver seat')
   }
@@ -413,7 +415,7 @@ export async function main() {
     await stopAndDismount()
     const fire = (await world(page)).locations.find((location) => location.id === 'campfire')
     assert.ok(fire, 'Region exposes an actual campfire')
-    await walkTo(page, fire.position[0], fire.position[2] - 1.5)
+    await walk(page, fire.position[0], fire.position[2] - 1.5)
     await page.keyboard.press('c')
     await page.getByRole('heading', { name: 'Camp', exact: true }).waitFor()
   }
@@ -442,12 +444,12 @@ export async function main() {
   const shop = async () => {
     await stopAndDismount()
     // The wagon and its team occupy the center: go behind it on the proven trader approach.
-    await walkTo(page, -3, 14)
-    await walkTo(page, 3, 14)
+    await walk(page, -3, 14)
+    await walk(page, 3, 14)
     const trader = (await world(page)).locations.find((location) => location.id === 'trader')
     assert.ok(trader)
-    await walkTo(page, 3, trader.position[2] - 1.4)
-    await walkTo(page, trader.position[0] - 2.4, trader.position[2] - 1.4)
+    await walk(page, 3, trader.position[2] - 1.4)
+    await walk(page, trader.position[0] - 2.4, trader.position[2] - 1.4)
     await page.keyboard.press('e')
     await page.getByRole('heading', { name: 'Trade', exact: true }).waitFor()
     for (const [id, target] of [
@@ -498,9 +500,9 @@ export async function main() {
     await observe('Traded through visible shop')
     await play()
     // Retrace the clear approach before heading south; a diagonal shortcut can meet a rock.
-    await walkTo(page, 3, trader.position[2] - 1.4)
-    await walkTo(page, 3, 14)
-    await walkTo(page, -3, 14)
+    await walk(page, 3, trader.position[2] - 1.4)
+    await walk(page, 3, 14)
+    await walk(page, -3, 14)
   }
   const provisions = async () => {
     let view = (await state(page)).view
