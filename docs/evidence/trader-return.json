@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-08T13:37:21.396Z",
+  "fixture": "Real WASM Fort Kearney, physical seed17; restore only establishes start pose",
+  "route": [
+    [
+      3,
+      27
+    ],
+    [
+      3,
+      14
+    ],
+    [
+      -3,
+      14
+    ]
+  ],
+  "before": {
+    "x": 5.8,
+    "y": 2.051976941823959,
+    "z": 26.978794061912556
+  },
+  "after": {
+    "x": -3.0533333333333355,
+    "y": 1.9070048000983455,
+    "z": 14.072127395245655
+  },
+  "collisions": 0,
+  "renderer": {
+    "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2)",
+    "width": 1280,
+    "height": 720,
+    "quality": "low"
+  },
+  "pass": true
+}

@@ -1,0 +1,828 @@
+{
+  "date": "2026-09-08T14:23:11.064Z",
+  "build": {
+    "commit": "8d048ed19387f690c292b1c25f770e83507c6be6",
+    "dirty": true,
+    "sourceStatus": "M docs/ACCEPTANCE.md\n M docs/evidence/independent-review.md\n M docs/evidence/visual-review/camp.png\n M docs/evidence/visual-review/companion.png\n M docs/evidence/visual-review/mountains.png\n M docs/evidence/visual-review/ox-front.png\n M docs/evidence/visual-review/rain.png\n M docs/evidence/visual-review/report.json\n M docs/evidence/visual-review/river.png\n M docs/evidence/visual-review/seat-forward.png\n M docs/evidence/visual-review/seat-rear.png\n M docs/evidence/visual-review/snow.png\n M docs/evidence/visual-review/wagon-exterior.png\n M scripts/campaign-walkthrough.mjs\n M scripts/capture-world.mjs\n M scripts/measure-load.mjs\n M scripts/measure-ride.mjs\n?? docs/evidence/activity-capture-startup-failure/\n?? docs/evidence/activity-review/\n?? docs/evidence/campaign-attempt-2/\n?? docs/evidence/campaign-attempt-3/\n?? docs/evidence/campaign-resumed-2026-09-08/\n?? docs/evidence/integration-review.md\n?? docs/evidence/performance/scheduling-investigation.md\n?? docs/evidence/trader-return.json\n?? docs/evidence/visual-review/camp-night.png\n?? docs/evidence/visual-review/fog.png\n?? docs/evidence/visual-review/ox-hoof-contact.png\n?? docs/evidence/visual-review/ox-mountain-contact.png\n?? docs/evidence/visual-review/ox-side.png\n?? docs/evidence/visual-review/ride-rear-stopped.png\n?? docs/evidence/visual-review/river-daylight.png\n?? docs/evidence/visual-review/wildlife-deer.png\n?? docs/evidence/visual-review/wildlife-rabbit.png\n?? scripts/capture-activities.mjs\n?? scripts/load-world-tools.mjs\n?? scripts/served-build.mjs\n?? scripts/walking-route.ts\n?? tests/walking-route.unit.test.ts",
+    "distSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+    "files": [
+      {
+        "file": "_headers",
+        "bytes": 197,
+        "sha256": "17c27f16152cc4999dcbaae81bd92104156cd0032d2f5d380fb39c4bb4bb42cc"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-italic-BLh7T8o8.woff",
+        "bytes": 32888,
+        "sha256": "337d07118277acbf5a0eb19c602aaf917b2485585360f2c7139ce42d9d4e6cc1"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-italic-Dc_OZ8oc.woff2",
+        "bytes": 23660,
+        "sha256": "e48e58027030df56869b795ca6f19b7012158275f7ad7cde1900b4a0b68d02e2"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+        "bytes": 22876,
+        "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-normal-B7YtguxJ.woff",
+        "bytes": 30980,
+        "sha256": "b926f33f9d3d5cb64e639b8fe9ad5380560a63f3e7a29d212f2b80a2d22ec051"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+        "bytes": 23312,
+        "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-500-normal-zIXX3Q-H.woff",
+        "bytes": 31372,
+        "sha256": "314ee3edd5ddcdef5cf2374c1126b8be9f7f1ebd6c5c66a23c237f3b836a3ec1"
+      },
+      {
+        "file": "assets/dm-sans-latin-400-normal-BwCSEQnW.woff",
+        "bytes": 18356,
+        "sha256": "38702875fe179437d200e7ba6f7fab4d497ffe48117ef332029b2081751186ad"
+      },
+      {
+        "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+        "bytes": 14200,
+        "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+      },
+      {
+        "file": "assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+        "bytes": 14304,
+        "sha256": "19bf1984956517c35c2bd35b6cdedac12a21d6fcd3596c614ecdfb88b648909d"
+      },
+      {
+        "file": "assets/dm-sans-latin-500-normal-Dr3UlScf.woff",
+        "bytes": 18520,
+        "sha256": "7deb957e430b780ee3272d801af4f9f2211b1330ec40a312a8f25309eacb4034"
+      },
+      {
+        "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+        "bytes": 14144,
+        "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+      },
+      {
+        "file": "assets/dm-sans-latin-600-normal-BmdmIIQ2.woff",
+        "bytes": 18320,
+        "sha256": "e7351257e49400eff05aca30a2007289194a900860d30c30770d8b8732897564"
+      },
+      {
+        "file": "assets/index-C5Tcy4bJ.js",
+        "bytes": 3871460,
+        "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+      },
+      {
+        "file": "assets/index-MwlfJe0p.css",
+        "bytes": 23999,
+        "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+      },
+      {
+        "file": "assets/licenses/CORMORANT-GARAMOND-OFL.txt",
+        "bytes": 4504,
+        "sha256": "732f37009943e7f4378cf37113c9bcc4716af002a8583511aa91ed5d37683e73"
+      },
+      {
+        "file": "assets/licenses/DM-SANS-OFL.txt",
+        "bytes": 4502,
+        "sha256": "6fbd040a29c2037a765dfb9f2561e9965b5c95c6dcb5dce516089d63d5f17af7"
+      },
+      {
+        "file": "assets/licenses/LUCIDE-ISC-MIT.txt",
+        "bytes": 3208,
+        "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+      },
+      {
+        "file": "assets/licenses/ORIGINAL-ASSETS-MIT.txt",
+        "bytes": 1092,
+        "sha256": "2b95f2ed41687da0593a607cf3bda9085579a7382a502326cbc13cc9757791b4"
+      },
+      {
+        "file": "assets/licenses/RAPIER-APACHE-2.0.txt",
+        "bytes": 11343,
+        "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+      },
+      {
+        "file": "assets/licenses/REACT-DOM-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "file": "assets/licenses/REACT-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "file": "assets/licenses/THREE-MIT.txt",
+        "bytes": 1081,
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "file": "assets/manifest.json",
+        "bytes": 15265,
+        "sha256": "ffacfa51562e9f622e65b040d4ba64763b8c68369128f649ebbcd2c5866905f3"
+      },
+      {
+        "file": "favicon.svg",
+        "bytes": 257,
+        "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+      },
+      {
+        "file": "index.html",
+        "bytes": 724,
+        "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+      },
+      {
+        "file": "scenes/camp.webp",
+        "bytes": 140648,
+        "sha256": "1a0d76b89dc6ad150d9b6a54161a5fbc08d535df3f7c9a51a65dd8e9f75df0bf"
+      },
+      {
+        "file": "scenes/fish.webp",
+        "bytes": 333648,
+        "sha256": "35b31007280d43db63f28fc917d26341c506603156412ea3e81cf2d9eacacf01"
+      },
+      {
+        "file": "scenes/repair.webp",
+        "bytes": 182868,
+        "sha256": "738b2dd5d09261f92ecae5d6ed7ea24812b0fe3528e355cdec4288be907eea90"
+      },
+      {
+        "file": "scenes/river.webp",
+        "bytes": 260144,
+        "sha256": "10573dd2636566df68f0ff7e43bb6916e8506711fa9faa4456d6b138164371d1"
+      },
+      {
+        "file": "scenes/snow.webp",
+        "bytes": 162108,
+        "sha256": "0585399582541e4acf59ede3d485bf0774757c04351eb276ed3c2998f63781a5"
+      },
+      {
+        "file": "scenes/talk.webp",
+        "bytes": 113184,
+        "sha256": "4b81de95a97afc21f6bf2b2583ca4237ba19a5602276dcaba4b1309dc09d1d44"
+      },
+      {
+        "file": "scenes/trail.webp",
+        "bytes": 171428,
+        "sha256": "51b6c593a7b9dd25826a025881cd4f7361c2f84e5e544cee582bccbb132b172d"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+        "bytes": 2152612,
+        "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine_bg.wasm.d.ts",
+        "bytes": 1689,
+        "sha256": "e712fbd275354b6d00f496977768573c36c83021a4e9b077300008281f8cba89"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine.d.ts",
+        "bytes": 3426,
+        "sha256": "0f4fccf19553599391ad0d7f753481c93478c881fbabe81dbac3e6963e427dbd"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine.js",
+        "bytes": 15385,
+        "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+      }
+    ]
+  },
+  "setup": "Actual legal WASM river checkpoint; physical region and start poses isolate recorded driver failures. Movement uses exported campaign walkPlanned with normal keyboard events.",
+  "runs": [
+    {
+      "name": "Green River recorded contact",
+      "walkingRoutes": [
+        {
+          "region": 15,
+          "start": {
+            "x": -1.2654302219447242,
+            "y": 1.5840782140113685,
+            "z": 91.64821075925462
+          },
+          "target": {
+            "x": 4.08628312132877,
+            "z": 94
+          },
+          "route": [
+            {
+              "x": -0.472679278606843,
+              "z": 91.54075871489576
+            },
+            {
+              "x": 0.3200716647310382,
+              "z": 91.4333066705369
+            },
+            {
+              "x": 1.1128226080689192,
+              "z": 91.32585462617803
+            },
+            {
+              "x": 1.2202746524277845,
+              "z": 92.1186055695159
+            },
+            {
+              "x": 2.0130255957656655,
+              "z": 92.01115352515704
+            },
+            {
+              "x": 2.120477640124531,
+              "z": 92.80390446849492
+            },
+            {
+              "x": 2.9132285834624128,
+              "z": 92.69645242413606
+            },
+            {
+              "x": 3.020680627821278,
+              "z": 93.48920336747395
+            },
+            {
+              "x": 4.08628312132877,
+              "z": 94
+            }
+          ]
+        }
+      ],
+      "seconds": 8.545,
+      "before": {
+        "x": -1.2654302219447242,
+        "y": 1.5840782140113685,
+        "z": 91.64821075925462
+      },
+      "after": {
+        "x": 4.149316581844363,
+        "y": 1.76931022860883,
+        "z": 93.8744346038879
+      },
+      "collisions": 0,
+      "served": {
+        "localBuildSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+        "responses": [
+          {
+            "url": "http://localhost:4173/?evidence=1",
+            "status": 200,
+            "matchesDist": true,
+            "file": "index.html",
+            "expectedSha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650",
+            "bytes": 724,
+            "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-MwlfJe0p.css",
+            "expectedSha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d",
+            "bytes": 23999,
+            "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-C5Tcy4bJ.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-C5Tcy4bJ.js",
+            "expectedSha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5",
+            "bytes": 3871460,
+            "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+          },
+          {
+            "url": "http://localhost:4173/favicon.svg",
+            "status": 200,
+            "matchesDist": true,
+            "file": "favicon.svg",
+            "expectedSha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d",
+            "bytes": 257,
+            "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "expectedSha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2",
+            "bytes": 22876,
+            "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine.js",
+            "expectedSha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff",
+            "bytes": 15385,
+            "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+            "expectedSha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5",
+            "bytes": 2152612,
+            "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "expectedSha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8",
+            "bytes": 23312,
+            "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "expectedSha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+            "bytes": 14144,
+            "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "expectedSha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+            "bytes": 14200,
+            "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+          }
+        ],
+        "missing": [],
+        "pass": true,
+        "verifiedAt": "2026-09-08T14:23:22.220Z"
+      }
+    },
+    {
+      "name": "Green River original dismount",
+      "walkingRoutes": [
+        {
+          "region": 15,
+          "start": {
+            "x": -2.718910314452182,
+            "y": 1.9785122994055797,
+            "z": 80.92484368575478
+          },
+          "target": {
+            "x": 4.08628312132877,
+            "z": 94
+          },
+          "route": [
+            {
+              "x": -2.6114582700933164,
+              "z": 81.71759462909266
+            },
+            {
+              "x": -2.504006225734451,
+              "z": 82.51034557243054
+            },
+            {
+              "x": -2.3965541813755857,
+              "z": 83.30309651576843
+            },
+            {
+              "x": -2.2891021370167204,
+              "z": 84.09584745910631
+            },
+            {
+              "x": -2.181650092657855,
+              "z": 84.88859840244419
+            },
+            {
+              "x": -2.0741980482989897,
+              "z": 85.68134934578207
+            },
+            {
+              "x": -1.9667460039401248,
+              "z": 86.47410028911995
+            },
+            {
+              "x": -1.8592939595812594,
+              "z": 87.26685123245782
+            },
+            {
+              "x": -1.751841915222394,
+              "z": 88.0596021757957
+            },
+            {
+              "x": -1.6443898708635285,
+              "z": 88.8523531191336
+            },
+            {
+              "x": -1.5369378265046634,
+              "z": 89.64510406247148
+            },
+            {
+              "x": -1.429485782145798,
+              "z": 90.43785500580935
+            },
+            {
+              "x": -0.636734838807917,
+              "z": 90.33040296145049
+            },
+            {
+              "x": -0.5292827944490517,
+              "z": 91.12315390478837
+            },
+            {
+              "x": 0.26346814888882975,
+              "z": 91.0157018604295
+            },
+            {
+              "x": 0.3709201932476951,
+              "z": 91.80845280376738
+            },
+            {
+              "x": 1.163671136585576,
+              "z": 91.70100075940852
+            },
+            {
+              "x": 1.2711231809444414,
+              "z": 92.49375170274641
+            },
+            {
+              "x": 2.0638741242823224,
+              "z": 92.38629965838754
+            },
+            {
+              "x": 2.1713261686411878,
+              "z": 93.17905060172542
+            },
+            {
+              "x": 2.964077111979069,
+              "z": 93.07159855736656
+            },
+            {
+              "x": 3.0715291563379346,
+              "z": 93.86434950070444
+            },
+            {
+              "x": 4.08628312132877,
+              "z": 94
+            }
+          ]
+        }
+      ],
+      "seconds": 18.543,
+      "before": {
+        "x": -2.718910314452182,
+        "y": 1.9785122994055797,
+        "z": 80.92484368575478
+      },
+      "after": {
+        "x": 4.1043342297282965,
+        "y": 1.7701989061303112,
+        "z": 93.93964382940715
+      },
+      "collisions": 0,
+      "served": {
+        "localBuildSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+        "responses": [
+          {
+            "url": "http://localhost:4173/?evidence=1",
+            "status": 200,
+            "matchesDist": true,
+            "file": "index.html",
+            "expectedSha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650",
+            "bytes": 724,
+            "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-MwlfJe0p.css",
+            "expectedSha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d",
+            "bytes": 23999,
+            "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-C5Tcy4bJ.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-C5Tcy4bJ.js",
+            "expectedSha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5",
+            "bytes": 3871460,
+            "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+          },
+          {
+            "url": "http://localhost:4173/favicon.svg",
+            "status": 200,
+            "matchesDist": true,
+            "file": "favicon.svg",
+            "expectedSha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d",
+            "bytes": 257,
+            "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "expectedSha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2",
+            "bytes": 22876,
+            "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine.js",
+            "expectedSha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff",
+            "bytes": 15385,
+            "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+            "expectedSha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5",
+            "bytes": 2152612,
+            "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "expectedSha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+            "bytes": 14144,
+            "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "expectedSha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8",
+            "bytes": 23312,
+            "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "expectedSha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+            "bytes": 14200,
+            "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+          }
+        ],
+        "missing": [],
+        "pass": true,
+        "verifiedAt": "2026-09-08T14:23:42.927Z"
+      }
+    },
+    {
+      "name": "Seed11 tree beside dismount",
+      "walkingRoutes": [
+        {
+          "region": 0,
+          "start": {
+            "x": -3.266313233808126,
+            "y": 2.0947478619034423,
+            "z": 79.3516856025792
+          },
+          "target": {
+            "x": 4.08628312132877,
+            "z": 94
+          },
+          "route": [
+            {
+              "x": -3.3858637397870055,
+              "z": 80.14270246492804
+            },
+            {
+              "x": -3.5054142457658846,
+              "z": 80.93371932727686
+            },
+            {
+              "x": -3.624964751744764,
+              "z": 81.7247361896257
+            },
+            {
+              "x": -3.7445152577236436,
+              "z": 82.51575305197453
+            },
+            {
+              "x": -3.8640657637025226,
+              "z": 83.30676991432337
+            },
+            {
+              "x": -3.073048901353689,
+              "z": 83.42632042030225
+            },
+            {
+              "x": -3.1925994073325685,
+              "z": 84.21733728265107
+            },
+            {
+              "x": -3.312149913311448,
+              "z": 85.00835414499991
+            },
+            {
+              "x": -3.431700419290327,
+              "z": 85.79937100734874
+            },
+            {
+              "x": -3.5512509252692066,
+              "z": 86.59038786969758
+            },
+            {
+              "x": -2.7602340629203725,
+              "z": 86.70993837567646
+            },
+            {
+              "x": -1.969217200571539,
+              "z": 86.82948888165534
+            },
+            {
+              "x": -1.1782003382227049,
+              "z": 86.94903938763422
+            },
+            {
+              "x": -0.38718347587387125,
+              "z": 87.0685898936131
+            },
+            {
+              "x": -0.5067339818527508,
+              "z": 87.85960675596193
+            },
+            {
+              "x": 0.28428288049608286,
+              "z": 87.97915726194081
+            },
+            {
+              "x": 0.16473237451720335,
+              "z": 88.77017412428964
+            },
+            {
+              "x": 0.955749236866037,
+              "z": 88.88972463026852
+            },
+            {
+              "x": 0.8361987308871583,
+              "z": 89.68074149261736
+            },
+            {
+              "x": 1.6272155932359924,
+              "z": 89.80029199859624
+            },
+            {
+              "x": 1.507665087257113,
+              "z": 90.59130886094508
+            },
+            {
+              "x": 2.298681949605947,
+              "z": 90.71085936692396
+            },
+            {
+              "x": 2.1791314436270675,
+              "z": 91.50187622927278
+            },
+            {
+              "x": 2.9701483059759006,
+              "z": 91.62142673525166
+            },
+            {
+              "x": 2.850597799997021,
+              "z": 92.4124435976005
+            },
+            {
+              "x": 3.641614662345856,
+              "z": 92.53199410357938
+            },
+            {
+              "x": 3.5220641563669774,
+              "z": 93.3230109659282
+            },
+            {
+              "x": 4.08628312132877,
+              "z": 94
+            }
+          ]
+        }
+      ],
+      "seconds": 21.774,
+      "before": {
+        "x": -3.266313233808126,
+        "y": 2.0947478619034423,
+        "z": 79.3516856025792
+      },
+      "after": {
+        "x": 3.969708393946921,
+        "y": 1.7707475854194634,
+        "z": 93.93005587814534
+      },
+      "collisions": 0,
+      "served": {
+        "localBuildSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+        "responses": [
+          {
+            "url": "http://localhost:4173/?evidence=1",
+            "status": 200,
+            "matchesDist": true,
+            "file": "index.html",
+            "expectedSha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650",
+            "bytes": 724,
+            "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-MwlfJe0p.css",
+            "expectedSha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d",
+            "bytes": 23999,
+            "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-C5Tcy4bJ.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-C5Tcy4bJ.js",
+            "expectedSha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5",
+            "bytes": 3871460,
+            "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+          },
+          {
+            "url": "http://localhost:4173/favicon.svg",
+            "status": 200,
+            "matchesDist": true,
+            "file": "favicon.svg",
+            "expectedSha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d",
+            "bytes": 257,
+            "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "expectedSha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2",
+            "bytes": 22876,
+            "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine.js",
+            "expectedSha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff",
+            "bytes": 15385,
+            "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+            "expectedSha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5",
+            "bytes": 2152612,
+            "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "expectedSha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8",
+            "bytes": 23312,
+            "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "expectedSha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+            "bytes": 14144,
+            "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "expectedSha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+            "bytes": 14200,
+            "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+          }
+        ],
+        "missing": [],
+        "pass": true,
+        "verifiedAt": "2026-09-08T14:24:06.856Z"
+      }
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

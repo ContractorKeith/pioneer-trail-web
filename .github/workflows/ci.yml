@@ -6,6 +6,32 @@ on:
     branches: [main]
 
 jobs:
+  browser_smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Run landscape touch smoke test
+        run: >-
+          npm run test:e2e -- tests/survival.spec.ts --project=chromium
+          --grep 'R13 exposes usable landscape coarse-pointer controls$'
+          --reporter=line,json
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_FILE: smoke-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-smoke-results
+          path: |
+            test-results/
+            smoke-report.json
+
   validate:
     runs-on: ubuntu-latest
     strategy:

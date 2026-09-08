@@ -1,0 +1,323 @@
+{
+  "started": "2026-09-08T14:10:13.506Z",
+  "baseURL": "http://localhost:4173",
+  "browserLaunch": {
+    "executablePath": "/usr/bin/chromium",
+    "headless": true,
+    "args": [
+      "--ozone-platform=x11",
+      "--enable-gpu"
+    ]
+  },
+  "environment": {
+    "display": ":0",
+    "sessionType": "wayland",
+    "browser": "151.0.7922.137",
+    "gpu": {
+      "devices": [
+        {
+          "vendorId": 0,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Mesa)",
+          "deviceString": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2 Mesa 26.1.8)",
+          "driverVendor": "Mesa",
+          "driverVersion": "26.1.8"
+        }
+      ],
+      "auxAttributes": {
+        "amdSwitchable": false,
+        "canSupportThreadedTextureMailbox": false,
+        "directRenderingVersion": "",
+        "displayType": "ANGLE_OPENGL",
+        "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_compressed_texture_etc GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_translated_shader_source GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clear_texture GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_compressed_ETC1_RGB8_sub_texture GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_sRGB_write_control GL_EXT_shader_framebuffer_fetch GL_EXT_shader_framebuffer_fetch_non_coherent GL_EXT_shadow_samplers GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_cube_map_array GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_RG8 GL_EXT_texture_sRGB_decode GL_EXT_texture_shadow_lod GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_KHR_texture_compression_astc_hdr GL_KHR_texture_compression_astc_ldr GL_KHR_texture_compression_astc_sliced_3d GL_MESA_framebuffer_flip_y GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_read_depth GL_NV_read_stencil GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_EGL_sync GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_draw_buffers_indexed GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_3D GL_OES_texture_border_clamp GL_OES_texture_cube_map_array GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_WEBGL_video_texture ",
+        "glImplementationParts": "(gl=egl-angle,angle=opengl)",
+        "glRenderer": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2 Mesa 26.1.8)",
+        "glResetNotificationStrategy": 33362,
+        "glVendor": "Google Inc. (Mesa)",
+        "glVersion": "OpenGL ES 3.0 (ANGLE 2.1 git hash: unknown hash)",
+        "glWsExtensions": "EGL_EXT_create_context_robustness EGL_KHR_create_context EGL_KHR_image_base EGL_KHR_gl_colorspace EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_texture_3D_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_fence_sync EGL_KHR_wait_sync EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_KHR_swap_buffers_with_damage EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANDROID_native_fence_sync EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_EXT_image_dma_buf_import EGL_EXT_image_dma_buf_import_modifiers EGL_KHR_reusable_sync EGL_ANGLE_external_context_and_surface EGL_EXT_buffer_age EGL_ANGLE_context_virtualization EGL_ANGLE_memory_usage_report EGL_ANGLE_create_context_passthrough_shaders ",
+        "glWsVendor": "Google Inc. (Mesa)",
+        "glWsVersion": "1.5 (ANGLE 2.1 git hash: unknown hash)",
+        "hardwareSupportsVulkan": false,
+        "inProcessGpu": false,
+        "initializationTime": 0.043469,
+        "isAsan": false,
+        "isClangCoverage": false,
+        "jpegDecodeAcceleratorSupported": false,
+        "maxMsaaSamples": "4",
+        "optimus": false,
+        "passthroughCmdDecoder": true,
+        "pixelShaderVersion": "3.00",
+        "processCrashCount": 0,
+        "sandboxed": false,
+        "skiaBackendType": "GaneshGL",
+        "subpixelFontRendering": true,
+        "targetCpuBits": 64,
+        "vertexShaderVersion": "3.00",
+        "visibilityCallbackCallCount": 0
+      },
+      "featureStatus": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "disabled_off",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "disabled_software",
+        "video_encode": "disabled_software",
+        "vulkan": "disabled_off",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webgpu_on_vk_via_gl_interop": "disabled_off",
+        "webnn": "disabled_off"
+      },
+      "driverBugWorkarounds": [
+        "enable_webgl_timer_query_extensions",
+        "exit_on_context_lost",
+        "disabled_extension_GL_KHR_blend_equation_advanced",
+        "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+      ],
+      "videoDecoding": [],
+      "videoEncoding": []
+    }
+  },
+  "cases": [
+    {
+      "name": "seed14-bank-wildlife",
+      "setup": "Existing command-generated daylight-river campaign (seed 11); saved spatial terrain is explicitly RiverValley and regionIndex is 3, reproducing physical seed 14. Wagon/player retain the ordinary spawn20. This isolates the prior tree/deer recipe; it is not a played Big Blue arrival or an exact old animation timestamp.",
+      "quality": "low",
+      "captures": [],
+      "samples": [],
+      "errors": [
+        "SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.",
+        "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4173/?evidence=1\nCall log:\n\u001b[2m  - navigating to \"http://localhost:4173/?evidence=1\", waiting until \"load\"\u001b[22m\n",
+        "SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.",
+        "SecurityError: Failed to read the 'sessionStorage' property from 'Window': Access is denied for this document.",
+        "AssertionError [ERR_ASSERTION]: Served production build differs from local manifest: {\"missing\":[\"index.html\",\"application JavaScript\",\"WASM\"],\"failed\":[{\"url\":\"http://localhost:4173/?evidence=1\",\"status\":0,\"matchesDist\":false,\"error\":\"net::ERR_CONNECTION_REFUSED\"}]}"
+      ],
+      "complete": false,
+      "servedBuild": {
+        "localBuildSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+        "responses": [
+          {
+            "url": "http://localhost:4173/?evidence=1",
+            "status": 0,
+            "matchesDist": false,
+            "error": "net::ERR_CONNECTION_REFUSED"
+          }
+        ],
+        "missing": [
+          "index.html",
+          "application JavaScript",
+          "WASM"
+        ],
+        "pass": false,
+        "verifiedAt": "2026-09-08T14:10:14.516Z"
+      },
+      "failureImage": "docs/evidence/activity-review/seed14-bank-wildlife-failure.png",
+      "finishedEpochMs": 1788876614516,
+      "originalVideo": "/home/contractorkeith/Projects/pioneer-trail-web/.artifacts/videos/page@837b0bc14cb00f5ecad1a977e669159f.webm"
+    }
+  ],
+  "errors": [
+    "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4173/?evidence=1\nCall log:\n\u001b[2m  - navigating to \"http://localhost:4173/?evidence=1\", waiting until \"load\"\u001b[22m\n"
+  ],
+  "captureRunComplete": false,
+  "note": "Production first-person controls and factual activity outcomes. Checkpoint setup is disclosed per case. Completion means the capture procedure ran; independent image/video review must supply the visual verdict.",
+  "build": {
+    "commit": "8d048ed19387f690c292b1c25f770e83507c6be6",
+    "dirty": true,
+    "sourceStatus": "M docs/ACCEPTANCE.md\n M docs/evidence/independent-review.md\n M docs/evidence/visual-review/camp.png\n M docs/evidence/visual-review/companion.png\n M docs/evidence/visual-review/mountains.png\n M docs/evidence/visual-review/ox-front.png\n M docs/evidence/visual-review/rain.png\n M docs/evidence/visual-review/report.json\n M docs/evidence/visual-review/river.png\n M docs/evidence/visual-review/seat-forward.png\n M docs/evidence/visual-review/seat-rear.png\n M docs/evidence/visual-review/snow.png\n M docs/evidence/visual-review/wagon-exterior.png\n M scripts/campaign-walkthrough.mjs\n M scripts/capture-world.mjs\n M scripts/measure-load.mjs\n M scripts/measure-ride.mjs\n?? docs/evidence/campaign-attempt-2/\n?? docs/evidence/campaign-attempt-3/\n?? docs/evidence/campaign-resumed-2026-09-08/\n?? docs/evidence/integration-review.md\n?? docs/evidence/performance/scheduling-investigation.md\n?? docs/evidence/trader-return.json\n?? docs/evidence/visual-review/camp-night.png\n?? docs/evidence/visual-review/fog.png\n?? docs/evidence/visual-review/ox-hoof-contact.png\n?? docs/evidence/visual-review/ox-mountain-contact.png\n?? docs/evidence/visual-review/ox-side.png\n?? docs/evidence/visual-review/ride-rear-stopped.png\n?? docs/evidence/visual-review/river-daylight.png\n?? docs/evidence/visual-review/wildlife-deer.png\n?? docs/evidence/visual-review/wildlife-rabbit.png\n?? scripts/capture-activities.mjs\n?? scripts/served-build.mjs",
+    "distSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+    "files": [
+      {
+        "file": "_headers",
+        "bytes": 197,
+        "sha256": "17c27f16152cc4999dcbaae81bd92104156cd0032d2f5d380fb39c4bb4bb42cc"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-italic-BLh7T8o8.woff",
+        "bytes": 32888,
+        "sha256": "337d07118277acbf5a0eb19c602aaf917b2485585360f2c7139ce42d9d4e6cc1"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-italic-Dc_OZ8oc.woff2",
+        "bytes": 23660,
+        "sha256": "e48e58027030df56869b795ca6f19b7012158275f7ad7cde1900b4a0b68d02e2"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+        "bytes": 22876,
+        "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-normal-B7YtguxJ.woff",
+        "bytes": 30980,
+        "sha256": "b926f33f9d3d5cb64e639b8fe9ad5380560a63f3e7a29d212f2b80a2d22ec051"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+        "bytes": 23312,
+        "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-500-normal-zIXX3Q-H.woff",
+        "bytes": 31372,
+        "sha256": "314ee3edd5ddcdef5cf2374c1126b8be9f7f1ebd6c5c66a23c237f3b836a3ec1"
+      },
+      {
+        "file": "assets/dm-sans-latin-400-normal-BwCSEQnW.woff",
+        "bytes": 18356,
+        "sha256": "38702875fe179437d200e7ba6f7fab4d497ffe48117ef332029b2081751186ad"
+      },
+      {
+        "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+        "bytes": 14200,
+        "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+      },
+      {
+        "file": "assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+        "bytes": 14304,
+        "sha256": "19bf1984956517c35c2bd35b6cdedac12a21d6fcd3596c614ecdfb88b648909d"
+      },
+      {
+        "file": "assets/dm-sans-latin-500-normal-Dr3UlScf.woff",
+        "bytes": 18520,
+        "sha256": "7deb957e430b780ee3272d801af4f9f2211b1330ec40a312a8f25309eacb4034"
+      },
+      {
+        "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+        "bytes": 14144,
+        "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+      },
+      {
+        "file": "assets/dm-sans-latin-600-normal-BmdmIIQ2.woff",
+        "bytes": 18320,
+        "sha256": "e7351257e49400eff05aca30a2007289194a900860d30c30770d8b8732897564"
+      },
+      {
+        "file": "assets/index-C5Tcy4bJ.js",
+        "bytes": 3871460,
+        "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+      },
+      {
+        "file": "assets/index-MwlfJe0p.css",
+        "bytes": 23999,
+        "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+      },
+      {
+        "file": "assets/licenses/CORMORANT-GARAMOND-OFL.txt",
+        "bytes": 4504,
+        "sha256": "732f37009943e7f4378cf37113c9bcc4716af002a8583511aa91ed5d37683e73"
+      },
+      {
+        "file": "assets/licenses/DM-SANS-OFL.txt",
+        "bytes": 4502,
+        "sha256": "6fbd040a29c2037a765dfb9f2561e9965b5c95c6dcb5dce516089d63d5f17af7"
+      },
+      {
+        "file": "assets/licenses/LUCIDE-ISC-MIT.txt",
+        "bytes": 3208,
+        "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+      },
+      {
+        "file": "assets/licenses/ORIGINAL-ASSETS-MIT.txt",
+        "bytes": 1092,
+        "sha256": "2b95f2ed41687da0593a607cf3bda9085579a7382a502326cbc13cc9757791b4"
+      },
+      {
+        "file": "assets/licenses/RAPIER-APACHE-2.0.txt",
+        "bytes": 11343,
+        "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+      },
+      {
+        "file": "assets/licenses/REACT-DOM-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "file": "assets/licenses/REACT-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "file": "assets/licenses/THREE-MIT.txt",
+        "bytes": 1081,
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "file": "assets/manifest.json",
+        "bytes": 15265,
+        "sha256": "ffacfa51562e9f622e65b040d4ba64763b8c68369128f649ebbcd2c5866905f3"
+      },
+      {
+        "file": "favicon.svg",
+        "bytes": 257,
+        "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+      },
+      {
+        "file": "index.html",
+        "bytes": 724,
+        "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+      },
+      {
+        "file": "scenes/camp.webp",
+        "bytes": 140648,
+        "sha256": "1a0d76b89dc6ad150d9b6a54161a5fbc08d535df3f7c9a51a65dd8e9f75df0bf"
+      },
+      {
+        "file": "scenes/fish.webp",
+        "bytes": 333648,
+        "sha256": "35b31007280d43db63f28fc917d26341c506603156412ea3e81cf2d9eacacf01"
+      },
+      {
+        "file": "scenes/repair.webp",
+        "bytes": 182868,
+        "sha256": "738b2dd5d09261f92ecae5d6ed7ea24812b0fe3528e355cdec4288be907eea90"
+      },
+      {
+        "file": "scenes/river.webp",
+        "bytes": 260144,
+        "sha256": "10573dd2636566df68f0ff7e43bb6916e8506711fa9faa4456d6b138164371d1"
+      },
+      {
+        "file": "scenes/snow.webp",
+        "bytes": 162108,
+        "sha256": "0585399582541e4acf59ede3d485bf0774757c04351eb276ed3c2998f63781a5"
+      },
+      {
+        "file": "scenes/talk.webp",
+        "bytes": 113184,
+        "sha256": "4b81de95a97afc21f6bf2b2583ca4237ba19a5602276dcaba4b1309dc09d1d44"
+      },
+      {
+        "file": "scenes/trail.webp",
+        "bytes": 171428,
+        "sha256": "51b6c593a7b9dd25826a025881cd4f7361c2f84e5e544cee582bccbb132b172d"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+        "bytes": 2152612,
+        "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine_bg.wasm.d.ts",
+        "bytes": 1689,
+        "sha256": "e712fbd275354b6d00f496977768573c36c83021a4e9b077300008281f8cba89"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine.d.ts",
+        "bytes": 3426,
+        "sha256": "0f4fccf19553599391ad0d7f753481c93478c881fbabe81dbac3e6963e427dbd"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine.js",
+        "bytes": 15385,
+        "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+      }
+    ]
+  }
+}
