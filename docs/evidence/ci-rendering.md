@@ -1,5 +1,7 @@
 # Hosted browser verification — 2026-09-08
 
+**Latest verified implementation: `329f37072101c09f9e3b6930555f27a9b3eea1b5`.** [Run34254512162](https://github.com/ContractorKeith/pioneer-trail-web/actions/runs/34254512162) is fully green: all88 production cases, seven development cases, source/domain gates and both smoke jobs. Attempt2 recovered an artifact-only failure after the original six Firefox smoke tests had passed; test retries remain zero. The sections below preserve the investigation and earlier pending states as history. Final documentation and merged-default delivery are tracked in goal#8.
+
 This records a failed run and its verification-harness correction. A passing source review or local probe does not establish a green hosted suite.
 
 ## Observed failure
@@ -69,3 +71,13 @@ The touch trace shows Forward mouse-down delivered, 1.204 seconds of wall wait, 
 The actual small-viewport software-mode touch rerun passed both browsers in 19.321 seconds, with two expected and zero unexpected/skipped/flaky cases; `.artifacts/touch-progress-software.json` retains the result. Fresh hosted verification remains required.
 
 The separate normal desktop-mode touch run also passed both browsers with the original 1.2-second movement deadline (13.494 seconds; `.artifacts/touch-progress-desktop.json`, two expected, no unexpected/skipped/flaky cases).
+
+The complete d36c5e3 validation finished at **87/88** production cases: Firefox44/44, Chromium43/44, with only the same fixed-duration touch assertion failing. Both browser lanes passed all preceding gates; Chromium shard1 also passed all seven development cases. The committed touch correction is `329f37072101c09f9e3b6930555f27a9b3eea1b5`.
+
+Run `34254512162` at that correction passed both six-case gameplay smoke suites. Firefox then received a second artifact `FinalizeArtifact` intermediary403 after gameplay passed; no artifact was created for that failed finalization. Its log is `.artifacts/ci-329f370-firefox-smoke.log`. Chromium's artifact upload succeeded, and d36's identical Firefox upload also succeeded. The repeated service failure was a red CI gate until the successful recovery recorded below; no permissions or upload checks were weakened. Its completed full-production result is recorded below.
+
+The obsolete c81 run completed before its cancellation request, so it was **not cancelled**: Chromium35/44 and Firefox39/44 passed, with prior controller/environment failures retained. Its completed job logs remain `.artifacts/ci-c81dfa2-chromium-{1,2}.log` and the earlier Firefox artifacts. This failed historical run is not acceptance evidence.
+
+The completed329f370 production shards passed **88/88**: Chromium23/23 and21/21, Firefox23/23 and21/21. All269 unit tests,127 Rust tests, seven development cases and build/lint/types/engine/assets gates passed. The sole failed job had already passed its six Firefox smoke tests and failed artifact finalization. `gh run rerun 34254512162 --failed` was issued after the run completed to recover that infrastructure step; the original failure is retained and test-level retries remain zero. Final workflow recovery is recorded separately below and in the release ledger.
+
+Workflow recovery completed successfully: attempt2 of run34254512162 reports all six jobs successful. The repeated Firefox smoke gameplay and artifact finalization both passed; `.artifacts/ci-329f370-firefox-smoke-attempt2.log` preserves the result. The original artifact403 remains documented and was not reclassified as a gameplay pass/fail.

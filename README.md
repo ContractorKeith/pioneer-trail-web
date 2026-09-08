@@ -1,6 +1,6 @@
 # Pioneer Trail Web
 
-Pioneer Trail Web is a static browser game rebuild. The release target is a first-person 3D wagon journey, with the Rust/WebAssembly campaign engine remaining authoritative for rules, content, seeded outcomes, and saves. The former image-scene dashboard and the first-person demo page are historical/reference material while the rebuild is completed; they are not the runtime contract.
+Pioneer Trail Web is a first-person 3D wagon journey. Drive, walk, hunt, fish, cross rivers and manage your party in a navigable world. The Rust/WebAssembly campaign engine owns the rules, content, seeded outcomes and saves. The former dashboard is archived; the preserved HTML demo records the original perspective reference.
 
 The campaign content remains the original scope: **three trails** (Oregon, California, and Mormon), **four eras** (1843, 1848, 1852, and 1866), and **nine occupations** (Banker, Merchant, Doctor, Blacksmith, Carpenter, Hunter/Trapper, Preacher, Farmer, and Soldier). Survival, commerce, letters, route events, and the fishing, hunting, and crossing activities remain part of that campaign.
 
@@ -64,16 +64,16 @@ npm run test:e2e
 cargo test --manifest-path engine/Cargo.toml --locked
 ```
 
-The Playwright configuration includes Chromium and Firefox projects, with focused R01–R13 behavior coverage for both browser targets. The complete normal-input Oregon campaign and independent memory review passed; a fresh full browser suite remains pending. CI installs both Chromium and Firefox. Preparing both browsers locally is:
+The Playwright configuration includes Chromium and Firefox projects, with focused R01–R13 behavior coverage for both browser targets. The complete normal-input Oregon campaign, independent memory review and all 88 production browser cases passed. Final CI and merged-default delivery records are linked from [goal #8](https://github.com/ContractorKeith/pioneer-trail-web/issues/8). CI installs both Chromium and Firefox. Preparing both browsers locally is:
 
 ```sh
 npx playwright install chromium firefox
 ```
 
-That command prepares browsers; it does not by itself prove the rebuild acceptance gates. `node scripts/verify-assets.mjs` is the underlying asset check used by `npm run test:assets`; it validates manifest fields and referenced local paths, compares copied package notices when `node_modules` is present, and rejects HTTP(S) URLs in runtime source. Dependency source URLs in the manifest are metadata only. The replacement matrix in [`docs/TEST-MIGRATION.md`](docs/TEST-MIGRATION.md) identifies the world movement, activity, focus/recovery, save, compatibility, trail/era/occupation, accessibility, and performance checks that still need fresh evidence.
+That command prepares browsers; it does not by itself prove the rebuild acceptance gates. `node scripts/verify-assets.mjs` is the underlying asset check used by `npm run test:assets`; it validates manifest fields and referenced local paths, compares copied package notices when `node_modules` is present, and rejects HTTP(S) URLs in runtime source. Dependency source URLs in the manifest are metadata only. The replacement matrix in [`docs/TEST-MIGRATION.md`](docs/TEST-MIGRATION.md) maps the archived dashboard assertions to the verified world movement, activities, focus/recovery, saves, compatibility, setup and accessibility coverage.
 
 The [cold-load measurement](docs/evidence/performance/cold-load.json) records 1,958,846 initial gzip bytes, 5.921 seconds to setup controls, and 7.435 seconds to playable state including automated setup clicks under a fresh-context 10 Mbps down / 2 Mbps up, 150 ms latency profile.
 
 The [two-minute ride](docs/evidence/performance/ride.json) on the M2/Asahi Linux AGX desktop at 720p low quality records 7,201 frames, median 59.8802 FPS and p95 16.8 ms, with zero collisions or application errors. Both measurements verify production build `b6c57bbe797aaa90dd398f9f2f109bbc5e001ebc7f3cdc3ec5b71325bb00c08a`. They do not establish performance on untested devices or the 1080p balanced target.
 
-The [normal-input campaign](docs/evidence/campaign-attempt-8/walkthrough.json) reached Oregon on day 168 with all six party members alive, after 1,282.816 seconds of play and 1,199.956 observed unpaused seconds. [Independent review](docs/evidence/independent-review.md) found a retained-memory plateau across six comparable late regions. The raw report preserves its pending-review field; the separate review binds its verdict to the report hash and discloses one overwritten earlier checkpoint file. The refreshed 19-view/four-clip visual review and hardware interval audit also passed. Full browser CI and merged-default delivery remain open in [the acceptance record](docs/ACCEPTANCE.md).
+The [normal-input campaign](docs/evidence/campaign-attempt-8/walkthrough.json) reached Oregon on day 168 with all six party members alive, after 1,282.816 seconds of play and 1,199.956 observed unpaused seconds. [Independent review](docs/evidence/independent-review.md) found a retained-memory plateau across six comparable late regions. The raw report preserves its pending-review field; the separate review binds its verdict to the report hash and discloses one overwritten earlier checkpoint file. The refreshed 19-view/four-clip visual review and hardware interval audit also passed. The [acceptance record](docs/ACCEPTANCE.md) links the implementation evidence and final Git delivery ledger.
