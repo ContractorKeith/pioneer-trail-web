@@ -213,6 +213,15 @@ pub enum Command {
     CrossRiver {
         method: CrossMethod,
     },
+    /// Factual 3D outcomes; the browser bridge owns activity identity and replay protection.
+    CrossingResult {
+        method: CrossMethod,
+        cargo_lost_lbs: u32,
+        completed: bool,
+    },
+    FishResult {
+        food_lbs: u32,
+    },
     Respond {
         event_id: String,
         choice_id: String,
@@ -595,6 +604,7 @@ impl GameState {
             Command::Gather { activity, days } => self.gather(activity, days),
             Command::Forage => self.forage(),
             Command::Fish => self.fish(),
+            Command::FishResult { food_lbs } => self.fish_result(food_lbs),
             Command::Sell { item_id, quantity } => self.sell(&item_id, quantity),
             Command::Barter {
                 npc_id,
@@ -654,6 +664,9 @@ impl GameState {
             Command::Rest { days } => self.rest(days),
             Command::ChooseRoute { route_id } => self.route(&route_id),
             Command::CrossRiver { method } => self.cross(method),
+            Command::CrossingResult { method, cargo_lost_lbs, completed } => {
+                self.crossing_result(method, cargo_lost_lbs, completed)
+            }
             Command::Respond { event_id, choice_id } => self.respond(&event_id, &choice_id),
             Command::Talk => self.talk(),
             Command::Converse { speaker_id, topic } => self.converse(&speaker_id, topic),
@@ -1026,6 +1039,44 @@ impl GameState {
         }
         out.push(Outcome::Message("The crossing is behind you.".into()));
         Ok(out)
+    }
+    /// Reuses crossing costs and camp-day rules, with losses reported by the physical crossing.
+    fn crossing_result(
+        &mut self,
+        method: CrossMethod,
+        cargo_lost_lbs: u32,
+        completed: bool,
+    ) -> Result<Vec<Outcome>, CommandError> {
+        if !matches!(self.status, RunStatus::AwaitingRiver(_))
+            || self.node()?.river.is_none()
+            || self.node()?.routes.len() != 1
+            || !matches!(method, CrossMethod::Ford | CrossMethod::Caulk | CrossMethod::Guide)
+            || cargo_lost_lbs > 120
+        {
+            return Err(CommandError::InvalidChoice);
+        }
+        if method == CrossMethod::Guide {
+            if self.current_node_id.as_deref() != Some("snake_river")
+                || self.inventory.get("clothing") < self.guide_cost()
+            {
+                return Err(CommandError::InvalidChoice);
+            }
+            self.inventory.remove("clothing", self.guide_cost());
+        }
+        let lost = self.inventory.take("food", cargo_lost_lbs);
+        let mut outcomes = vec![Outcome::Message(format!(
+            "Crossing collisions lost {lost} lbs of food."
+        ))];
+        self.pass_camp_day(&mut outcomes, false);
+        if completed && self.status != RunStatus::Failed {
+            self.begin_only_route()?;
+        }
+        outcomes.push(Outcome::Message(if completed {
+            "The crossing is behind you.".into()
+        } else {
+            "You return to the near bank. The crossing attempt took one day.".into()
+        }));
+        Ok(outcomes)
     }
     pub fn effective_depth(&self) -> Option<u32> {
         let river = self.node().ok()?.river.as_ref()?;
@@ -1461,6 +1512,28 @@ impl GameState {
             self.last_fresh_food_day = Some(self.day);
         }
         outcomes.push(Outcome::Message(format!("Caught {food} lbs of fish.")));
+        outcomes.push(Outcome::Gathered {
+            activity: GatheringActivity::Fish,
+            food_lbs: food,
+            net_food_lbs: i64::from(self.inventory.get("food")) - i64::from(before_food),
+            days: 1,
+        });
+        Ok(outcomes)
+    }
+    /// A caught fish is factual. The original 45 lb bound, capacity and camp costs still apply.
+    fn fish_result(&mut self, food_lbs: u32) -> Result<Vec<Outcome>, CommandError> {
+        self.at_camp()?;
+        if self.terrain() != Terrain::RiverValley || food_lbs > 45 {
+            return Err(CommandError::InvalidChoice);
+        }
+        let before_food = self.inventory.get("food");
+        let food = food_lbs.min(self.max_addable("food").unwrap_or(0));
+        self.inventory.add("food", food);
+        let mut outcomes = Vec::new();
+        self.pass_camp_day(&mut outcomes, false);
+        if food > 0 {
+            self.last_fresh_food_day = Some(self.day);
+        }
         outcomes.push(Outcome::Gathered {
             activity: GatheringActivity::Fish,
             food_lbs: food,

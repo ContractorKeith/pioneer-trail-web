@@ -27,3 +27,6 @@ dist-ssr
 engine/target/
 test-results/
 playwright-report/
+
+# Task-local browser scratch and large recordings; reports link retained artifacts.
+.artifacts/

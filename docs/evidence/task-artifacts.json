@@ -1,0 +1,170 @@
+{
+  "purpose": "Preserved task-authored diagnostics and original gameplay recordings at the user-requested WIP stop. Reproducible dependencies, build outputs and browser caches are excluded. No recording here establishes a completed campaign.",
+  "files": [
+    {
+      "path": ".artifacts/activity-rework.md",
+      "bytes": 1436,
+      "sha256": "93b006472a0dd8cd4e78a48a8128751e73c4fda4c1c4994bb94a13daaa889e88"
+    },
+    {
+      "path": ".artifacts/campaign-current.log",
+      "bytes": 11094,
+      "sha256": "ba236028235defbc184693623349ff1437c1df10c83ec853686425d62ad9ea29"
+    },
+    {
+      "path": ".artifacts/current-review-note.md",
+      "bytes": 3173,
+      "sha256": "ef8b487029af434c120bddd6288b2d98a0a2b272d14b62daa086139e8f4f73b4"
+    },
+    {
+      "path": ".artifacts/review-checkpoint.md",
+      "bytes": 4925,
+      "sha256": "b532127fadef1642dfd4cda79f598711907ee9f3595a72cc2d028c5fdadb9d8f"
+    },
+    {
+      "path": ".artifacts/ride-contact-sheet.png",
+      "bytes": 1631230,
+      "sha256": "811ef8dbdeff8c1b2650e66ddae2903e31afab44acbc552144fd65bcdf61cbdf"
+    },
+    {
+      "path": ".artifacts/river-120.cpuprofile",
+      "bytes": 121935,
+      "sha256": "60b6c2c91bc34e2442353982f4ebe93af88de7a70343b8d43b24ac3225eada5d"
+    },
+    {
+      "path": ".artifacts/river-132.cpuprofile",
+      "bytes": 177635,
+      "sha256": "a9046326cc94ae8107a12b409832fd613c211d2f5168ea81d285573090dd93aa"
+    },
+    {
+      "path": ".artifacts/river-80.cpuprofile",
+      "bytes": 128068,
+      "sha256": "b890e5813cdb08b13733ffc7ae119ff0082ebc301c2257ac3e48c72e75f403f5"
+    },
+    {
+      "path": ".artifacts/river-headless-video.json",
+      "bytes": 1514332,
+      "sha256": "8a50ca5f6269e91e8fe359c972c53a645b7c2156c41e13ca58ee6fae1ba3b2d7"
+    },
+    {
+      "path": ".artifacts/river-headless.mjs",
+      "bytes": 2615,
+      "sha256": "f0e4d2bf9da8b96e81d88986aad230b15fc72759fcd19d25ba8cd19408b27043"
+    },
+    {
+      "path": ".artifacts/river-profile.json",
+      "bytes": 954617,
+      "sha256": "63b15efd28fd85976dbf9814dd4c1b70b338f2857f31027fa709d0be8b90bf86"
+    },
+    {
+      "path": ".artifacts/river-profile.mjs",
+      "bytes": 2121,
+      "sha256": "d088227e9612d2c721ce22148fe0005e42bfe6d74c4129a376995f6454b618be"
+    },
+    {
+      "path": ".artifacts/river-scheduling.json",
+      "bytes": 1562002,
+      "sha256": "afcd87100de9838dc76daa910cc287b0252e81c232d5359c1c21a6c132907310"
+    },
+    {
+      "path": ".artifacts/river-scheduling.mjs",
+      "bytes": 2606,
+      "sha256": "318400332c32dae1d253fd3e6015ac9cb294dc2d3b8bfb41e2700b89f9782de6"
+    },
+    {
+      "path": ".artifacts/software-probe.mjs",
+      "bytes": 1158,
+      "sha256": "1c95569a38c61f32a56afe4f350ffc65e49965197dbe46c3e34078f1ddb87436"
+    },
+    {
+      "path": ".artifacts/tmp/crossing-cpu-profile.json",
+      "bytes": 2551,
+      "sha256": "118f7ffeba23e5af0f40ee177203e37ee7de9ff05be898a0c96402ec3d87c6a1"
+    },
+    {
+      "path": ".artifacts/tmp/quality-low-baseline.json",
+      "bytes": 250,
+      "sha256": "05aaa66c2c083ae1d46b6d2f5fe0c915004cd65c03592f5436d070f2fee67df7"
+    },
+    {
+      "path": ".artifacts/tmp/quality-recipe-matrix.json",
+      "bytes": 87982,
+      "sha256": "5bf80e9b89474ca2f1378cc4f674522355b17fcf81fca852bba757eeef39598d"
+    },
+    {
+      "path": ".artifacts/tmp/quality-recipe-matrix.mjs",
+      "bytes": 3495,
+      "sha256": "731af9e69486abbc259e88ada27c1c0935d4ab5702a7a94d45c1a2781ed260af"
+    },
+    {
+      "path": ".artifacts/tmp/river-route-probe.mjs",
+      "bytes": 2819,
+      "sha256": "c2501c784899c67e198a3134ec6a23450dbd84abb3233df9260e4e92111c2885"
+    },
+    {
+      "path": ".artifacts/tmp/world-construction-probe.mjs",
+      "bytes": 1549,
+      "sha256": "bbc3beeecd97c57bd7aad3f4f5b7b5dc2c08698af4a5996a95eef0d7141b80de"
+    },
+    {
+      "path": ".artifacts/videos/page@3b7aba5156513828f133c78bfa421a4b.webm",
+      "bytes": 613738,
+      "sha256": "c66cc3dd0450d48eb4fd60187d69628f65598cb1c4e0e7b50723952f43a14270"
+    },
+    {
+      "path": ".artifacts/videos/page@420e5d4f5a61f7d9fc10ed332f4d605e.webm",
+      "bytes": 26476600,
+      "sha256": "2e22f19dacd218a6121bfd2c5db9bbd27396dd7bf655a63808c137b673cccc41"
+    },
+    {
+      "path": ".artifacts/videos/page@4bc5483e48ad3a826238cf3821348c64.webm",
+      "bytes": 17649193,
+      "sha256": "644b7360a3a94358f204fc883a31e6ff8815f304f3a704b48bbf917065a9e5b0"
+    },
+    {
+      "path": ".artifacts/videos/page@817062dae2f310893ba29e737c5af338.webm",
+      "bytes": 10344538,
+      "sha256": "f7c98cc9d62b20e1677269a51052b443f4be54878c28cd58bd274173514ac879"
+    },
+    {
+      "path": ".artifacts/videos/page@86d8d980d9272317e345b784b69af4b0.webm",
+      "bytes": 17869119,
+      "sha256": "81bed2f49de9531a69dbae5ce79eef4b3df9814d7acc1128b13f6f6a1089368d"
+    },
+    {
+      "path": ".artifacts/videos/page@bd9fc460a213ce97c59f4647a30966c6.webm",
+      "bytes": 8213077,
+      "sha256": "158a54fc29bc515d3b037f3608b90db56c18cc013fa1c35016f3ea2b3c61953d"
+    },
+    {
+      "path": ".artifacts/videos/page@d961083f300c133c5f9d09b8425bdfdf.webm",
+      "bytes": 16977734,
+      "sha256": "e3ca710afc20d3349e0b90893b4832a5e2650b484a0e808b5ab15b9c367101d3"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T11-48-35-598Z-30s.webm",
+      "bytes": 9094573,
+      "sha256": "377df0aec5d7ce76f7e8b18e8c892c4f6f210e27365aaaa486f23d4112f9395c"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T11-48-35-598Z-end.png",
+      "bytes": 658139,
+      "sha256": "628689c8cf567d0755aca52a25aa4b8e5f964e6db0b07a64d7b69dea857956ab"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T11-48-35-598Z.frames.json",
+      "bytes": 1866954,
+      "sha256": "7f2758487cad1a0f802f37494a85f10042e451e0760efffbf494dc04df69ab52"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T11-48-35-598Z.webm",
+      "bytes": 17744393,
+      "sha256": "b406533e7ba3d217bb1ff6863b6ec802501ba6bae30d07ae229ef07ce0a475f1"
+    },
+    {
+      "path": ".artifacts/world-rework.md",
+      "bytes": 1565,
+      "sha256": "e8b425c2318cc45dcf2fecc186e5cba8aeae507f2678ff5b78d06b5621377876"
+    }
+  ]
+}

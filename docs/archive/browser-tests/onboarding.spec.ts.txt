@@ -1,0 +1,117 @@
+// Historical dashboard verification, superseded by tests/world.spec.ts and current onboarding. See docs/TEST-MIGRATION.md.
+import { expect, test } from '@playwright/test'
+
+for (const [preset, trail] of [
+  ['Safe', 'oregon'],
+  ['Moderate', 'california'],
+  ['Risky', 'mormon'],
+] as const) {
+  test(`${preset} supplies take a named party onto the ${trail} trail and into camp`, async ({
+    page,
+  }, testInfo) => {
+    const errors: string[] = []
+    page.on('pageerror', (error) => errors.push(error.message))
+    await page.goto('/')
+    await expect(
+      page.getByRole('button', { name: 'Begin your journey', exact: true }),
+    ).toBeVisible()
+    await expect(page.locator('.sidebar, .status-strip, .lower-grid')).toHaveCount(0)
+    if (preset === 'Safe')
+      await page.screenshot({
+        path: `/tmp/pioneer-welcome-${testInfo.project.name || 'dev'}.png`,
+        fullPage: true,
+      })
+    await page.getByRole('button', { name: 'Begin your journey', exact: true }).click()
+    await page.getByRole('combobox', { name: 'Your trail', exact: true }).selectOption(trail)
+    await page.getByLabel('Traveler 1 name', { exact: true }).fill('Keith')
+    await expect(page.locator('.setup-options')).not.toHaveAttribute('open')
+    if (preset === 'Safe')
+      await page.screenshot({
+        path: `/tmp/pioneer-setup-${testInfo.project.name || 'dev'}.png`,
+        fullPage: true,
+      })
+    await page.getByRole('button', { name: 'Outfit your wagon', exact: true }).click()
+    await page.getByRole('radio', { name: new RegExp(`^${preset}`) }).click()
+    await expect(page.locator('.store-table')).toBeHidden()
+    if (preset === 'Safe')
+      await page.screenshot({
+        path: `/tmp/pioneer-outfit-${testInfo.project.name || 'dev'}.png`,
+        fullPage: true,
+      })
+    const outfit = page.getByRole('button', {
+      name: 'Outfit with recommended supplies',
+      exact: true,
+    })
+    await outfit.click()
+    await expect(page.locator('.outfit-complete')).toContainText('Ready for the road.')
+    const packed = await page.evaluate(() =>
+      JSON.parse(localStorage.getItem('pioneer-trail:journey:v1')!),
+    )
+    expect(packed.party[0].name).toBe('Keith')
+    expect(packed.inventory.quantities.food).toBeGreaterThan(0)
+    expect(packed.inventory.quantities.oxen).toBeGreaterThanOrEqual(2)
+    await expect(page.getByRole('alert')).toHaveCount(0)
+    await page.getByRole('button', { name: /^Leave / }).click()
+    const deliberate = page.getByRole('button', { name: 'Depart with these supplies', exact: true })
+    if (await deliberate.isVisible()) await deliberate.click()
+    const fork = page.locator('dialog .choice-list .choice').first()
+    if (await fork.isVisible()) await fork.click()
+    await expect(page.getByRole('dialog')).toBeHidden()
+    await expect(page.getByRole('button', { name: 'Travel one day', exact: true })).toBeVisible()
+    await expect(page.locator('.status-stat')).toHaveCount(3)
+    await page.getByRole('button', { name: 'Trail map', exact: true }).click()
+    const map = page.getByRole('img', { name: /Geographic map/ })
+    await expect(map).toBeVisible()
+    await expect(page.locator('.map-land path').first()).toBeVisible()
+    const position = await map.locator(':scope > g').first().getAttribute('transform')
+    await page.getByRole('button', { name: 'Zoom in', exact: true }).click()
+    await expect(map.locator(':scope > g').first()).not.toHaveAttribute('transform', position!)
+    await page.getByRole('button', { name: 'Reset map position', exact: true }).click()
+    await expect(map.locator(':scope > g').first()).toHaveAttribute('transform', position!)
+    if (preset === 'Safe')
+      await page.screenshot({
+        path: `/tmp/pioneer-map-${testInfo.project.name || 'dev'}.png`,
+        fullPage: true,
+      })
+    await page.getByRole('button', { name: 'Close panel', exact: true }).click()
+    await page.getByRole('button', { name: 'Make camp', exact: true }).click()
+    await expect(page.locator('.scene-camp')).toBeVisible()
+    await page.getByRole('button', { name: /^Rest Restore/ }).click()
+    await page.getByRole('button', { name: 'Rest 1 day', exact: true }).click()
+    await expect(page.locator('.journey-heading .eyebrow')).toContainText('DAY 2')
+    await page.getByRole('button', { name: 'Close panel', exact: true }).click()
+    await page.reload()
+    await expect(page.locator('.journey-heading .eyebrow')).toContainText('DAY 2')
+    expect(errors).toEqual([])
+    if (preset === 'Safe')
+      await page.screenshot({
+        path: `/tmp/pioneer-playing-${testInfo.project.name || 'dev'}.png`,
+        fullPage: true,
+      })
+  })
+}
+
+test('a farmer sees an honest budget-tailored package with food and spares', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Begin your journey', exact: true }).click()
+  await page.locator('.setup-options summary').click()
+  await page.getByRole('combobox', { name: 'Your occupation', exact: true }).selectOption('farmer')
+  await page.getByRole('button', { name: 'Outfit your wagon', exact: true }).click()
+  await page.getByRole('button', { name: 'Outfit with recommended supplies', exact: true }).click()
+  await expect(page.locator('.outfit-budget-summary')).toContainText(
+    'Budget-tailored Safe supplies purchased',
+  )
+  await expect(
+    page.getByRole('heading', { name: 'Your wagon is packed.', exact: true }),
+  ).toHaveCount(0)
+  const packed = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem('pioneer-trail:journey:v1')!),
+  )
+  expect(packed.inventory.quantities.food).toBeGreaterThanOrEqual(450)
+  for (const item of ['wheel', 'axle', 'tongue'])
+    expect(packed.inventory.quantities[item]).toBeGreaterThanOrEqual(1)
+  await expect(page.getByRole('alert')).toHaveCount(0)
+  await page.getByRole('button', { name: /^Leave / }).click()
+  await expect(page.getByRole('dialog')).toBeHidden()
+  await expect(page.getByRole('button', { name: 'Travel one day', exact: true })).toBeVisible()
+})

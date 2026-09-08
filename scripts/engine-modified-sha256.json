@@ -1,0 +1,7 @@
+{
+  "sim/src/state.rs": {
+    "sha256": "652a1e625314aa0c4dbfba072a001076491384e3c3d79e1dadfdf3638ac18277",
+    "reason": "Add factual FishResult/CrossingResult commands reusing original camp-day, capacity and crossing costs for real 3D outcomes; preserve every existing command and original baseline hash manifest.",
+    "issue": 11
+  }
+}

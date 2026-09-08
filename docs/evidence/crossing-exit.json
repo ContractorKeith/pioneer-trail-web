@@ -1,0 +1,1177 @@
+{
+  "date": "2026-09-08T14:45:18.999Z",
+  "build": {
+    "commit": "5ec9d8951dbd39317a1db5668797e6eb0197c8a6",
+    "dirty": true,
+    "sourceStatus": "M docs/ACCEPTANCE.md\n M docs/evidence/independent-review.md\n M docs/evidence/performance/cold-load.json\n M docs/evidence/performance/ride.json\n M docs/evidence/visual-review/camp.png\n M docs/evidence/visual-review/companion.png\n M docs/evidence/visual-review/mountains.png\n M docs/evidence/visual-review/ox-front.png\n M docs/evidence/visual-review/rain.png\n M docs/evidence/visual-review/report.json\n M docs/evidence/visual-review/river.png\n M docs/evidence/visual-review/seat-forward.png\n M docs/evidence/visual-review/seat-rear.png\n M docs/evidence/visual-review/snow.png\n M docs/evidence/visual-review/wagon-exterior.png\n M scripts/campaign-walkthrough.mjs\n M scripts/capture-world.mjs\n M scripts/measure-load.mjs\n M scripts/measure-ride.mjs\n M src/game/world/world.test.ts\n?? docs/evidence/activity-capture-startup-failure/\n?? docs/evidence/activity-review/\n?? docs/evidence/campaign-attempt-2/\n?? docs/evidence/campaign-attempt-3/\n?? docs/evidence/campaign-attempt-4/\n?? docs/evidence/campaign-resumed-2026-09-08/\n?? docs/evidence/crossing-exit-before-braking.json\n?? docs/evidence/crossing-exit.json\n?? docs/evidence/integration-review.md\n?? docs/evidence/performance/scheduling-investigation.md\n?? docs/evidence/seed14-patrol-review/\n?? docs/evidence/trader-return.json\n?? docs/evidence/visual-review/camp-night.png\n?? docs/evidence/visual-review/fog.png\n?? docs/evidence/visual-review/ox-hoof-contact.png\n?? docs/evidence/visual-review/ox-mountain-contact.png\n?? docs/evidence/visual-review/ox-side.png\n?? docs/evidence/visual-review/ride-rear-stopped.png\n?? docs/evidence/visual-review/river-daylight.png\n?? docs/evidence/visual-review/wildlife-deer.png\n?? docs/evidence/visual-review/wildlife-rabbit.png\n?? docs/evidence/walking-navigation.json\n?? scripts/capture-activities.mjs\n?? scripts/crossing-route.ts\n?? scripts/load-world-tools.mjs\n?? scripts/served-build.mjs\n?? scripts/walking-route.ts\n?? tests/crossing-route.unit.test.ts\n?? tests/walking-route.unit.test.ts",
+    "distSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+    "files": [
+      {
+        "file": "_headers",
+        "bytes": 197,
+        "sha256": "17c27f16152cc4999dcbaae81bd92104156cd0032d2f5d380fb39c4bb4bb42cc"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-italic-BLh7T8o8.woff",
+        "bytes": 32888,
+        "sha256": "337d07118277acbf5a0eb19c602aaf917b2485585360f2c7139ce42d9d4e6cc1"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-italic-Dc_OZ8oc.woff2",
+        "bytes": 23660,
+        "sha256": "e48e58027030df56869b795ca6f19b7012158275f7ad7cde1900b4a0b68d02e2"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+        "bytes": 22876,
+        "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-normal-B7YtguxJ.woff",
+        "bytes": 30980,
+        "sha256": "b926f33f9d3d5cb64e639b8fe9ad5380560a63f3e7a29d212f2b80a2d22ec051"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+        "bytes": 23312,
+        "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-500-normal-zIXX3Q-H.woff",
+        "bytes": 31372,
+        "sha256": "314ee3edd5ddcdef5cf2374c1126b8be9f7f1ebd6c5c66a23c237f3b836a3ec1"
+      },
+      {
+        "file": "assets/dm-sans-latin-400-normal-BwCSEQnW.woff",
+        "bytes": 18356,
+        "sha256": "38702875fe179437d200e7ba6f7fab4d497ffe48117ef332029b2081751186ad"
+      },
+      {
+        "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+        "bytes": 14200,
+        "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+      },
+      {
+        "file": "assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+        "bytes": 14304,
+        "sha256": "19bf1984956517c35c2bd35b6cdedac12a21d6fcd3596c614ecdfb88b648909d"
+      },
+      {
+        "file": "assets/dm-sans-latin-500-normal-Dr3UlScf.woff",
+        "bytes": 18520,
+        "sha256": "7deb957e430b780ee3272d801af4f9f2211b1330ec40a312a8f25309eacb4034"
+      },
+      {
+        "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+        "bytes": 14144,
+        "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+      },
+      {
+        "file": "assets/dm-sans-latin-600-normal-BmdmIIQ2.woff",
+        "bytes": 18320,
+        "sha256": "e7351257e49400eff05aca30a2007289194a900860d30c30770d8b8732897564"
+      },
+      {
+        "file": "assets/index-C5Tcy4bJ.js",
+        "bytes": 3871460,
+        "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+      },
+      {
+        "file": "assets/index-MwlfJe0p.css",
+        "bytes": 23999,
+        "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+      },
+      {
+        "file": "assets/licenses/CORMORANT-GARAMOND-OFL.txt",
+        "bytes": 4504,
+        "sha256": "732f37009943e7f4378cf37113c9bcc4716af002a8583511aa91ed5d37683e73"
+      },
+      {
+        "file": "assets/licenses/DM-SANS-OFL.txt",
+        "bytes": 4502,
+        "sha256": "6fbd040a29c2037a765dfb9f2561e9965b5c95c6dcb5dce516089d63d5f17af7"
+      },
+      {
+        "file": "assets/licenses/LUCIDE-ISC-MIT.txt",
+        "bytes": 3208,
+        "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+      },
+      {
+        "file": "assets/licenses/ORIGINAL-ASSETS-MIT.txt",
+        "bytes": 1092,
+        "sha256": "2b95f2ed41687da0593a607cf3bda9085579a7382a502326cbc13cc9757791b4"
+      },
+      {
+        "file": "assets/licenses/RAPIER-APACHE-2.0.txt",
+        "bytes": 11343,
+        "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+      },
+      {
+        "file": "assets/licenses/REACT-DOM-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "file": "assets/licenses/REACT-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "file": "assets/licenses/THREE-MIT.txt",
+        "bytes": 1081,
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "file": "assets/manifest.json",
+        "bytes": 15265,
+        "sha256": "ffacfa51562e9f622e65b040d4ba64763b8c68369128f649ebbcd2c5866905f3"
+      },
+      {
+        "file": "favicon.svg",
+        "bytes": 257,
+        "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+      },
+      {
+        "file": "index.html",
+        "bytes": 724,
+        "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+      },
+      {
+        "file": "scenes/camp.webp",
+        "bytes": 140648,
+        "sha256": "1a0d76b89dc6ad150d9b6a54161a5fbc08d535df3f7c9a51a65dd8e9f75df0bf"
+      },
+      {
+        "file": "scenes/fish.webp",
+        "bytes": 333648,
+        "sha256": "35b31007280d43db63f28fc917d26341c506603156412ea3e81cf2d9eacacf01"
+      },
+      {
+        "file": "scenes/repair.webp",
+        "bytes": 182868,
+        "sha256": "738b2dd5d09261f92ecae5d6ed7ea24812b0fe3528e355cdec4288be907eea90"
+      },
+      {
+        "file": "scenes/river.webp",
+        "bytes": 260144,
+        "sha256": "10573dd2636566df68f0ff7e43bb6916e8506711fa9faa4456d6b138164371d1"
+      },
+      {
+        "file": "scenes/snow.webp",
+        "bytes": 162108,
+        "sha256": "0585399582541e4acf59ede3d485bf0774757c04351eb276ed3c2998f63781a5"
+      },
+      {
+        "file": "scenes/talk.webp",
+        "bytes": 113184,
+        "sha256": "4b81de95a97afc21f6bf2b2583ca4237ba19a5602276dcaba4b1309dc09d1d44"
+      },
+      {
+        "file": "scenes/trail.webp",
+        "bytes": 171428,
+        "sha256": "51b6c593a7b9dd25826a025881cd4f7361c2f84e5e544cee582bccbb132b172d"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+        "bytes": 2152612,
+        "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine_bg.wasm.d.ts",
+        "bytes": 1689,
+        "sha256": "e712fbd275354b6d00f496977768573c36c83021a4e9b077300008281f8cba89"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine.d.ts",
+        "bytes": 3426,
+        "sha256": "0f4fccf19553599391ad0d7f753481c93478c881fbabe81dbac3e6963e427dbd"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine.js",
+        "bytes": 15385,
+        "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "file": "docs/evidence/campaign-attempt-4/failure-save.json",
+      "sha256": "9cf6896c8a8c4cc2c12947524306e607083fb7a36c666a052790fe7b8d055b66",
+      "procedure": "Unmodified exported normal-input campaign save. Restore, then actual keyboard controls and visible crossing choice only.",
+      "errors": [],
+      "initial": {
+        "wagon": {
+          "x": -9.33869910447421,
+          "z": 139.37939811015195,
+          "yaw": 0.4861111111111138,
+          "speed": 0,
+          "y": 0.32089676560977753
+        },
+        "activity": {
+          "kind": "crossing",
+          "phase": "crossing",
+          "hint": "W forward · A/D steer · 16 lb cargo lost · X retreat",
+          "progress": 1
+        },
+        "day": 14,
+        "collisions": 0
+      },
+      "crossingExits": [
+        {
+          "region": 3,
+          "start": {
+            "x": -9.33869910447421,
+            "z": 139.37939811015195,
+            "yaw": 0.4861111111111138,
+            "speed": 0,
+            "y": 0.32089676560977753
+          },
+          "inputs": [
+            {
+              "pose": {
+                "x": -9.33869910447421,
+                "z": 139.37939811015195,
+                "yaw": 0.4861111111111138,
+                "speed": 0,
+                "y": 0.32089676560977753
+              },
+              "input": {
+                "forward": -1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.374387309195887,
+                "z": 139.31185838562317,
+                "yaw": 0.4861111111111138,
+                "speed": -0.8333333333333334,
+                "y": 0.3006135476408007
+              },
+              "input": {
+                "forward": -1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.508537203415875,
+                "z": 139.0579804735275,
+                "yaw": 0.4861111111111138,
+                "speed": -1.3947795904755875,
+                "y": 0.2232579686495513
+              },
+              "input": {
+                "forward": -1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.707420333379536,
+                "z": 138.6815952808308,
+                "yaw": 0.4861111111111138,
+                "speed": -1.755,
+                "y": 0.09378178089664152
+              },
+              "input": {
+                "forward": -1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.91975138030021,
+                "z": 138.2797599817518,
+                "yaw": 0.4861111111111138,
+                "speed": -1.8,
+                "y": -0.05232702584254134
+              },
+              "input": {
+                "forward": 0,
+                "turn": 0,
+                "brake": true,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -10.008526011224804,
+                "z": 138.1117544974594,
+                "yaw": 0.4861111111111138,
+                "speed": 0,
+                "y": -0.11334507123606652
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.995118391447845,
+                "z": 138.13739477227634,
+                "yaw": 0.47847222222222496,
+                "speed": 0.4166666666666667,
+                "y": -0.10408819023603808
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.949743535085046,
+                "z": 138.22611561152877,
+                "yaw": 0.4620140746764467,
+                "speed": 0.7152715848592757,
+                "y": -0.0717930924176134
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.879790245740027,
+                "z": 138.36999717500083,
+                "yaw": 0.4377909106800254,
+                "speed": 0.9497528298836917,
+                "y": -0.019332494898603836
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.79576296200743,
+                "z": 138.55518572211912,
+                "yaw": 0.4036351889173637,
+                "speed": 1.2121716528798505,
+                "y": 0.048332196373471414
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.693656614506883,
+                "z": 138.80360100855046,
+                "yaw": 0.3656760453274377,
+                "speed": 1.396172166672596,
+                "y": 0.1384060438391194
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.595343006338494,
+                "z": 139.07301006595475,
+                "yaw": 0.31932401150381773,
+                "speed": 1.505811518136224,
+                "y": 0.23090981290525633
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.501939064820533,
+                "z": 139.3716160756672,
+                "yaw": 0.2752363594342375,
+                "speed": 1.5953486922613567,
+                "y": 0.32398153486359255
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.416637592474684,
+                "z": 139.69153623341364,
+                "yaw": 0.22764883983406925,
+                "speed": 1.7529173200056083,
+                "y": 0.42217714434997927
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.33784872404114,
+                "z": 140.06040870267725,
+                "yaw": 0.1784531471024673,
+                "speed": 1.7613600137770642,
+                "y": 0.5293669037360156
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.274892156100409,
+                "z": 140.44418224466745,
+                "yaw": 0.1266941368824788,
+                "speed": 1.8919670073329504,
+                "y": 0.6104372398561452
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.232504884087126,
+                "z": 140.82952124782523,
+                "yaw": 0.07290326706684969,
+                "speed": 1.9596956605209708,
+                "y": 0.6913852446341373
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.214173774387092,
+                "z": 141.2310652752036,
+                "yaw": 0.01352466993515483,
+                "speed": 2.0923044067800824,
+                "y": 0.7441398755135552
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.207487897650909,
+                "z": 141.72538189146374,
+                "yaw": 0.01352466993515483,
+                "speed": 2.214099058627169,
+                "y": 0.779211365830077
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.199913020125441,
+                "z": 142.28542629173077,
+                "yaw": 0.01352466993515483,
+                "speed": 2.173772989714793,
+                "y": 0.793707627522633
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.192516170514448,
+                "z": 142.83230829613626,
+                "yaw": 0.01352466993515483,
+                "speed": 2.1863589823619405,
+                "y": 0.7841938906004984
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.184772216167916,
+                "z": 143.40485329810045,
+                "yaw": 0.01352466993515483,
+                "speed": 2.1511190063990657,
+                "y": 0.7696371152986025
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.17712328122169,
+                "z": 143.9703730930065,
+                "yaw": 0.01352466993515483,
+                "speed": 2.218425863044071,
+                "y": 0.7534613730171278
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            }
+          ],
+          "finish": {
+            "x": 0,
+            "z": 20.09250460421014,
+            "yaw": 0,
+            "speed": 0.6093749999999999,
+            "y": 0.2984172229471987
+          },
+          "day": 15
+        }
+      ],
+      "after": {
+        "wagon": {
+          "x": 0,
+          "z": 20.172364110265537,
+          "yaw": 0,
+          "speed": 0.48520601303527333,
+          "y": 0.29926755841887326
+        },
+        "activity": null,
+        "day": 15,
+        "collisions": 0,
+        "region": 4
+      },
+      "seconds": 9.738,
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2)",
+        "width": 1280,
+        "height": 720,
+        "quality": "low"
+      },
+      "served": {
+        "localBuildSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+        "responses": [
+          {
+            "url": "http://localhost:4173/?evidence=1",
+            "status": 200,
+            "matchesDist": true,
+            "file": "index.html",
+            "expectedSha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650",
+            "bytes": 724,
+            "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-MwlfJe0p.css",
+            "expectedSha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d",
+            "bytes": 23999,
+            "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-C5Tcy4bJ.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-C5Tcy4bJ.js",
+            "expectedSha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5",
+            "bytes": 3871460,
+            "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+          },
+          {
+            "url": "http://localhost:4173/favicon.svg",
+            "status": 200,
+            "matchesDist": true,
+            "file": "favicon.svg",
+            "expectedSha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d",
+            "bytes": 257,
+            "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "expectedSha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2",
+            "bytes": 22876,
+            "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine.js",
+            "expectedSha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff",
+            "bytes": 15385,
+            "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+            "expectedSha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5",
+            "bytes": 2152612,
+            "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "expectedSha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+            "bytes": 14144,
+            "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "expectedSha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8",
+            "bytes": 23312,
+            "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "expectedSha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+            "bytes": 14200,
+            "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+          }
+        ],
+        "missing": [],
+        "pass": true,
+        "verifiedAt": "2026-09-08T14:45:31.022Z"
+      },
+      "pass": true,
+      "video": "/home/contractorkeith/Projects/pioneer-trail-web/.artifacts/videos/page@2d2ca5112d8f2a03d13b7cffb445b557.webm"
+    },
+    {
+      "file": "docs/evidence/campaign-attempt-4/region-3-save.json",
+      "sha256": "078727f13f3183ae18efd0ca28d6350a5c76a7fe24b4d599702968ff61dea9e8",
+      "procedure": "Unmodified exported normal-input campaign save. Restore, then actual keyboard controls and visible crossing choice only.",
+      "errors": [],
+      "initial": {
+        "wagon": {
+          "x": 0,
+          "z": 20.250123163197152,
+          "yaw": 0,
+          "speed": 0.732892644312286,
+          "y": 0.3000955284905353
+        },
+        "activity": null,
+        "day": 14,
+        "collisions": 0
+      },
+      "walkingRoutes": [
+        {
+          "region": 3,
+          "start": {
+            "x": -3,
+            "y": 1.9582019962339863,
+            "z": 81.5389937510545
+          },
+          "target": {
+            "x": 4.08628312132877,
+            "z": 94
+          },
+          "route": [
+            {
+              "x": -3,
+              "z": 82.3389937510545
+            },
+            {
+              "x": -3,
+              "z": 83.1389937510545
+            },
+            {
+              "x": -3,
+              "z": 83.93899375105451
+            },
+            {
+              "x": -3,
+              "z": 84.73899375105451
+            },
+            {
+              "x": -3,
+              "z": 85.5389937510545
+            },
+            {
+              "x": -3,
+              "z": 86.3389937510545
+            },
+            {
+              "x": -3,
+              "z": 87.1389937510545
+            },
+            {
+              "x": -2.2,
+              "z": 87.1389937510545
+            },
+            {
+              "x": -2.2,
+              "z": 87.93899375105451
+            },
+            {
+              "x": -2.2,
+              "z": 88.73899375105451
+            },
+            {
+              "x": -1.4,
+              "z": 88.73899375105451
+            },
+            {
+              "x": -0.5999999999999996,
+              "z": 88.73899375105451
+            },
+            {
+              "x": -0.5999999999999996,
+              "z": 89.5389937510545
+            },
+            {
+              "x": 0.20000000000000018,
+              "z": 89.5389937510545
+            },
+            {
+              "x": 0.20000000000000018,
+              "z": 90.3389937510545
+            },
+            {
+              "x": 1,
+              "z": 90.3389937510545
+            },
+            {
+              "x": 1,
+              "z": 91.1389937510545
+            },
+            {
+              "x": 1.8000000000000007,
+              "z": 91.1389937510545
+            },
+            {
+              "x": 1.8000000000000007,
+              "z": 91.93899375105451
+            },
+            {
+              "x": 2.6000000000000005,
+              "z": 91.93899375105451
+            },
+            {
+              "x": 2.6000000000000005,
+              "z": 92.73899375105451
+            },
+            {
+              "x": 3.4000000000000004,
+              "z": 92.73899375105451
+            },
+            {
+              "x": 3.4000000000000004,
+              "z": 93.5389937510545
+            },
+            {
+              "x": 4.08628312132877,
+              "z": 94
+            }
+          ]
+        }
+      ],
+      "crossingExits": [
+        {
+          "region": 3,
+          "start": {
+            "x": -9.04894843811882,
+            "z": 140.04882845794592,
+            "yaw": -6.001388888888881,
+            "speed": 0,
+            "y": 0.5153514708924906
+          },
+          "inputs": [
+            {
+              "pose": {
+                "x": -9.04894843811882,
+                "z": 140.04882845794592,
+                "yaw": -6.001388888888881,
+                "speed": 0,
+                "y": 0.5153514708924906
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.041762819817475,
+                "z": 140.07398457783273,
+                "yaw": -6.00763888888888,
+                "speed": 0.375,
+                "y": 0.5204392661839391
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -9.011989900510802,
+                "z": 140.18199048877062,
+                "yaw": -6.025485925323548,
+                "speed": 0.7229110930400147,
+                "y": 0.5423289205594872
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -8.969727231193945,
+                "z": 140.34929470131178,
+                "yaw": -6.050366825458256,
+                "speed": 0.9711292543780357,
+                "y": 0.5765724879647182
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -8.918092899068434,
+                "z": 140.582117989323,
+                "yaw": -6.085814592968298,
+                "speed": 1.219659699668729,
+                "y": 0.6245984157430362
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -8.866587756461556,
+                "z": 140.86454363417116,
+                "yaw": -6.128121728253581,
+                "speed": 1.3525216685886405,
+                "y": 0.6832930482823028
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -8.823566619600262,
+                "z": 141.16703949149732,
+                "yaw": -6.168357551642665,
+                "speed": 1.5078607796361085,
+                "y": 0.7218566374640962
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -8.78605420150585,
+                "z": 141.5461381933374,
+                "yaw": -6.212496697038401,
+                "speed": 1.597022225361413,
+                "y": 0.7473437567342107
+              },
+              "input": {
+                "forward": 1,
+                "turn": -1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -8.769026846897189,
+                "z": 141.89863522113134,
+                "yaw": -6.267952167771828,
+                "speed": 1.7727544049651467,
+                "y": 0.7716267233072011
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -8.762232438921462,
+                "z": 142.34462880404257,
+                "yaw": -6.267952167771828,
+                "speed": 1.8504691869384695,
+                "y": 0.7726375868063623
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -8.755239384476017,
+                "z": 142.80366179393096,
+                "yaw": -6.267952167771828,
+                "speed": 1.9249374350099906,
+                "y": 0.764636793416119
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -8.747984065546515,
+                "z": 143.2799101581878,
+                "yaw": -6.267952167771828,
+                "speed": 1.987311413577351,
+                "y": 0.7532451296488959
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -8.739697584971417,
+                "z": 143.82384528463535,
+                "yaw": -6.267952167771828,
+                "speed": 1.9479929140781302,
+                "y": 0.7376934133772697
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            }
+          ],
+          "finish": {
+            "x": 0,
+            "z": 20.08245535751322,
+            "yaw": 0,
+            "speed": 0.6249999999999999,
+            "y": 0.29831021964412197
+          },
+          "day": 15
+        }
+      ],
+      "after": {
+        "wagon": {
+          "x": 0,
+          "z": 20.111855684880904,
+          "yaw": 0,
+          "speed": 0.5792871093749998,
+          "y": 0.2986232711826858
+        },
+        "activity": null,
+        "day": 15,
+        "collisions": 0,
+        "region": 4
+      },
+      "seconds": 71.958,
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2)",
+        "width": 1280,
+        "height": 720,
+        "quality": "low"
+      },
+      "served": {
+        "localBuildSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+        "responses": [
+          {
+            "url": "http://localhost:4173/?evidence=1",
+            "status": 200,
+            "matchesDist": true,
+            "file": "index.html",
+            "expectedSha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650",
+            "bytes": 724,
+            "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-MwlfJe0p.css",
+            "expectedSha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d",
+            "bytes": 23999,
+            "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-C5Tcy4bJ.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-C5Tcy4bJ.js",
+            "expectedSha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5",
+            "bytes": 3871460,
+            "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+          },
+          {
+            "url": "http://localhost:4173/favicon.svg",
+            "status": 200,
+            "matchesDist": true,
+            "file": "favicon.svg",
+            "expectedSha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d",
+            "bytes": 257,
+            "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "expectedSha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2",
+            "bytes": 22876,
+            "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine.js",
+            "expectedSha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff",
+            "bytes": 15385,
+            "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+            "expectedSha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5",
+            "bytes": 2152612,
+            "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "expectedSha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+            "bytes": 14200,
+            "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "expectedSha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+            "bytes": 14144,
+            "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "expectedSha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8",
+            "bytes": 23312,
+            "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+          }
+        ],
+        "missing": [],
+        "pass": true,
+        "verifiedAt": "2026-09-08T14:46:44.963Z"
+      },
+      "pass": true,
+      "video": "/home/contractorkeith/Projects/pioneer-trail-web/.artifacts/videos/page@985627cbeea77e9de81f80e99f349523.webm"
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

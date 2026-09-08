@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A self-contained 25-second first-person wagon ride. Real 3D geometry, mouse-look and a minimal trail HUD. A standalone visual and UX prototype, not the campaign game.">
+<title>Pioneer Trail · First-person trail study</title>
+<style>
+:root{color-scheme:dark;--ivory:#f3eddb;--muted:#c7c6b2;--gold:#dfc391}*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#17251e;color:var(--ivory);font-family:Arial,Helvetica,sans-serif}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible{outline:2px solid var(--gold);outline-offset:5px}#world{width:100%;height:100%;display:block;cursor:grab;touch-action:none}#world:active{cursor:grabbing}.shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(15,24,20,.36),transparent 23%,transparent 68%,rgba(12,22,17,.66)),radial-gradient(ellipse at 50% 47%,transparent 47%,rgba(19,26,18,.22))}.hud{position:absolute;inset:0;pointer-events:none;padding:30px 34px;display:flex;flex-direction:column;justify-content:space-between;text-shadow:0 1px 8px #17241b55}header{display:flex;justify-content:space-between;align-items:flex-start}.brand{display:flex;align-items:center;gap:12px}.brand svg{width:37px;height:37px}.wordmark{font:25px Georgia,serif;letter-spacing:4px}.wordmark span{display:block;font:8px Arial,sans-serif;letter-spacing:7px;margin-top:4px}.study{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#e1ddc9;margin-top:20px}.location{font:19px Georgia,serif;margin-top:7px}.top-right{text-align:right}.day{font-size:10px;letter-spacing:2px;margin-top:2px}.weather{font-size:11px;color:#e6e0c8;margin-top:9px}.toolbox{display:flex;gap:6px;margin-top:18px;justify-content:flex-end;pointer-events:auto}.toolbox button{font-size:10px;background:#1f30262b;border:1px solid #efedda38;border-radius:4px;padding:7px 10px;backdrop-filter:blur(6px)}.toolbox button:hover{background:#1f30268f}.compass{position:absolute;top:31px;left:50%;transform:translateX(-50%);width:235px;overflow:hidden;text-align:center;mask-image:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent)}.compass .needle{height:7px;font-size:8px;color:var(--gold);margin-bottom:5px}.ticks{display:flex;justify-content:center;gap:28px;align-items:center;height:22px;font-size:9px;letter-spacing:1px;will-change:transform}.ticks i{height:6px;width:1px;background:#f5ebca75;flex-shrink:0}.ticks strong{font-size:12px;font-weight:400;color:var(--gold)}.compass-label{font-size:8px;letter-spacing:2px;opacity:.75;margin-top:8px}.reticle{position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;background:#fff8;box-shadow:0 0 0 2px #0001}footer{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}.trail-state{display:flex;gap:23px;align-items:center}.pace-icon{width:36px;height:36px;opacity:.86}.speed strong{font:30px Georgia,serif;font-weight:400}.speed small{font-size:9px;color:var(--muted);margin-left:5px}.status{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;margin-top:5px;color:#e4deca}.divider{height:38px;width:1px;background:#ede6cf33}.meter .label{font-size:8px;letter-spacing:1.7px;color:#d1cdb9;text-transform:uppercase;margin-bottom:9px}.meter .value{font-size:13px}.meter .value small{font-size:9px;opacity:.7;margin-left:4px}.meter .bar{margin-top:8px;height:2px;width:68px;background:#e7dfc233}.meter .bar b{display:block;width:85%;height:100%;background:#daceac}.route{margin-top:26px;display:flex;gap:12px;align-items:center;font-size:9px;color:#ded9c5}.route strong{letter-spacing:1.5px;font-weight:400}.route-line{width:135px;height:1px;background:#e1d6b43d;position:relative}.route-line:before{content:'';position:absolute;left:0;width:36%;height:1px;background:var(--gold)}.route-line:after{content:'';position:absolute;left:35%;top:-2px;width:5px;height:5px;background:var(--gold);border-radius:50%}.controls{pointer-events:auto;text-align:right}.controls .look{font-size:11px;color:#e6deca;margin-bottom:13px}.keyrow{display:flex;gap:6px;justify-content:flex-end;align-items:center}.keyrow button{display:flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid #eee4cd35;background:#1b2b237d;backdrop-filter:blur(8px);border-radius:4px;font-size:10px}.keyrow button:hover{background:#334237c9}kbd{font:8px Arial;border:1px solid #efe9d04a;padding:3px 4px;border-radius:2px;color:#ded7bd;min-width:16px;text-align:center}.playback{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:17px;font-size:9px;color:#d4d0ba;letter-spacing:.6px}.timebar{width:100px;height:2px;background:#e5dfc82b;overflow:hidden}#progress{display:block;height:100%;background:var(--gold);transform-origin:left;transform:scaleX(0)}#context{position:absolute;left:50%;bottom:112px;transform:translateX(-50%);display:flex;gap:10px;align-items:center;padding:10px 14px;border:1px solid #eee1c932;background:#25382b5c;backdrop-filter:blur(5px);border-radius:4px;font-size:10px;letter-spacing:.5px;opacity:0;pointer-events:none}.prototype{position:absolute;left:34px;bottom:10px;font-size:8px;letter-spacing:1px;color:#e5dfc28a}.overlay{position:absolute;inset:0;background:#15251edf;display:grid;place-content:center;text-align:center;z-index:4;padding:24px}.overlay[hidden],#end[hidden]{display:none}.overlay h1{font:36px Georgia,serif;font-weight:400}.overlay p{max-width:550px;font-size:14px;line-height:1.7;color:#d7d4be}.end{position:absolute;left:50%;top:34%;transform:translateX(-50%);text-align:center;padding:26px 34px;background:#203027c7;border:1px solid #d9ceac50;backdrop-filter:blur(12px);border-radius:8px;min-width:310px;pointer-events:auto}.end small{font-size:9px;letter-spacing:2px;color:var(--gold)}.end h2{font:28px Georgia,serif;font-weight:400;margin:13px 0 10px}.end p{font-size:11px;line-height:1.6;color:#dbd5c0;margin:0 0 18px}.end button{border:1px solid #eed7a989;background:#dfc391;color:#283427;border-radius:4px;padding:10px 20px;font-size:11px}.noscript{position:absolute;inset:0;background:#17251e;display:grid;place-content:center;padding:30px}.noscript p{max-width:500px;line-height:1.7}
+@media(max-width:750px){.hud{padding:20px}.wordmark{font-size:18px;letter-spacing:3px}.brand svg{width:26px;height:26px}.wordmark span{letter-spacing:5px;font-size:7px}.study{font-size:7px;letter-spacing:1px;margin-top:17px}.location{font-size:16px}.compass{width:145px;top:21px}.compass-label{display:none}.top-right .weather{font-size:9px}.top-right .day{font-size:8px}.toolbox{margin-top:13px}.toolbox button{font-size:9px;padding:5px 6px}#motion{display:none}.trail-state{gap:12px}.pace-icon{display:none}.speed strong{font-size:24px}.meter .label{font-size:7px}.meter .value{font-size:11px}.meter .bar{width:40px}.route{gap:7px;margin-top:17px;font-size:8px}.route-line{width:40px}.keyrow{gap:4px}.keyrow button{padding:7px;font-size:9px}.keyrow kbd{display:none}.controls .look{font-size:9px}.prototype{left:20px;font-size:7px}#context{bottom:95px;font-size:9px}.playback{font-size:8px;gap:6px}.timebar{width:65px}#camera{display:none}}
+@media(max-width:480px){.compass{display:none}.meter:last-child{display:none}.divider{display:none}.location{font-size:14px}#full{display:none}.route strong{font-size:7px}.route-line{display:none}.route{max-width:150px;flex-wrap:wrap}.keyrow button{font-size:9px}.prototype{font-size:6px}.toolbox button{font-size:8px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<canvas id="world" aria-label="First-person view from a moving ox-drawn wagon. Drag to look around. Space pauses the ride." tabindex="0"></canvas>
+<div class="shade"></div>
+<div class="hud">
+<header>
+<div><div class="brand"><svg viewBox="0 0 40 42" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M3 33 13 8 21 23 27 15 37 33Z"/><path d="M1 38h38"/></svg><div class="wordmark">PIONEER<span>TRAIL</span></div></div><div class="study">First-person trail study</div><div class="location">The road west.</div></div>
+<div class="top-right"><div class="day">DAY 14 &nbsp; / &nbsp; LATE AFTERNOON</div><div class="weather">Mountain country &nbsp; · &nbsp; Fair skies</div><div class="toolbox"><button id="sound" aria-pressed="false" title="Toggle sound (M)">Sound off</button><button id="motion" title="Toggle camera bob and sway">Motion on</button><button id="full" title="Fullscreen (F)">Fullscreen</button></div></div>
+</header>
+<div class="compass"><div class="needle">▾</div><div class="ticks" id="compass-scale"><span>SW</span><i></i><i></i><strong>W</strong><i></i><i></i><span>NW</span></div><div class="compass-label">WESTWARD</div></div>
+<div class="reticle" aria-hidden="true"></div>
+<div id="context"><kbd>E</kbd><span>Stop the wagon. Take in the river.</span></div>
+<footer>
+<div><div class="trail-state"><svg class="pace-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><circle cx="20" cy="20" r="15"/><circle cx="20" cy="20" r="3"/><path d="M20 5v12m0 6v12M5 20h12m6 0h12M9.4 9.4l8.5 8.5m4.2 4.2 8.5 8.5m-21.2 0 8.5-8.5m4.2-4.2 8.5-8.5"/></svg><div class="speed"><strong id="pace">2.8</strong><small>MPH</small><div class="status" id="status">Steady pace</div></div><div class="divider"></div><div class="meter"><div class="label">Your party</div><div class="value">Rested</div><div class="bar"><b></b></div></div><div class="meter"><div class="label">Supplies</div><div class="value">56<small>days</small></div><div class="bar"><b style="width:74%"></b></div></div></div><div class="route"><strong>THE NEXT CAMP</strong><span class="route-line"></span><span>Follow the river</span></div></div>
+<div class="controls"><div class="look">Drag to look around &nbsp; · &nbsp; W / S change pace</div><div class="keyrow"><button id="pause"><kbd>SPACE</kbd><span id="pause-label">Pause</span></button><button id="camera"><span id="camera-mode">Guided view</span></button><button id="restart"><kbd>R</kbd>Ride again</button></div><div class="playback"><span>TRAIL STUDY</span><div class="timebar"><b id="progress"></b></div><span id="timer">0:00 / 0:25</span></div></div>
+</footer>
+</div>
+<div class="prototype">STANDALONE UX PROTOTYPE · SAMPLE CAMPAIGN VALUES</div>
+<div class="end" id="end" hidden><small>END OF THE 25-SECOND STUDY</small><h2>Stay a little longer.</h2><p>Drag to look around the stopped wagon.<br>This is the experience. The campaign comes next.</p><button id="ride-again">Ride the trail again</button></div>
+<div class="overlay" id="loading"><h1>Preparing the trail.</h1><p>Building the landscape, wagon and light.</p></div>
+<div class="overlay" id="error" hidden><h1>The trail needs WebGL 2.</h1><p>Open this HTML file in a current Chrome, Edge, Firefox or Safari browser with hardware acceleration enabled. This is an interactive file, not a static attachment preview.</p></div>
+<noscript><div class="noscript"><h1>Pioneer Trail</h1><p>This interactive demo needs JavaScript. Save this HTML file and open it in your browser, rather than the attachment preview.</p></div></noscript>
+<script>/* Pioneer Trail: a standalone, dependency-free WebGL2 first-person UX study.
+   All geometry, textures, animation and sound are generated locally. No game saves
+   are read or modified. This is NOT connected to the campaign simulation.
+   Original prototype code: provided for ContractorKeith to adapt. */
+'use strict';
+(() => {
+const canvas = document.querySelector('#world');
+const gl = canvas.getContext('webgl2', {antialias:true, alpha:false, preserveDrawingBuffer:true});
+if (!gl) { document.querySelector('#error').hidden=false; return; }
+const TAU=Math.PI*2, PI=Math.PI;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const mix=(a,b,t)=>a+(b-a)*t;
+const smooth=(a,b,x)=>{let t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);};
+let seed=841843;
+const rnd=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+const hash=(x,z)=>{let v=Math.sin(x*127.1+z*311.7)*43758.5453;return v-Math.floor(v);};
+function noise(x,z){let a=Math.floor(x),b=Math.floor(z),u=x-a,v=z-b;u=u*u*(3-2*u);v=v*v*(3-2*v);return mix(mix(hash(a,b),hash(a+1,b),u),mix(hash(a,b+1),hash(a+1,b+1),u),v);}
+const norm=v=>{let n=Math.hypot(...v)||1;return v.map(x=>x/n);};
+const sub=(a,b)=>a.map((v,i)=>v-b[i]);
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const dot=(a,b)=>a.reduce((n,v,i)=>n+v*b[i],0);
+const I=()=>new Float32Array([1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]);
+function mul(a,b){const o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++)o[c*4+r]=a[r]*b[c*4]+a[4+r]*b[c*4+1]+a[8+r]*b[c*4+2]+a[12+r]*b[c*4+3];return o;}
+function trs(p=[0,0,0],r=[0,0,0],s=[1,1,1]){let [x,y,z]=r, sx=Math.sin(x),cx=Math.cos(x),sy=Math.sin(y),cy=Math.cos(y),sz=Math.sin(z),cz=Math.cos(z);let rx=new Float32Array([1,0,0,0,0,cx,sx,0,0,-sx,cx,0,0,0,0,1]),ry=new Float32Array([cy,0,-sy,0,0,1,0,0,sy,0,cy,0,0,0,0,1]),rz=new Float32Array([cz,sz,0,0,-sz,cz,0,0,0,0,1,0,0,0,0,1]);let o=mul(ry,mul(rx,rz));for(let j=0;j<3;j++)for(let i=0;i<3;i++)o[j*4+i]*=s[j];o[12]=p[0];o[13]=p[1];o[14]=p[2];return o;}
+function point(m,p){return [m[0]*p[0]+m[4]*p[1]+m[8]*p[2]+m[12],m[1]*p[0]+m[5]*p[1]+m[9]*p[2]+m[13],m[2]*p[0]+m[6]*p[1]+m[10]*p[2]+m[14]];}
+function look(eye,at){let z=norm(sub(eye,at)),x=norm(cross([0,1,0],z)),y=cross(z,x);return new Float32Array([x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,eye),-dot(y,eye),-dot(z,eye),1]);}
+function perspective(fov,asp,n,f){let t=1/Math.tan(fov/2);return new Float32Array([t/asp,0,0,0,0,t,0,0,0,0,(f+n)/(n-f),-1,0,0,2*f*n/(n-f),0]);}
+function ortho(l,r,b,t,n,f){return new Float32Array([2/(r-l),0,0,0,0,2/(t-b),0,0,0,0,-2/(f-n),0,-(r+l)/(r-l),-(t+b)/(t-b),-(f+n)/(f-n),1]);}
+const roadX=z=>3.2*Math.sin(z*.030)+1.1*Math.sin(z*.069);
+const roadY=z=>1.85+.45*Math.sin(z*.028)+.12*Math.sin(z*.082);
+const riverX=z=>roadX(z)-19-4.0*Math.sin(z*.019);
+const riverW=z=>5.8+1.15*Math.sin(z*.038);
+function height(x,z){let dx=x-roadX(z),d=Math.abs(dx),h=roadY(z);let rough=(noise(x*.09,z*.08)-.5)*2.5+(noise(x*.026,z*.023)-.5)*4;h+=(rough+Math.max(0,dx-8)*.095)*smooth(2.2,10,d);let rd=Math.abs(x-riverX(z));h=mix(-.40,h,smooth(riverW(z)-.1,riverW(z)+4.5,rd));return h;}
+const color=h=>{h=h.replace('#','');return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)/255);};
+const colors={wood:color('#795139'),woodLight:color('#a77d50'),woodDark:color('#463224'),iron:color('#33352c'),canvas:color('#c5b58c'),trunk:color('#594736'),pine:color('#3a513b'),rock:color('#737467'),grass:color('#6c7850'),leather:color('#493e2d')};
+class Geometry{
+ constructor(){this.a=[];}
+ tri(a,b,c,col,ns){let n=ns||norm(cross(sub(b,a),sub(c,a)));[a,b,c].forEach((v,i)=>this.a.push(...v,...(Array.isArray(n[0])?n[i]:n),...col));}
+ quad(a,b,c,d,col){this.tri(a,b,c,col);this.tri(a,c,d,col);}
+ add(other,m=I(),col){let a=other.a;for(let i=0;i<a.length;i+=9){let p=point(m,a.slice(i,i+3));let n=norm([m[0]*a[i+3]+m[4]*a[i+4]+m[8]*a[i+5],m[1]*a[i+3]+m[5]*a[i+4]+m[9]*a[i+5],m[2]*a[i+3]+m[6]*a[i+4]+m[10]*a[i+5]]);this.a.push(...p,...n,...(col||a.slice(i+6,i+9)));}return this;}
+}
+function box(w,h,d,col){let g=new Geometry(),x=w/2,y=h/2,z=d/2;g.quad([-x,-y,z],[x,-y,z],[x,y,z],[-x,y,z],col);g.quad([x,-y,-z],[-x,-y,-z],[-x,y,-z],[x,y,-z],col);g.quad([x,-y,z],[x,-y,-z],[x,y,-z],[x,y,z],col);g.quad([-x,-y,-z],[-x,-y,z],[-x,y,z],[-x,y,-z],col);g.quad([-x,y,z],[x,y,z],[x,y,-z],[-x,y,-z],col);g.quad([-x,-y,-z],[x,-y,-z],[x,-y,z],[-x,-y,z],col);return g;}
+function cylinder(rt,rb,h,n,col,rough=0){let g=new Geometry();let vs=[];for(let i=0;i<=n;i++){let a=i/n*TAU,s=1+rough*Math.sin(i*37.5);vs.push([[Math.cos(a)*rb*s,0,Math.sin(a)*rb*s],[Math.cos(a)*rt*s,h,Math.sin(a)*rt*s]]);}for(let i=0;i<n;i++){g.quad(vs[i][0],vs[i][1],vs[i+1][1],vs[i+1][0],col);g.tri([0,0,0],vs[i][0],vs[i+1][0],col);if(rt>0)g.tri([0,h,0],vs[i+1][1],vs[i][1],col);}return g;}
+function sphere(rx,ry,rz,col,n=12,m=8){let g=new Geometry();const p=(u,v)=>[rx*Math.sin(v)*Math.cos(u),ry*Math.cos(v),rz*Math.sin(v)*Math.sin(u)];for(let j=0;j<m;j++)for(let i=0;i<n;i++){let a=p(i/n*TAU,j/m*PI),b=p((i+1)/n*TAU,j/m*PI),c=p((i+1)/n*TAU,(j+1)/m*PI),d=p(i/n*TAU,(j+1)/m*PI);g.quad(a,d,c,b,col);}return g;}
+function beam(a,b,r,col,n=6){let d=sub(b,a),len=Math.hypot(...d),y=norm(d),x=norm(cross(Math.abs(y[1])>.98?[1,0,0]:[0,1,0],y)),z=cross(x,y),mat=new Float32Array([x[0],x[1],x[2],0,y[0],y[1],y[2],0,z[0],z[1],z[2],0,...a,1]);let g=new Geometry();g.add(cylinder(r,r,len,n,col),mat);return g;}
+function torus(R,r,col,n=24,m=6){let g=new Geometry();let p=(u,v)=>[(R+r*Math.cos(v))*Math.cos(u),(R+r*Math.cos(v))*Math.sin(u),r*Math.sin(v)];for(let i=0;i<n;i++)for(let j=0;j<m;j++)g.quad(p(i/n*TAU,j/m*TAU),p((i+1)/n*TAU,j/m*TAU),p((i+1)/n*TAU,(j+1)/m*TAU),p(i/n*TAU,(j+1)/m*TAU),col);return g;}
+const objects=[];
+function mesh(g,kind=0,dynamic=false){const vao=gl.createVertexArray();gl.bindVertexArray(vao);const vbo=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,vbo);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(g.a),gl.STATIC_DRAW);for(let j=0;j<3;j++){gl.enableVertexAttribArray(j);gl.vertexAttribPointer(j,3,gl.FLOAT,false,36,j*12);}let o={vao,count:g.a.length/9,kind,mat:I(),dynamic,shadow:true};objects.push(o);return o;}
+const shaderNoise=`float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);} float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+1.),f.x),f.y);} float fbm(vec2 p){return noise(p)*.55+noise(p*2.03)*.28+noise(p*4.07)*.13;}`;
+const vs=`#version 300 es
+precision highp float;precision highp int;layout(location=0)in vec3 aPos;layout(location=1)in vec3 aNormal;layout(location=2)in vec3 aColor;
+uniform mat4 uVP,uModel,uLight;uniform float uTime;uniform int uKind;out vec3 vPos,vNormal,vColor;out vec4 vShadow;
+void main(){vec3 p=aPos;if(uKind==4){p.x+=sin(uTime*1.8+p.z*.63+p.x*.2)*.10*max(0.,aNormal.y);}vec4 world=uModel*vec4(p,1);vPos=world.xyz;vNormal=mat3(uModel)*aNormal;vColor=aColor;vShadow=uLight*world;gl_Position=uVP*world;}`;
+const fs=`#version 300 es
+precision highp float;precision highp int;precision highp sampler2DShadow;in vec3 vPos,vNormal,vColor;in vec4 vShadow;uniform vec3 uCamera,uSun;uniform sampler2DShadow uShadow;uniform float uTime;uniform int uKind;out vec4 frag;
+${shaderNoise}
+vec3 film(vec3 x){return clamp((x*(2.51*x+.03))/(x*(2.43*x+.59)+.14),0.,1.);}
+float shade(){vec3 s=vShadow.xyz/vShadow.w*.5+.5;if(s.x<0.||s.x>1.||s.y<0.||s.y>1.||s.z>1.)return 1.;float b=.00085;return texture(uShadow,vec3(s.xy,s.z-b))*.5+texture(uShadow,vec3(s.xy+vec2(.0007,-.0007),s.z-b))*.25+texture(uShadow,vec3(s.xy+vec2(-.0007,.0007),s.z-b))*.25;}
+void main(){vec3 base=vColor;vec3 n=normalize(vNormal);if(!gl_FrontFacing)n=-n;float shadow=shade();
+if(uKind==1){float rx=3.2*sin(vPos.z*.030)+1.1*sin(vPos.z*.069);float d=abs(vPos.x-rx);float grain=fbm(vPos.xz*3.2);float patchVal=fbm(vPos.xz*.21);vec3 field=mix(vec3(.23,.31,.15),vec3(.43,.43,.24),patchVal);float rut=1.-smoothstep(.10,.25,abs(d-.85));vec3 earth=mix(vec3(.47,.37,.23),vec3(.63,.50,.33),grain);earth-=rut*.075;float edge=1.-smoothstep(1.78+patchVal*.3,2.38+patchVal*.55,d);float middle=(1.-smoothstep(.0,.4,d))*.18;earth=mix(earth,field,middle);base=mix(field*(.86+grain*.30),earth,edge);float rx2=rx-19.-4.*sin(vPos.z*.019),rw=5.8+1.15*sin(vPos.z*.038);float shore=1.-smoothstep(rw+1.,rw+3.1,abs(vPos.x-rx2));base=mix(base,vec3(.45,.44,.34)*(grain*.25+.85),shore*.65);}
+if(uKind==2){float grain=noise(vec2(vPos.z*7.0,vPos.x*70.0)+vPos.y*6.0);base*=.79+.28*grain;}
+if(uKind==3){float h=sin(vPos.x*2.3+uTime*.9+sin(vPos.z*.8))* .19+sin(vPos.z*4.0-uTime*1.7)*.1;n=normalize(vec3(h,.99,cos(vPos.z*3.5+vPos.x*1.5-uTime)*.17));vec3 view=normalize(uCamera-vPos);float fres=pow(1.-max(dot(view,n),0.),4.);vec3 refl=reflect(-uSun,n);float spec=pow(max(dot(view,refl),0.),64.);float fleck=pow(max(0.,sin(vPos.z*22.+vPos.x*10.+uTime*4.)),18.);base=mix(vec3(.13,.25,.25),vec3(.48,.59,.56),.25+fres*.65);base+=vec3(.7,.5,.27)*(spec*.7+fleck*spec*.7);}
+if(uKind==4){base*=.85+noise(vPos.xz*5.)*.25;n=normalize(vec3(n.x,abs(n.y)*.4+.6,n.z));}
+float diffuse=max(dot(n,uSun),0.);vec3 ambient=mix(vec3(.33,.40,.43),vec3(.61,.65,.66),n.y*.5+.5);vec3 lit=base*(ambient*.65+vec3(1.12,.91,.65)*diffuse*(.25+.75*shadow));if(uKind==5)lit=base*1.8;
+float dist=length(vPos-uCamera);float fog=1.-exp(-dist*.0031);fog=clamp(fog,0.,.95);vec3 fogcol=vec3(.65,.66,.60);lit=mix(lit,fogcol,fog);frag=vec4(pow(film(lit),vec3(.87)),1.);}`;
+const depthVS=`#version 300 es
+precision highp float;precision highp int;layout(location=0)in vec3 aPos;uniform mat4 uModel,uVP;void main(){gl_Position=uVP*uModel*vec4(aPos,1);}`;
+const depthFS=`#version 300 es
+precision highp float;precision highp int;void main(){}`;
+function program(v,f){const compile=(s,t)=>{let q=gl.createShader(t);gl.shaderSource(q,s);gl.compileShader(q);if(!gl.getShaderParameter(q,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(q));return q;};let p=gl.createProgram();gl.attachShader(p,compile(v,gl.VERTEX_SHADER));gl.attachShader(p,compile(f,gl.FRAGMENT_SHADER));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));let uniforms={};return {p,u:n=>uniforms[n]??(uniforms[n]=gl.getUniformLocation(p,n))};}
+const main=program(vs,fs),depth=program(depthVS,depthFS);
+const skyVS=`#version 300 es
+precision highp float;precision highp int;out vec2 uv;void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);uv=p*2.-1.;gl_Position=vec4(uv,1.,1.);}`;
+const skyFS=`#version 300 es
+precision highp float;precision highp int;in vec2 uv;uniform vec3 uForward,uRight,uUp,uSun;uniform float uAspect,uTan,uTime;out vec4 frag;
+${shaderNoise}
+void main(){vec3 r=normalize(uForward+uRight*uv.x*uAspect*uTan+uUp*uv.y*uTan);float h=max(0.,r.y);vec3 c=mix(vec3(.80,.76,.62),vec3(.35,.51,.61),pow(h,.55));float sd=max(dot(r,uSun),0.);c+=vec3(.45,.25,.08)*pow(sd,11.);c+=vec3(.35,.25,.13)*pow(sd,80.);float disk=smoothstep(.99968,.99978,sd);c=mix(c,vec3(1.,.94,.72),disk);if(r.y>.045){vec2 cp=r.xz/(r.y+.2)*2.8+vec2(uTime*.003,0.);float clouds=smoothstep(.47,.70,fbm(cp));c=mix(c,vec3(.84,.79,.67),clouds*.28*smoothstep(.03,.25,r.y));}frag=vec4(c,1);}`;
+const sky=program(skyVS,skyFS);
+const depthTex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,depthTex);gl.texImage2D(gl.TEXTURE_2D,0,gl.DEPTH_COMPONENT24,1024,1024,0,gl.DEPTH_COMPONENT,gl.UNSIGNED_INT,null);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_COMPARE_MODE,gl.COMPARE_REF_TO_TEXTURE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_COMPARE_FUNC,gl.LEQUAL);
+const shadowFB=gl.createFramebuffer();gl.bindFramebuffer(gl.FRAMEBUFFER,shadowFB);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.DEPTH_ATTACHMENT,gl.TEXTURE_2D,depthTex,0);gl.drawBuffers([gl.NONE]);gl.readBuffer(gl.NONE);if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('Shadow framebuffer unavailable');gl.bindFramebuffer(gl.FRAMEBUFFER,null);
+// The trail and river are geometry, not painted backgrounds.
+const terrain=new Geometry();const nx=144,nz=224,x0=-100,z0=-55,step=1.6;
+function landPoint(x,z){return [x,height(x,z),z];}
+function landNorm(x,z){const e=.12;return norm([height(x-e,z)-height(x+e,z),2*e,height(x,z-e)-height(x,z+e)]);}
+for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){let x=x0+i*step,z=z0+j*step;let a=landPoint(x,z),b=landPoint(x+step,z),c=landPoint(x+step,z+step),d=landPoint(x,z+step);terrain.tri(a,d,b,[.4,.45,.25],[landNorm(x,z),landNorm(x,z+step),landNorm(x+step,z)]);terrain.tri(b,d,c,[.4,.45,.25],[landNorm(x+step,z),landNorm(x,z+step),landNorm(x+step,z+step)]);}
+mesh(terrain,1).shadow=false;
+const water=new Geometry();for(let z=-55;z<330;z+=2.5){let zz=z+2.5;water.quad([riverX(z)-riverW(z),.18,z],[riverX(zz)-riverW(zz),.18,zz],[riverX(zz)+riverW(zz),.18,zz],[riverX(z)+riverW(z),.18,z],color('#5b7d7b'));}mesh(water,3).shadow=false;
+// Layered mountain silhouettes with real relief and sunlit rock faces.
+function mountH(x,z){let h=0;const peaks=[[-148,242,115,100,110],[-245,348,179,140,130],[-370,510,214,190,150],[122,335,111,92,118],[244,440,184,125,153],[25,590,218,170,120]];for(let [cx,cz,hh,wx,wz]of peaks){h=Math.max(h,Math.max(0,1-Math.abs(x-cx)/wx-Math.abs(z-cz)/wz)*hh);}h+=Math.max(0,noise(x*.022,z*.024)-.27)*20;h*=smooth(135,205,z);h*=.79+noise(x*.022,z*.032)*.32;h+=noise(x*.061,z*.076)*Math.min(17,h*.22);h+=Math.sin(x*.052+z*.011)*Math.min(7,h*.08);return h-1;}
+const mountains=new Geometry();for(let z=140;z<810;z+=9)for(let x=-550;x<555;x+=9){let a=[x,mountH(x,z),z],b=[x+9,mountH(x+9,z),z],c=[x+9,mountH(x+9,z+9),z+9],d=[x,mountH(x,z+9),z+9];const cc=v=>{let y=v.reduce((s,p)=>s+p[1],0)/3;let t=smooth(35,120,y),col=[mix(.31,.55,t),mix(.38,.54,t),mix(.31,.46,t)];if(y>125+noise(x*.06,z*.06)*40)col=[.73,.75,.69];return col;};mountains.tri(a,d,b,cc([a,d,b]));mountains.tri(b,d,c,cc([b,d,c]));}mesh(mountains).shadow=false;
+// Pine trees: tiered irregular boughs, shaded trunks, fallen logs.
+function pine(variant=0,far=false){const g=new Geometry();g.add(cylinder(.035,.17,6.65,6,colors.trunk));const layers=far?4:8;for(let j=0;j<layers;j++){let y=.85+j*(5.8/layers),r=(1-j/layers)*1.55+.20;const cc=colors.pine.map((c,i)=>c*(.80+j/layers*.35)+(i===0?variant*.009:0));g.add(cylinder(.01,r,2.3-j/layers*.9,far?6:9,cc,.18),trs([0,y,0],[0,j*.62+variant*.45,0]));}return g;}
+const pineNear=[0,1,2].map(v=>pine(v)),pineFar=pine(0,true),forest=new Geometry();
+for(let i=0;i<610;i++){let z=-26+rnd()*300,x=-75+rnd()*151,d=Math.abs(x-roadX(z)),rd=Math.abs(x-riverX(z));if(d<4.1||rd<riverW(z)+1.4)continue;if(x<0&&x>-35&&z>13&&z<90&&rnd()<.64)continue;let scale=.58+rnd()*1.15;if(z>145)scale*=1.18;let p=[x,height(x,z)-.06,z];forest.add(z<120?pineNear[i%3]:pineFar,trs(p,[0,rnd()*TAU,0],[scale,scale*(.9+rnd()*.22),scale]));}
+// Specific foreground trunks give the moving camera strong depth cues.
+for(let [x,z,s]of [[7,8,1.4],[-8,16,1.4],[12,26,1.25],[11,49,1.15],[-11,77,1.6],[7,95,1.4]]){x+=roadX(z);forest.add(pineNear[1],trs([x,height(x,z),z],[0,z,0],[s,s,s]));}
+mesh(forest);
+const rockGeo=new Geometry(),pebble=sphere(1,.7,.82,colors.rock,7,4);
+for(let i=0;i<250;i++){let z=-15+rnd()*245,x=roadX(z)+(rnd()<.45?-1:1)*(3.3+rnd()*47);if(Math.abs(x-riverX(z))<riverW(z)-.4)continue;let s=.12+rnd()**2*1.6;rockGeo.add(pebble,trs([x,height(x,z)+s*.17,z],[rnd()*.3,rnd()*TAU,rnd()*.5],[s,s,s]));}mesh(rockGeo);
+const grass=new Geometry();for(let i=0;i<16000;i++){let z=-13+rnd()*205,x=roadX(z)+(rnd()<.5?-1:1)*(2.3+rnd()*41),rd=Math.abs(x-riverX(z));if(rd<riverW(z)+.3)continue;let y=height(x,z)-.035,h=.16+rnd()*.48,w=.035+rnd()*.07,angle=rnd()*TAU,dx=Math.cos(angle)*w,dz=Math.sin(angle)*w;let cc=[.30+rnd()*.15,.35+rnd()*.12,.15+rnd()*.09];grass.tri([x-dx,y,z-dz],[x+dx,y,z+dz],[x+dx*.2,y+h,z+dz*.2],cc,[[0,0,1],[0,0,1],[0,1,1]]);if(i%4===0){let cc2=color('#b2a66d');grass.tri([x-.035,y+h*.85,z],[x+.035,y+h*.85,z],[x,y+h+ .11,z],cc2);}}mesh(grass,4).shadow=false;
+// Water reeds and low flowers.
+const details=new Geometry();for(let i=0;i<340;i++){let z=rnd()*150,side=rnd()<.5?-1:1,x=riverX(z)+side*(riverW(z)+.6+rnd()*1.0),y=height(x,z);if(y<.12)continue;let h=.35+rnd()*.8;details.add(beam([x,y,z],[x+.08,y+h,z],.012,color('#746e42'),4));details.add(cylinder(.033,.044,.19,5,color('#684d2b')),trs([x+.08,y+h-.16,z]));}mesh(details);
+// An empty riverside camp, visible during the guided glance.
+const campZ=44,campX=roadX(campZ)-9,campY=height(campX,campZ),camp=new Geometry();
+function tent(x,y,z,rot){let g=new Geometry(),cc=colors.canvas;g.quad([-1.3,0,-1.35],[0,1.6,-1.35],[0,1.6,1.35],[-1.3,0,1.35],cc);g.quad([0,1.6,-1.35],[1.3,0,-1.35],[1.3,0,1.35],[0,1.6,1.35],cc.map(c=>c*.88));g.tri([-1.3,0,-1.35],[1.3,0,-1.35],[0,1.6,-1.35],cc);g.tri([-1.3,0,1.35],[-.16,0,1.35],[0,1.6,1.35],cc);g.tri([.35,0,1.35],[1.3,0,1.35],[0,1.6,1.35],cc);g.add(beam([0,0,1.43],[0,1.65,1.43],.045,colors.wood));g.add(beam([0,1.57,1.4],[0,0,2.35],.011,colors.canvas));camp.add(g,trs([x,y,z],[0,rot,0]));}
+tent(campX-1,campY,campZ,.65);
+const firePos=[campX+2,height(campX+2,campZ-1),campZ-1];for(let i=0;i<9;i++){let a=i/9*TAU;camp.add(pebble,trs([firePos[0]+Math.cos(a)*.58,firePos[1]+.1,firePos[2]+Math.sin(a)*.58],[0,a,0],[.18,.14,.21]));}for(let i=0;i<3;i++)camp.add(beam([firePos[0]-.44,firePos[1]+.15,firePos[2]+(i-1)*.2],[firePos[0]+.38,firePos[1]+.18,firePos[2]-(i-1)*.2],.085,colors.woodDark,6));
+camp.add(box(.7,.48,.6,colors.wood),trs([campX+1.0,campY+.24,campZ+1.8],[0,.3,0]));mesh(camp,2);
+const flames=[];for(let i=0;i<4;i++){let f=mesh(cylinder(0,.19,.72,5,color(i%2?'#e1a437':'#d76d2a')),5,true);f.shadow=false;flames.push(f);}
+// Trail-side elk: a small silhouette that provides a point of attention.
+function deer(){let g=new Geometry(),fur=color('#8a7150');g.add(sphere(.25,.36,.59,fur,9,6),trs([0,.95,0]));g.add(sphere(.14,.27,.25,fur,8,6),trs([0,1.16,.58],[.45,0,0]));g.add(sphere(.12,.15,.22,fur,8,5),trs([0,1.47,.70]));for(let x of [-.17,.17])for(let z of [-.36,.35])g.add(beam([x,.86,z],[x,.08,z+.07],.045,fur));for(let s of [-1,1]){g.add(beam([s*.1,1.56,.67],[s*.22,1.99,.6],.021,colors.canvas));g.add(beam([s*.17,1.76,.63],[s*.38,1.91,.55],.014,colors.canvas));g.add(sphere(.14,.07,.06,fur,6,4),trs([s*.20,1.54,.70],[0,0,s*.45]));}return g;}
+let dz=77,dx=roadX(dz)+7.2;mesh(deer()).mat=trs([dx,height(dx,dz),dz],[0,-.6,0]);
+// Wagon, constructed in local space with a genuinely explorable back and sides.
+const wagon=new Geometry();for(let i=0;i<9;i++)wagon.add(box(.218,.12,3.8,colors.woodLight.map(c=>c*(.86+(i%3)*.065))),trs([-.92+i*.23,1.22,-.35]));
+for(let s of [-1,1]){for(let j=0;j<3;j++)wagon.add(box(.095,.18,3.7,colors.wood),trs([s*1.055,1.40+j*.23,-.40]));for(let z of [-2.12,-.9,.32,1.37])wagon.add(box(.13,.91,.11,colors.woodDark),trs([s*1.09,1.58,z]));wagon.add(box(.18,.21,3.9,colors.woodDark),trs([s*.74,1.05,-.42]));}
+for(let x of [-.73,.73])wagon.add(beam([x,.9,1.22],[x*.38,.92,5.54],.055,colors.wood));
+wagon.add(box(2.21,.12,.36,colors.woodLight),trs([0,1.58,.13]));wagon.add(box(1.72,.10,.67,colors.woodLight),trs([0,1.05,1.71]));wagon.add(box(2.20,.16,.18,colors.wood),trs([0,1.37,1.36]));
+for(let z of [-1.55,.81])wagon.add(beam([-1.26,.75,z],[1.26,.75,z],.085,colors.iron));
+// Curved canvas bonnet and hoops behind the seated player.
+for(let z of [-2.15,-1.55,-.95,-.35]){for(let i=0;i<14;i++){let a=i/14*PI,b=(i+1)/14*PI;wagon.add(beam([Math.cos(a)*1.07,1.94+Math.sin(a)*1.20,z],[Math.cos(b)*1.07,1.94+Math.sin(b)*1.20,z],.025,colors.woodLight,5));}}
+for(let z=-2.18;z<-.38;z+=.20)for(let i=0;i<18;i++){let a=i/18*PI,b=(i+1)/18*PI;wagon.quad([Math.cos(a)*1.085,1.94+Math.sin(a)*1.21,z],[Math.cos(b)*1.085,1.94+Math.sin(b)*1.21,z],[Math.cos(b)*1.085,1.94+Math.sin(b)*1.21,z+.20],[Math.cos(a)*1.085,1.94+Math.sin(a)*1.21,z+.20],colors.canvas.map(c=>c*(.94+.035*Math.sin(i*4))));}
+let wagonMesh=mesh(wagon,2,true);
+// Wooden wheels with separate rotating spokes.
+const wheel=new Geometry();wheel.add(torus(.72,.065,colors.woodLight));wheel.add(torus(.76,.022,colors.iron));wheel.add(cylinder(.11,.11,.20,10,colors.woodDark),trs([0,0,-.10],[PI/2,0,0]));for(let i=0;i<12;i++){let a=i/12*TAU;wheel.add(beam([Math.cos(a)*.10,Math.sin(a)*.10,0],[Math.cos(a)*.70,Math.sin(a)*.70,0],.027,colors.woodLight,5));}const wheels=[];for(let s of [-1,1])for(let z of [-1.55,.81])wheels.push({obj:mesh(wheel,2,true),x:s*1.20,z});
+// Two oxen. Their gait is animated in world space, not a pasted-on video.
+function oxBody(cc){const g=new Geometry();g.add(sphere(.42,.52,1.00,cc,14,9),trs([0,1.22,0]));g.add(sphere(.39,.52,.47,cc,12,8),trs([0,1.30,.67]));g.add(sphere(.28,.36,.41,cc,12,7),trs([0,1.19,1.05],[-.23,0,0]));g.add(sphere(.25,.17,.23,color('#857361'),10,6),trs([0,1.01,1.33]));for(let s of [-1,1]){g.add(sphere(.22,.07,.105,cc,8,4),trs([s*.34,1.43,1.0],[0,0,-s*.3]));g.add(sphere(.040,.037,.027,color('#241f17'),6,4),trs([s*.237,1.31,1.20]));g.add(beam([s*.21,1.51,.98],[s*.52,1.61,.94],.054,colors.canvas));g.add(beam([s*.52,1.61,.94],[s*.64,1.78,1.06],.027,colors.canvas));g.add(beam([s*.64,1.78,1.06],[s*.66,1.90,1.14],.012,colors.canvas));}
+g.add(beam([0,1.36,-.93],[0,.65,-1.11],.033,cc));g.add(sphere(.07,.15,.07,color('#453626'),7,5),trs([0,.60,-1.12]));
+// Shoulder harness, with darker leather around the yoke.
+for(let x of [-.39,.39])g.add(beam([x,1.05,.71],[x,1.72,.71],.04,colors.leather));return g;}
+const oxen=[];for(let s of [-1,1]){let cc=color(s<0?'#8e7760':'#654d39');let body=mesh(oxBody(cc),0,true);const legs=[];for(let x of [-.28,.28])for(let z of [-.67,.61]){let leg=new Geometry();leg.add(cylinder(.079,.066,.47,7,cc));leg.add(cylinder(.067,.052,.39,7,cc),trs([0,-.37,0]));leg.add(box(.135,.14,.19,color('#3c352a')),trs([0,-.39,.035]));legs.push({obj:mesh(leg,0,true),x,z,phase:(x*z>0?0:PI)});}oxen.push({body,legs,x:s*.77,phase:s<0?0:1.0});}
+const yokeG=new Geometry();yokeG.add(beam([-1.24,1.67,6.12],[1.24,1.67,6.12],.086,colors.woodLight));for(let s of [-1,1]){yokeG.add(beam([s*.77-.33,1.65,6.11],[s*.77-.25,1.01,6.11],.035,colors.woodLight));yokeG.add(beam([s*.77+.33,1.65,6.11],[s*.77+.25,1.01,6.11],.035,colors.woodLight));}const yoke=mesh(yokeG,2,true);
+// Reins sag naturally from the driver's seat to the team.
+const reinsG=new Geometry();for(let s of [-1,1])for(let i=0;i<16;i++){let t=i/16,u=(i+1)/16;const p=t=>[mix(s*.32,s*.73,t),mix(1.95,1.41,t)-Math.sin(t*PI)*.30,mix(1.0,6.31,t)];reinsG.add(beam(p(t),p(u),.012,colors.leather,4));}const reins=mesh(reinsG,2,true);
+// A worn coat sleeve and gloved hands, kept low in the player's field of view.
+const handsG=new Geometry();for(let s of [-1,1]){handsG.add(beam([s*.60,1.68,.50],[s*.32,1.89,.98],.105,color('#555d4b'),9));handsG.add(sphere(.087,.066,.12,color('#a88d63'),10,6),trs([s*.31,1.92,1.07],[.35,0,-s*.2]));}const hands=mesh(handsG,0,true);
+// Ambient smoke is a set of soft, depth-tested billboards in 3D.
+const particleVS=`#version 300 es
+precision highp float;precision highp int;layout(location=0)in vec3 aPos;layout(location=1)in vec3 aNormal;layout(location=2)in vec3 aColor;uniform mat4 uVP,uModel;uniform vec3 uRight,uUp;uniform float uScale;out vec2 uv;out vec3 cc;void main(){uv=aPos.xy;cc=aColor;vec3 p=uModel[3].xyz+(uRight*aPos.x+uUp*aPos.y)*uScale;gl_Position=uVP*vec4(p,1);}`;
+const particleFS=`#version 300 es
+precision highp float;precision highp int;in vec2 uv;in vec3 cc;uniform float uAlpha;out vec4 frag;void main(){float d=length(uv);float a=pow(max(0.,1.-d),2.3)*uAlpha;if(a<.003)discard;frag=vec4(cc,a);}`;
+const particles=program(particleVS,particleFS),pg=new Geometry();pg.quad([-1,-1,0],[1,-1,0],[1,1,0],[-1,1,0],color('#c7c3af'));const smokeMesh=mesh(pg);objects.pop();
+// Minimal birds, distant enough to read as silhouettes.
+const birdG=new Geometry();birdG.tri([-.35,0,0],[0,.045,.04],[-.11,.03,.14],color('#495049'));birdG.tri([.35,0,0],[.11,.03,.14],[0,.045,.04],color('#495049'));const birds=[];for(let i=0;i<5;i++){let b=mesh(birdG,0,true);b.shadow=false;birds.push(b);}
+const sun=norm([-.65,.51,.49]);
+let width=1280,heightPx=720,aspect=16/9,renderScale=1;
+const query=new URLSearchParams(location.search),capture=query.has('capture');
+let time=0,paused=false,finished=false,pace=1,manual=false,drag=false,lastX=0,lastY=0,yaw=0,pitch=0,tiltOn=!matchMedia('(prefers-reduced-motion: reduce)').matches,hiddenPaused=false;
+let lastNow=0,frameCount=0,animationId=0,currentCamera,viewProjection;
+const $=s=>document.querySelector(s);
+function resize(){let ratio=Math.min(devicePixelRatio||1,1.5)*renderScale;width=Math.round(innerWidth*ratio);heightPx=Math.round(innerHeight*ratio);canvas.width=width;canvas.height=heightPx;aspect=width/heightPx;}
+addEventListener('resize',resize);resize();
+function hump(t,a,b,c,d){return smooth(a,b,t)*(1-smooth(c,d,t));}
+let rideMatrix=I();
+function update(t){const z=8+2.15*t,rx=roadX(z),ry=roadY(z),heading=Math.atan2(roadX(z+.25)-roadX(z-.25),.5),gait=t*4.95;
+let bob=tiltOn?Math.sin(t*8.2)*.021+Math.sin(t*3.1)*.028:0,roll=tiltOn?Math.sin(t*2.3)*.0055:0;
+rideMatrix=trs([rx,ry+bob,z],[0,heading,roll]);wagonMesh.mat=rideMatrix;
+for(let w of wheels)w.obj.mat=mul(rideMatrix,trs([w.x,.76,w.z],[0,PI/2,2.15*t/.74]));
+for(let ox of oxen){let shift=Math.sin(gait+ox.phase)*.028;ox.body.mat=mul(rideMatrix,trs([ox.x,shift,5.15],[0,Math.sin(gait*.5+ox.phase)*.015,0]));for(let l of ox.legs){let a=Math.sin(gait+ox.phase+l.phase)*.36;l.obj.mat=mul(rideMatrix,trs([ox.x+l.x,.50+shift,5.15+l.z],[a,0,0]));}}
+yoke.mat=mul(rideMatrix,trs([0,Math.sin(gait+.5)*.018,0]));reins.mat=rideMatrix;hands.mat=rideMatrix;
+for(let i=0;i<flames.length;i++){let f=flames[i];f.mat=trs([firePos[0]+Math.sin(i*2)*.18,firePos[1]+.16,firePos[2]+Math.cos(i*2)*.18],[0,t*.3+i,Math.sin(t*5+i)*.17],[.7, .65+Math.sin(t*9+i)*.22,.7]);}
+for(let i=0;i<birds.length;i++){birds[i].mat=trs([-20+i*3+t*.42,20+Math.sin(t*.7+i)*.5,108+i*5+t*.35],[Math.sin(t*5+i)*.32, -.6, Math.sin(t*4.8+i)*.15],[1.0,1,1.0]);}
+const guidedYaw=-.34*hump(t,4,7,10,12)+.22*hump(t,13,16,18,21),guidedPitch=-.065-.020*hump(t,4,7,10,12);
+let cy=heading+(manual?yaw:guidedYaw),cp=manual?pitch:guidedPitch;
+const eye=point(rideMatrix,[0,2.32,-.04]);let front=norm([Math.sin(cy)*Math.cos(cp),Math.sin(cp),Math.cos(cy)*Math.cos(cp)]);let right=norm(cross(front,[0,1,0])),up=cross(right,front);
+currentCamera={eye,front,right,up};let target=eye.map((v,i)=>v+front[i]);viewProjection=mul(perspective(64*PI/180,aspect,.06,1500),look(eye,target));
+return {eye,front,right,up,z,rx,ry};}
+function draw(t){const cam=update(t);const target=[cam.rx,1.0,cam.z+25],lightEye=target.map((v,i)=>v+sun[i]*110);const lightVP=mul(ortho(-57,57,-57,57,1,230),look(lightEye,target));
+gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.disable(gl.CULL_FACE);gl.disable(gl.BLEND);
+// First render a depth map for real cast shadows.
+gl.bindFramebuffer(gl.FRAMEBUFFER,shadowFB);gl.viewport(0,0,1024,1024);gl.clear(gl.DEPTH_BUFFER_BIT);gl.useProgram(depth.p);gl.uniformMatrix4fv(depth.u('uVP'),false,lightVP);gl.enable(gl.POLYGON_OFFSET_FILL);gl.polygonOffset(1.1,2.0);
+for(let o of objects){if(!o.shadow)continue;gl.bindVertexArray(o.vao);gl.uniformMatrix4fv(depth.u('uModel'),false,o.mat);gl.drawArrays(gl.TRIANGLES,0,o.count);}gl.disable(gl.POLYGON_OFFSET_FILL);
+gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,width,heightPx);gl.clearColor(.6,.65,.6,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+gl.disable(gl.DEPTH_TEST);gl.useProgram(sky.p);gl.bindVertexArray(null);gl.uniform3fv(sky.u('uForward'),cam.front);gl.uniform3fv(sky.u('uRight'),cam.right);gl.uniform3fv(sky.u('uUp'),cam.up);gl.uniform3fv(sky.u('uSun'),sun);gl.uniform1f(sky.u('uAspect'),aspect);gl.uniform1f(sky.u('uTan'),Math.tan(32*PI/180));gl.uniform1f(sky.u('uTime'),t);gl.drawArrays(gl.TRIANGLES,0,3);
+gl.enable(gl.DEPTH_TEST);gl.useProgram(main.p);gl.uniformMatrix4fv(main.u('uVP'),false,viewProjection);gl.uniformMatrix4fv(main.u('uLight'),false,lightVP);gl.uniform3fv(main.u('uCamera'),cam.eye);gl.uniform3fv(main.u('uSun'),sun);gl.uniform1f(main.u('uTime'),t);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,depthTex);gl.uniform1i(main.u('uShadow'),0);
+for(let o of objects){gl.bindVertexArray(o.vao);gl.uniformMatrix4fv(main.u('uModel'),false,o.mat);gl.uniform1i(main.u('uKind'),o.kind);gl.drawArrays(gl.TRIANGLES,0,o.count);}
+gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.depthMask(false);gl.useProgram(particles.p);gl.uniformMatrix4fv(particles.u('uVP'),false,viewProjection);gl.uniform3fv(particles.u('uRight'),cam.right);gl.uniform3fv(particles.u('uUp'),cam.up);gl.bindVertexArray(smokeMesh.vao);
+for(let i=18;i>=0;i--){let a=((t*.25+i/19)%1);let p=[firePos[0]+a*a*2+Math.sin(a*8)*.13,firePos[1]+.44+a*5.7,firePos[2]+Math.sin(a*7+i)*.15];gl.uniformMatrix4fv(particles.u('uModel'),false,trs(p));gl.uniform1f(particles.u('uScale'),.22+a*.8);gl.uniform1f(particles.u('uAlpha'),(1-a)*.21);gl.drawArrays(gl.TRIANGLES,0,smokeMesh.count);}
+gl.depthMask(true);gl.disable(gl.BLEND);updateUI(t);frameCount++;}
+function updateUI(t){$('#timer').textContent=`0:${String(Math.floor(t)).padStart(2,'0')} / 0:25`;$('#progress').style.transform=`scaleX(${clamp(t/25,0,1)})`;$('#status').textContent=finished?'Wagon stopped':paused?'Taking a moment':pace<1?'Easy pace':pace>1?'Brisk pace':'Steady pace';$('#pace').textContent=finished||paused?'0.0':(2.8*pace).toFixed(1);$('#pause-label').textContent=paused?'Resume':'Pause';$('#camera-mode').textContent=manual?'Your view':'Guided view';$('#compass-scale').style.transform=`translateX(${(manual?yaw:-.34*hump(t,4,7,10,12)+.22*hump(t,13,16,18,21))*155}px)`;$('#end').hidden=!finished;$('#context').style.opacity=(t>8&&t<13&&!finished)?'1':'0';}
+function setPaused(v){paused=v;lastNow=performance.now();if(audioCtx)audioGain.gain.setTargetAtTime(paused||finished||!soundOn?0:.45,audioCtx.currentTime,.2);updateUI(time);}
+function restart(){time=0;paused=false;finished=false;manual=false;yaw=0;pitch=0;pace=1;lastNow=performance.now();if(audioCtx)audioGain.gain.setTargetAtTime(soundOn?.45:0,audioCtx.currentTime,.15);draw(time);}
+function loop(now){let dt=lastNow?Math.min((now-lastNow)/1000,.15):0;lastNow=now;if(!paused&&!finished&&!document.hidden){time+=dt*pace;if(time>=25){time=25;finished=true;if(audioCtx)audioGain.gain.setTargetAtTime(0,audioCtx.currentTime,.3);}}draw(time);animationId=requestAnimationFrame(loop);}
+canvas.addEventListener('pointerdown',e=>{drag=true;if(!manual){yaw=-.34*hump(time,4,7,10,12)+.22*hump(time,13,16,18,21);pitch=-.065-.020*hump(time,4,7,10,12);}manual=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId);});
+canvas.addEventListener('pointermove',e=>{if(!drag)return;yaw=clamp(yaw-(e.clientX-lastX)*.004,-PI,PI);pitch=clamp(pitch-(e.clientY-lastY)*.003,-.82,.72);lastX=e.clientX;lastY=e.clientY;});
+canvas.addEventListener('pointerup',()=>drag=false);canvas.addEventListener('pointercancel',()=>drag=false);
+$('#pause').onclick=()=>finished?restart():setPaused(!paused);$('#restart').onclick=restart;$('#ride-again').onclick=restart;$('#camera').onclick=()=>{manual=!manual;yaw=0;pitch=0;};$('#motion').onclick=()=>{tiltOn=!tiltOn;$('#motion').textContent=tiltOn?'Motion on':'Motion off';};$('#full').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen?.().catch(()=>{});};
+addEventListener('keydown',e=>{if(e.target instanceof HTMLButtonElement&&[' ','Enter'].includes(e.key))return;if([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))e.preventDefault();let k=e.key.toLowerCase();if(k===' '||k==='e')finished?restart():setPaused(!paused);if(k==='r')restart();if(k==='w'||k==='arrowup')pace=clamp(pace+.25,.5,1.5);if(k==='s'||k==='arrowdown')pace=clamp(pace-.25,.5,1.5);if(k==='arrowleft'||k==='arrowright'){manual=true;yaw+=k==='arrowleft'?.12:-.12;}if(k==='m')toggleSound();if(k==='f')$('#full').click();if(k==='escape'){drag=false;manual=false;}});
+document.addEventListener('visibilitychange',()=>{lastNow=performance.now();if(audioCtx)audioGain.gain.setTargetAtTime(document.hidden||paused||finished||!soundOn?0:.45,audioCtx.currentTime,.1);});
+// Local Web Audio: a low wind bed, rough wheel rumble, hoofbeats and birds.
+let audioCtx,audioGain,soundOn=false,hoofClock;
+function makeAudio(){audioCtx=new (window.AudioContext||window.webkitAudioContext)();audioGain=audioCtx.createGain();audioGain.gain.value=.45;audioGain.connect(audioCtx.destination);let size=audioCtx.sampleRate*4,b=audioCtx.createBuffer(1,size,audioCtx.sampleRate),d=b.getChannelData(0),s=31,last=0;for(let i=0;i<size;i++){s=(Math.imul(s,1664525)+1013904223)>>>0;let white=s/4294967296*2-1;last=(last+.018*white)/1.018;d[i]=last*4;}let wind=audioCtx.createBufferSource();wind.buffer=b;wind.loop=true;let f=audioCtx.createBiquadFilter();f.type='lowpass';f.frequency.value=850;let gain=audioCtx.createGain();gain.gain.value=.26;wind.connect(f);f.connect(gain);gain.connect(audioGain);wind.start();hoofClock=setInterval(()=>{if(!soundOn||paused||finished||document.hidden)return;let now=audioCtx.currentTime;for(let offset of [0,.12]){let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='triangle';o.frequency.setValueAtTime(135,now+offset);o.frequency.exponentialRampToValueAtTime(48,now+offset+.09);g.gain.setValueAtTime(0,now+offset);g.gain.linearRampToValueAtTime(.16,now+offset+.006);g.gain.exponentialRampToValueAtTime(.001,now+offset+.105);o.connect(g);g.connect(audioGain);o.start(now+offset);o.stop(now+offset+.12);}if(Math.random()<.13){let o=audioCtx.createOscillator(),g=audioCtx.createGain();o.frequency.setValueAtTime(2200,now);o.frequency.exponentialRampToValueAtTime(3300,now+.08);o.frequency.exponentialRampToValueAtTime(2450,now+.2);g.gain.setValueAtTime(.013,now);g.gain.exponentialRampToValueAtTime(.0001,now+.23);o.connect(g);g.connect(audioGain);o.start();o.stop(now+.24);}},390);}
+function toggleSound(){soundOn=!soundOn;try{if(!audioCtx)makeAudio();audioCtx.resume();audioGain.gain.setTargetAtTime(soundOn&&!paused&&!finished?.45:0,audioCtx.currentTime,.15);$('#sound').textContent=soundOn?'Sound on':'Sound off';$('#sound').setAttribute('aria-pressed',String(soundOn));}catch{soundOn=false;$('#sound').textContent='Audio unavailable';}}
+$('#sound').onclick=toggleSound;
+canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();cancelAnimationFrame(animationId);$('#error').hidden=false;$('#error p').textContent='The graphics context was interrupted. Reload this file to restart the ride.';});
+window.demo={renderAt(t){time=clamp(t,0,25);finished=false;draw(time);return {time,drawCalls:objects.length,triangles:objects.reduce((n,o)=>n+o.count/3,0),camera:currentCamera.eye};},state:()=>({time,paused,manual,finished,pace,frames:frameCount}),reset:restart};
+$('#motion').textContent=tiltOn?'Motion on':'Motion off';$('#loading').hidden=true;document.documentElement.classList.add('ready');draw(0);window.demoReady=true;if(!capture)animationId=requestAnimationFrame(loop);
+})();
+</script>
+</body></html>

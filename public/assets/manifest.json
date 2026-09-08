@@ -1,0 +1,307 @@
+{
+  "version": 1,
+  "title": "Pioneer Trail original authored runtime assets",
+  "creator": "ContractorKeith",
+  "copyright": "Copyright (c) 2026 Keith Bloemendaal",
+  "license": "MIT",
+  "licensePath": "public/assets/licenses/ORIGINAL-ASSETS-MIT.txt",
+  "redistributionRequirements": "Retain the MIT copyright and permission notice with redistributed source or substantial portions of these assets.",
+  "delivery": "Original TypeScript mesh recipes and deterministic texture generators are compiled into the local application bundle. They generate geometry and texture pixels locally; there are no external asset fetches or runtime paid services.",
+  "assets": [
+    {
+      "id": "covered-wagon",
+      "source": "Original authored parametric geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "New release mesh: planked bed and sideboards, bent hoop canvas shell, seams and ties, bench, steps, tailgate, metal hardware, axles and suspension.",
+      "localPath": "src/game/world/wagon.ts",
+      "entryPoint": "createWagon",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "wagon-wheels",
+      "source": "Original authored geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Four separate rotating wooden felloes, iron tires, fourteen spokes, hubs and retaining rings; rotation uses signed traveled distance.",
+      "localPath": "src/game/world/wagon.ts",
+      "entryPoint": "wheel",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "ox-team",
+      "source": "Original authored cross-section lofts and appendage geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Continuous rump-to-muzzle body surface, tapered swept horns, ears, dewlap, facial features, tails, articulated limbs and split hooves. Two coat variants; gait follows actual distance and terrain contact.",
+      "localPath": "src/game/world/animals.ts",
+      "entryPoint": "createQuadruped(ox)",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "yoke-and-harness",
+      "source": "Original authored curves and geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Curved wooden yoke, U-bows, iron fittings, pole link, cheek straps and sagged leather reins connected to driver position.",
+      "localPath": "src/game/world/wagon.ts",
+      "entryPoint": "createWagon",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "wildlife-deer",
+      "source": "Original authored cross-section lofts and articulated geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Continuous deer body/neck/head, branched antlers, ears, muzzle, eyes, tail, articulated legs and split hooves; deterministic world paths and persistent carcass/collection state.",
+      "localPath": "src/game/world/animals.ts",
+      "entryPoint": "createQuadruped(deer)",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "wildlife-rabbit",
+      "source": "Original authored cross-section loft and appendage geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Continuous rabbit body/head, long inset ears, rear haunches, front legs, tail, facial details and speed-driven hopping.",
+      "localPath": "src/game/world/animals.ts",
+      "entryPoint": "createRabbit",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "travelers-and-trader",
+      "source": "Original authored clothing and anatomical geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Shaped coat torso, bent sleeves, hands, boots, belt/buckle, lapels, pocket, buttons, scarf, facial features, broad-brim hat and subtle idle movement; two clothing palettes.",
+      "localPath": "src/game/world/people.ts",
+      "entryPoint": "createPerson",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "camp-tent-and-trader-stall",
+      "source": "Original authored geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Open canvas tent with bedding/poles/guy ropes/stakes, trade awning/table, crates, bottles, cloth, kettle, long gun and original stroke-letter provisions sign.",
+      "localPath": "src/game/world/people.ts",
+      "entryPoint": "createTent/createTraderStall",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "cargo-and-equipment",
+      "source": "Original authored geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Staved casks with hoops/lids/bungs, slatted crates with nails, sacks and rope ties, blanket rolls with straps, bucket and spade.",
+      "localPath": "src/game/world/wagon.ts",
+      "entryPoint": "barrel/crate/createWagon",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "pbr-material-library",
+      "source": "Original deterministic pixel-generation algorithms in this repository; no photos or third-party textures",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "256px wood grain/knots, woven canvas, leather, animal hide, skin, bark, earth and stone albedo/bump textures; metal and cloth PBR material definitions. Albedo uses sRGB and bump maps use non-color data.",
+      "localPath": "src/game/world/materials.ts",
+      "entryPoint": "createMaterials",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "regional-terrain",
+      "source": "Original deterministic terrain recipes and mesh generation in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Plains, woodland/river valley, mountain pass and desert palettes/relief, trail ruts, actual carved side channel and crossing, matched triangle interpolation for collision, chunked mesh and distant relief.",
+      "localPath": "src/game/world/terrain.ts",
+      "entryPoint": "createTerrainField/createLandscape",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "vegetation-and-stone",
+      "source": "Original authored deterministic geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Branch-and-frond pines, irregular broadleaf crowns and trunks, curved grass tufts, cattails/reeds, ground outcrops and visible crossing hazards; instanced and culled in patches.",
+      "localPath": "src/game/world/terrain.ts",
+      "entryPoint": "createLandscape",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "water-sky-and-weather",
+      "source": "Original geometry, GLSL and deterministic textures in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Animated PBR river surface and shoreline foam, procedural sky/clouds/sun/stars, generated reflection environment, day/night lighting, fog, rain, snow and ground snow tint.",
+      "localPath": "src/game/world/atmosphere.ts",
+      "entryPoint": "createWater/createAtmosphere",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "campfire",
+      "source": "Original geometry and deterministic particle textures in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Stone ring, charred logs, soft additive flame sprites, drifting smoke, rising embers and flickering point light; rain reduces flame and firelight.",
+      "localPath": "src/game/world/atmosphere.ts",
+      "entryPoint": "createFire",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "activity-props",
+      "source": "Original authored period prop geometry in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Locally authored rifle, fishing rod, reel, bobber, and line geometry used by the hunt and fishing activities; no third-party model or texture files.",
+      "localPath": "src/game/activities/props.ts",
+      "entryPoint": "createActivityProps",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "procedural-audio",
+      "source": "Original Web Audio synthesis and scheduling code in this repository",
+      "creator": "ContractorKeith",
+      "license": "MIT",
+      "modifications": "Procedural noise, oscillator, step, wagon, water, campfire, wind, and animal ambience generated locally after user gesture; no recorded samples or external audio files.",
+      "localPath": "src/game/audio.ts",
+      "entryPoint": "GameAudio",
+      "redistributionRequirements": "Retain ORIGINAL-ASSETS-MIT.txt"
+    },
+    {
+      "id": "natural-earth-west-map",
+      "source": "Natural Earth 1:50m physical land and rivers/lake-centerlines vectors; source and retrieval record in docs/MAP.md",
+      "creator": "Natural Earth",
+      "license": "Public domain",
+      "modifications": "Geometry-clipped offline subset for the western trail map; projected locally with campaign route landmarks. It is not a historical trail alignment.",
+      "localPath": "src/data/map/natural-earth-west.json",
+      "entryPoint": "TrailMap",
+      "licensePath": "docs/MAP.md",
+      "redistributionRequirements": "Natural Earth data are public domain; retain the source record and attribution in docs/MAP.md.",
+      "sourceLayers": [
+        "https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_land.zip",
+        "https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_rivers_lake_centerlines.zip"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "three",
+      "source": "https://github.com/mrdoob/three.js",
+      "creator": "Three.js authors",
+      "license": "MIT",
+      "localPath": "public/assets/licenses/THREE-MIT.txt",
+      "modifications": "Used as an installed rendering/geometry library; no third-party example model assets copied. License is copied verbatim from node_modules/three/LICENSE.",
+      "redistributionRequirements": "Retain THREE-MIT.txt with the application.",
+      "version": "0.185.1",
+      "runtimePaths": [
+        "src/game/world",
+        "src/game/activities",
+        "src/game/runtime.ts"
+      ],
+      "upstreamLicensePath": "node_modules/three/LICENSE"
+    },
+    {
+      "name": "react",
+      "version": "19.2.8",
+      "source": "https://github.com/facebook/react",
+      "creator": "Meta Platforms, Inc. and affiliates",
+      "license": "MIT",
+      "localPath": "public/assets/licenses/REACT-MIT.txt",
+      "runtimePaths": [
+        "src/main.tsx",
+        "src/App.tsx",
+        "src/game/ui"
+      ],
+      "modifications": "Bundled as the application UI runtime; no source modifications.",
+      "redistributionRequirements": "Retain REACT-MIT.txt with redistributed copies.",
+      "upstreamLicensePath": "node_modules/react/LICENSE"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.2.8",
+      "source": "https://github.com/facebook/react",
+      "creator": "Meta Platforms, Inc. and affiliates",
+      "license": "MIT",
+      "localPath": "public/assets/licenses/REACT-DOM-MIT.txt",
+      "runtimePaths": [
+        "src/main.tsx"
+      ],
+      "modifications": "Bundled as the browser DOM renderer; no source modifications.",
+      "redistributionRequirements": "Retain REACT-DOM-MIT.txt with redistributed copies.",
+      "upstreamLicensePath": "node_modules/react-dom/LICENSE"
+    },
+    {
+      "name": "lucide-react",
+      "version": "1.42.0",
+      "source": "https://github.com/lucide-icons/lucide",
+      "creator": "Lucide Icons and Contributors; derived Feather icons are credited in the license",
+      "license": "ISC; included Feather-derived icons under MIT",
+      "localPath": "public/assets/licenses/LUCIDE-ISC-MIT.txt",
+      "runtimePaths": [
+        "src/App.tsx",
+        "src/game/ui",
+        "src/components"
+      ],
+      "modifications": "Bundled as imported React SVG icon components; no icon source modifications.",
+      "redistributionRequirements": "Retain LUCIDE-ISC-MIT.txt with redistributed copies.",
+      "upstreamLicensePath": "node_modules/lucide-react/LICENSE"
+    },
+    {
+      "name": "@dimforge/rapier3d-compat",
+      "version": "0.20.0",
+      "source": "https://github.com/dimforge/rapier",
+      "creator": "Dimforge EURL and contributors",
+      "license": "Apache-2.0",
+      "localPath": "public/assets/licenses/RAPIER-APACHE-2.0.txt",
+      "runtimePaths": [
+        "src/game/physics.ts"
+      ],
+      "modifications": "Bundled compatibility JavaScript/WebAssembly physics runtime; no upstream source modifications.",
+      "redistributionRequirements": "Retain RAPIER-APACHE-2.0.txt and required Apache notices with redistributed copies.",
+      "upstreamLicensePath": "node_modules/@dimforge/rapier3d-compat/LICENSE"
+    },
+    {
+      "name": "@fontsource/cormorant-garamond",
+      "version": "5.3.0",
+      "source": "https://fontsource.org/fonts/cormorant-garamond",
+      "creator": "The Cormorant Project Authors",
+      "license": "SIL Open Font License 1.1",
+      "localPath": "public/assets/licenses/CORMORANT-GARAMOND-OFL.txt",
+      "runtimePaths": [
+        "src/index.css"
+      ],
+      "modifications": "Bundled through local Fontsource CSS imports for the Latin normal and italic faces; no font modifications.",
+      "redistributionRequirements": "Retain CORMORANT-GARAMOND-OFL.txt; the font cannot be sold by itself and reserved-name conditions apply.",
+      "upstreamLicensePath": "node_modules/@fontsource/cormorant-garamond/LICENSE",
+      "bundledFiles": [
+        "latin-400.css",
+        "latin-500.css",
+        "latin-400-italic.css"
+      ]
+    },
+    {
+      "name": "@fontsource/dm-sans",
+      "version": "5.3.0",
+      "source": "https://fontsource.org/fonts/dm-sans",
+      "creator": "The DM Sans Project Authors",
+      "license": "SIL Open Font License 1.1",
+      "localPath": "public/assets/licenses/DM-SANS-OFL.txt",
+      "runtimePaths": [
+        "src/index.css"
+      ],
+      "modifications": "Bundled through local Fontsource CSS imports for the Latin normal faces; no font modifications.",
+      "redistributionRequirements": "Retain DM-SANS-OFL.txt; the font cannot be sold by itself and reserved-name conditions apply.",
+      "upstreamLicensePath": "node_modules/@fontsource/dm-sans/LICENSE",
+      "bundledFiles": [
+        "latin-400.css",
+        "latin-500.css",
+        "latin-600.css"
+      ]
+    }
+  ],
+  "reference": {
+    "localPath": "docs/pioneer-trail-first-person-demo.html",
+    "use": "Preserved local visual/interaction reference. The release runtime uses new authored Three.js assets; this file is not a runtime dependency."
+  }
+}

@@ -8,12 +8,14 @@ export function Dialog({
   onClose,
   children,
   wide = false,
+  dismissible = true,
 }: {
   title: string
   eyebrow?: string
   onClose: () => void
   children: ReactNode
   wide?: boolean
+  dismissible?: boolean
 }) {
   const ref = useRef<HTMLDialogElement>(null)
   useEffect(() => {
@@ -29,9 +31,12 @@ export function Dialog({
     <dialog
       ref={ref}
       className={`dialog ${wide ? 'dialog-wide' : ''}`}
-      onCancel={onClose}
+      onCancel={(event) => {
+        event.preventDefault()
+        if (dismissible) onClose()
+      }}
       onClick={(event) => {
-        if (event.target === ref.current) {
+        if (dismissible && event.target === ref.current) {
           const bounds = ref.current.getBoundingClientRect()
           if (
             event.clientX < bounds.left ||
@@ -48,9 +53,11 @@ export function Dialog({
           {eyebrow && <span className="eyebrow">{eyebrow}</span>}
           <h2>{title}</h2>
         </div>
-        <button className="icon-button" aria-label="Close panel" onClick={onClose}>
-          <X size={20} />
-        </button>
+        {dismissible && (
+          <button className="icon-button" aria-label="Close panel" onClick={onClose}>
+            <X size={20} />
+          </button>
+        )}
       </div>
       <div className="dialog-body">{children}</div>
     </dialog>

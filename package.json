@@ -13,9 +13,12 @@
     "test:e2e": "playwright test",
     "test:dev": "playwright test -c playwright.engine.config.ts",
     "build:engine": "bash scripts/build-engine.sh",
-    "format": "prettier --write src tests *.ts *.json *.html *.md docs/*.md"
+    "format": "prettier --write src tests *.ts *.json *.html *.md docs/*.md",
+    "test:assets": "node scripts/verify-assets.mjs",
+    "test:types": "tsc -p tsconfig.tests.json"
   },
   "dependencies": {
+    "@dimforge/rapier3d-compat": "0.20.0",
     "@fontsource/cormorant-garamond": "^5.3.0",
     "@fontsource/dm-sans": "^5.3.0",
     "lucide-react": "^1.42.0",
