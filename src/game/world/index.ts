@@ -170,6 +170,7 @@ export function createWorld(scene: THREE.Scene, options: WorldOptions = {}): Wor
       actor: ReturnType<typeof createQuadruped> | ReturnType<typeof createRabbit>
       baseX: number
       baseZ: number
+      radius: number
       phase: number
       dead: boolean
       strideDistance: number
@@ -197,6 +198,13 @@ export function createWorld(scene: THREE.Scene, options: WorldOptions = {}): Wor
       if (minX < -94 || maxX > 85 || minZ < 12 || maxZ > 230) return false
       if (field.river && maxZ > field.river.startZ - 6 && minZ < field.river.endZ + 6) return false
       if (maxX > field.streamX(cz) - halfZ * 0.1 - 6.5) return false
+      // Train avoidance can compress different X patrols into the same west lane.
+      // Reserve disjoint longitudinal body envelopes so that evacuation remains
+      // separated at every heading/time without leaving the cleared dry corridors.
+      if (
+        actors.some((other) => Math.abs(cz - other.baseZ) <= halfZ + patrolZ + other.radius + 0.35)
+      )
+        return false
       return landscape.obstacles.every(
         (solid) =>
           maxX < solid.x - solid.halfX ||
@@ -248,6 +256,7 @@ export function createWorld(scene: THREE.Scene, options: WorldOptions = {}): Wor
       actor,
       baseX,
       baseZ,
+      radius: rabbit ? 0.6 : 1.5,
       phase: random() * Math.PI * 2,
       dead: false,
       strideDistance: 0,
@@ -309,7 +318,7 @@ export function createWorld(scene: THREE.Scene, options: WorldOptions = {}): Wor
       entry.root.visible = !entry.harvested
       if (entry.harvested) return
       if (entry.alive) {
-        const radius = entry.animal === 'Rabbit' ? 0.6 : 1.5,
+        const radius = moving.radius,
           z = moving.baseZ + Math.sin(t * 0.77) * patrolZ,
           x = avoidTrain(moving.baseX + Math.sin(t) * patrolX, z, radius),
           nextT = t + (entry.animal === 'Rabbit' ? 0.36 : 0.18) * 0.05,

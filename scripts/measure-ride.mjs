@@ -109,6 +109,7 @@ export function rideControls(state, trail, previousDirection) {
   }
 }
 
+// Shared by ride and campaign reports; importing this helper never launches a browser.
 export async function buildIdentity() {
   const files = []
   async function visit(directory) {
@@ -484,7 +485,10 @@ export async function main() {
         m.unfocusedFrames === 0 &&
         m.nonRidingFrames === 0 &&
         windowResult.transitions.every((event) => !event.hidden && event.focused),
-      notStuck: m.slowestFiveSecondPathMeters !== null && m.slowestFiveSecondPathMeters >= 0.75,
+      notStuck:
+        m.maximumFrameMs < 5000 &&
+        m.slowestFiveSecondPathMeters !== null &&
+        m.slowestFiveSecondPathMeters >= 0.75,
       roadShuttle:
         m.minZ >= 20 &&
         m.maxZ <= 93 &&

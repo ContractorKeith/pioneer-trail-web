@@ -354,6 +354,62 @@ it('preserves saved walkable space, visible solids and wildlife across graphics 
   expect(recipes[2]).toEqual(recipes[0])
 }, 15_000)
 
+it('keeps whole wildlife bodies separated beside the captured seed 14 wagon', () => {
+  const world = createWorld(new THREE.Scene(), {
+    seed: 14,
+    terrain: 'RiverValley',
+    river: true,
+    quality: 'low',
+  })
+  world.wagon.position.set(0, world.heightAt(0, 80.75527579283103), 80.75527579283103)
+  const bounds = world.wildlife.map(() => new THREE.Box3())
+  try {
+    expect(world.wildlife.map((animal) => animal.id)).toEqual([
+      'deer-0',
+      'deer-1',
+      'deer-2',
+      'deer-3',
+      'deer-4',
+      'rabbit-5',
+      'rabbit-6',
+      'rabbit-7',
+    ])
+    const trunk = world.obstacles.find((solid) => solid.id === 'tree-1-62')!
+    expect(trunk.x).toBeCloseTo(-4.0049016661942005, 10)
+    expect(trunk.z).toBeCloseTo(93.80418059998192, 10)
+    const times = [
+      ...Array.from({ length: 481 }, (_, tick) => tick / 4),
+      // Both patrol oscillations repeat within 3,500s (deer) / 1,750s (rabbits).
+      ...Array.from({ length: 1168 }, (_, tick) => tick * 3),
+    ]
+    for (const time of times) {
+      world.update({
+        dt: 0.25,
+        time,
+        speed: 0,
+        distance: 0,
+        cameraPosition: new THREE.Vector3(
+          -12.546666666666644,
+          1.5100275466567414,
+          89.87527579283002,
+        ),
+        sheltered: false,
+        weather: 'clear',
+        daylight: 0.8,
+      })
+      world.wildlife.forEach((animal, index) => bounds[index].setFromObject(animal.root))
+      for (let a = 0; a < bounds.length; a++)
+        for (let b = a + 1; b < bounds.length; b++)
+          expect(
+            bounds[a].intersectsBox(bounds[b]),
+            `${world.wildlife[a].id} intersects ${world.wildlife[b].id} at ${time}s`,
+          ).toBe(false)
+    }
+  } finally {
+    world.dispose()
+  }
+}, 15_000)
+
 it('keeps the exact bank trunk clear of deer geometry and reserves west escape corridors', () => {
   const world = createWorld(new THREE.Scene(), {
     seed: 14,
@@ -454,6 +510,15 @@ it('keeps living wildlife clear of the stopped and moving full wagon train on dr
       world.wagon.rotation.y = moving ? Math.sin(i * 0.025) : -0.424064606902989
       world.update({ ...frame, time: i / 4, speed: moving ? 3 : 0 })
       hero.setFromObject(world.wagon)
+      const livingBounds = world.wildlife.map((animal) =>
+        new THREE.Box3().setFromObject(animal.root),
+      )
+      for (let a = 0; a < livingBounds.length; a++)
+        for (let b = a + 1; b < livingBounds.length; b++)
+          expect(
+            livingBounds[a].intersectsBox(livingBounds[b]),
+            `${world.wildlife[a].id} overlaps ${world.wildlife[b].id} near the moving train`,
+          ).toBe(false)
       for (const animal of world.wildlife) {
         animalBounds.setFromObject(animal.root)
         expect(hero.intersectsBox(animalBounds), `${animal.id} overlaps hero at ${i / 4}s`).toBe(

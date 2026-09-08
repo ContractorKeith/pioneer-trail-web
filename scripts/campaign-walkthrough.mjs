@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { execFileSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
 import { platform, release, cpus } from 'node:os'
 import { pathToFileURL } from 'node:url'
 import { buildIdentity } from './measure-ride.mjs'
+import { trackServedBuild } from './served-build.mjs'
+import { loadWorldTools } from './load-world-tools.mjs'
 
 const phase = (status) => (typeof status === 'string' ? status : Object.keys(status)[0])
 
@@ -86,6 +89,122 @@ export function sceneGrowth(samples) {
   }
 }
 
+export async function walkPlanned(page, target, report) {
+  const { state, world, hold } = await import('../tests/world.helpers.ts')
+  const before = await state(page),
+    visible = await world(page)
+  assert.equal(before.mode, 'walking')
+  const { createWorld, Scene, planWalkingRoute } = await loadWorldTools()
+  const terrain = await page.evaluate(() => JSON.parse(window.__trail.save()).spatial.terrain)
+  const ground = createWorld(new Scene(), {
+    seed: Number(BigInt(before.view.seed) % 2147483647n) + before.regionIndex,
+    terrain,
+    river: !!visible.river,
+    quality: 'low',
+  })
+  let route
+  try {
+    route = planWalkingRoute(
+      ground,
+      before.wagon,
+      {
+        x: before.position.x,
+        z: before.position.z,
+        yaw: before.heading,
+        speed: 0,
+      },
+      target,
+    )
+  } finally {
+    ground.dispose()
+  }
+  report.walkingRoutes ??= []
+  report.walkingRoutes.push({ region: before.regionIndex, start: before.position, target, route })
+  for (const point of route) {
+    let reached = false
+    for (let tries = 0; tries < 100; tries++) {
+      const s = await state(page),
+        dx = point.x - s.position.x,
+        dz = point.z - s.position.z
+      assert.equal(s.paused, false, 'Walking route must stay in live play')
+      assert.equal(s.regionIndex, before.regionIndex)
+      assert.equal(s.collisionCount, before.collisionCount, 'Planned walking route collided')
+      if (Math.hypot(dx, dz) < 0.14) {
+        reached = true
+        break
+      }
+      const forward = Math.sin(s.heading) * dx + Math.cos(s.heading) * dz
+      const right = -Math.cos(s.heading) * dx + Math.sin(s.heading) * dz
+      const key =
+        Math.abs(forward) > Math.abs(right) ? (forward > 0 ? 'w' : 's') : right > 0 ? 'd' : 'a'
+      await hold(
+        page,
+        key,
+        Math.min(80, Math.max(16, (Math.max(Math.abs(forward), Math.abs(right)) / 3.2) * 1000)),
+      )
+    }
+    assert.ok(reached, `Walking route did not reach ${JSON.stringify(point)}`)
+  }
+}
+
+/** Finish the far-bank approach with actual steering; a full progress bar is not arrival. */
+export async function finishCrossing(page, report) {
+  const { state, world, hold } = await import('../tests/world.helpers.ts')
+  const arrival = await state(page)
+  assert.equal(arrival.activity?.kind, 'crossing')
+  // Reconstructing the CPU scene takes time; stop through real input before planning its exit.
+  await hold(page, 'Space', 800)
+  const before = await state(page)
+  if (!before.activity || before.regionIndex !== arrival.regionIndex) return
+  const river = (await world(page)).river
+  assert.ok(river)
+  const { createWorld, Scene, CrossingExitDriver } = await loadWorldTools()
+  const terrain = await page.evaluate(() => JSON.parse(window.__trail.save()).spatial.terrain)
+  const ground = createWorld(new Scene(), {
+    seed: Number(BigInt(before.view.seed) % 2147483647n) + before.regionIndex,
+    terrain,
+    river: true,
+    quality: 'low',
+  })
+  const pace = before.view.pace === 'Grueling' ? 1.3 : before.view.pace === 'Strenuous' ? 1.15 : 1
+  const driver = new CrossingExitDriver(ground, river, pace)
+  const record = { region: before.regionIndex, start: before.wagon, inputs: [] }
+  report.crossingExits ??= []
+  report.crossingExits.push(record)
+  const keys = ['w', 's', 'a', 'd', 'Space']
+  try {
+    for (let step = 0; step < 240; step++) {
+      const s = await state(page)
+      if (!s.activity || s.regionIndex !== before.regionIndex) {
+        record.finish = s.wagon
+        record.day = s.view.day
+        return
+      }
+      assert.equal(s.paused, false, 'Crossing exit must remain in live play')
+      assert.equal(s.activity.kind, 'crossing')
+      const input = driver.next(s.wagon)
+      if (!input) {
+        await page.waitForTimeout(100)
+        continue
+      }
+      record.inputs.push({ pose: s.wagon, input })
+      const pressed = [
+        ...(input.forward ? [input.forward > 0 ? 'w' : 's'] : []),
+        ...(input.turn ? [input.turn > 0 ? 'a' : 'd'] : []),
+        ...(input.brake ? ['Space'] : []),
+      ]
+      for (const key of pressed) await page.keyboard.down(key)
+      await page.waitForTimeout(input.seconds * 1000)
+      for (const key of pressed) await page.keyboard.up(key)
+    }
+    assert.fail(`Crossing exit stalled: ${JSON.stringify((await state(page)).wagon)}`)
+  } finally {
+    for (const key of keys) await page.keyboard.up(key).catch(() => {})
+    driver.dispose()
+    ground.dispose()
+  }
+}
+
 export async function main() {
   const { chromium } = await import('playwright')
   const { driveTo, hold, resume, state, walkTo, world } = await import('../tests/world.helpers.ts')
@@ -108,18 +227,20 @@ export async function main() {
   const browser = await chromium.launch(browserLaunch)
   const context = await browser.newContext({
     baseURL,
-    browserLaunch,
-    build,
     viewport: { width: 1280, height: 720 },
     recordVideo: { dir: '.artifacts/videos', size: { width: 1280, height: 720 } },
   })
   const page = await context.newPage()
+  const served = trackServedBuild(page, baseURL, build)
   page.setDefaultTimeout(10000)
   const cdp = await context.newCDPSession(page)
   await cdp.send('Performance.enable')
   const report = {
     started: new Date().toISOString(),
     baseURL,
+    browserLaunch,
+    build,
+    servedBuild: served.report,
     source: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
     dirty: !!execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }).trim(),
     seed: '11',
@@ -131,12 +252,16 @@ export async function main() {
       os: `${platform()} ${release()}`,
       cpu: cpus()[0]?.model,
       browser: browser.version(),
+      display: process.env.DISPLAY ?? null,
+      sessionType: process.env.XDG_SESSION_TYPE ?? null,
     },
     events: [],
     samples: [],
     errors: [],
     telemetryErrors: [],
     notices: [],
+    automatedChecksPass: false,
+    independentMemoryReview: 'pending',
     pass: false,
   }
   page.on('pageerror', (error) => report.errors.push(String(error)))
@@ -166,9 +291,22 @@ export async function main() {
     unpausedSeconds = 0
   const provisionedRegions = new Set()
   const flush = () => writeFile(`${output}/walkthrough.json`, JSON.stringify(report, null, 2))
+  const checkpoint = async (name) => {
+    const raw = await page.evaluate(() => window.__trail.save())
+    const path = `${output}/${name}.json`
+    await writeFile(path, raw)
+    return {
+      path,
+      sha256: createHash('sha256').update(raw).digest('hex'),
+      at: new Date().toISOString(),
+    }
+  }
   const observe = async (label) => {
     const s = await state(page),
       visibleWorld = await world(page)
+    const spatialTerrain = await page.evaluate(
+      () => JSON.parse(window.__trail.save()).spatial.terrain,
+    )
     const entry = {
       seconds: (Date.now() - began) / 1000,
       label,
@@ -183,7 +321,8 @@ export async function main() {
         health: member.health,
       })),
       region: s.regionIndex,
-      terrain: s.view.terrain,
+      terrain: spatialTerrain,
+      campaignTerrain: s.view.terrain,
       river: !!visibleWorld.river,
       mode: s.mode,
       paused: s.paused,
@@ -192,12 +331,17 @@ export async function main() {
       textures: s.textures,
       drawCalls: s.drawCalls,
     }
+    if (label === 'Region entered')
+      entry.checkpoint = await checkpoint(`region-${s.regionIndex}-save`)
     try {
+      // Retained-memory observations accompany region entries; this is outside the ride FPS gate.
+      if (label === 'Region entered') await cdp.send('HeapProfiler.collectGarbage')
       const [metrics, dom] = await Promise.all([
         cdp.send('Performance.getMetrics'),
         cdp.send('Memory.getDOMCounters'),
       ])
       entry.memory = {
+        afterCollection: label === 'Region entered',
         ...dom,
         ...Object.fromEntries(
           metrics.metrics
@@ -299,9 +443,10 @@ export async function main() {
     await stopAndDismount()
     // The wagon and its team occupy the center: go behind it on the proven trader approach.
     await walkTo(page, -3, 14)
-    await walkTo(page, 5, 14)
+    await walkTo(page, 3, 14)
     const trader = (await world(page)).locations.find((location) => location.id === 'trader')
     assert.ok(trader)
+    await walkTo(page, 3, trader.position[2] - 1.4)
     await walkTo(page, trader.position[0] - 2.4, trader.position[2] - 1.4)
     await page.keyboard.press('e')
     await page.getByRole('heading', { name: 'Trade', exact: true }).waitFor()
@@ -352,7 +497,9 @@ export async function main() {
     }
     await observe('Traded through visible shop')
     await play()
-    await walkTo(page, 5, 14)
+    // Retrace the clear approach before heading south; a diagonal shortcut can meet a rock.
+    await walkTo(page, 3, trader.position[2] - 1.4)
+    await walkTo(page, 3, 14)
     await walkTo(page, -3, 14)
   }
   const provisions = async () => {
@@ -408,7 +555,14 @@ export async function main() {
     await page.getByRole('radio', { name: /^Safe/ }).click()
     await page.getByRole('button', { name: 'Load this plan' }).click()
     await page.getByRole('button', { name: 'Take the trail' }).click()
+    await served.verify()
     began = Date.now()
+    report.environment.client = await page.evaluate(() => ({
+      userAgent: navigator.userAgent,
+      devicePixelRatio,
+      width: innerWidth,
+      height: innerHeight,
+    }))
     report.renderer = await page.evaluate(() => window.__trail.renderer())
     report.renderer.hardwareCandidate = !/swiftshader|llvmpipe|software|lavapipe/i.test(
       report.renderer.renderer,
@@ -493,10 +647,7 @@ export async function main() {
         await stopAndDismount()
         const bank = (await world(page)).locations.find((location) => location.id === 'riverbank')
         assert.ok(bank)
-        const noseClearance = Math.max(bank.position[2] + 2, (await state(page)).wagon.z + 8)
-        await walkTo(page, -3, noseClearance)
-        await walkTo(page, bank.position[0], noseClearance)
-        await walkTo(page, bank.position[0], bank.position[2] + 2)
+        await walkPlanned(page, { x: bank.position[0], z: bank.position[2] + 2 }, report)
         await page.keyboard.press('e')
         await page.getByRole('heading', { name: 'River crossing', exact: true }).waitFor()
         const beforeDay = (await state(page)).view.day
@@ -515,8 +666,7 @@ export async function main() {
           await driveTo(page, -8, river.startZ + 3)
           // Stop short of the completion plane; driveTo must not chase a waypoint after region reset.
           await driveTo(page, -9, river.endZ + 4)
-          for (let steps = 0; steps < 60 && (await state(page)).activity; steps++)
-            await hold(page, 'w', 150)
+          if ((await state(page)).activity) await finishCrossing(page, report)
         }
         const after = await state(page)
         assert.equal(after.activity, null, 'Crossing activity must finish')
@@ -594,6 +744,8 @@ export async function main() {
       observedUnpausedSeconds: unpausedSeconds,
       regions: new Set(report.samples.map((sample) => sample.region)).size,
       resources,
+      automatedChecksPass: false,
+      independentMemoryReview: 'pending',
       pass: false,
     }
     assert.ok(
@@ -614,11 +766,15 @@ export async function main() {
       'Continuing renderer resource growth requires investigation',
     )
     assert.deepEqual(report.telemetryErrors, [], 'Memory telemetry must be complete')
-    report.soak.pass = true
-    report.pass = true
+    await served.verify()
+    report.soak.automatedChecksPass = true
+    report.automatedChecksPass = true
+    // Geometry counts alone cannot clear heap/DOM/listener leaks. Bind an independent review
+    // of this report and its retained-memory samples before marking overall acceptance passed.
   } catch (error) {
     report.failure = String(error)
     try {
+      report.failureCheckpoint = await checkpoint('failure-save')
       await page.screenshot({ path: `${output}/failure.png` })
       report.lastState = await state(page)
     } catch {}
@@ -627,6 +783,12 @@ export async function main() {
     report.finished = new Date().toISOString()
     report.durationSeconds = (Date.now() - began) / 1000
     report.resourceScreening = sceneGrowth(report.samples)
+    await served.verify().catch((error) => {
+      report.errors.push(String(error))
+      report.automatedChecksPass = false
+      report.pass = false
+    })
+    served.detach()
     await page.keyboard.up('w').catch(() => {})
     await page.keyboard.up('a').catch(() => {})
     await page.keyboard.up('d').catch(() => {})
