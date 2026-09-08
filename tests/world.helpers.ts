@@ -8,6 +8,16 @@ import type { SpatialState } from '../src/game/persistence'
 const ready = init({
   module_or_path: await readFile('public/wasm/pioneer_trail_web_engine_bg.wasm'),
 })
+const software = !!process.env.CI || process.env.TRAIL_SOFTWARE_TESTS === '1'
+
+/** Slow CI frames cap simulation catch-up; real-time pause tests keep their own deadlines. */
+export function gameplayTimeout(ms: number): number {
+  const timeout = ms * (software ? 10 : 1)
+  if (!Number.isFinite(timeout) || timeout <= 0)
+    throw new Error('Gameplay deadlines must be positive and finite')
+  return timeout
+}
+
 export const WORLD_KEY = 'pioneer-trail:world:v2'
 export const initial = (): SpatialState => ({
   regionId: 'independence',
@@ -160,6 +170,7 @@ export async function restore(page: Page, raw: string) {
   await page.goto('about:blank')
   await page.addInitScript(
     ({ key, raw, marker }) => {
+      if (location.protocol !== 'http:' && location.protocol !== 'https:') return
       if (!sessionStorage.getItem(marker)) {
         localStorage.setItem(key, raw)
         sessionStorage.setItem(marker, 'installed')
@@ -168,13 +179,30 @@ export async function restore(page: Page, raw: string) {
     { key: WORLD_KEY, raw, marker: `trail-test-fixture-${++fixtureNumber}` },
   )
   await page.goto('/?evidence=1')
-  await page.waitForFunction(() => Boolean((window as unknown as { __trail: unknown }).__trail))
+  await page.waitForFunction(
+    () => Boolean((window as unknown as { __trail: unknown }).__trail),
+    undefined,
+    { timeout: 30_000 },
+  )
 }
 export async function state(page: Page): Promise<RuntimeSnapshot> {
-  await page.waitForFunction(() => Boolean((window as unknown as { __trail?: unknown }).__trail))
-  return page.evaluate(() =>
-    (window as unknown as { __trail: { snapshot(): RuntimeSnapshot } }).__trail.snapshot(),
+  // A live runtime needs one RPC; repeated readiness waits consume slow-render test budgets.
+  const snapshot = await page.evaluate(
+    () =>
+      (window as unknown as { __trail?: { snapshot(): RuntimeSnapshot } }).__trail?.snapshot() ??
+      null,
   )
+  if (snapshot) return snapshot
+  const ready = await page.waitForFunction(
+    () => (window as unknown as { __trail?: { snapshot(): RuntimeSnapshot } }).__trail?.snapshot(),
+    undefined,
+    { timeout: 30_000 },
+  )
+  try {
+    return (await ready.jsonValue())!
+  } finally {
+    await ready.dispose()
+  }
 }
 export async function resume(page: Page) {
   await page.bringToFront()
@@ -187,8 +215,39 @@ export async function resume(page: Page) {
 }
 export async function hold(page: Page, key: string, ms: number) {
   await page.keyboard.down(key)
-  await page.waitForTimeout(ms)
-  await page.keyboard.up(key)
+  try {
+    await page.waitForTimeout(ms)
+  } finally {
+    await page.keyboard.up(key)
+  }
+}
+
+/** Hold a real key until observed gameplay meets its unchanged assertion threshold. */
+export async function holdUntil(
+  page: Page,
+  key: string,
+  reached: (snapshot: RuntimeSnapshot) => boolean,
+  options: { timeout: number; message: string },
+): Promise<RuntimeSnapshot> {
+  if (!Number.isFinite(options.timeout) || options.timeout <= 0)
+    throw new Error('Observed input requires a positive finite timeout')
+  let snapshot = await state(page)
+  if (reached(snapshot)) return snapshot
+  await page.keyboard.down(key)
+  try {
+    await expect
+      .poll(
+        async () => {
+          snapshot = await state(page)
+          return reached(snapshot)
+        },
+        { ...options, intervals: [100] },
+      )
+      .toBe(true)
+    return snapshot
+  } finally {
+    await page.keyboard.up(key)
+  }
 }
 export async function start(page: Page, trail = 'oregon', preset = 'Safe', seed = '11') {
   await page.goto('/?evidence=1')
@@ -201,26 +260,33 @@ export async function start(page: Page, trail = 'oregon', preset = 'Safe', seed 
   await expect.poll(async () => (await state(page)).paused).toBe(false)
 }
 export async function walkTo(page: Page, x: number, z: number) {
-  expect((await state(page)).mode).toBe('walking')
-  for (let i = 0; i < 150; i++) {
-    const s = await state(page),
-      dx = x - s.position.x,
-      dz = z - s.position.z
-    if (Math.hypot(dx, dz) < 0.45) return
-    const yaw = s.heading
-    const forward = Math.sin(yaw) * dx + Math.cos(yaw) * dz
-    const right = -Math.cos(yaw) * dx + Math.sin(yaw) * dz
-    const key =
-      Math.abs(forward) > Math.abs(right) ? (forward > 0 ? 'w' : 's') : right > 0 ? 'd' : 'a'
-    await hold(
-      page,
-      key,
-      Math.min(250, Math.max(40, (Math.max(Math.abs(forward), Math.abs(right)) / 3.2) * 1000)),
-    )
+  let snapshot = await state(page)
+  expect(snapshot.mode).toBe('walking')
+  const deadline = performance.now() + gameplayTimeout(45_000)
+  let heldKey: string | undefined
+  try {
+    while (performance.now() < deadline) {
+      const dx = x - snapshot.position.x,
+        dz = z - snapshot.position.z
+      if (Math.hypot(dx, dz) < 0.45) return
+      expect(snapshot.mode).toBe('walking')
+      const yaw = snapshot.heading
+      const forward = Math.sin(yaw) * dx + Math.cos(yaw) * dz
+      const right = -Math.cos(yaw) * dx + Math.sin(yaw) * dz
+      const key =
+        Math.abs(forward) > Math.abs(right) ? (forward > 0 ? 'w' : 's') : right > 0 ? 'd' : 'a'
+      if (key !== heldKey) {
+        if (heldKey) await page.keyboard.up(heldKey)
+        await page.keyboard.down(key)
+        heldKey = key
+      }
+      await page.waitForTimeout(100)
+      snapshot = await state(page)
+    }
+    throw new Error(`Walking did not reach ${x},${z}; actual ${JSON.stringify(snapshot.position)}`)
+  } finally {
+    if (heldKey) await page.keyboard.up(heldKey)
   }
-  throw new Error(
-    `Walking did not reach ${x},${z}; actual ${JSON.stringify((await state(page)).position)}`,
-  )
 }
 
 export type WorldObservation = {
@@ -270,25 +336,33 @@ export async function aimAt(page: Page, target: { x: number; y: number; z: numbe
 /** Steer with normal controls toward a visible waypoint; never mutate world state. */
 export async function driveTo(page: Page, x: number, z: number) {
   // Hold propulsion across observations, as a player does; IPC latency must not act as braking.
-  const region = (await state(page)).regionIndex
+  let snapshot = await state(page)
+  const region = snapshot.regionIndex
+  const deadline = performance.now() + gameplayTimeout(30_000)
+  let steering: string | undefined
   await page.keyboard.down('w')
   try {
-    for (let i = 0; i < 140; i++) {
-      const s = await state(page)
+    while (performance.now() < deadline) {
       // A completed crossing replaces the region; its old waypoint no longer exists.
-      if (s.regionIndex !== region) return
-      if (Math.hypot(s.wagon.x - x, s.wagon.z - z) < 2.5) return
-      const wanted = Math.atan2(x - s.wagon.x, z - s.wagon.z)
-      const delta = Math.atan2(Math.sin(wanted - s.wagon.yaw), Math.cos(wanted - s.wagon.yaw))
-      if (Math.abs(delta) > 0.045) await page.keyboard.down(delta > 0 ? 'a' : 'd')
+      if (snapshot.regionIndex !== region) return
+      if (Math.hypot(snapshot.wagon.x - x, snapshot.wagon.z - z) < 2.5) return
+      const wanted = Math.atan2(x - snapshot.wagon.x, z - snapshot.wagon.z)
+      const delta = Math.atan2(
+        Math.sin(wanted - snapshot.wagon.yaw),
+        Math.cos(wanted - snapshot.wagon.yaw),
+      )
+      const key = Math.abs(delta) > 0.045 ? (delta > 0 ? 'a' : 'd') : undefined
+      if (key !== steering) {
+        if (steering) await page.keyboard.up(steering)
+        if (key) await page.keyboard.down(key)
+        steering = key
+      }
       await page.waitForTimeout(180)
-      await page.keyboard.up('a')
-      await page.keyboard.up('d')
+      snapshot = await state(page)
     }
-    throw new Error(`Drive did not reach ${x},${z}: ${JSON.stringify((await state(page)).wagon)}`)
+    throw new Error(`Drive did not reach ${x},${z}: ${JSON.stringify(snapshot.wagon)}`)
   } finally {
     await page.keyboard.up('w')
-    await page.keyboard.up('a')
-    await page.keyboard.up('d')
+    if (steering) await page.keyboard.up(steering)
   }
 }

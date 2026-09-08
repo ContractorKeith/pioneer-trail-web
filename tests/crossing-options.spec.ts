@@ -6,7 +6,9 @@ import { phase } from '../src/presentation'
 import {
   driveTo,
   fixture,
+  gameplayTimeout,
   hold,
+  holdUntil,
   initial,
   restore,
   resume,
@@ -112,7 +114,10 @@ function bankApproach(raw: string) {
 async function inspectRiver(page: Page) {
   await resume(page)
   await hold(page, 'w', 800)
-  await hold(page, 'Space', 800)
+  await holdUntil(page, 'Space', (s) => s.speed === 0, {
+    timeout: gameplayTimeout(3000),
+    message: 'Stop the wagon through its brake control',
+  })
   await expect.poll(async () => (await state(page)).speed).toBe(0)
   await page.keyboard.press('e')
   await expect.poll(async () => (await state(page)).mode).toBe('walking')
@@ -161,7 +166,7 @@ test('R05 Guide discloses and spends Snake River clothing when an attempted cros
 test('R03/R05 Columbia route selection launches a physical raft run to the ending', async ({
   page,
 }) => {
-  test.setTimeout(150_000)
+  test.setTimeout(gameplayTimeout(150_000))
   await restore(page, bankApproach((await fixture('finale-fork')).raw))
   await expect(page.getByRole('heading', { name: 'Choose the trail', exact: true })).toBeVisible()
   await page.locator('.route-list button').filter({ hasText: 'Columbia' }).click()
@@ -169,7 +174,10 @@ test('R03/R05 Columbia route selection launches a physical raft run to the endin
   await page.getByRole('button', { name: 'Close panel' }).click()
   await resume(page)
   await driveTo(page, 0, 80)
-  await hold(page, 'Space', 800)
+  await holdUntil(page, 'Space', (s) => s.speed === 0, {
+    timeout: gameplayTimeout(3000),
+    message: 'Stop the wagon through its brake control',
+  })
   await page.keyboard.press('e')
   await expect.poll(async () => (await state(page)).mode).toBe('walking')
   await walkTo(page, -3, 94)
@@ -182,7 +190,10 @@ test('R03/R05 Columbia route selection launches a physical raft run to the endin
   await driveTo(page, 0, 98)
   await driveTo(page, -8, 107)
   await driveTo(page, -9, 140)
-  await hold(page, 'w', 1700)
+  await holdUntil(page, 'w', (s) => !s.activity, {
+    timeout: gameplayTimeout(5000),
+    message: 'Clear the Columbia raft course',
+  })
   const arrived = await state(page)
   expect(arrived.activity).toBeNull()
   expect(arrived.view.status).toBe('Arrived')

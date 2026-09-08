@@ -18,10 +18,11 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   retries: 0,
-  timeout: 90_000,
+  timeout: software ? 900_000 : 90_000,
   expect: { timeout: software ? 15_000 : 5_000 },
   use: {
     baseURL: 'http://localhost:4173',
+    actionTimeout: 30_000,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     storageState: software
@@ -63,6 +64,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Firefox'],
         viewport: software ? { width: 640, height: 360 } : { width: 1280, height: 720 },
+        launchOptions: software ? { firefoxUserPrefs: { 'webgl.force-enabled': true } } : undefined,
       },
     },
   ],

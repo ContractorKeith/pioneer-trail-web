@@ -1,5 +1,16 @@
 import { expect, test, type Page } from '@playwright/test'
-import { fixture, hold, restore, resume, start, state, walkTo, world } from './world.helpers'
+import {
+  fixture,
+  gameplayTimeout,
+  hold,
+  holdUntil,
+  restore,
+  resume,
+  start,
+  state,
+  walkTo,
+  world,
+} from './world.helpers'
 
 type FishingObservation = {
   fishingTarget: [number, number, number] | null
@@ -38,7 +49,10 @@ test('fishing casts a visible target from the crossing bank and preserves it thr
   await restore(page, JSON.stringify(outer))
   await resume(page)
   await hold(page, 'w', 800)
-  await hold(page, 'Space', 800)
+  await holdUntil(page, 'Space', (s) => s.speed === 0, {
+    timeout: gameplayTimeout(3000),
+    message: 'Stop the wagon through its brake control',
+  })
   await page.keyboard.press('e')
   await expect.poll(async () => (await state(page)).mode).toBe('walking')
   await walkTo(page, -3, 94)
@@ -94,12 +108,15 @@ test('HUD fog agrees with the rendered region after an ordinary cold departure d
   await page.keyboard.down('w')
   try {
     await expect
-      .poll(async () => (await state(page)).view.day, { timeout: 20_000 })
+      .poll(async () => (await state(page)).view.day, { timeout: gameplayTimeout(20_000) })
       .toBeGreaterThanOrEqual(1)
   } finally {
     await page.keyboard.up('w')
   }
-  await hold(page, 'Space', 800)
+  await holdUntil(page, 'Space', (s) => s.speed === 0, {
+    timeout: gameplayTimeout(3000),
+    message: 'Stop the wagon through its brake control',
+  })
   const cold = await state(page)
   expect(cold.view.weather).toBe('Cold')
   expect(cold.sceneWeather).toBe('clear')

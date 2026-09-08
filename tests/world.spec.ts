@@ -2,7 +2,9 @@ import { expect, test } from '@playwright/test'
 import {
   driveTo,
   fixture,
+  gameplayTimeout,
   hold,
+  holdUntil,
   initial,
   restore,
   resume,
@@ -19,10 +21,16 @@ test('first person looks back, walks a complete circuit, collides, reboards and 
 }) => {
   await start(page)
   const origin = await state(page)
-  await hold(page, 'ArrowLeft', 2250)
+  await holdUntil(page, 'ArrowLeft', (s) => s.heading > 2.8, {
+    timeout: gameplayTimeout(5000),
+    message: 'Look behind the driver seat',
+  })
   expect(Math.abs((await state(page)).heading)).toBeGreaterThan(2.8)
   await page.screenshot({ path: test.info().outputPath('rear-seat.png') })
-  await hold(page, 'ArrowRight', 2250)
+  await holdUntil(page, 'ArrowRight', (s) => s.heading <= origin.heading, {
+    timeout: gameplayTimeout(5000),
+    message: 'Return the view to the road',
+  })
   await page.keyboard.press('e')
   await expect.poll(async () => (await state(page)).mode).toBe('walking')
   await walkTo(page, -4, 14)
@@ -31,14 +39,24 @@ test('first person looks back, walks a complete circuit, collides, reboards and 
   await walkTo(page, -4, 29)
   await walkTo(page, -3, 20)
   const stopped = (await state(page)).position
-  await hold(page, 'a', 1000)
+  const contacts = (await state(page)).collisionCount
+  await holdUntil(page, 'a', (s) => s.collisionCount > contacts, {
+    timeout: gameplayTimeout(3000),
+    message: 'Walk into the solid wagon',
+  })
   const blocked = await state(page)
   expect(blocked.position.x).toBeLessThan(-1.4)
   expect(blocked.collisionCount).toBeGreaterThan(0)
   await page.keyboard.press('e')
   await expect.poll(async () => (await state(page)).mode).toBe('riding')
-  await hold(page, 'w', 8500)
-  await hold(page, 'Space', 800)
+  await holdUntil(page, 'w', (s) => s.wagon.z > origin.wagon.z + 30, {
+    timeout: gameplayTimeout(12000),
+    message: 'Drive more than thirty metres',
+  })
+  await holdUntil(page, 'Space', (s) => s.speed === 0, {
+    timeout: gameplayTimeout(3000),
+    message: 'Bring the wagon to a stop',
+  })
   const driven = await state(page)
   expect(driven.wagon.z).toBeGreaterThan(origin.wagon.z + 30)
   expect(driven.view.miles).toBeGreaterThan(0)
@@ -71,7 +89,7 @@ test('Escape and overlays freeze input; focus loss and reload recover without ad
 
 for (const method of ['Ferry', 'Caulk'] as const)
   test(`${method} crossing has costs and onward physical travel`, async ({ page }) => {
-    test.setTimeout(150_000)
+    test.setTimeout(gameplayTimeout(150_000))
     const checkpoint = await fixture('river'),
       outer = JSON.parse(checkpoint.raw)
     outer.spatial.wagon.z = 80
@@ -80,7 +98,10 @@ for (const method of ['Ferry', 'Caulk'] as const)
     await restore(page, JSON.stringify(outer))
     await resume(page)
     await hold(page, 'w', 800)
-    await hold(page, 'Space', 800)
+    await holdUntil(page, 'Space', (s) => s.speed === 0, {
+      timeout: gameplayTimeout(3000),
+      message: 'Stop the wagon through its brake control',
+    })
     await expect.poll(async () => (await state(page)).speed).toBe(0)
     await page.keyboard.press('e')
     await expect.poll(async () => (await state(page)).mode).toBe('walking')
@@ -95,7 +116,10 @@ for (const method of ['Ferry', 'Caulk'] as const)
       await page.getByRole('button', { name: 'Close panel' }).click()
       // Reboard at the new checkpoint, then movement must continue beyond the old bank.
       if ((await state(page)).mode === 'walking') await page.keyboard.press('e')
-      await hold(page, 'w', 2200)
+      await holdUntil(page, 'w', (s) => s.wagon.z > 22, {
+        timeout: gameplayTimeout(5000),
+        message: 'Continue physically from the ferry landing',
+      })
       const after = await state(page)
       expect(after.view.cash_cents).toBeLessThan(before.cash_cents)
       expect(after.view.day).toBe(before.day + 1)
@@ -103,17 +127,25 @@ for (const method of ['Ferry', 'Caulk'] as const)
     } else {
       await page.getByRole('button', { name: /^Caulk and float/ }).click()
       await expect.poll(async () => (await state(page)).activity?.kind).toBe('crossing')
-      await hold(page, 'w', 11500)
+      await holdUntil(page, 'w', (s) => (s.view.activity?.cargo_lost_lbs ?? 0) > 0, {
+        timeout: gameplayTimeout(16000),
+        message: 'Observe the cost of hitting the crossing obstruction',
+      })
       expect((await state(page)).view.activity!.cargo_lost_lbs).toBeGreaterThan(0)
-      await page.keyboard.down('s')
-      await expect
-        .poll(async () => (await state(page)).wagon.z, { timeout: 16000 })
-        .toBeLessThan(100)
-      await page.keyboard.up('s')
+      await holdUntil(page, 's', (s) => s.wagon.z < 100, {
+        timeout: gameplayTimeout(16000),
+        message: 'Reverse clear of the crossing obstruction',
+      })
       await driveTo(page, -9, 102)
       await driveTo(page, -9, 144)
-      await hold(page, 'w', 1700)
-      await hold(page, 'Space', 800)
+      await holdUntil(page, 'w', (s) => !s.activity && s.wagon.z > 20, {
+        timeout: gameplayTimeout(5000),
+        message: 'Clear the crossing and move into the next region',
+      })
+      await holdUntil(page, 'Space', (s) => s.speed === 0, {
+        timeout: gameplayTimeout(3000),
+        message: 'Stop after the completed crossing',
+      })
       const after = await state(page)
       expect(after.activity).toBeNull()
       expect(after.view.day).toBeGreaterThanOrEqual(before.day + 1)
@@ -185,7 +217,9 @@ test('fishing casts, hooks, reels and commits the caught food and day exactly on
   await expect.poll(async () => (await state(page)).activity?.phase).toBe('ready')
   const before = (await state(page)).view
   await page.keyboard.press('Space')
-  await expect.poll(async () => (await state(page)).activity?.phase, { timeout: 8000 }).toBe('bite')
+  await expect
+    .poll(async () => (await state(page)).activity?.phase, { timeout: gameplayTimeout(8000) })
+    .toBe('bite')
   await page.keyboard.press('Space')
   for (let i = 0; i < 150; i++) {
     const activity = (await state(page)).activity
@@ -221,9 +255,11 @@ test('a missed fishing bite spends its day without a catch', async ({ page }) =>
   await page.keyboard.press('f')
   await page.keyboard.press('Space')
   await expect
-    .poll(async () => (await state(page)).activity?.phase, { timeout: 10000 })
+    .poll(async () => (await state(page)).activity?.phase, { timeout: gameplayTimeout(10000) })
     .toBe('bite')
-  await expect.poll(async () => (await state(page)).activity, { timeout: 8000 }).toBeNull()
+  await expect
+    .poll(async () => (await state(page)).activity, { timeout: gameplayTimeout(8000) })
+    .toBeNull()
   const after = await state(page)
   expect(after.activity).toBeNull()
   expect(after.view.day).toBe(before.day + 1)
@@ -308,8 +344,14 @@ test('settings and desktop resize preserve the world, fit the canvas and overlay
   await page.getByRole('button', { name: 'Close panel', exact: true }).click()
   await expect(dialog).toHaveCount(0)
   await expect.poll(async () => (await state(page)).paused).toBe(false)
-  await hold(page, 'w', 1800)
-  await hold(page, 'Space', 800)
+  await holdUntil(page, 'w', (s) => s.wagon.z > resized.wagon.z + 1, {
+    timeout: gameplayTimeout(5000),
+    message: 'Drive after resizing the game',
+  })
+  await holdUntil(page, 'Space', (s) => s.speed === 0, {
+    timeout: gameplayTimeout(3000),
+    message: 'Stop the wagon through its brake control',
+  })
   const moved = await state(page)
   expect(moved.wagon.z).toBeGreaterThan(resized.wagon.z + 1)
   expect(moved.mode).toBe('riding')

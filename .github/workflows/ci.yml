@@ -8,6 +8,10 @@ on:
 jobs:
   browser_smoke:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -16,18 +20,20 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - run: npx playwright install --with-deps chromium
-      - name: Run landscape touch smoke test
+      - run: npx playwright install --with-deps ${{ matrix.browser }}
+      - name: Run gameplay smoke tests
         run: >-
-          npm run test:e2e -- tests/survival.spec.ts --project=chromium
-          --grep 'R13 exposes usable landscape coarse-pointer controls$'
+          npm run test:e2e -- tests/survival.spec.ts tests/crossing-options.spec.ts
+          tests/world.spec.ts tests/spatial-activity.spec.ts
+          --project=${{ matrix.browser }}
+          --grep 'landscape coarse-pointer controls$|at the riverbank$|collides, reboards and drives$|caught food and day exactly once$|day without a catch$|ordinary cold departure day$'
           --reporter=line,json
         env:
           PLAYWRIGHT_JSON_OUTPUT_FILE: smoke-report.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: browser-smoke-results
+          name: browser-smoke-results-${{ matrix.browser }}
           path: |
             test-results/
             smoke-report.json

@@ -10,7 +10,7 @@ The active runtime is a first-person 3D world; the preserved HTML demo is a seat
 - Two world meters represent one campaign mile. Only newly traversed forward distance commits TravelDay after reaching its forecast mileage; turning/stopping/reversing cannot advance a clock-only journey. Playable region chunks compress geography, preserve saves and transition at campaign checkpoints.
 - Saves wrap opaque Rust JSON (including exact u64 RNG) in a versioned spatial envelope. Legacy bytes and last good backups remain available; failed imports cannot replace the active session. Activities checkpoint their progress and committed sequence.
 - Local synthesized Web Audio is unlocked by gesture and silenced during pause/menus/focus loss. No runtime network services.
-- The retired image-scene presentation files are historical. The root rebuild is retiring `src/audio.ts`, `src/components/GamePanels.tsx`, `Minigame.tsx`, `SceneCanvas.tsx`, `Setup.tsx`, `Store.tsx`, `TrailScene.tsx`, `scenes.css`, and `store.css`. The useful `Dialog.tsx`, `TrailMap.tsx`, and campaign/domain seams remain; the world runtime owns presentation and spatial interaction, with local runtime assets and no hotlinks.
+- The retired image-scene presentation files are historical. The rebuild removed `src/audio.ts`, `src/components/GamePanels.tsx`, `Minigame.tsx`, `SceneCanvas.tsx`, `Setup.tsx`, `Store.tsx`, `TrailScene.tsx`, `scenes.css`, and `store.css`. The useful `Dialog.tsx`, `TrailMap.tsx`, and campaign/domain seams remain; the world runtime owns presentation and spatial interaction, with local runtime assets and no hotlinks.
 
 ## Version evidence
 
@@ -20,6 +20,6 @@ References: [Three loader](https://threejs.org/docs/pages/GLTFLoader.html), [Rap
 
 ## Verification separation
 
-System headed Chromium can use ANGLE Mesa AGX G13/G14 on this Linux aarch64 desktop; reference run confirmed it. Hardware performance uses that path and records full environment. CI software-rendering functional tests do not count as hardware performance. Chromium and Firefox functionality are separate required checks. GPU-heavy tests are serialized.
+System Chromium uses ANGLE Mesa AGX G13/G14 on this Linux aarch64 desktop. The reference capture was headed; the latest candidate measurements use headless Chromium with GPU rendering enabled and record the actual renderer and full environment. CI software-rendering functional tests do not count as hardware performance. Chromium and Firefox functionality are separate required checks. GPU-heavy tests are serialized.
 
 The current cold-load artifact is a conditional candidate only: [`docs/evidence/performance/cold-load.json`](evidence/performance/cold-load.json) reports 1,957,266 initial gzip bytes, 5.628 s to setup controls, and 7.268 s to playable state including automated setup clicks under a fresh-context 10 Mbps down / 2 Mbps up, 150 ms latency profile. The artifact is local production-preview evidence; it does not claim final acceptance, a complete suite, a hardware ride, or the ten-minute soak.
