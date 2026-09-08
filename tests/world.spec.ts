@@ -222,14 +222,24 @@ test('fishing casts, hooks, reels and commits the caught food and day exactly on
     .poll(async () => (await state(page)).activity?.phase, { timeout: gameplayTimeout(8000) })
     .toBe('bite')
   await page.keyboard.press('Space')
-  for (let i = 0; i < 150; i++) {
-    const activity = (await state(page)).activity
-    if (!activity) break
-    if ((activity.tension ?? 0) < 0.65) await page.keyboard.down('Space')
-    else await page.keyboard.up('Space')
-    await page.waitForTimeout(100)
+  let reeling = false
+  try {
+    for (let i = 0; i < 150; i++) {
+      const activity = (await state(page)).activity
+      if (!activity) break
+      const tension = activity.tension ?? 0
+      // Leave room for delayed observations and release acknowledgements on software GL.
+      const nextReeling: boolean = reeling ? tension < 0.4 : tension < 0.2
+      if (nextReeling !== reeling) {
+        reeling = nextReeling
+        if (reeling) await page.keyboard.down('Space')
+        else await page.keyboard.up('Space')
+      }
+      await page.waitForTimeout(100)
+    }
+  } finally {
+    await page.keyboard.up('Space')
   }
-  await page.keyboard.up('Space')
   const after = await state(page)
   expect(after.activity).toBeNull()
   expect(after.view.day).toBe(before.day + 1)

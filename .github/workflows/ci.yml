@@ -21,16 +21,39 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npx playwright install --with-deps ${{ matrix.browser }}
-      - name: Install Firefox software OpenGL dependencies
-        if: matrix.browser == 'firefox'
+      - name: Install software OpenGL dependencies
         run: sudo apt-get install -y --no-install-recommends libgl1-mesa-dri libglx-mesa0 mesa-utils
+      - name: Start browser audio endpoint
+        shell: bash
+        run: |
+          sudo apt-get install -y --no-install-recommends pulseaudio pulseaudio-utils
+          export PULSE_RUNTIME_PATH="$RUNNER_TEMP/pioneer-trail-audio/runtime"
+          export PULSE_STATE_PATH="$RUNNER_TEMP/pioneer-trail-audio/state"
+          export PULSE_COOKIE="$RUNNER_TEMP/pioneer-trail-audio/cookie"
+          export PULSE_SERVER="unix:$PULSE_RUNTIME_PATH/native"
+          export PULSE_SINK=trail_ci
+          mkdir -p "$PULSE_RUNTIME_PATH" "$PULSE_STATE_PATH"
+          chmod 700 "$PULSE_RUNTIME_PATH" "$PULSE_STATE_PATH"
+          # Headed browsers need a clocked output device for their real audio analysers.
+          if ! pactl info >/dev/null 2>&1; then
+            pulseaudio --daemonize=yes --exit-idle-time=-1 -n \
+              --load="module-native-protocol-unix socket=$PULSE_RUNTIME_PATH/native auth-cookie=$PULSE_COOKIE" \
+              --log-target="file:$RUNNER_TEMP/pioneer-trail-audio/server.log"
+          fi
+          if ! pactl list short sinks | awk '$2 == "trail_ci" { found = 1 } END { exit !found }'; then
+            pactl load-module module-null-sink sink_name=trail_ci rate=48000 channels=2
+          fi
+          pactl set-default-sink "$PULSE_SINK"
+          pactl info
+          pactl list short sinks
+          test "$(pactl get-default-sink)" = "$PULSE_SINK"
+          for audio_var in PULSE_RUNTIME_PATH PULSE_STATE_PATH PULSE_COOKIE PULSE_SERVER PULSE_SINK; do
+            printf '%s=%s\n' "$audio_var" "${!audio_var}" >> "$GITHUB_ENV"
+          done
       - name: Run gameplay smoke tests
         shell: bash
         run: |
-          browser_runner=()
-          if [[ '${{ matrix.browser }}' == 'firefox' ]]; then
-            browser_runner=(xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=true bash -e -c 'glxinfo -B; exec "$@"' --)
-          fi
+          browser_runner=(xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=true bash -e -c 'glxinfo -B; exec "$@"' --)
           "${browser_runner[@]}" npm run test:e2e -- tests/survival.spec.ts tests/crossing-options.spec.ts \
             tests/world.spec.ts tests/spatial-activity.spec.ts \
             --project=${{ matrix.browser }} \
@@ -38,6 +61,12 @@ jobs:
             --reporter=line,json
         env:
           PLAYWRIGHT_JSON_OUTPUT_FILE: smoke-report.json
+      - name: Stop browser audio endpoint
+        if: always()
+        shell: bash
+        run: |
+          export PULSE_RUNTIME_PATH="$RUNNER_TEMP/pioneer-trail-audio/runtime"
+          if pulseaudio --check; then pulseaudio --kill; fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -45,6 +74,7 @@ jobs:
           path: |
             test-results/
             smoke-report.json
+            ${{ runner.temp }}/pioneer-trail-audio/server.log
 
   validate:
     runs-on: ubuntu-latest
@@ -69,21 +99,52 @@ jobs:
       - run: npm run test:engine
       - run: npm run test:assets
       - run: npx playwright install --with-deps chromium firefox
-      - name: Install Firefox software OpenGL dependencies
-        if: matrix.browser == 'firefox'
+      - name: Install software OpenGL dependencies
         run: sudo apt-get install -y --no-install-recommends libgl1-mesa-dri libglx-mesa0 mesa-utils
+      - name: Start browser audio endpoint
+        shell: bash
+        run: |
+          sudo apt-get install -y --no-install-recommends pulseaudio pulseaudio-utils
+          export PULSE_RUNTIME_PATH="$RUNNER_TEMP/pioneer-trail-audio/runtime"
+          export PULSE_STATE_PATH="$RUNNER_TEMP/pioneer-trail-audio/state"
+          export PULSE_COOKIE="$RUNNER_TEMP/pioneer-trail-audio/cookie"
+          export PULSE_SERVER="unix:$PULSE_RUNTIME_PATH/native"
+          export PULSE_SINK=trail_ci
+          mkdir -p "$PULSE_RUNTIME_PATH" "$PULSE_STATE_PATH"
+          chmod 700 "$PULSE_RUNTIME_PATH" "$PULSE_STATE_PATH"
+          # Headed browsers need a clocked output device for their real audio analysers.
+          if ! pactl info >/dev/null 2>&1; then
+            pulseaudio --daemonize=yes --exit-idle-time=-1 -n \
+              --load="module-native-protocol-unix socket=$PULSE_RUNTIME_PATH/native auth-cookie=$PULSE_COOKIE" \
+              --log-target="file:$RUNNER_TEMP/pioneer-trail-audio/server.log"
+          fi
+          if ! pactl list short sinks | awk '$2 == "trail_ci" { found = 1 } END { exit !found }'; then
+            pactl load-module module-null-sink sink_name=trail_ci rate=48000 channels=2
+          fi
+          pactl set-default-sink "$PULSE_SINK"
+          pactl info
+          pactl list short sinks
+          test "$(pactl get-default-sink)" = "$PULSE_SINK"
+          for audio_var in PULSE_RUNTIME_PATH PULSE_STATE_PATH PULSE_COOKIE PULSE_SERVER PULSE_SINK; do
+            printf '%s=%s\n' "$audio_var" "${!audio_var}" >> "$GITHUB_ENV"
+          done
       - run: npm run test:dev
         if: matrix.browser == 'chromium' && matrix.shard == 1
       - name: Run production browser tests
         shell: bash
         run: |
-          browser_runner=()
-          if [[ '${{ matrix.browser }}' == 'firefox' ]]; then
-            browser_runner=(xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=true bash -e -c 'glxinfo -B; exec "$@"' --)
-          fi
+          browser_runner=(xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=true bash -e -c 'glxinfo -B; exec "$@"' --)
           "${browser_runner[@]}" npm run test:e2e -- --project=${{ matrix.browser }} --shard=${{ matrix.shard }}/2
+      - name: Stop browser audio endpoint
+        if: always()
+        shell: bash
+        run: |
+          export PULSE_RUNTIME_PATH="$RUNNER_TEMP/pioneer-trail-audio/runtime"
+          if pulseaudio --check; then pulseaudio --kill; fi
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: browser-test-results-${{ matrix.browser }}-${{ matrix.shard }}
-          path: test-results/
+          path: |
+            test-results/
+            ${{ runner.temp }}/pioneer-trail-audio/server.log

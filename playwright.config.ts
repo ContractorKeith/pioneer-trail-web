@@ -23,7 +23,9 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:4173',
     actionTimeout: 30_000,
-    trace: 'retain-on-failure',
+    trace: software
+      ? { mode: 'retain-on-failure', screenshots: false, snapshots: true, sources: true }
+      : 'retain-on-failure',
     screenshot: 'only-on-failure',
     storageState: software
       ? {
@@ -48,14 +50,22 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         viewport: software ? { width: 640, height: 360 } : { width: 1280, height: 720 },
-        headless: headlessGpu || process.env.TRAIL_HEADED !== '1',
+        headless: software ? false : headlessGpu || process.env.TRAIL_HEADED !== '1',
         launchOptions: {
           executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE,
-          args: headlessGpu
-            ? ['--ozone-platform=x11', '--enable-gpu']
-            : process.env.TRAIL_HEADED === '1'
-              ? ['--ozone-platform=x11']
-              : ['--enable-unsafe-swiftshader'],
+          args: software
+            ? [
+                '--ozone-platform=x11',
+                '--use-gl=angle',
+                '--use-angle=gl',
+                '--use-cmd-decoder=passthrough',
+                '--ignore-gpu-blocklist',
+              ]
+            : headlessGpu
+              ? ['--ozone-platform=x11', '--enable-gpu']
+              : process.env.TRAIL_HEADED === '1'
+                ? ['--ozone-platform=x11']
+                : ['--enable-unsafe-swiftshader'],
         },
       },
     },

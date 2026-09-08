@@ -292,11 +292,12 @@ export async function main() {
     lastFrames = [],
     unpausedSeconds = 0
   const provisionedRegions = new Set()
+  let checkpointSequence = 0
   const flush = () => writeFile(`${output}/walkthrough.json`, JSON.stringify(report, null, 2))
   const checkpoint = async (name) => {
     const raw = await page.evaluate(() => window.__trail.save())
-    const path = `${output}/${name}.json`
-    await writeFile(path, raw)
+    const path = `${output}/${name}-${++checkpointSequence}.json`
+    await writeFile(path, raw, { flag: 'wx' })
     return {
       path,
       sha256: createHash('sha256').update(raw).digest('hex'),

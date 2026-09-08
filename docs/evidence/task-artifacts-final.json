@@ -1,0 +1,3845 @@
+{
+  "schemaVersion": 1,
+  "snapshotAtUtc": "2026-09-08T16:45:03.376822Z",
+  "hashingCompletedAtUtc": "2026-09-08T16:45:04.670516Z",
+  "repository": "ContractorKeith/pioneer-trail-web",
+  "repositoryHeadAtSnapshot": "c81dfa2796d765220393df4d7b6ebb1f310d819e",
+  "pathBase": "Repository root; every entry is a local relative path.",
+  "scope": "Fixed snapshot of task-generated retained evidence present under .artifacts and docs/evidence at the cutoff. Includes historical failures, successful runs, diagnostics, test-generated checkpoint saves, scripts, original recordings and extracted review stills. Hashes identify bytes; this inventory does not certify a test pass, visual quality, the currently served build or release acceptance.",
+  "coverage": "Only the enumerated regular files are covered. Files created or modified after the cutoff, currently active native-input-focused output and excluded private/cache/dependency paths are not covered. Later runs or edits require a new snapshot; this is not an all-future-artifact claim.",
+  "priorArchive": {
+    "path": "docs/evidence/task-artifacts.json",
+    "sha256": "762582e7d4b7e82765e26474aea625e21d2950ee3a1dbddb6cfea896ecb4679b",
+    "status": "Preserved unchanged; also listed below."
+  },
+  "summary": {
+    "fileCount": 754,
+    "bytes": 2070434741,
+    "byRoot": {
+      ".artifacts": {
+        "fileCount": 589,
+        "bytes": 2001793353
+      },
+      "docs/evidence": {
+        "fileCount": 165,
+        "bytes": 68641388
+      }
+    }
+  },
+  "exclusions": {
+    "active_native_input": {
+      "rule": ".artifacts/native-input-focused*",
+      "scope": "Explicitly excluded active log, JSON, output directory and nested recordings/traces.",
+      "fileCount": 9,
+      "bytes": 14412186
+    },
+    "browser_profile_or_cache": {
+      "rule": "Browser profiles, browser IPC/shared-memory names, Node compile cache, Playwright transform cache, node_modules and temporary dependency bundles.",
+      "scope": "No profile contents, cookies, cache records, sockets or dependency copies are inventoried.",
+      "fileCount": 667,
+      "bytes": 4711484
+    },
+    "not_retained_evidence_type": {
+      "rule": "Files outside the retained log/report/script/media/trace extensions; extensionless test stubs are allowed only under .artifacts/tmp/ci-xvfb-review/bin/.",
+      "scope": "Excludes downloaded upstream C++/YAML source copies and non-evidence binary/temp files.",
+      "fileCount": 3,
+      "bytes": 753770
+    },
+    "not_regular_file": {
+      "rule": "Symbolic links and all non-regular file types.",
+      "scope": "Never followed or hashed.",
+      "fileCount": 0,
+      "bytes": 0
+    },
+    "modified_after_cutoff": {
+      "rule": "mtime later than snapshot cutoff, including files changed during enumeration.",
+      "scope": "New or ongoing probes are outside this fixed snapshot.",
+      "fileCount": 0,
+      "bytes": 0
+    },
+    "changed_during_hash": {
+      "rule": "Identity, size, mtime or ctime changed between enumeration and completed hashing.",
+      "scope": "An unstable file cannot receive a snapshot hash.",
+      "fileCount": 0,
+      "bytes": 0
+    },
+    "inventory_itself": {
+      "rule": "docs/evidence/task-artifacts-final.json",
+      "scope": "Excluded to avoid a self-referential checksum.",
+      "fileCount": 0,
+      "bytes": 0
+    }
+  },
+  "files": [
+    {
+      "path": ".artifacts/activity-rework.md",
+      "bytes": 1436,
+      "sha256": "93b006472a0dd8cd4e78a48a8128751e73c4fda4c1c4994bb94a13daaa889e88"
+    },
+    {
+      "path": ".artifacts/camp-board-browser.log",
+      "bytes": 509,
+      "sha256": "593aa231572579b965443a8caa27bb323d9f7206608ece314dbae1a3b28e1fb6"
+    },
+    {
+      "path": ".artifacts/campaign-attempt-2.log",
+      "bytes": 32810,
+      "sha256": "241ff3cb520a64b12f654f4a1d25d8e0e8ad2b3f1bcef7ead57074fa33102a8e"
+    },
+    {
+      "path": ".artifacts/campaign-attempt-3.log",
+      "bytes": 57819,
+      "sha256": "a04dd6b16f4b1315935b680a63a707a6d159f62ac935618a592bfc794e59c8a8"
+    },
+    {
+      "path": ".artifacts/campaign-attempt-4.log",
+      "bytes": 12776,
+      "sha256": "f64cd1a1c8491dd2fb8e4a1acd40ad7f181b217fff8958daeda313726f7dcc45"
+    },
+    {
+      "path": ".artifacts/campaign-attempt-5.log",
+      "bytes": 589,
+      "sha256": "a75591297304ea765fe509a19b099e7b2939d4da5d1701a7ab74507bc3dbfc78"
+    },
+    {
+      "path": ".artifacts/campaign-attempt-6.log",
+      "bytes": 36514,
+      "sha256": "ebe867ecc89abbf50e705a9888e9a0c7d0b7ea597803afaa1834343df4687ec4"
+    },
+    {
+      "path": ".artifacts/campaign-attempt-7.log",
+      "bytes": 61169,
+      "sha256": "45f5248c930ffaa832d3cf21192c8d9704733615eaf00f1d31e006ee58766cb3"
+    },
+    {
+      "path": ".artifacts/campaign-attempt-8.log",
+      "bytes": 127050,
+      "sha256": "d6c9eaef9c5eef803ebb65da79c23f2a6ae50de57fe6720a3de78dd9644a5870"
+    },
+    {
+      "path": ".artifacts/campaign-current.log",
+      "bytes": 11094,
+      "sha256": "ba236028235defbc184693623349ff1437c1df10c83ec853686425d62ad9ea29"
+    },
+    {
+      "path": ".artifacts/campaign-resumed.log",
+      "bytes": 20914,
+      "sha256": "51fa2c19970c9407c269b835f34a96681883a49945e8dd93481974597795f0a8"
+    },
+    {
+      "path": ".artifacts/capture-activities-startup-failure.log",
+      "bytes": 913,
+      "sha256": "2d6569a6ee286896ba2cd4540a9994f62ef51b073eb81b7a18d568afc8baf1cd"
+    },
+    {
+      "path": ".artifacts/capture-activities.log",
+      "bytes": 386570,
+      "sha256": "9fbca04e8498a87dc55a37041174a5112c49f3132e1b10e31475c4ac97071ef9"
+    },
+    {
+      "path": ".artifacts/capture-final.log",
+      "bytes": 285783,
+      "sha256": "bfe82baa494c6f53eb433170448ee8bda15c411e4a38ded6194169affa46630f"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/analysis.md",
+      "bytes": 8739,
+      "sha256": "dde302574a58625cc2ca92ef64fe1db0d42875decfabe0abda2fb3266b183d26"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/audio-settings-control-the-unlocked-runtime-audio-output-firefox/error-context.md",
+      "bytes": 10526,
+      "sha256": "ddb3f1c3edbd80d6baf3cfdf06a39a8eee275a9b76ad59572e2fac3d565b2507"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/audio-settings-control-the-unlocked-runtime-audio-output-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/audio-settings-control-the-unlocked-runtime-audio-output-firefox/trace.zip",
+      "bytes": 7322171,
+      "sha256": "caf1e76a4b88f48e8410f4314e5abbcbbeb9d63e6dc330905e1bb8ad5e217c88"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-chromium/error-context.md",
+      "bytes": 11392,
+      "sha256": "92aac1bbacca874201061e0ca4eba6b0ce8cd6d89f241bdd1e9e4c8a903077bb"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-chromium/test-failed-1.png",
+      "bytes": 144655,
+      "sha256": "9f72c8460306aec44d15d19fdb5e24789495db2c54e17be33db1d8b066ac5053"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-chromium/trace.zip",
+      "bytes": 14158636,
+      "sha256": "52aee84e48e17338eb1703a2e3f6f7fbb9b38d293198afd439326d47fe760473"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-firefox/error-context.md",
+      "bytes": 10816,
+      "sha256": "89bf5d7862e60f7c44ea33cd50a865b053dd20e4608b23ef2c4ea5f168147194"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-firefox/trace.zip",
+      "bytes": 11289896,
+      "sha256": "a8ec1251b0d5156e6e1951c1a8decfd8cb474f9919c24a990dc46fb594dd3f97"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Guide-6d278-n-attempted-crossing-aborts-chromium/error-context.md",
+      "bytes": 11408,
+      "sha256": "b947960c989eaba93d1cf6f42050916fbc6a5c7653118a8439097dea1900461a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Guide-6d278-n-attempted-crossing-aborts-chromium/test-failed-1.png",
+      "bytes": 160687,
+      "sha256": "aaadb1b997b9c52a6d0d7226e96810af5551e0b29be116735c872fb3bf6852b5"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Guide-6d278-n-attempted-crossing-aborts-chromium/trace.zip",
+      "bytes": 9882180,
+      "sha256": "8de89ddfc8fe80ae2ee68a7bc8ec7ecdc9ed0a5cb2d49e25dda049e3f8ef9632"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Guide-6d278-n-attempted-crossing-aborts-firefox/error-context.md",
+      "bytes": 10823,
+      "sha256": "f238d2817c0ae089d6dec510df182c34a1181021493962ef2335f7f6f7302257"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Guide-6d278-n-attempted-crossing-aborts-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Guide-6d278-n-attempted-crossing-aborts-firefox/trace.zip",
+      "bytes": 6904584,
+      "sha256": "69e99e98d85f7511b0ba881f68c10ec3486ae5c25b8ad32aa7be10ed39ace777"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Wait--da497--the-wagon-at-the-riverbank-chromium/error-context.md",
+      "bytes": 11397,
+      "sha256": "6f113b103f6cac22b680badc70f710644f252a774b7cca80d1f3ae6af5c540a6"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Wait--da497--the-wagon-at-the-riverbank-chromium/test-failed-1.png",
+      "bytes": 112030,
+      "sha256": "3769162fe1a91010f1fcaabe9d3bf1749980448b9b383319824f9e821c89fc04"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Wait--da497--the-wagon-at-the-riverbank-chromium/trace.zip",
+      "bytes": 6335925,
+      "sha256": "c329d44652451331dd82cd9ec32553e14f34512d563f59d679f93d9527b29ee1"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Wait--da497--the-wagon-at-the-riverbank-firefox/error-context.md",
+      "bytes": 10813,
+      "sha256": "73da2daea7f4ced8b0328b524501028db06c7b06a2a8a17f48692845cca05445"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Wait--da497--the-wagon-at-the-riverbank-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/crossing-options-R05-Wait--da497--the-wagon-at-the-riverbank-firefox/trace.zip",
+      "bytes": 7134577,
+      "sha256": "b0caed98d569408d8d535990d6d072b49b3329e9c589f6a8e3369a3864d88d40"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-a-modeled-trader-682e6-er-and-returns-to-the-world-chromium/error-context.md",
+      "bytes": 11385,
+      "sha256": "00aaab6b335e34f8aee4c0145578a13e9d368ee6aee85f9e5c2bf83ab3e5c076"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-a-modeled-trader-682e6-er-and-returns-to-the-world-chromium/test-failed-1.png",
+      "bytes": 155592,
+      "sha256": "529bde8768a9c1011df48ad5336fb1ffbee9e15c9c30d7b3d7598a211d007d1a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-a-modeled-trader-682e6-er-and-returns-to-the-world-chromium/trace.zip",
+      "bytes": 9929131,
+      "sha256": "61efa739f956dc06b2bb30c6c16c5c8a0a7b2c5a3be6cbcd818a0e4e51e93898"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-a-modeled-trader-682e6-er-and-returns-to-the-world-firefox/error-context.md",
+      "bytes": 10800,
+      "sha256": "d12264f24249d3f7c1a0307e0ff43c4057246fad7ba73290f710673866e6b539"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-a-modeled-trader-682e6-er-and-returns-to-the-world-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-a-modeled-trader-682e6-er-and-returns-to-the-world-firefox/trace.zip",
+      "bytes": 7110079,
+      "sha256": "1a26ee3b384d3805e96aab3a5a2c4a68eccdb75ecba17685dddfc791f200674f"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-chromium/error-context.md",
+      "bytes": 11395,
+      "sha256": "0f70f74500a8ebf6f8b3c511394b123ab3bbb2a0ece857e0bb12c3cd87c181ab"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-chromium/test-failed-1.png",
+      "bytes": 200407,
+      "sha256": "0c00f096346ce9cb285a2d140cf101dd78b9645c5a503cd039fd48a566218d6c"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-chromium/trace.zip",
+      "bytes": 9051135,
+      "sha256": "f19e523550757e29fbc22c374add1971c4a6ed27506d4557065947ed0f66c0bb"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-firefox/error-context.md",
+      "bytes": 10811,
+      "sha256": "72d88916b94ddc8b9b3b681ee4c5c89cf135142dd77f1dc29b56f9ebdeaffa3d"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-firefox/trace.zip",
+      "bytes": 7164108,
+      "sha256": "e99411b4ba43d9a07a80b23714044ffbf170a25a2d5107d4f4d5dec1751efaf9"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Escape-cannot-dismiss-the-required-journey-setup-firefox/error-context.md",
+      "bytes": 5909,
+      "sha256": "da57d20bc4d2353c5b7960cfdbe879bc45b5f4b75904e71965130dfe401b0404"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Escape-cannot-dismiss-the-required-journey-setup-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Escape-cannot-dismiss-the-required-journey-setup-firefox/trace.zip",
+      "bytes": 1772188,
+      "sha256": "2e14aed26f3192fdb60434b7219213a169eaa8006186d1de55dbef53361ca354"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Moderate-outfit-6646c-y-into-the-california-world-chromium/error-context.md",
+      "bytes": 11539,
+      "sha256": "1f62a66b07447b7880842bcc3007fb839dd13685d673448ccc871d51efa1fcf0"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Moderate-outfit-6646c-y-into-the-california-world-chromium/test-failed-1.png",
+      "bytes": 164646,
+      "sha256": "ee141fd28c84912245a82b980fed4396225cdfebcbb1a0695e6abe494e2bb9e0"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Moderate-outfit-6646c-y-into-the-california-world-chromium/trace.zip",
+      "bytes": 11545576,
+      "sha256": "3c6b8dd8002bc78d8e648b16701a61f1aaa0a42ed333389184ef1d802e3fd73c"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Moderate-outfit-6646c-y-into-the-california-world-firefox/error-context.md",
+      "bytes": 10551,
+      "sha256": "b009cd857e0790ec763673df10f4991e735d67597f8cd1ea7a3f42d018479bcb"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Moderate-outfit-6646c-y-into-the-california-world-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Moderate-outfit-6646c-y-into-the-california-world-firefox/trace.zip",
+      "bytes": 7112392,
+      "sha256": "cd3e516ffa5a40592fc91290d02387ee0a14144aa6c423fad90bb671e2688363"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Risky-outfittin-c1360-party-into-the-mormon-world-firefox/error-context.md",
+      "bytes": 10544,
+      "sha256": "b6be7fb735d6ab665e4d6042b3b8f59073edd35ecbb2c8852b4704d712eae6d8"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Risky-outfittin-c1360-party-into-the-mormon-world-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Risky-outfittin-c1360-party-into-the-mormon-world-firefox/trace.zip",
+      "bytes": 7331401,
+      "sha256": "5578784bfc149547ae28d1e3809ca1aa3afe23cc088fd1ff7355732518527447"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Safe-outfitting-c8e30-party-into-the-oregon-world-chromium/error-context.md",
+      "bytes": 11521,
+      "sha256": "8c827908fa3fd5822f278c103aca7aad5bb90142d6db896d9158fc2a661a0a04"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Safe-outfitting-c8e30-party-into-the-oregon-world-chromium/test-failed-1.png",
+      "bytes": 164683,
+      "sha256": "f02b58034316cc357515976a05d3daa7530906b62a7fbb159d8a7d4f5442d75d"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Safe-outfitting-c8e30-party-into-the-oregon-world-chromium/trace.zip",
+      "bytes": 11574490,
+      "sha256": "345a0b5a85e6831bea0ca82062df88b3b8171e5102014b771a5d9b54b9eda7c4"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Safe-outfitting-c8e30-party-into-the-oregon-world-firefox/error-context.md",
+      "bytes": 10543,
+      "sha256": "2f253875348c9a7eca11b75678792ae5036f84fda2f7e803ad4e18053858d4ae"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Safe-outfitting-c8e30-party-into-the-oregon-world-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-Safe-outfitting-c8e30-party-into-the-oregon-world-firefox/trace.zip",
+      "bytes": 7163546,
+      "sha256": "fcc4b13887ccfc7d62973fbb8d0cfa3c237a4dc0ae077b7fccbb681e762f3176"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-farmer-outfit-r-7e50a-configurations-stay-visible-firefox/error-context.md",
+      "bytes": 5862,
+      "sha256": "ebb838356bb1438c176ff14ad4f89c6e1166cc44fc41a087bcd4576f98a83c75"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-farmer-outfit-r-7e50a-configurations-stay-visible-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-farmer-outfit-r-7e50a-configurations-stay-visible-firefox/trace.zip",
+      "bytes": 7349931,
+      "sha256": "87a48891f96d1abf13dc4edffd7b5818e90624da04519329869536140d0d4250"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-whitespace-only-0aed5-en-without-replacing-a-save-firefox/error-context.md",
+      "bytes": 5861,
+      "sha256": "6a447517b7dc03f8f334cebfe538ebe2b0e010a4c89f52028dfa5e6f03267626"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-whitespace-only-0aed5-en-without-replacing-a-save-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/onboarding-whitespace-only-0aed5-en-without-replacing-a-save-firefox/trace.zip",
+      "bytes": 7329790,
+      "sha256": "977dad24cff8fe21731a3fe054160cbe8e54316df9d4654ea5597d475fdc8cb1"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/recovery-archive-quota-fai-cb26a-ithout-overwriting-the-save-firefox/error-context.md",
+      "bytes": 7651,
+      "sha256": "8edbc6360d391aa2d674aab5c871f33c541949ddf6abf9c39b4da88ada81aaaa"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/recovery-archive-quota-fai-cb26a-ithout-overwriting-the-save-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/recovery-archive-quota-fai-cb26a-ithout-overwriting-the-save-firefox/trace.zip",
+      "bytes": 1864408,
+      "sha256": "5866e68d9a9f4db873f08074ef68c354631ce3cca172c18869bed3770686519f"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/recovery-failed-activity-s-97fba-unition-and-allows-recovery-firefox/error-context.md",
+      "bytes": 10795,
+      "sha256": "c44b3129a04c04bea2c9d7e9785a2bde1ee84b7143a43528c9548b4652216aa7"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/recovery-failed-activity-s-97fba-unition-and-allows-recovery-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/recovery-failed-activity-s-97fba-unition-and-allows-recovery-firefox/trace.zip",
+      "bytes": 7134446,
+      "sha256": "d8493d438397fa37f74029eb097dcd13660bdc00e190ab0e24c470fc13fa18a5"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/recovery-unsupported-inner-9e6b2-restores-a-validated-backup-firefox/error-context.md",
+      "bytes": 7245,
+      "sha256": "e3a42aca7b88d78f07dbec496e3a6c7ab204296fcf44a3097f96df5da3e8072f"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/recovery-unsupported-inner-9e6b2-restores-a-validated-backup-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/recovery-unsupported-inner-9e6b2-restores-a-validated-backup-firefox/trace.zip",
+      "bytes": 1896934,
+      "sha256": "120900fa99c060591d7d2f67eecdbc30132f0407cb6bed23484dbdc258a24a94"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-an-archive-failure--d5dd6-ey-when-replay-is-requested-firefox/error-context.md",
+      "bytes": 10546,
+      "sha256": "569204abe89f6fde2f2f2674dcee93dd0378478e9da08c5c0ca22b4d8df770bf"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-an-archive-failure--d5dd6-ey-when-replay-is-requested-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-an-archive-failure--d5dd6-ey-when-replay-is-requested-firefox/trace.zip",
+      "bytes": 7132609,
+      "sha256": "2cc6f4e753642105a1c45ebed7e41426b2b686e9d519da4d3807c0757981398b"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-ending-permits-a-ne-d9bc4-rving-the-completed-chapter-firefox/error-context.md",
+      "bytes": 10784,
+      "sha256": "55127394ead5182e328433bef0d8ab7d8eaa468930182a6688f3ac56e0003f1a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-ending-permits-a-ne-d9bc4-rving-the-completed-chapter-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-ending-permits-a-ne-d9bc4-rving-the-completed-chapter-firefox/trace.zip",
+      "bytes": 7029232,
+      "sha256": "efe9731cf8bacbd7106a963b450395493b4207d03c6e169ddad29525039eb5aa"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-failure-permits-a-n-a11e7-rving-the-completed-chapter-firefox/error-context.md",
+      "bytes": 10785,
+      "sha256": "469b300e981b4df69bcba8103a299d54e072f037cb245f7f9fd1adbeef7827c4"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-failure-permits-a-n-a11e7-rving-the-completed-chapter-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-failure-permits-a-n-a11e7-rving-the-completed-chapter-firefox/trace.zip",
+      "bytes": 7034042,
+      "sha256": "b4836a0e944bca5a49a40bd000d84c26ebbaa4e8b7c0e6a493531a8b4dce489f"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-settings-starts-a-s-f44e7-lacing-the-archived-journey-firefox/error-context.md",
+      "bytes": 10562,
+      "sha256": "58b65716a147efcd729411496ba2cda9702da6ff40693d2f34c309562ce9de03"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-settings-starts-a-s-f44e7-lacing-the-archived-journey-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/replay-settings-starts-a-s-f44e7-lacing-the-archived-journey-firefox/trace.zip",
+      "bytes": 7412218,
+      "sha256": "d617627786b92d0fda9203fa8dd5d738f1ee91f46f3a36c3f1f517f6e1642ff1"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/runtime-decisions-a-saved--bc2db-ithout-another-region-reset-firefox/error-context.md",
+      "bytes": 10835,
+      "sha256": "56416977411facb340cc14ebb0fde6486e3a79ef74a871a3dbd50552ecee50ce"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/runtime-decisions-a-saved--bc2db-ithout-another-region-reset-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/runtime-decisions-a-saved--bc2db-ithout-another-region-reset-firefox/trace.zip",
+      "bytes": 6825612,
+      "sha256": "9226b69878fdded3be9b8397765f5a2dec84ebdcd4494a20d014493c94e4322b"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/runtime-decisions-arriving-9b10f-efore-showing-route-choices-firefox/error-context.md",
+      "bytes": 10822,
+      "sha256": "20994d666a8d84ab707e84306869fe7f85c6803a1d1c0b0709009d4122b61346"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/runtime-decisions-arriving-9b10f-efore-showing-route-choices-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/runtime-decisions-arriving-9b10f-efore-showing-route-choices-firefox/trace.zip",
+      "bytes": 6660423,
+      "sha256": "18503d1a813f24f9d2e262cdd6300bb25b1bd2267ab19338eb0e6e61d5247444"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-HUD-fog-a-f9d57-ordinary-cold-departure-day-chromium/error-context.md",
+      "bytes": 7066,
+      "sha256": "945d5b57467250d6d9a05a27051f95ef97c0c6fe629f94e7f92ce34620ee63df"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-HUD-fog-a-f9d57-ordinary-cold-departure-day-chromium/test-failed-1.png",
+      "bytes": 183295,
+      "sha256": "534d169bd34c51c21ba5e8cea7d814c0a77c9fab046edb7047009052c7a3001d"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-HUD-fog-a-f9d57-ordinary-cold-departure-day-chromium/trace.zip",
+      "bytes": 5374160,
+      "sha256": "a2e7de265d7b93fa71209dd65eac762476820c54ea831510be8c1b0c74eea203"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-HUD-fog-a-f9d57-ordinary-cold-departure-day-firefox/error-context.md",
+      "bytes": 10574,
+      "sha256": "63e24accf9e39dbacffe282529035e62fafa6bd64f8028a7ae592cabb18327da"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-HUD-fog-a-f9d57-ordinary-cold-departure-day-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-HUD-fog-a-f9d57-ordinary-cold-departure-day-firefox/trace.zip",
+      "bytes": 7156259,
+      "sha256": "1d083ef06c50087a96af34539dcb9a036a73dad26e3ce7936e07203ce8a6987f"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-fishing-c-c6524-preserves-it-through-reload-chromium/error-context.md",
+      "bytes": 11370,
+      "sha256": "9cd47e449394ee08fbc3d9d290907c016b04d0ea1a61c26d7bee09666f4de6cc"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-fishing-c-c6524-preserves-it-through-reload-chromium/test-failed-1.png",
+      "bytes": 108522,
+      "sha256": "c2d4ea3b0d3ffdb95b358c1b72eed6f2ce10a82b9ec25ffce3cb17be5c37f606"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-fishing-c-c6524-preserves-it-through-reload-chromium/trace.zip",
+      "bytes": 6286247,
+      "sha256": "1f47d902ba449c918a0c78c4e9cf2c293d18e9b1f7636d08fefc36ff97ba8d1c"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-fishing-c-c6524-preserves-it-through-reload-firefox/error-context.md",
+      "bytes": 10822,
+      "sha256": "c46b7832b385b8b82ca5808ad38ab310bf7888cebc94090158565b8dd559218f"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-fishing-c-c6524-preserves-it-through-reload-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/spatial-activity-fishing-c-c6524-preserves-it-through-reload-firefox/trace.zip",
+      "bytes": 7126711,
+      "sha256": "757dcdd23ba4b9ece31ab5be22eab748247aa034de4c59db35a1fba234afeb49"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-camp-manageme-11ad0-ings-gathers-food-and-rests-chromium/error-context.md",
+      "bytes": 11547,
+      "sha256": "fe5ea08f2204446ea04817fcf78c7a06b65219c85e0ccd1621a22160ffb8fa07"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-camp-manageme-11ad0-ings-gathers-food-and-rests-chromium/test-failed-1.png",
+      "bytes": 201298,
+      "sha256": "ce6342b510c4fc3635af6e00ec25c35f4911b8273d0ebbe22f7b34e1a5ca47a6"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-camp-manageme-11ad0-ings-gathers-food-and-rests-chromium/trace.zip",
+      "bytes": 8551834,
+      "sha256": "e2190f3829cdcb6fd7a2092f11ca322fed9f283cd2feb46af79fd08582cf8e1c"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-camp-manageme-11ad0-ings-gathers-food-and-rests-firefox/error-context.md",
+      "bytes": 10798,
+      "sha256": "1a3dc5f15f39f651f8baadaf88af424019bc29ab1b9e662350f702465d2ec7af"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-camp-manageme-11ad0-ings-gathers-food-and-rests-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-camp-manageme-11ad0-ings-gathers-food-and-rests-firefox/trace.zip",
+      "bytes": 7153806,
+      "sha256": "f7ee6863cbee6c5a229c0c59cf34512a1caee67e22de3ccf9539f080bb95ef4c"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-repairs-a-man-c5a1c-ough-the-physical-camp-flow-chromium/error-context.md",
+      "bytes": 11511,
+      "sha256": "3f05d878d2fad0f7ace6c4661f7a4e875dcdaa373e7ed83b02d9c63d1f67aa4b"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-repairs-a-man-c5a1c-ough-the-physical-camp-flow-chromium/test-failed-1.png",
+      "bytes": 219079,
+      "sha256": "0b7fe41e75691b81147c2e387741cd35ac8cff768bc2773a4353103aada8524b"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-repairs-a-man-c5a1c-ough-the-physical-camp-flow-chromium/trace.zip",
+      "bytes": 8310683,
+      "sha256": "966695049d4a0bcdb2a3d2b28a688bd5d2af7e92d7eed0b658274ee785e4970d"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-repairs-a-man-c5a1c-ough-the-physical-camp-flow-firefox/error-context.md",
+      "bytes": 10789,
+      "sha256": "647da0fc7fadc437beb6c400fa6b93131f547103d82c5e0a739dc93953d8e48e"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-repairs-a-man-c5a1c-ough-the-physical-camp-flow-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-repairs-a-man-c5a1c-ough-the-physical-camp-flow-firefox/trace.zip",
+      "bytes": 6868461,
+      "sha256": "7e9ea4c097fccbf2d742c4f24e73c96fdace94407fa00a9b2c84862e6ac82503"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-treats-an-ill-848ec-proaching-them-in-the-world-chromium/error-context.md",
+      "bytes": 11466,
+      "sha256": "c2c8134e0f0d917f93c0cdf5eba45a5835907a46f007fc99c839dbc9a09c8539"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-treats-an-ill-848ec-proaching-them-in-the-world-chromium/test-failed-1.png",
+      "bytes": 159825,
+      "sha256": "187b0ae55d4bb315c0c807c9fad82922fb1f19c2ea7aa434da0e40733fb95c25"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-treats-an-ill-848ec-proaching-them-in-the-world-chromium/trace.zip",
+      "bytes": 7477881,
+      "sha256": "450befe66660747413041b69bebcc3d558157d6bb79d7ca146d2ccc5a184ff5a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-treats-an-ill-848ec-proaching-them-in-the-world-firefox/error-context.md",
+      "bytes": 10784,
+      "sha256": "1feaa3e13f28cebe1b185ad52001e286a8998dae3ed1caadd7c6497f2e4adac8"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-treats-an-ill-848ec-proaching-them-in-the-world-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R08-treats-an-ill-848ec-proaching-them-in-the-world-firefox/trace.zip",
+      "bytes": 7069898,
+      "sha256": "b11d16a13a22a9e63f710c4284969eb2de455f9d2a04c652f3f3f51539331e66"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R09-keeps-physica-83a36-ters-and-recruitment-usable-chromium/error-context.md",
+      "bytes": 10304,
+      "sha256": "f4ad3aa0abadf9597ba863a560fbb7883c4b3586c703a664b6d32d2ad9ee3cf5"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R09-keeps-physica-83a36-ters-and-recruitment-usable-chromium/test-failed-1.png",
+      "bytes": 148749,
+      "sha256": "a4cd9bb3a874bc1d70a83611c4d41bd951ea8e2e0adcd4218acab4c0fdc5afae"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R09-keeps-physica-83a36-ters-and-recruitment-usable-chromium/trace.zip",
+      "bytes": 10576797,
+      "sha256": "737cb3a5f955c2a690384ca2b8cfc4bd60173bef57fa591098e7b8832e29d75e"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R09-keeps-physica-83a36-ters-and-recruitment-usable-firefox/error-context.md",
+      "bytes": 10792,
+      "sha256": "c1bf024ba9657e4928b5d0a5947f6168ce4d539d10a6dc1fb9bd6c0232b4a82d"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R09-keeps-physica-83a36-ters-and-recruitment-usable-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R09-keeps-physica-83a36-ters-and-recruitment-usable-firefox/trace.zip",
+      "bytes": 7070786,
+      "sha256": "52bd92ce0e37b4517ba3abdb94a1b73f86ac33a8a9253b6ee34ed7882c930e68"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R13-exposes-usabl-5ea69-ape-coarse-pointer-controls-firefox/error-context.md",
+      "bytes": 636,
+      "sha256": "5e000b5d4c8736f8e8ee7252584827fbdbb9d61e3c0409d232fe7b81533786ea"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R13-exposes-usabl-5ea69-ape-coarse-pointer-controls-firefox/test-failed-1.png",
+      "bytes": 24571,
+      "sha256": "91f7d53a51e75550efc2af26fe39d99dcc8e35a2358d89d82693a3a7ec57fe78"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R13-exposes-usabl-5ea69-ape-coarse-pointer-controls-firefox/trace.zip",
+      "bytes": 6638280,
+      "sha256": "0dd77da6bf89dec8b81c32e22c20a645ac6a5df836a88b47f53fdfe7a05e364b"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R13-supports-desk-16a68-k-and-pointer-lock-recovery-firefox/error-context.md",
+      "bytes": 10539,
+      "sha256": "d8e84f0c8d7a4501060c238857823bce07ccbdb3f8ab8026c0b8d7601e757a2d"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R13-supports-desk-16a68-k-and-pointer-lock-recovery-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/survival-R13-supports-desk-16a68-k-and-pointer-lock-recovery-firefox/trace.zip",
+      "bytes": 7049288,
+      "sha256": "52a2710a7a83de9b816c0634de4f82aee7886c90758a2b01a658d775b2830b73"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Caulk-crossing-has-costs-and-onward-physical-travel-chromium/error-context.md",
+      "bytes": 11317,
+      "sha256": "5813f98e77cb0625ccf1eb64e26350119a7d26360bc4fc5fdbf8b384f35be272"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Caulk-crossing-has-costs-and-onward-physical-travel-chromium/test-failed-1.png",
+      "bytes": 102932,
+      "sha256": "173db479a907102b765665e7483963cc476a2f020a0b7804bb01ab98a8f12180"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Caulk-crossing-has-costs-and-onward-physical-travel-chromium/trace.zip",
+      "bytes": 10288707,
+      "sha256": "515c08bb1061b171a2655cca6de77d06cf64d8bc7fc87820bc5e8f157d3c09b0"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Caulk-crossing-has-costs-and-onward-physical-travel-firefox/error-context.md",
+      "bytes": 10769,
+      "sha256": "bdc0f3d82e26d309ac4d4c0da6ba426b8252afd36804de5ee1f69e724507c68d"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Caulk-crossing-has-costs-and-onward-physical-travel-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Caulk-crossing-has-costs-and-onward-physical-travel-firefox/trace.zip",
+      "bytes": 11200771,
+      "sha256": "7f55483c4687786bd13f8bc8061d1c3ec48d9720ba6ac7cabe6eda96b14315db"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Escape-and-overlays--b0035-d-recover-without-advancing-firefox/error-context.md",
+      "bytes": 10557,
+      "sha256": "8a162e197a25c6cd837cdcc73c66fc6e4fa4209cd6e7b5f35a2cd9415728492d"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Escape-and-overlays--b0035-d-recover-without-advancing-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Escape-and-overlays--b0035-d-recover-without-advancing-firefox/trace.zip",
+      "bytes": 6990789,
+      "sha256": "42f8152cac0cd7f3ac4bbe5ea48b7a9d7d2aa384c043aaa80fe0da0782e4700a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Ferry-crossing-has-costs-and-onward-physical-travel-chromium/error-context.md",
+      "bytes": 11488,
+      "sha256": "d28aa5497eca8a90dd3776f96304712f954c0b668b76a3b5604015cf4028c334"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Ferry-crossing-has-costs-and-onward-physical-travel-chromium/test-failed-1.png",
+      "bytes": 108141,
+      "sha256": "3d899ba1ae5251af53e605e2cdbc5126e1c127b4f7207299aa3efa75ff343255"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Ferry-crossing-has-costs-and-onward-physical-travel-chromium/trace.zip",
+      "bytes": 10335421,
+      "sha256": "7373f694463912fe6953d803a5a6e5423fcccde29bb3fc95c2bf85501c158fef"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Ferry-crossing-has-costs-and-onward-physical-travel-firefox/error-context.md",
+      "bytes": 10769,
+      "sha256": "a97542129f4c91c116bd246d8dcb4719e4eec91f7fcba6e7def63f04e2e46e46"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Ferry-crossing-has-costs-and-onward-physical-travel-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-Ferry-crossing-has-costs-and-onward-physical-travel-firefox/trace.zip",
+      "bytes": 11226095,
+      "sha256": "a5ac5892b12d5f099c133c5b50b5ad3fedbb351a3803b86b7d236cded9197096"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-a-missed-fishing-bite-spends-its-day-without-a-catch-chromium/error-context.md",
+      "bytes": 10493,
+      "sha256": "909e6a03924501a467192e05a6942157b1d9f8ce280421d5651a02a7bb353dd5"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-a-missed-fishing-bite-spends-its-day-without-a-catch-chromium/test-failed-1.png",
+      "bytes": 179797,
+      "sha256": "d7c1b06dae646ed77fcb560aecad6571e9ba78543079edffd16685e7c769cf35"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-a-missed-fishing-bite-spends-its-day-without-a-catch-chromium/trace.zip",
+      "bytes": 4265775,
+      "sha256": "831d6b4ed2c1ec450aa948f273ae0ca8f3592ba8e96aee86aa2c76f3dc2c802a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-a-missed-fishing-bite-spends-its-day-without-a-catch-firefox/error-context.md",
+      "bytes": 10768,
+      "sha256": "3db44d03a173470fca89798799166152c7c0cdcf0c86882a37b9121b7fe4f1ae"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-a-missed-fishing-bite-spends-its-day-without-a-catch-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-a-missed-fishing-bite-spends-its-day-without-a-catch-firefox/trace.zip",
+      "bytes": 7018396,
+      "sha256": "e686475628bc26540e4ded2cca1ee21b9ca80e8daa9a75e977c390f98f838eab"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/error-context.md",
+      "bytes": 7614,
+      "sha256": "5745bd6386ca68d139c672af174fe6586fd0cb7943f47dbe95e647564762c43c"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/test-failed-1.png",
+      "bytes": 193429,
+      "sha256": "666fb9eff89d61a729353fb418626ff16151721b06698fd66e254b3cd78b8762"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/trace.zip",
+      "bytes": 3654122,
+      "sha256": "2471170e804e9b1e6ebaa8e30668034290e70cc25ae1de5ef7fc44efb49b00af"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/error-context.md",
+      "bytes": 10556,
+      "sha256": "15cab7fc0139835f4a0a7b3d5b6a28d20cce0478db9c63598d1be03531e65326"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/trace.zip",
+      "bytes": 7030831,
+      "sha256": "05a2bff4a1f58c05bccdba00fa18b12847a0474e8d390d6be0a8cefcd5533837"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium/error-context.md",
+      "bytes": 12089,
+      "sha256": "2d4a450ccaf4b0fe91046a4ae16213fed6442922f160c2f27c2f13d2e7b7a28f"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium/test-failed-1.png",
+      "bytes": 193464,
+      "sha256": "135bb55e0bdb7ed1be65e0c76ff6747801b39e93942a20510bfb73334aac2d57"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium/trace.zip",
+      "bytes": 4422893,
+      "sha256": "c10333b370f9015756cbad4096775079cc70cae6192eefcbccbfe6e24c52151c"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-firefox/error-context.md",
+      "bytes": 10792,
+      "sha256": "656fadcd397f1992ba50b6762d528b9a0eba7bcccf925f2b2fd89ad603d2973a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-firefox/trace.zip",
+      "bytes": 7123155,
+      "sha256": "204ee2d9fb35b1969cd3310275544e8979034871eb5d2e090d8cdfa323a43d9a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-ending-presents-its-mandatory-decision-on-reload-firefox/error-context.md",
+      "bytes": 10770,
+      "sha256": "8d72235881ddb324e171beca36b6ad56e0e67922f738c881c362d5ad5c855573"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-ending-presents-its-mandatory-decision-on-reload-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-ending-presents-its-mandatory-decision-on-reload-firefox/trace.zip",
+      "bytes": 6887923,
+      "sha256": "c55e8202bca9c77336091e9dad06d9332a6bd1a43ebaa77b710cfcebf3e1e73b"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-event-presents-its-mandatory-decision-on-reload-firefox/error-context.md",
+      "bytes": 10769,
+      "sha256": "6207efc14d58942e6c081247e032894139395e70480b5ed6896d1c056d3e6f7d"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-event-presents-its-mandatory-decision-on-reload-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-event-presents-its-mandatory-decision-on-reload-firefox/trace.zip",
+      "bytes": 7112976,
+      "sha256": "f84bf7ea1b7d3e6370aca59ef3a5a1341ebd0e6f7919ec8d7faa475a4a2ba9a4"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-failure-presen-8cc77-andatory-decision-on-reload-firefox/error-context.md",
+      "bytes": 10771,
+      "sha256": "ab383ce72cddace3490fea75fb6fb83a997031f1e3cb675f4d9006e29038c294"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-failure-presen-8cc77-andatory-decision-on-reload-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-failure-presen-8cc77-andatory-decision-on-reload-firefox/trace.zip",
+      "bytes": 7028429,
+      "sha256": "3c17aee18f1e4b40a7cb6e0e78e23e53ab99f729ad01a1d6d6dddafe00674b48"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-fork-presents-its-mandatory-decision-on-reload-firefox/error-context.md",
+      "bytes": 10768,
+      "sha256": "9d669ef01289735791ec5a78c1de899192d3edab6bc45d39585e53a9d838b9ed"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-fork-presents-its-mandatory-decision-on-reload-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-saved-fork-presents-its-mandatory-decision-on-reload-firefox/trace.zip",
+      "bytes": 7029293,
+      "sha256": "006c79cfdce915de1d7dc7e10ac685bb6b1c5a0b270a9bb94bb6a57f773dda53"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-settings-change-comf-c1e5f-ports-preserve-failed-input-firefox/error-context.md",
+      "bytes": 10560,
+      "sha256": "e8e045f4a76c95248b1d3e5860f04da8d085a920ff711e53f551e748fd6b214b"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-settings-change-comf-c1e5f-ports-preserve-failed-input-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/browser-test-results/world-settings-change-comf-c1e5f-ports-preserve-failed-input-firefox/trace.zip",
+      "bytes": 7355010,
+      "sha256": "ce712ecd8c5bf706adeb1fbeec7b428da87b14f179e990bb5e5d8d1356eda716"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/chromium-device-scale-probe.json",
+      "bytes": 954456,
+      "sha256": "7c7f7f28b1eb040517f06194ece131a83461d50bd14bfbdc2093083bb0a61d18"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/chromium-diagnostics-summary.json",
+      "bytes": 11406,
+      "sha256": "8b9e6625795da99871fa54f31224928cf904d93940df02be497a169846411c26"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-chromium.json",
+      "bytes": 301954,
+      "sha256": "cf8a01346ebb068c448146eaf6d875cc20f2062fbb764db3bf0bd65082cc12a0"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/crossing-options-R05-Guide-6d278-n-attempted-crossing-aborts-chromium.json",
+      "bytes": 300992,
+      "sha256": "02d6f5c6895641c45679677560dc6de5d947da3ff507580f0a5d2d595ca27048"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/crossing-options-R05-Wait--da497--the-wagon-at-the-riverbank-chromium.json",
+      "bytes": 296252,
+      "sha256": "9b5fb1a8ea18fe081c4a338c6fe9d50ea16a42f41d3c7b02a60657d6acc24ad1"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/mechanics-a-modeled-trader-682e6-er-and-returns-to-the-world-chromium.json",
+      "bytes": 297199,
+      "sha256": "37287e1a8f9a44d6078bdb7718dbf9c10652b3e0cadd45a1020464071f252383"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-chromium.json",
+      "bytes": 295532,
+      "sha256": "19e4580ba3952eb40b6f1e50d31d5e2b24f92e2226bdf9f5a7cf2b75d159b915"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/onboarding-Moderate-outfit-6646c-y-into-the-california-world-chromium.json",
+      "bytes": 295715,
+      "sha256": "b663c2ed076d18a7c183deec96c2f40fa5f653f69a61c2b3c1fe7b63b8384379"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/onboarding-Safe-outfitting-c8e30-party-into-the-oregon-world-chromium.json",
+      "bytes": 295716,
+      "sha256": "2bb5c9fa2d898290cfde4744108e18875035f351ad063562c9f6a8009749807a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/spatial-activity-HUD-fog-a-f9d57-ordinary-cold-departure-day-chromium.json",
+      "bytes": 295717,
+      "sha256": "5d21edbf0c909fd3deb538640cf2430a0ad2184ec2fbd08687b3fa4dde078770"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/spatial-activity-fishing-c-c6524-preserves-it-through-reload-chromium.json",
+      "bytes": 296251,
+      "sha256": "ba0e559cac80dbc311fa905626ffb15fd39116c54bdab4f157cffc46f335c18b"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/survival-R08-camp-manageme-11ad0-ings-gathers-food-and-rests-chromium.json",
+      "bytes": 295656,
+      "sha256": "ae0313ecae07cd068ba064a4e7a632545eed1441788521e5edcb71b3528e2eec"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/survival-R08-repairs-a-man-c5a1c-ough-the-physical-camp-flow-chromium.json",
+      "bytes": 301546,
+      "sha256": "0bc01154566b4b78e9c7821497611f83c9bf3f977c318cc0caacce9c4ff66de4"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/survival-R08-treats-an-ill-848ec-proaching-them-in-the-world-chromium.json",
+      "bytes": 295615,
+      "sha256": "5b47095ef3e593422e15447f8550f235fd87dbe3c22c7e7c9f8e531aa5074d85"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/survival-R09-keeps-physica-83a36-ters-and-recruitment-usable-chromium.json",
+      "bytes": 297256,
+      "sha256": "62089d8482457778c8b62895d39cb45d607cefb3e314545f07c23d21cdf8514b"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/world-Caulk-crossing-has-costs-and-onward-physical-travel-chromium.json",
+      "bytes": 299315,
+      "sha256": "710721964fc6c889d148673208d3bc44e55295543ffee9541eb990a4c6e34d57"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/world-Ferry-crossing-has-costs-and-onward-physical-travel-chromium.json",
+      "bytes": 299486,
+      "sha256": "cd050976f287bd7d6522d0f10e82eef99d81127a8fd0d7c6d70b9cb30999d73a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/world-a-missed-fishing-bite-spends-its-day-without-a-catch-chromium.json",
+      "bytes": 298196,
+      "sha256": "e4da600efdd479df3662fa19c7f2523ce8ef70adb4543bb949471e331b0a9376"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium.json",
+      "bytes": 297172,
+      "sha256": "53516ff14749a9513c44188a2afe0fe9027752b3f7b4ea7b914e4dff2c73036a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/diagnostics/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium.json",
+      "bytes": 298353,
+      "sha256": "0c33b002b14479798d503ef3dbe88b748fbb53567b9c6a0e9a5368afc74c6bfb"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/e2e.log",
+      "bytes": 148130,
+      "sha256": "28aeb28c90ec4eadf47b56b7077d8d39954360925426560483baed080adcf03d"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/failure-summary.json",
+      "bytes": 28596,
+      "sha256": "3cdabab9e60cb6e7d860769ec729e82780dc4e4a830b2f5249ce78a7e1c0d38a"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/final-helper-collection.json",
+      "bytes": 788,
+      "sha256": "70a73359b388b04cf3a9fe1730712b90959a0dd8e3406e4b8c837090659d7aea"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/firefox-touch-current.json",
+      "bytes": 4404,
+      "sha256": "263e36bbfff13003d30d8719d3c5f029e0061298026e9de613bd4f358fba2820"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/firefox-touch-results/.last-run.json",
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/firefox-webgl-probe.json",
+      "bytes": 1073,
+      "sha256": "d464cfd4cb4122e01b003afbe50693b6360cdd41f63ea64ceb2209208cc6add4"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/helper-cpu-probe.mjs",
+      "bytes": 5521,
+      "sha256": "64bddeaf02fabba366e50581cf045ce2ada12fa904edc6783b0d1773fbc87366"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/job.log",
+      "bytes": 451224,
+      "sha256": "ad9cb75d76c67c58a0e394386fc9d42e524fb352a3427b83010b0fa4822f0108"
+    },
+    {
+      "path": ".artifacts/ci-2cfc/trace-diagnostics.json",
+      "bytes": 91093,
+      "sha256": "6fddd9e39e7ddc89572c79597bc32819ec12116570d27b3d54c27c0df3791f40"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-chromium-1.log",
+      "bytes": 215,
+      "sha256": "2f3f0ee1f0bf7db994c176b1f6d4b4d27236ea8a2ec1d535f7c287746c343a6f"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-chromium-smoke.log",
+      "bytes": 54355,
+      "sha256": "e8becddeea0c159b789e1b81b5e7d78488317e5a6e8f1e87b826c03d6a4e414e"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1.log",
+      "bytes": 172698,
+      "sha256": "b9162b67722a64f86ee6e51ffd7dd9e595c6f6660d1fe87565dbb18c58cf989a"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/audio-settings-control-the-unlocked-runtime-audio-output-firefox/error-context.md",
+      "bytes": 4099,
+      "sha256": "40d9228ac472325b35b262f4399922e708345b528f91fd65cd811994f43c22e9"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/audio-settings-control-the-unlocked-runtime-audio-output-firefox/test-failed-1.png",
+      "bytes": 201020,
+      "sha256": "dd36c627b72b83b592554201c4bbbae7259bb716bbe16967adcaa429a9c6ba7f"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/audio-settings-control-the-unlocked-runtime-audio-output-firefox/trace.zip",
+      "bytes": 3983152,
+      "sha256": "4fa5a1d87af474e444a9f26e384d9197e57864dbc3d9e302dad724ff69557110"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/collection-after-harness-fixes.json",
+      "bytes": 58524,
+      "sha256": "e4a4d6ffa3c5d0060746e20e705776892bd2c2912189d4e7d1ad0e178460a1c4"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/columbia-exit-probe.json",
+      "bytes": 3076,
+      "sha256": "cc21cf90746d8966cd4ba5cadb9ac246f5c5c57580bfbf918bcb61a04182a748"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/columbia-exit-probe.mjs",
+      "bytes": 2084,
+      "sha256": "4eec133c6993d588b320b2efa86b5cd8dabeaf1c199473acc9fb2550c8da25e3"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/columbia-handoff-probe.json",
+      "bytes": 772,
+      "sha256": "1b5b51ab7971f779541df70ea6fc82971afe6bc7d40df23656fb837ecc08af9b"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/columbia-handoff-probe.mjs",
+      "bytes": 3449,
+      "sha256": "7454995b982cbcf495a20d705e92ce152e8497654cc323285406e951c8be8e56"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-firefox.timeline.json",
+      "bytes": 432078,
+      "sha256": "38c072ee590fc2750888068f246bb5c2e598516b35fe3c1d0db0410bbb76eca6"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-firefox/error-context.md",
+      "bytes": 10903,
+      "sha256": "8b8c9f3227da0d8e797a49572a878777cb0b98d935215c2696ebd1130f1cd0c2"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-firefox/test-failed-1.png",
+      "bytes": 176372,
+      "sha256": "3224636367cc74da9038e5c39f93c72e44fa77e2549d151724318e99c5735dbc"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/crossing-options-R03-R05-C-b33ed-ical-raft-run-to-the-ending-firefox/trace.zip",
+      "bytes": 118582887,
+      "sha256": "e17021335e24a41671d193ee2c171071b00abe06ccaeabdd63bb1a1d56de8e58"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/decode-targets.py",
+      "bytes": 2193,
+      "sha256": "7886b6fc050ebfa1fafa1eee154a7d54970612110cb5687b7dfef04912b8a2bb"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/harness-fixes.md",
+      "bytes": 2656,
+      "sha256": "eaeaae4b50c55f9d4f37c82fa1339bdb3b59c2838db92b4fa69f93f4e8ea7a2c"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-firefox.timeline.json",
+      "bytes": 26784,
+      "sha256": "cae749d1f51f3d5cc7d0e66d2d836008036f592de91af8fde04c60a637d10698"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-firefox/error-context.md",
+      "bytes": 8329,
+      "sha256": "4051ec078465a8a0db1218e827107d1054eec7857ef806f74e48348d997ac76c"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-firefox/test-failed-1.png",
+      "bytes": 140885,
+      "sha256": "b585315b7a19a1d5fbf48389d16a8d2dad611e35ef98522af6ec0849fbf72216"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/mechanics-hunting-uses-mov-1ebab-e-and-survives-interruption-firefox/trace.zip",
+      "bytes": 17233278,
+      "sha256": "a2da3f8df563b8bb45b3bbe998a353f26c3e2ef75b062d601cae3d3355ea7b8b"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/recovery-failed-activity-s-97fba-unition-and-allows-recovery-firefox/error-context.md",
+      "bytes": 8313,
+      "sha256": "5dc6ab6af40d50a32505750ab7de87bc1dc0b5d9cb88627a27e8a74709c76189"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/recovery-failed-activity-s-97fba-unition-and-allows-recovery-firefox/test-failed-1.png",
+      "bytes": 243880,
+      "sha256": "bbbccfd35897c2b48442c303dbc0b8dc7a224d29af6cb4979940f6ff358273c7"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-1/recovery-failed-activity-s-97fba-unition-and-allows-recovery-firefox/trace.zip",
+      "bytes": 17988045,
+      "sha256": "7cee1b7e19a57b437a4c811f4416efc4ff28272b711fb0831446afbb0d62878d"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-2.log",
+      "bytes": 162411,
+      "sha256": "895bd7d0a6a8cb0b723a9d7093d8adc55eb31d15a1006fcc28961af8f43fbe95"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-2/survival-R09-accepts-a-let-2bcd9-d-retains-payment-on-reload-firefox/error-context.md",
+      "bytes": 7781,
+      "sha256": "8a0939f1a001167881c6658f1fc005d618e100788b2735867e84a80cb1a85a72"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-2/survival-R09-accepts-a-let-2bcd9-d-retains-payment-on-reload-firefox/test-failed-1.png",
+      "bytes": 161259,
+      "sha256": "c7c83d7daeaf61a7fd36e220c8d09dc24939ac27cdf3a0489bf197f772576088"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-2/survival-R09-accepts-a-let-2bcd9-d-retains-payment-on-reload-firefox/trace.zip",
+      "bytes": 8344261,
+      "sha256": "22d30e8ed1c9baba88091bc80eb50eeb474a51f9281fdf07451ebc55f64a032b"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-2/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/rear-seat.png",
+      "bytes": 329452,
+      "sha256": "23d080470a81139982742915b0793875c2eee527daf56830ee7c09d40d03d776"
+    },
+    {
+      "path": ".artifacts/ci-c81dfa2-firefox-smoke.log",
+      "bytes": 71014,
+      "sha256": "974db589b5971635d8c54194015e91e3bd14eaeffe2399fc5bb372c83927d7a7"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-1.log",
+      "bytes": 155454,
+      "sha256": "6f5baf17ef898c439dd2edd0238962155a7c4d999b292a94816d1f9b855b3517"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2.log",
+      "bytes": 165061,
+      "sha256": "5870cdfa7dbacee42a81a24be6c3200bd4eb00034544c00731e1270826b98629"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/survival-R09-accepts-a-let-2bcd9-d-retains-payment-on-reload-chromium/error-context.md",
+      "bytes": 7933,
+      "sha256": "48ea3f4298517aa20329fbb8c9f177849df3c069517aed3bb8fe73455319afe3"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/survival-R09-accepts-a-let-2bcd9-d-retains-payment-on-reload-chromium/test-failed-1.png",
+      "bytes": 116561,
+      "sha256": "fe313ef6ef857b2ef26482c656d8d6719fdffd08e65d4c6e3b43b948e6d5b9a1"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/survival-R09-accepts-a-let-2bcd9-d-retains-payment-on-reload-chromium/trace.zip",
+      "bytes": 31621943,
+      "sha256": "575adfb83084ef028cb542a9138ae67f1da148ae315ab5d27c844f5806e59b9b"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/survival-R09-recruits-a-tr-8c35a-ves-the-dismissal-on-reload-chromium/error-context.md",
+      "bytes": 9770,
+      "sha256": "67452b7c062ef0c3b44d995abc8b931eec3a2f4c4e3e5b3978a1012739c91962"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/survival-R09-recruits-a-tr-8c35a-ves-the-dismissal-on-reload-chromium/test-failed-1.png",
+      "bytes": 146514,
+      "sha256": "464df23c9ab8b86208dc94745bd5c0e34e6a85552dee037469b7aaa381cdef91"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/survival-R09-recruits-a-tr-8c35a-ves-the-dismissal-on-reload-chromium/trace.zip",
+      "bytes": 59286144,
+      "sha256": "f20e965260d4761ecaa9c06789436134832649e6dc7cf87fb2550dd92784450e"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/world-Caulk-crossing-has-costs-and-onward-physical-travel-chromium/error-context.md",
+      "bytes": 6765,
+      "sha256": "ea492bedc130ab5113d443e01fc4e23f306b264a69c78d9acde8a032c7897c39"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/world-Caulk-crossing-has-costs-and-onward-physical-travel-chromium/test-failed-1.png",
+      "bytes": 151073,
+      "sha256": "45e4f73abd743413aa38afea0fae33c88c852c18024212e0cd9c9488420e6e4e"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/world-Caulk-crossing-has-costs-and-onward-physical-travel-chromium/trace.zip",
+      "bytes": 47362154,
+      "sha256": "7ef96e8f5f306da67ca803507f91975031cdafb5ee9010e43957a9c16e7ca8d3"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/error-context.md",
+      "bytes": 9741,
+      "sha256": "e9b5e040039da4547a4a97fc3ec692e0bf2fd8e74e6a833e8eb3ca13e44422c4"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/rear-seat.png",
+      "bytes": 272224,
+      "sha256": "11a9d9d5c826a3d3d5c7741ff4f15df1d7bcea1d2557e3198d2e79cb9dbeb65c"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/test-failed-1.png",
+      "bytes": 185690,
+      "sha256": "e2b84053241cc6e2d810a858ba33edaee89957bd43271d84558831a593fbe9ee"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/trace.zip",
+      "bytes": 66606376,
+      "sha256": "a181ec645a9c2f5aa9ff8c03fd65b8caf7b6f2c816a49c60aea09fd128023a5b"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium/error-context.md",
+      "bytes": 11407,
+      "sha256": "9441b6c6677f34306b2e996162eb045774fb535107c5b6bf8d67190b200332cb"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium/test-failed-1.png",
+      "bytes": 168667,
+      "sha256": "627680f163ed042b5a07537211a7e195263c3d15decf7edc54029c46347b3fa8"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-2/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium/trace.zip",
+      "bytes": 8735990,
+      "sha256": "0a7a96647af687b0cdaa787cb225a02a6a244dd04919e18ea67eb51b47957884"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/analysis.md",
+      "bytes": 4714,
+      "sha256": "356d2b10899c61f9782657769c58b0dfb01e2727f9017f282cff67286626106d"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/case-summary.json",
+      "bytes": 3482,
+      "sha256": "46501a47b19ea005e19e02b4fcf35ff82a52a4fa9056eb8c476255ae03b1d373"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/decode-traces.py",
+      "bytes": 1969,
+      "sha256": "58f565783f0997013bcd43a83b9e5baf3babc137ba2c10af71e5338a413113c2"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/helper-boundary-probe.json",
+      "bytes": 269,
+      "sha256": "babb88a52e287abe89da8409de9f0f2500c114d81b2fe14b18e20504ba78e9f7"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/helper-boundary-probe.mjs",
+      "bytes": 2568,
+      "sha256": "fcc940e46e0486f560697df92b02a5f9df3fed3aded1f133d6878338847e92fc"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/helper-collection.json",
+      "bytes": 58524,
+      "sha256": "33c004791790fdef94fea4af67157ad0131346b5fa8ed2123cdfc2d2f6ef07ff"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/smoke-report.json",
+      "bytes": 1154638,
+      "sha256": "d0dd6b2e7c568374db57a3e4a3bab64d089d6e9f4430dab512585d9c0e6d5ff6"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/error-context.md",
+      "bytes": 9743,
+      "sha256": "e090dca43fed642a93fa540baacfe12657dc343f3cd068ddd9d643695ec8c68d"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/rear-seat.png",
+      "bytes": 272224,
+      "sha256": "11a9d9d5c826a3d3d5c7741ff4f15df1d7bcea1d2557e3198d2e79cb9dbeb65c"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/test-failed-1.png",
+      "bytes": 163253,
+      "sha256": "33dedadc6b81d5e320daf9560b3d9a288a9646d9afd81b5ca44fce8fe8973a9e"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium/trace.zip",
+      "bytes": 63133723,
+      "sha256": "a25f0bd7a160aeb19ce996bc6512cdef2e36246e6ad3a18c366e4e8804149904"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium/error-context.md",
+      "bytes": 11407,
+      "sha256": "9441b6c6677f34306b2e996162eb045774fb535107c5b6bf8d67190b200332cb"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium/test-failed-1.png",
+      "bytes": 168667,
+      "sha256": "627680f163ed042b5a07537211a7e195263c3d15decf7edc54029c46347b3fa8"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium/trace.zip",
+      "bytes": 8723683,
+      "sha256": "7925e82bbfc8207aea291058093749a4d67edae0092ced09ea4c0b9f8f53e3af"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/trace-capture-off.zip",
+      "bytes": 594352,
+      "sha256": "9bf5a5a0c7611a1763582014d9298cb96742bc97a63ad1e68fe5d1fde95f327a"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/trace-capture-on.zip",
+      "bytes": 3109797,
+      "sha256": "fa2466ee76b0c785311212cc7c6283efee2162969a3b9cebea588a2add6aac08"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/trace-capture-probe.json",
+      "bytes": 3213,
+      "sha256": "c11ad2f7fcfee9f374c2de017870571d5e56a1660c53d25d46337b88eaecddb5"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/trace-capture-probe.mjs",
+      "bytes": 3158,
+      "sha256": "6e926995c5a5dd66ac732a017fbb3fccf1c1b1d4ed404e545b6fcb1d00f7994c"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/walking-final-probe.json",
+      "bytes": 19095,
+      "sha256": "db51fe3d78885cd910d9b70234e74f4f8b9c789a3cc11a7dde5fa4e410b99c00"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/walking-final-probe.mjs",
+      "bytes": 5222,
+      "sha256": "2dc9721e86202215512028056997c2fa5a3d3ca23e6545191ddbf7bd84daa6ea"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/walking-latency-probe.json",
+      "bytes": 33537,
+      "sha256": "f882c11600a0eb63ef4db61c95be903458cba52e556847afbc8d9ac0ed6762fd"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/walking-latency-probe.mjs",
+      "bytes": 4737,
+      "sha256": "5a1a8e34d963c3a3164145f0ff61050bcfb2be8cbb7f4469adc41be55c71839d"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-chromium.timeline.json",
+      "bytes": 81917,
+      "sha256": "c9c62985dae8a2c41a444e21d84fc4a5fbfe30c84da304df00a8f4fb28a1aea2"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-chromium-smoke/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-chromium.timeline.json",
+      "bytes": 13455,
+      "sha256": "99f0613e7b79846ea2873cd47906247ed71b62d52d1152aa5fa8ac604c85cd3d"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/analysis.md",
+      "bytes": 4835,
+      "sha256": "47c03bc3a272a5faf129dc9e41d5ff930164d2367e86570bcf9af4c39d4cc74a"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/case-summary.json",
+      "bytes": 12992,
+      "sha256": "dd7efc48a7d06e515edf82aef4076a322259673e1ae356c00db5179d99faa872"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/collection-after-hardware.json",
+      "bytes": 58432,
+      "sha256": "b0f5f4f40c03830efbc547e87d27fa40b828ecb805d39e4c94f928bb905f3963"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/collection-after-software.json",
+      "bytes": 58523,
+      "sha256": "475205440ad1720a50e2ad7c62661c1e5124c6a17555eab85c772311dba7f366"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/collection-before.json",
+      "bytes": 58524,
+      "sha256": "88f6810c8a97209538721c3315a6331de97633d91c981f674b860fa0cdab766a"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/job.log",
+      "bytes": 81255,
+      "sha256": "21ac64972d151d1b06aa9eb03b237d039b141360c6d05d212f92a683a77fe407"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/scope-verification.json",
+      "bytes": 2481,
+      "sha256": "002bc97630922c142d8905c4111a28b495fb515371c85a480830e0da4a380303"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/smoke-report.json",
+      "bytes": 375702,
+      "sha256": "dc10b12c9de55b327d71cdbde84caab994f712dbef26d7b9cd9881003393a756"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/crossing-options-R05-Wait--da497--the-wagon-at-the-riverbank-firefox/error-context.md",
+      "bytes": 10309,
+      "sha256": "fad15d156f4de69074118ef2f9d5b3f2b8620ee73f04744724eb7d7b32cf718c"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/crossing-options-R05-Wait--da497--the-wagon-at-the-riverbank-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/crossing-options-R05-Wait--da497--the-wagon-at-the-riverbank-firefox/trace.zip",
+      "bytes": 2956582,
+      "sha256": "ac0170fca908ba431050398390c6fd849ba0e90bda0d4d41a0fb9cebee9e8cd4"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/spatial-activity-HUD-fog-a-f9d57-ordinary-cold-departure-day-firefox/error-context.md",
+      "bytes": 10170,
+      "sha256": "a5ca7d5348459efbb40a2dfa00b6dcf7614837a339895e559b8d6800c89f517a"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/spatial-activity-HUD-fog-a-f9d57-ordinary-cold-departure-day-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/spatial-activity-HUD-fog-a-f9d57-ordinary-cold-departure-day-firefox/trace.zip",
+      "bytes": 3002678,
+      "sha256": "ccc3e9f79dcc4f5e2ff671260465c3f1114baa705ea8c8d6d3e132c2557fbf8f"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/survival-R13-exposes-usabl-5ea69-ape-coarse-pointer-controls-firefox/error-context.md",
+      "bytes": 9858,
+      "sha256": "7bdb1ede67ae09e6ee65101d6e78708b729d052b2345c01215c3a248a82df629"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/survival-R13-exposes-usabl-5ea69-ape-coarse-pointer-controls-firefox/test-failed-1.png",
+      "bytes": 24571,
+      "sha256": "91f7d53a51e75550efc2af26fe39d99dcc8e35a2358d89d82693a3a7ec57fe78"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/survival-R13-exposes-usabl-5ea69-ape-coarse-pointer-controls-firefox/trace.zip",
+      "bytes": 2779612,
+      "sha256": "6bc7da88b243bf467b2b923a442f4e4463fbf4191a55d0acb2609b94ab52e687"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/world-a-missed-fishing-bite-spends-its-day-without-a-catch-firefox/error-context.md",
+      "bytes": 10264,
+      "sha256": "89cc4305807d3f12b92cce21183ba469fb31c38565fbd64da0fd9865ae4891ae"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/world-a-missed-fishing-bite-spends-its-day-without-a-catch-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/world-a-missed-fishing-bite-spends-its-day-without-a-catch-firefox/trace.zip",
+      "bytes": 3026864,
+      "sha256": "a21f499e8d9f7d4496dfaa014d7510256f336315b206bfbb34d484dc927a912d"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/error-context.md",
+      "bytes": 10151,
+      "sha256": "474319494c5a905512b75d7e16ab1edbb4b59cd148a3f83c81fdf0175f9ea0c1"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/trace.zip",
+      "bytes": 2948875,
+      "sha256": "2dad00c70f9583646c7fd80124e6d64401efb6bfd185987839cadb86c22a9d4b"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-firefox/error-context.md",
+      "bytes": 10288,
+      "sha256": "f328aa573dda250a02ae42bd3a6222feab9b5f28989d37899e84d8a4f8a0530d"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-firefox/test-failed-1.png",
+      "bytes": 23617,
+      "sha256": "4b69ca195461a480360d6d7c51fd95ec0dccdb3e1b99b47ec043aaacf436bcca"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/test-results/world-fishing-casts-hooks--b21f2-t-food-and-day-exactly-once-firefox/trace.zip",
+      "bytes": 2954532,
+      "sha256": "38beec0938b929a68ed2750d47abb0a5079cefc8034e0c9fcb235bb514f4817b"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/trace-diagnostics.json",
+      "bytes": 15669,
+      "sha256": "c7a8a4f1545097ef37c1eb6143074edb28b435477c0228dd79c6e3462e2e062a"
+    },
+    {
+      "path": ".artifacts/ci-de1b4f8-firefox-smoke/verify-scope.py",
+      "bytes": 4628,
+      "sha256": "5b78ac76d26e15686375ea47fa175f1c429f1c7203438a075435c7b31afd05ca"
+    },
+    {
+      "path": ".artifacts/ci-observed-input-lint-final.log",
+      "bytes": 42,
+      "sha256": "9ff4ab2d5167d361bab139a743cf484861d9c7126f25ac6f769d0a649d81a701"
+    },
+    {
+      "path": ".artifacts/ci-observed-input-lint.log",
+      "bytes": 42,
+      "sha256": "9ff4ab2d5167d361bab139a743cf484861d9c7126f25ac6f769d0a649d81a701"
+    },
+    {
+      "path": ".artifacts/ci-observed-input-types-final.log",
+      "bytes": 68,
+      "sha256": "1fb3f0fa7a7c4ffcc608d4392cb05b9a6de2ccd69fdb0787bb1a72765b89987e"
+    },
+    {
+      "path": ".artifacts/ci-observed-input-types.log",
+      "bytes": 68,
+      "sha256": "1fb3f0fa7a7c4ffcc608d4392cb05b9a6de2ccd69fdb0787bb1a72765b89987e"
+    },
+    {
+      "path": ".artifacts/ci-smoke-a75a2af/smoke-report.json",
+      "bytes": 343197,
+      "sha256": "9fb41381c2aa3a0d546d6a6697c76a2ded17b8dc7cf7ea980131f689ac12a30d"
+    },
+    {
+      "path": ".artifacts/circuit-route-green.json",
+      "bytes": 5319,
+      "sha256": "22107bc413f04e24e01c563c6bb4c8cec00efbd3c2b1e19249181b34502fd5a7"
+    },
+    {
+      "path": ".artifacts/circuit-route-green.log",
+      "bytes": 775,
+      "sha256": "3775de91f97fcbdd2db5d2fa9d105aaabd50b40c34dee02acf43fedb43f536a5"
+    },
+    {
+      "path": ".artifacts/cold-load-final-2026-09-08.log",
+      "bytes": 18143,
+      "sha256": "c1f71f99a99c2927d5b9503dd88233f7990ae13056c68e72f8ec7313ca9fd83d"
+    },
+    {
+      "path": ".artifacts/crossing-exit-browser-braking.log",
+      "bytes": 949,
+      "sha256": "41cd1974628d07239ca734ebc1e287f3728d1beaab7a367a1ceb12b84852e42b"
+    },
+    {
+      "path": ".artifacts/crossing-exit-browser.log",
+      "bytes": 881,
+      "sha256": "f386802f788ea57d90a73f8fe62bc28d8c71764a47dfb9506d3b970f3ea53aed"
+    },
+    {
+      "path": ".artifacts/current-review-note.md",
+      "bytes": 3173,
+      "sha256": "ef8b487029af434c120bddd6288b2d98a0a2b272d14b62daa086139e8f4f73b4"
+    },
+    {
+      "path": ".artifacts/final-cold-load.log",
+      "bytes": 16324,
+      "sha256": "9d602cd5f58e2b389d4c33bb509aadf908616fccbf27ba091e969e97c5cf441e"
+    },
+    {
+      "path": ".artifacts/final-ride.log",
+      "bytes": 1783,
+      "sha256": "c9091ab2de3da1fe839c397c2310090a602a58783d08923cba9a1b0c8bf0224b"
+    },
+    {
+      "path": ".artifacts/final-visual-capture.log",
+      "bytes": 285966,
+      "sha256": "f82ac2b6158a89a0e4dcd21cf775e52e792368e3cee1f51680bd6bfb32329d30"
+    },
+    {
+      "path": ".artifacts/green-river-entry-browser.log",
+      "bytes": 3558,
+      "sha256": "3a1229bd57f898b9c38ba9c230f1ff57301ed1acb3ba05ba275ecca1684583df"
+    },
+    {
+      "path": ".artifacts/interaction-hint-build.log",
+      "bytes": 1790,
+      "sha256": "ef784b914798f77e28f623a02ed426b1fdc2c15c4ade455065259888e356f430"
+    },
+    {
+      "path": ".artifacts/interaction-hint-green.log",
+      "bytes": 804,
+      "sha256": "9e24a5c6aee25f741f8f1302ca7ca9f6f14ab7770b13eb224fa509bf352065d7"
+    },
+    {
+      "path": ".artifacts/interaction-hint-red.log",
+      "bytes": 3241,
+      "sha256": "0495097215e6fd9aed94c5aeacca1df5bd3d137ce6880017905aab83f3462c6e"
+    },
+    {
+      "path": ".artifacts/interaction-hint-red/runtime-decisions-R01-R11--c40b2-nd-nearby-companion-actions-chromium/error-context.md",
+      "bytes": 6669,
+      "sha256": "2fd5fd86d6b368e52b9d6a2867431cecca66194e6e76b47e58a9969677b1ca12"
+    },
+    {
+      "path": ".artifacts/interaction-hint-red/runtime-decisions-R01-R11--c40b2-nd-nearby-companion-actions-chromium/test-failed-1.png",
+      "bytes": 860671,
+      "sha256": "12ffe08592ebaab2205ed6681827f7f9aae85e1f5410eec8eda9c5d6222b5c57"
+    },
+    {
+      "path": ".artifacts/interaction-hint-red/runtime-decisions-R01-R11--c40b2-nd-nearby-companion-actions-chromium/trace.zip",
+      "bytes": 6992503,
+      "sha256": "0ec501ec0fab77c13de308af7c62eb8af5c3e2768a5f7db982d08059ffeb5285"
+    },
+    {
+      "path": ".artifacts/observed-input-local-1/report.json",
+      "bytes": 418944,
+      "sha256": "83729b17aaf40e4ead72d8b093f788ceac3fa4c1820a3e1eb64f158987c437d7"
+    },
+    {
+      "path": ".artifacts/observed-input-local-1/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/error-context.md",
+      "bytes": 10001,
+      "sha256": "98de8d9967e4908e2621e64170054640f1a55e737516579ab3f0a732d6972a88"
+    },
+    {
+      "path": ".artifacts/observed-input-local-1/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/rear-seat.png",
+      "bytes": 1437010,
+      "sha256": "2d9224af8e140118a2e415467b864d47121dc7a7cdb2c4be4e2a0a6a46d33346"
+    },
+    {
+      "path": ".artifacts/observed-input-local-1/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/test-failed-1.png",
+      "bytes": 726223,
+      "sha256": "4467425cc261a80ccd3ae06906282be49fcadddf0c877b6315b982f24693edee"
+    },
+    {
+      "path": ".artifacts/observed-input-local-1/world-first-person-looks-b-3f2cd-ollides-reboards-and-drives-firefox/trace.zip",
+      "bytes": 96290676,
+      "sha256": "3cc1e01ef4e24084a79fd6804b2f7d25a79d9acd7a349106f220a59b916f97dc"
+    },
+    {
+      "path": ".artifacts/observed-input-local.log",
+      "bytes": 423750,
+      "sha256": "8903429090b249c04f60bdf52adc60811e4bdb6430d43cea7c448c109516c059"
+    },
+    {
+      "path": ".artifacts/preview-4173.log",
+      "bytes": 87,
+      "sha256": "b2c105569fe157daee48b13dd4d13b465d6ea905764d93ea24262d3574a40d32"
+    },
+    {
+      "path": ".artifacts/resumed-build-wildlife-final.log",
+      "bytes": 1790,
+      "sha256": "08062eb52c567426b773319fa9cab7d80ceb1bdf02138342056232e49183e84a"
+    },
+    {
+      "path": ".artifacts/resumed-unit-final.log",
+      "bytes": 238,
+      "sha256": "948599cf0f079fa64e29f66d73f9cdb2dab30382db17442656da0c78a1d9f4b3"
+    },
+    {
+      "path": ".artifacts/resumed-unit-wildlife-final.log",
+      "bytes": 224,
+      "sha256": "15420ea1e49e917ab2ac2c45eba9ee7eee663d1b407ef1d5215e522230c4980d"
+    },
+    {
+      "path": ".artifacts/review-checkpoint.md",
+      "bytes": 4925,
+      "sha256": "b532127fadef1642dfd4cda79f598711907ee9f3595a72cc2d028c5fdadb9d8f"
+    },
+    {
+      "path": ".artifacts/ride-contact-sheet.png",
+      "bytes": 1631230,
+      "sha256": "811ef8dbdeff8c1b2650e66ddae2903e31afab44acbc552144fd65bcdf61cbdf"
+    },
+    {
+      "path": ".artifacts/ride-final-2026-09-08.log",
+      "bytes": 1783,
+      "sha256": "a8ec30a3807c3f956e7e1f7f98cf2114aa1c8379948db62d371c5898f7bef5af"
+    },
+    {
+      "path": ".artifacts/river-120.cpuprofile",
+      "bytes": 121935,
+      "sha256": "60b6c2c91bc34e2442353982f4ebe93af88de7a70343b8d43b24ac3225eada5d"
+    },
+    {
+      "path": ".artifacts/river-132.cpuprofile",
+      "bytes": 177635,
+      "sha256": "a9046326cc94ae8107a12b409832fd613c211d2f5168ea81d285573090dd93aa"
+    },
+    {
+      "path": ".artifacts/river-80.cpuprofile",
+      "bytes": 128068,
+      "sha256": "b890e5813cdb08b13733ffc7ae119ff0082ebc301c2257ac3e48c72e75f403f5"
+    },
+    {
+      "path": ".artifacts/river-headless-video.json",
+      "bytes": 1514332,
+      "sha256": "8a50ca5f6269e91e8fe359c972c53a645b7c2156c41e13ca58ee6fae1ba3b2d7"
+    },
+    {
+      "path": ".artifacts/river-headless.mjs",
+      "bytes": 2615,
+      "sha256": "f0e4d2bf9da8b96e81d88986aad230b15fc72759fcd19d25ba8cd19408b27043"
+    },
+    {
+      "path": ".artifacts/river-profile.json",
+      "bytes": 954617,
+      "sha256": "63b15efd28fd85976dbf9814dd4c1b70b338f2857f31027fa709d0be8b90bf86"
+    },
+    {
+      "path": ".artifacts/river-profile.mjs",
+      "bytes": 2121,
+      "sha256": "d088227e9612d2c721ce22148fe0005e42bfe6d74c4129a376995f6454b618be"
+    },
+    {
+      "path": ".artifacts/river-scheduling.json",
+      "bytes": 1562002,
+      "sha256": "afcd87100de9838dc76daa910cc287b0252e81c232d5359c1c21a6c132907310"
+    },
+    {
+      "path": ".artifacts/river-scheduling.mjs",
+      "bytes": 2606,
+      "sha256": "318400332c32dae1d253fd3e6015ac9cb294dc2d3b8bfb41e2700b89f9782de6"
+    },
+    {
+      "path": ".artifacts/route-corrections-types.log",
+      "bytes": 68,
+      "sha256": "1fb3f0fa7a7c4ffcc608d4392cb05b9a6de2ccd69fdb0787bb1a72765b89987e"
+    },
+    {
+      "path": ".artifacts/software-probe.mjs",
+      "bytes": 1158,
+      "sha256": "1c95569a38c61f32a56afe4f350ffc65e49965197dbe46c3e34078f1ddb87436"
+    },
+    {
+      "path": ".artifacts/tmp/big-blue-completion-review.mjs",
+      "bytes": 3248,
+      "sha256": "5470965d47b19ec324974af18309563fa89a3e2c6a08122b219e0ea9a3cf7c8e"
+    },
+    {
+      "path": ".artifacts/tmp/camp-board-browser.mjs",
+      "bytes": 2944,
+      "sha256": "d51675d23d1b8c20392858c8acf90060d24b755ad233340d687846d76cf7b5e2"
+    },
+    {
+      "path": ".artifacts/tmp/caulk-de1-trace-trajectory.json",
+      "bytes": 223784,
+      "sha256": "b95b05d8051d1d079f1420f8095f8443b6e8ea1c9fdb68456ff610cfe205d02c"
+    },
+    {
+      "path": ".artifacts/tmp/caulk-observation-probe.json",
+      "bytes": 2521,
+      "sha256": "616f68990498538913c89652fc79d47743877eade604dfd333adc01da20351b2"
+    },
+    {
+      "path": ".artifacts/tmp/caulk-observation-probe.mjs",
+      "bytes": 2996,
+      "sha256": "282915b32feec6807d125f573d803f3ecbb8a13a083ddde03dd71557eca5f31c"
+    },
+    {
+      "path": ".artifacts/tmp/check-ci-audio-step.py",
+      "bytes": 4686,
+      "sha256": "88ad327776fdaef325e33601d0a50ed0a298c5e9f4ba48db8c7f69c0a8d38201"
+    },
+    {
+      "path": ".artifacts/tmp/checkpoint-1632.md",
+      "bytes": 3208,
+      "sha256": "ca6d18ebb68b0f7f1e40b92383ff90bc823c1366aeaa84c9e11793cb74144b5e"
+    },
+    {
+      "path": ".artifacts/tmp/checkpoint-unique-independent.mjs",
+      "bytes": 1429,
+      "sha256": "6257a7169e86c7c736eca307ae51f7d3242307b7a540a7127e2fa13751a9cd79"
+    },
+    {
+      "path": ".artifacts/tmp/chimney-board-independent.mjs",
+      "bytes": 4426,
+      "sha256": "c0647a81ccdfd81a7920e6bd2642e20bc65b293fc27b28c139db5572166acaf9"
+    },
+    {
+      "path": ".artifacts/tmp/chimney-board-interaction-independent.mjs",
+      "bytes": 2191,
+      "sha256": "3675c52ce99f9ce972866a0ecf98154ae1ad7690e522c53e5fc711b82554f11a"
+    },
+    {
+      "path": ".artifacts/tmp/chimney-interact-action-independent.mjs",
+      "bytes": 1466,
+      "sha256": "c6d8c65988a5bb00acd0967748bcfdf316b8e809314c30b303e7b9449e6f8c01"
+    },
+    {
+      "path": ".artifacts/tmp/chromium-mesa-probe.json",
+      "bytes": 1478,
+      "sha256": "1d8b49886819412ccef4802a755c5f7e1c446af0ff16f146adf24b07c2ad144f"
+    },
+    {
+      "path": ".artifacts/tmp/chromium-mesa-probe.log",
+      "bytes": 402,
+      "sha256": "cf7ff7855c48b2c8f7c26617956ef0cf96692c1d50dd5d9954aa739be2c1f78e"
+    },
+    {
+      "path": ".artifacts/tmp/chromium-mesa-probe.mjs",
+      "bytes": 2325,
+      "sha256": "42334f374cdd6ea2447e6f21a9ac0b47498e5d300679c453411b093c8224c937"
+    },
+    {
+      "path": ".artifacts/tmp/ci-audio-shell-check.json",
+      "bytes": 940,
+      "sha256": "09d55cb04970832a4d7783d368a8b5430acc6eebe6376edbd780b94a1e02b59a"
+    },
+    {
+      "path": ".artifacts/tmp/ci-audio-shell-independent.json",
+      "bytes": 940,
+      "sha256": "09d55cb04970832a4d7783d368a8b5430acc6eebe6376edbd780b94a1e02b59a"
+    },
+    {
+      "path": ".artifacts/tmp/ci-audio-shell-independent.py",
+      "bytes": 5002,
+      "sha256": "52b70e53b53d0a7b84b98c9da9aa1e9d9c720232fda45b2392073c19b2b2188a"
+    },
+    {
+      "path": ".artifacts/tmp/ci-fork-deadline-independent.mjs",
+      "bytes": 1662,
+      "sha256": "60ccbf457f4931f4364703778a0c44891646f53ada9951c7f29b1fa007708f6d"
+    },
+    {
+      "path": ".artifacts/tmp/ci-helper-contract-independent.mjs",
+      "bytes": 2960,
+      "sha256": "b4c021d4e02b2cc63bdcacb7b713696cb0472b9e6802f8f8d0514627a7147d92"
+    },
+    {
+      "path": ".artifacts/tmp/ci-independent-collection.json",
+      "bytes": 58524,
+      "sha256": "b4cc53a92b32470daa0186dd981f954251bf746477f29b595b754bee5ac3aff4"
+    },
+    {
+      "path": ".artifacts/tmp/ci-navigation-independent.mjs",
+      "bytes": 3538,
+      "sha256": "a4a1c9accccef315139d795307a10e9e0da8de51a41b732d4b1b164073a3fd6b"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/bin/glxinfo",
+      "bytes": 340,
+      "sha256": "8954b25dbb81f5b64bee8223cac6e9efd8feb3f5e84bdd8f122dae2c75143f1f"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/bin/npm",
+      "bytes": 329,
+      "sha256": "6d86a543c97059737bf17d507d704af56baf706eebe7b014f8a05bb00a6d42a1"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/bin/xvfb-run",
+      "bytes": 162,
+      "sha256": "862c8de6c3a92993d1d8c3a37710e502631e118bf9cbd6f2e4f0fb9279245de1"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/collection.json",
+      "bytes": 58523,
+      "sha256": "538ec0d55ca80eb7ee33bf2c5201c594f6a47bb3df3ea93e0c879dd526af45b2"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/full-chromium-0-0.jsonl",
+      "bytes": 123,
+      "sha256": "695eb1b76bb8503d85623adef1ee1622e25a70284ceb2c3aa60ba60ba3f1426f"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/full-firefox-0-0.jsonl",
+      "bytes": 195,
+      "sha256": "73ad56234495bbcc45f2119cf78d5664c848896292dc08e12b10081a6d3688cc"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/full-firefox-0-23.jsonl",
+      "bytes": 195,
+      "sha256": "73ad56234495bbcc45f2119cf78d5664c848896292dc08e12b10081a6d3688cc"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/full-firefox-17-0.jsonl",
+      "bytes": 64,
+      "sha256": "cd735777345d30db9e738f8285e468591726b3b7152a6ffc974c04cc7ee3b3b2"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/probe.py",
+      "bytes": 3586,
+      "sha256": "c4f1be96d2b0ab400549257dd785053ddda5743d724e3014ab9ed3c088a68d97"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/results.json",
+      "bytes": 4793,
+      "sha256": "b1277afda95276e33a292718d94f1b2aa3fccaf7ec68774e379ab2f32a4769c9"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/smoke-chromium-0-0.jsonl",
+      "bytes": 430,
+      "sha256": "e765988f3d84549af00d2d2db4b1c3503acafaebf3aab67391b44c703d942aad"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/smoke-firefox-0-0.jsonl",
+      "bytes": 502,
+      "sha256": "0ae4105dd31059ba9095e3f420bc69dcdfea43d1ca755ec6995e56d8b4d79dbd"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/smoke-firefox-0-23.jsonl",
+      "bytes": 502,
+      "sha256": "0ae4105dd31059ba9095e3f420bc69dcdfea43d1ca755ec6995e56d8b4d79dbd"
+    },
+    {
+      "path": ".artifacts/tmp/ci-xvfb-review/smoke-firefox-17-0.jsonl",
+      "bytes": 64,
+      "sha256": "cd735777345d30db9e738f8285e468591726b3b7152a6ffc974c04cc7ee3b3b2"
+    },
+    {
+      "path": ".artifacts/tmp/columbia-handoff-independent.json",
+      "bytes": 772,
+      "sha256": "1b5b51ab7971f779541df70ea6fc82971afe6bc7d40df23656fb837ecc08af9b"
+    },
+    {
+      "path": ".artifacts/tmp/columbia-handoff-independent.log",
+      "bytes": 761,
+      "sha256": "88671f94180c3823be1dd71a277e842b16e53c74f80bd1f871e43fc586ebe499"
+    },
+    {
+      "path": ".artifacts/tmp/columbia-handoff-independent.mjs",
+      "bytes": 3438,
+      "sha256": "e937b2dd0166fe6243baa3212d65504353bdcb3a222d71fa3b9c6c30c6a340ad"
+    },
+    {
+      "path": ".artifacts/tmp/crossing-controller-independent.mjs",
+      "bytes": 2643,
+      "sha256": "ef903df2528ed580ba8f4abe94fa4db61ce1845fa5a050d486334d42d25427ca"
+    },
+    {
+      "path": ".artifacts/tmp/crossing-cpu-profile.json",
+      "bytes": 2551,
+      "sha256": "118f7ffeba23e5af0f40ee177203e37ee7de9ff05be898a0c96402ec3d87c6a1"
+    },
+    {
+      "path": ".artifacts/tmp/crossing-exit-browser.mjs",
+      "bytes": 4060,
+      "sha256": "b9c1edd7d6cdbee3aed6793488c7ca6f4229c9125e56ce3af5dc3e6e232f10da"
+    },
+    {
+      "path": ".artifacts/tmp/crossing-farbank-matrix.json",
+      "bytes": 48421,
+      "sha256": "6fe12b92fd36b53c3564625a4f51385df19e0c413f4b139d48868459407e7c34"
+    },
+    {
+      "path": ".artifacts/tmp/crossing-farbank-matrix.mjs",
+      "bytes": 2404,
+      "sha256": "cca765cdfb4209190a51846abbdd50b90297b31f81f3b8cbbb4d7d357ec6443d"
+    },
+    {
+      "path": ".artifacts/tmp/crossing-farbank-route-candidates.jsonl",
+      "bytes": 9164,
+      "sha256": "e4b26b797c31f3b40f123164344410bbf73fcddd074d381abf94b7663cbce8c5"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/prepare.py",
+      "bytes": 1965,
+      "sha256": "c401df4e4e4f76e9139bacb69c1c52b289c1150de3497b8bab07db85d5f9dd0a"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/recordings.json",
+      "bytes": 8515,
+      "sha256": "96a9576974d46cecde5c3701a1e9e827f145135dac251b02263e21aea74dc4eb"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/river-daylight-motion-grid.png",
+      "bytes": 1235264,
+      "sha256": "42c8eb1403036df352c99d03ff3757156af018cd3e6e385d8d7bb155a5c5d3c3"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/still-hashes.json",
+      "bytes": 3766,
+      "sha256": "5a422f3b7dc5a1dd07ea4a5fca2a3edb47bb891db8e7f65d55264de5de94027f"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/stills-1.png",
+      "bytes": 1090911,
+      "sha256": "b7c4f0949e162f48b8f9cbb38384d9dcc08cae7f4eb7cf0e62b4a5949ff8cc51"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/stills-2.png",
+      "bytes": 1009945,
+      "sha256": "49f21ea7b27269f77656ae2bc17a2a9583e5790f46b19e0c021e749e010f89dc"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/stills-3.png",
+      "bytes": 987464,
+      "sha256": "bc71502eab17add719ed62bb09af6e638059724b9ffeae131315c5a2935709bb"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/stills-4.png",
+      "bytes": 897449,
+      "sha256": "b14b1453991b10e84a3be92adf041506708810fd18cd04367921e12e77512c89"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/stills-5.png",
+      "bytes": 715638,
+      "sha256": "6a9000dace86f29251cabe65f777915362ed100177561e5e01afabb3d66847e4"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/wagon-team-motion-gait.png",
+      "bytes": 2173085,
+      "sha256": "5b7181da8743b1eccc42cfc75b9106aa775b19276b8da5475cdb8f3485610f01"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/wagon-team-motion-grid.png",
+      "bytes": 2198767,
+      "sha256": "d1265de83fb6abf3bc2871bb33d3025256368a2cbd6b0eabbd4a2c7e5a031f73"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/wildlife-deer-motion-gait.png",
+      "bytes": 1591985,
+      "sha256": "979dc237d6dfde38cd49a78d0e319deba9237af78c186de0a08fb73305e4575e"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/wildlife-deer-motion-grid.png",
+      "bytes": 1692536,
+      "sha256": "c1ba1ba5f7879450a3a1257f57c244891064f853c94af87472a53a020464a4de"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/wildlife-rabbit-motion-gait.png",
+      "bytes": 1480380,
+      "sha256": "4d5f1400e65db160654a02cf56ef81b95823bac3aa8c3883412c2ef40a32d5f4"
+    },
+    {
+      "path": ".artifacts/tmp/final-visual-review/wildlife-rabbit-motion-grid.png",
+      "bytes": 1528112,
+      "sha256": "49854608397bbf216845929f9517a509bc8abb207f2eaf617eac7ff736687150"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-audio-endpoint-probe.json",
+      "bytes": 4600,
+      "sha256": "6ae957ccee42f3b52b92621599e9467101200e22634bdeb5a2b7f5fc548023a6"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-audio-normal-endpoint.log.child-1.moz_log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-audio-normal-endpoint.log.moz_log",
+      "bytes": 73728,
+      "sha256": "8f9559304c825d0a302f875cb46a3fa58dfd306a052f46d94acaca39ac4768e5"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-audio-unreachable-endpoint.log.child-1.moz_log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-audio-unreachable-endpoint.log.moz_log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-circuit-final.json",
+      "bytes": 299052,
+      "sha256": "7591c508728a76f8042c1dbef559dfea296481e059a5a577cb1e982bf88f7801"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-circuit-route-independent.json",
+      "bytes": 7070,
+      "sha256": "21c24d4756328ddf27326dae4a2f28b41c487731021d3b5b1b9755a56698329e"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-circuit-route-independent.log",
+      "bytes": 4598,
+      "sha256": "b544be7da5632675b35188b86277c85de3a750014fde5e12779b5db7608207a5"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-circuit-route-independent.mjs",
+      "bytes": 3417,
+      "sha256": "926222183de3f2796252495bfd72eeb79079bab3d79039d710523a75554a890a"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-circuit-route-probe.json",
+      "bytes": 7070,
+      "sha256": "21c24d4756328ddf27326dae4a2f28b41c487731021d3b5b1b9755a56698329e"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-circuit-route-probe.mjs",
+      "bytes": 3411,
+      "sha256": "aeaf12bacf2f3627b90fd2710eadfa959854d9841d909a3f7578f538c54332ea"
+    },
+    {
+      "path": ".artifacts/tmp/firefox-circuit-snapshots.json",
+      "bytes": 153780,
+      "sha256": "65402832d64e9ebcd890a6da821fa0df4e7f570e51b6839927491b6d7d6bad0c"
+    },
+    {
+      "path": ".artifacts/tmp/fishing-delay-expanded-independent.json",
+      "bytes": 314140,
+      "sha256": "12ce1e47178a3396432d55e1b4b51e8e69553dd7236fc93920eeca10e3d8404d"
+    },
+    {
+      "path": ".artifacts/tmp/fishing-delay-expanded-independent.mjs",
+      "bytes": 4182,
+      "sha256": "5cb7edcc3d08a43f776945ec59038c93d38e4b6510d627acba85a6a9435ff39d"
+    },
+    {
+      "path": ".artifacts/tmp/fishing-delay-independent.json",
+      "bytes": 1168690,
+      "sha256": "b0936c95888a331c2e3f5c6a008c40a01bc8e9366a40f2a7b33868cc247689a4"
+    },
+    {
+      "path": ".artifacts/tmp/fishing-delay-independent.mjs",
+      "bytes": 4030,
+      "sha256": "21e9f5fd1d7ee2fbccd609d13e1f79cb370e61d5dfc2c97117f701fa4ca9bd0c"
+    },
+    {
+      "path": ".artifacts/tmp/fishing-domain-incomplete-world-adapter.mjs",
+      "bytes": 4300,
+      "sha256": "eb5a0addaab9e44711bd00869797fa17b31ef4bed887fc58dd8b476d4c8a0595"
+    },
+    {
+      "path": ".artifacts/tmp/fishing-domain-independent.json",
+      "bytes": 6122,
+      "sha256": "3acbb6ac20808b0ca7fe3f53310ca0d58e363092e5e8194aca99f8e1d07e5536"
+    },
+    {
+      "path": ".artifacts/tmp/fishing-domain-independent.mjs",
+      "bytes": 4453,
+      "sha256": "96b0476c6b742962d6445ddba8d398b7ef7157028ba8a43d46de146afeff565a"
+    },
+    {
+      "path": ".artifacts/tmp/fishing-root-slice-independent.json",
+      "bytes": 52338,
+      "sha256": "b03bd4ffd3b24c6c0ddecfdb1084b403da39c05b2afc32431712c99774295610"
+    },
+    {
+      "path": ".artifacts/tmp/fishing-root-slice-independent.mjs",
+      "bytes": 3391,
+      "sha256": "b3ef03911825457f068ac9a985e01fa3238c177a866cdf343199e82596d810ac"
+    },
+    {
+      "path": ".artifacts/tmp/goal-checkpoint-1438.md",
+      "bytes": 3428,
+      "sha256": "3d528ce2660ab66db6669fbbfe9af21b1979dd2628af5bca7da0859a7d137c55"
+    },
+    {
+      "path": ".artifacts/tmp/goal-checkpoint-1519.md",
+      "bytes": 4883,
+      "sha256": "4884db0bbba29a69a1468d822e311faec86f37e20603f9948228c9913631ad4c"
+    },
+    {
+      "path": ".artifacts/tmp/goal-checkpoint-1544.md",
+      "bytes": 3692,
+      "sha256": "eea50f90dbb602f2213aa62949935287792822aadc412fc8f2cc3b6fc3dc8b32"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-approach-probe.json",
+      "bytes": 87451,
+      "sha256": "efce84aa007cd84d72aa2056c3ccab9af68b2ab7e291ed63d3e858ebf5eeb7da"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-browser.mjs",
+      "bytes": 9938,
+      "sha256": "e3313576460f9e7299fc668388cd31eaa4221cc575df902fb59f7295db8e408d"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-early-exit-probe.json",
+      "bytes": 71721,
+      "sha256": "031968769ca29b262dcb054fbca09b883d75c7e91450bd55de4fcb19e210d5d3"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-exact-helper-adapter-failure.json",
+      "bytes": 19768,
+      "sha256": "02b73eb2f9d8b1584c2439c200b19bb73b557fe9f53e5568d71c6c7ab208ce89"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-exact-helper-probe.json",
+      "bytes": 120699,
+      "sha256": "d339e90bf6745b358d9dbbe8b1e52284a71981110af77af74421edfbc65bfe90"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-exact-helper-probe.mjs",
+      "bytes": 5108,
+      "sha256": "9012bbcff5e0f8dc5998ac418756d90fbe71de4a256447b978046d2f4d0bf771"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-exact-recovery.json",
+      "bytes": 1419,
+      "sha256": "b5959dc1820a627cb98f0be563f2266feab14efedc0428356d24ba2f847f9ede"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-route-independent-first-expectation.mjs",
+      "bytes": 3611,
+      "sha256": "eb69fe2f6bb24225f91b1a7daf3e9b7972dd10bca6da5b1dc909d365aee249bf"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-route-independent.log",
+      "bytes": 838,
+      "sha256": "ac5b1eeadd70d2f64be26b684bf847cbc142ba99233e68ca7089f2411009a2ff"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-route-independent.mjs",
+      "bytes": 3823,
+      "sha256": "2000732939c026649ee160a2d235d83ace03ab6b7abc6169cf80301788fa65bf"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-walk-exact90.mjs",
+      "bytes": 2809,
+      "sha256": "1c76fbd11a9b8a4729d0d9a2f5e2a9a9e1cc5b91fd410da5841877c505d9b6c2"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-walk-matrix.mjs",
+      "bytes": 3096,
+      "sha256": "65753ab063b3176ecbe3e0d132d3a55a50f6a402a94616c356bba4dd8db314a1"
+    },
+    {
+      "path": ".artifacts/tmp/green-river-walk-review.mjs",
+      "bytes": 3023,
+      "sha256": "61010ac88d806a8e86b977c3a8aabb65452b4d7e40b063e3c095a41e694bd04b"
+    },
+    {
+      "path": ".artifacts/tmp/hills-road-browser.mjs",
+      "bytes": 3292,
+      "sha256": "6c0ef70b09e0b8881c51f20303b34c2f6fe39e416000654063ec7198673ed7f2"
+    },
+    {
+      "path": ".artifacts/tmp/independent-activity-review/fishing-12s.png",
+      "bytes": 583825,
+      "sha256": "1da7f2599a656d9ce9b5f47dc19547e884798bd8f1f6b67dd2a62a261468b2c3"
+    },
+    {
+      "path": ".artifacts/tmp/independent-activity-review/fishing-overview.png",
+      "bytes": 3269450,
+      "sha256": "5143a8312bc07467f62ec4fa8cf10d3889410c6d78b3b313378317c54e8749d8"
+    },
+    {
+      "path": ".artifacts/tmp/independent-activity-review/hunt-overview.png",
+      "bytes": 1923854,
+      "sha256": "38c72ed007f572c3c351c35b83449e924bd033a9f7a5694b48ed0c157623de83"
+    },
+    {
+      "path": ".artifacts/tmp/independent-activity-review/rain-overview.png",
+      "bytes": 1592351,
+      "sha256": "a0119a8d10b3adf1ee429ebda3510743bd0da7201c06e9e8d5e670477b254a23"
+    },
+    {
+      "path": ".artifacts/tmp/independent-activity-review/seed14-22s.png",
+      "bytes": 850229,
+      "sha256": "0be59584aa78948e012f6e33b251878b79a40b6e8b90330adff45932d590f8a7"
+    },
+    {
+      "path": ".artifacts/tmp/independent-activity-review/seed14-close-patrol.png",
+      "bytes": 3289241,
+      "sha256": "3638eaf6507da43f71a755838b888a2c79c4414069927630b03616c19512699f"
+    },
+    {
+      "path": ".artifacts/tmp/independent-activity-review/seed14-fixed-gait.png",
+      "bytes": 1373658,
+      "sha256": "1acfc99478067c68c28668a5ecc911f8288480346a86f39e47c1dc8339e3c576"
+    },
+    {
+      "path": ".artifacts/tmp/independent-activity-review/seed14-fixed-overview.png",
+      "bytes": 2990487,
+      "sha256": "87dccfdc261cdbb32fb65a17b89459720e2c5b35ede5f476e2575eeaf64e899f"
+    },
+    {
+      "path": ".artifacts/tmp/independent-activity-review/seed14-overlap-35s.png",
+      "bytes": 786334,
+      "sha256": "fc4431facdeb51f9c31cc786300d6605e2e9ec576dbb06bd6877ce959004ccbc"
+    },
+    {
+      "path": ".artifacts/tmp/independent-activity-review/seed14-overview.png",
+      "bytes": 2797515,
+      "sha256": "f48c383a94a6f08feb4f5a708c7f698249980c6b3717e66defc965dbeefc7bce"
+    },
+    {
+      "path": ".artifacts/tmp/independent-memory-review/attempt6-partial.json",
+      "bytes": 16037,
+      "sha256": "9fa0c710918b2fa576ae14c8b72a82172a2864f891055959854dd3441bbeed70"
+    },
+    {
+      "path": ".artifacts/tmp/independent-memory-review/attempt8-final.json",
+      "bytes": 34273,
+      "sha256": "a762b81a22ea37d26f2422194a70c30b75ac16a72071c9a26ff381649dbd8a62"
+    },
+    {
+      "path": ".artifacts/tmp/independent-memory-review/audit.py",
+      "bytes": 3690,
+      "sha256": "57d934b1c876353d9d9d531f3cb3447c429c793ab81b35e5427e8d020714e6ef"
+    },
+    {
+      "path": ".artifacts/tmp/independent-ride-review/audit.py",
+      "bytes": 3145,
+      "sha256": "0298ba9630f9b3fb204d26073f0cea8fbcf92154242472fc1dd09bb6fe3afcb3"
+    },
+    {
+      "path": ".artifacts/tmp/independent-ride-review/checkpoints/region-14-save-1.json",
+      "bytes": 24,
+      "sha256": "257abab27af779096d0fde15d0ec12ab1c693194f179484c560616d7d73218f4"
+    },
+    {
+      "path": ".artifacts/tmp/independent-ride-review/checkpoints/region-14-save-2.json",
+      "bytes": 24,
+      "sha256": "286f9ac9e42ce905ce7be68638e299cec69983c5d1bb9194cf2e0e33671f70a9"
+    },
+    {
+      "path": ".artifacts/tmp/independent-ride-review/clip-grid.png",
+      "bytes": 1255427,
+      "sha256": "8b59bf2063e0699400382285f2c4684e605c88d840b148574cdbac605ade151d"
+    },
+    {
+      "path": ".artifacts/tmp/independent-ride-review/final.json",
+      "bytes": 2377,
+      "sha256": "8ed171f0d9cc85c5b97355bc6b13c3cda93600eb6b3fb52dee8679829be1f389"
+    },
+    {
+      "path": ".artifacts/tmp/independent-visual-review/deer-gait.png",
+      "bytes": 1088843,
+      "sha256": "c056881480b16657dfc2a5936b21e13abaa3cff5db052cdfb9ea9e66c60d49dc"
+    },
+    {
+      "path": ".artifacts/tmp/independent-visual-review/deer-overview.png",
+      "bytes": 1263371,
+      "sha256": "ca3f9e10f80a753d12e3a3e87d46edea37b0d2111df056204aba08440c1c1213"
+    },
+    {
+      "path": ".artifacts/tmp/independent-visual-review/rabbit-overview.png",
+      "bytes": 1191988,
+      "sha256": "c7dd569bf917048c5b6faf4593dc394f87cff3f30c24672001f54a193bae48d2"
+    },
+    {
+      "path": ".artifacts/tmp/independent-visual-review/wagon-forward-gait.png",
+      "bytes": 1453944,
+      "sha256": "df9958b52df10d1129a0cef2856e451b2045801b66be685fc1eeb63a1b40d80a"
+    },
+    {
+      "path": ".artifacts/tmp/independent-visual-review/wagon-overview.png",
+      "bytes": 2900282,
+      "sha256": "a7dfe92bc9a87b67d75671c3e7eec2fc39a36a7919a7b38777a525406c4ad969"
+    },
+    {
+      "path": ".artifacts/tmp/independent-visual-review/wagon-reverse-gait.png",
+      "bytes": 1485375,
+      "sha256": "d2ec562454ec0478c5d014fd3b04eae36a2c2657c661b767784bd99c74877f8c"
+    },
+    {
+      "path": ".artifacts/tmp/independent-visual-review/water-motion.png",
+      "bytes": 1482933,
+      "sha256": "a5e9ca42dc5946fe666a1af2c451c6c69006e76ece99bff88b912c8257ad5ffd"
+    },
+    {
+      "path": ".artifacts/tmp/interaction-hint-boundary-independent.mjs",
+      "bytes": 1643,
+      "sha256": "2dbd6d47c690caac148d0491eba6188b9e68953ac014ad7a6c1cca95b1f2004d"
+    },
+    {
+      "path": ".artifacts/tmp/interaction-hint-fixed-independent.mjs",
+      "bytes": 1498,
+      "sha256": "356b38e3a89d919f260ebfc43dac7c9db7be63fc0ca9bbb1c09e7b6180e835ea"
+    },
+    {
+      "path": ".artifacts/tmp/navigation-browser.mjs",
+      "bytes": 3615,
+      "sha256": "38138680ff8eb131f8c40df134dfb0ea306cc885fc6c31b63aa9cced34b62c88"
+    },
+    {
+      "path": ".artifacts/tmp/navigation-pulse-contract-independent.json",
+      "bytes": 1151,
+      "sha256": "fd557de155a553e58ea779e7c20e11e1d9cf9417fc72ace88a263b63811fa77f"
+    },
+    {
+      "path": ".artifacts/tmp/navigation-pulse-contract-independent.mjs",
+      "bytes": 3069,
+      "sha256": "ab0443b9cd8b997e51c5bb9127f6009f6aee515840246f98d3f9526e38061d28"
+    },
+    {
+      "path": ".artifacts/tmp/preview-4173-process.json",
+      "bytes": 504,
+      "sha256": "0f96c4fbdf94c11a8dbe7df8d97b145a589061e3cb78949e847cda8e9435d555"
+    },
+    {
+      "path": ".artifacts/tmp/quality-low-baseline.json",
+      "bytes": 250,
+      "sha256": "05aaa66c2c083ae1d46b6d2f5fe0c915004cd65c03592f5436d070f2fee67df7"
+    },
+    {
+      "path": ".artifacts/tmp/quality-recipe-matrix.json",
+      "bytes": 87982,
+      "sha256": "5bf80e9b89474ca2f1378cc4f674522355b17fcf81fca852bba757eeef39598d"
+    },
+    {
+      "path": ".artifacts/tmp/quality-recipe-matrix.mjs",
+      "bytes": 3495,
+      "sha256": "731af9e69486abbc259e88ada27c1c0935d4ab5702a7a94d45c1a2781ed260af"
+    },
+    {
+      "path": ".artifacts/tmp/r14-defect.md",
+      "bytes": 1449,
+      "sha256": "cdab8e41dc724351d5a812a0c356776476896a13afdcda2c8ae2bddd15e90ebc"
+    },
+    {
+      "path": ".artifacts/tmp/resume-issue.md",
+      "bytes": 2408,
+      "sha256": "52445de2035c92d88df91a8634448301b1d09e35f6653f8ac462ab3df677d2f6"
+    },
+    {
+      "path": ".artifacts/tmp/river-route-probe-farbank.mjs",
+      "bytes": 3043,
+      "sha256": "bb9cacd530059e6a9368513d28e7fac8e399c6fcd52e86b203e0b276f12b6fa3"
+    },
+    {
+      "path": ".artifacts/tmp/river-route-probe.mjs",
+      "bytes": 2819,
+      "sha256": "c2501c784899c67e198a3134ec6a23450dbd84abb3233df9260e4e92111c2885"
+    },
+    {
+      "path": ".artifacts/tmp/road-traversal-scan-2026-09-08.json",
+      "bytes": 33391,
+      "sha256": "c457ab10bc061a1b529d65adb9d9abbac5133ef6ea7d791359a3e89db7d3002d"
+    },
+    {
+      "path": ".artifacts/tmp/trader-return-browser.mjs",
+      "bytes": 1614,
+      "sha256": "a967e96043ba2d155c5b78a9088f9fdf0f316109d6aa728ccf84846d88428e61"
+    },
+    {
+      "path": ".artifacts/tmp/walking-native-independent.json",
+      "bytes": 19095,
+      "sha256": "db51fe3d78885cd910d9b70234e74f4f8b9c789a3cc11a7dde5fa4e410b99c00"
+    },
+    {
+      "path": ".artifacts/tmp/walking-native-independent.log",
+      "bytes": 4200,
+      "sha256": "bdb9a9cb486372b49d3752dbdb171682b85b06394fd6cc4d6a8caabb4f611206"
+    },
+    {
+      "path": ".artifacts/tmp/walking-native-independent.mjs",
+      "bytes": 5207,
+      "sha256": "fc6df77374283488df28eabef2161e2cbc4625292bb8aa99d8f46723757a93cc"
+    },
+    {
+      "path": ".artifacts/tmp/walking-planner-independent.mjs",
+      "bytes": 2829,
+      "sha256": "ac43aceb35aceaaa252a93677bbf9aec48ce3edb30a0aaafde7e61254f8ec806"
+    },
+    {
+      "path": ".artifacts/tmp/wildlife-separation-independent.mjs",
+      "bytes": 2616,
+      "sha256": "38b91c541398d3469710b9bff7c99f982fc6df290dac6bf84702b9e50c6c4162"
+    },
+    {
+      "path": ".artifacts/tmp/world-construction-probe.mjs",
+      "bytes": 1549,
+      "sha256": "bbc3beeecd97c57bd7aad3f4f5b7b5dc2c08698af4a5996a95eef0d7141b80de"
+    },
+    {
+      "path": ".artifacts/videos/activity-hunt-retrieval.webm",
+      "bytes": 1493928,
+      "sha256": "17f97674400c2f1e4746f57c2a8a6d8efc59e9827f11bd830573d6bc98a62f44"
+    },
+    {
+      "path": ".artifacts/videos/activity-main-bank-fishing.webm",
+      "bytes": 1851080,
+      "sha256": "3d716403ca10d813d00f488df55c04916cb4ba9e559437415deb5b249db52447"
+    },
+    {
+      "path": ".artifacts/videos/activity-rain-shelter.webm",
+      "bytes": 1906397,
+      "sha256": "48378b9ba8935206ebc7f11a27dbd2e13320cf4a8b33495ae92beef83d0ec544"
+    },
+    {
+      "path": ".artifacts/videos/activity-seed14-bank-wildlife.webm",
+      "bytes": 16244681,
+      "sha256": "ea7fd9a235448897d7cda48549db4eb6136374975fcdbc09d55b057a0f8a3fec"
+    },
+    {
+      "path": ".artifacts/videos/page@01b34d4ec7f1c77535ff009619851974.webm",
+      "bytes": 179896524,
+      "sha256": "6700f22e78a51126b4b43e80ebc4bc5141a49c61926a51644bb171e276b7f118"
+    },
+    {
+      "path": ".artifacts/videos/page@034f13eda148974b9043a87df612e629.webm",
+      "bytes": 22822533,
+      "sha256": "db05dc170ef6b0ee3b36c7eb3dffb13c4b2333f861de0128335de20bfd6a44b1"
+    },
+    {
+      "path": ".artifacts/videos/page@036856c9a1c8fa53d0ad2157196f1def.webm",
+      "bytes": 8545344,
+      "sha256": "f8f074c6cb977bb6108a2b464a18e270d532db4da6b9e3ecf79f73b500fbbcf8"
+    },
+    {
+      "path": ".artifacts/videos/page@101d667ee86e7d90d693790a7091e6a4.webm",
+      "bytes": 3074,
+      "sha256": "9fa95c2b2b85c78497c191664c6ecfcca85aede49a99a9c6a42503419e404d6c"
+    },
+    {
+      "path": ".artifacts/videos/page@19357efb5222e85d88114e1fe03e7f17.webm",
+      "bytes": 43654518,
+      "sha256": "088d56734776d43cbc914178b96d2e974f4c757d483c02e80ddbadcfe084d5df"
+    },
+    {
+      "path": ".artifacts/videos/page@1d17a5796ce439fd5b5f2205035c0414.webm",
+      "bytes": 30318548,
+      "sha256": "0f852d05a3b3f2984688b45928a8b9ed883acce828147aaf3173166801a7429c"
+    },
+    {
+      "path": ".artifacts/videos/page@2d2ca5112d8f2a03d13b7cffb445b557.webm",
+      "bytes": 1163488,
+      "sha256": "85f1e72a4ca01742e3e86fb3e348c37ee7fc211dec0be4be92cff9016df81281"
+    },
+    {
+      "path": ".artifacts/videos/page@3b7aba5156513828f133c78bfa421a4b.webm",
+      "bytes": 613738,
+      "sha256": "c66cc3dd0450d48eb4fd60187d69628f65598cb1c4e0e7b50723952f43a14270"
+    },
+    {
+      "path": ".artifacts/videos/page@420e5d4f5a61f7d9fc10ed332f4d605e.webm",
+      "bytes": 26476600,
+      "sha256": "2e22f19dacd218a6121bfd2c5db9bbd27396dd7bf655a63808c137b673cccc41"
+    },
+    {
+      "path": ".artifacts/videos/page@47f75ad4da3a4287addf82f6726567c9.webm",
+      "bytes": 3926629,
+      "sha256": "9f1a9712c9c12ecfb3c99bffcd14ce84d78cd5028515bf2e88ea87c08f504f3a"
+    },
+    {
+      "path": ".artifacts/videos/page@4bc5483e48ad3a826238cf3821348c64.webm",
+      "bytes": 17649193,
+      "sha256": "644b7360a3a94358f204fc883a31e6ff8815f304f3a704b48bbf917065a9e5b0"
+    },
+    {
+      "path": ".artifacts/videos/page@53203b3eb0f40143b77840b8eeec740f.webm",
+      "bytes": 8142309,
+      "sha256": "6d4f1fe30443ee05e0826636f08ae2ff607f5e612f4bb8e9d07f50dd77f77445"
+    },
+    {
+      "path": ".artifacts/videos/page@60ba9adacb31757dd601b4a3377c8cd9.webm",
+      "bytes": 9465924,
+      "sha256": "10dde86d118d10f1c3ccf80b42bb097c42fe9ae7bbab13c67072809fca533024"
+    },
+    {
+      "path": ".artifacts/videos/page@6e6fea2c8d29954668ec9792fc89ce3e.webm",
+      "bytes": 91074287,
+      "sha256": "443a9ff8e959f2cb91a6c6166299053d3ef320f79dabfcb8b3819646683205d2"
+    },
+    {
+      "path": ".artifacts/videos/page@7c037bb6ecf535d84632128a51857b48.webm",
+      "bytes": 83557912,
+      "sha256": "fcb34368cccc7225d87a5565037c9fe3097901455b5cf5d9edec16e89001d0e9"
+    },
+    {
+      "path": ".artifacts/videos/page@80a3ec362c2afc53730433cb5a6e072a.webm",
+      "bytes": 52231895,
+      "sha256": "ff7402bd4fbe6720b57e4fe217fa086d213c110c28776e9e75a50f9493a486d3"
+    },
+    {
+      "path": ".artifacts/videos/page@817062dae2f310893ba29e737c5af338.webm",
+      "bytes": 10344538,
+      "sha256": "f7c98cc9d62b20e1677269a51052b443f4be54878c28cd58bd274173514ac879"
+    },
+    {
+      "path": ".artifacts/videos/page@837b0bc14cb00f5ecad1a977e669159f.webm",
+      "bytes": 23864,
+      "sha256": "e096b964bbdadd624610a22c223deec27dab01718a0563315b50f7b2606b26b4"
+    },
+    {
+      "path": ".artifacts/videos/page@83b8818deff2da4cc1295442b73a9afb.webm",
+      "bytes": 4866412,
+      "sha256": "52e8f8706ad04be45c32f65470b87a0eb79dd8d6d86b9e4e0b3d19673353295b"
+    },
+    {
+      "path": ".artifacts/videos/page@8565c6fe9f83ccaa5e4f6850417e4127.webm",
+      "bytes": 11586912,
+      "sha256": "18ba07417e80f578af54a2880792598525f0c6476418e3737d972f045d8de50e"
+    },
+    {
+      "path": ".artifacts/videos/page@86d8d980d9272317e345b784b69af4b0.webm",
+      "bytes": 17869119,
+      "sha256": "81bed2f49de9531a69dbae5ce79eef4b3df9814d7acc1128b13f6f6a1089368d"
+    },
+    {
+      "path": ".artifacts/videos/page@985627cbeea77e9de81f80e99f349523.webm",
+      "bytes": 8438237,
+      "sha256": "6f75983ff0f8fe4da37fddb5de1309c09a0186c95009901421b3c740e1cac218"
+    },
+    {
+      "path": ".artifacts/videos/page@9888de031740edbfa62f9f3473d48b88.webm",
+      "bytes": 3023453,
+      "sha256": "28f531c42594dfc4df83330497c8d78099f86aaa843511dc00c8238a477e9f11"
+    },
+    {
+      "path": ".artifacts/videos/page@9fa35cab20aab0269891cacc6682e647.webm",
+      "bytes": 3264813,
+      "sha256": "95a8ef9a99c755f5cfaf81f313856b5eb966b5da2a5f67eecc6e665e2d3ba1ba"
+    },
+    {
+      "path": ".artifacts/videos/page@a9205446a7be143ea00e95089c0ad466.webm",
+      "bytes": 4277405,
+      "sha256": "88766c4f9a476f34356597fcdb698dbace93318d95cfe80518b31738f694e448"
+    },
+    {
+      "path": ".artifacts/videos/page@aae5329efdd6e37a8f37dabdc8cbba35.webm",
+      "bytes": 10702090,
+      "sha256": "bbb2015405c91be558d159cff56c4b6053d961323f91fcea592144951fcdac9b"
+    },
+    {
+      "path": ".artifacts/videos/page@afabbbf7138a6c6a977e69ccd74088dd.webm",
+      "bytes": 3568269,
+      "sha256": "dc78d7d66757d35aa07d71931f8f400e0e5ae83b5a46ff41a66079bf1377f1fc"
+    },
+    {
+      "path": ".artifacts/videos/page@b511691825d12ab75edba0c567ae2af3.webm",
+      "bytes": 7167407,
+      "sha256": "473c477c87a43544a5147f83a5cdf1f8ad2af7e12a74b8f647c01bd3ff686073"
+    },
+    {
+      "path": ".artifacts/videos/page@ba88f12103cf9bef8542a115389e82ef.webm",
+      "bytes": 1173990,
+      "sha256": "b1e1a4cf49f7c9f4f7b9eeb3476f5d0ce7836328663e719e03de453305246440"
+    },
+    {
+      "path": ".artifacts/videos/page@bd9fc460a213ce97c59f4647a30966c6.webm",
+      "bytes": 8213077,
+      "sha256": "158a54fc29bc515d3b037f3608b90db56c18cc013fa1c35016f3ea2b3c61953d"
+    },
+    {
+      "path": ".artifacts/videos/page@bf6f7a6b3cfc9afd150ab710a6fbe53f.webm",
+      "bytes": 5066761,
+      "sha256": "e23856cdd88315c2de1dd2c45936492f4d157cc177997cd23368d83ac27c3248"
+    },
+    {
+      "path": ".artifacts/videos/page@d5a6b35b3b184a85357cdff9ae9bad21.webm",
+      "bytes": 1124819,
+      "sha256": "714d9b1086b3db6ddda54105124f4cf998e09a13cd288660f73da7517b03d321"
+    },
+    {
+      "path": ".artifacts/videos/page@d961083f300c133c5f9d09b8425bdfdf.webm",
+      "bytes": 16977734,
+      "sha256": "e3ca710afc20d3349e0b90893b4832a5e2650b484a0e808b5ab15b9c367101d3"
+    },
+    {
+      "path": ".artifacts/videos/page@e779fde2696a969a4efa93fcb9038b04.webm",
+      "bytes": 3355328,
+      "sha256": "d2f2533e667147ea98d8c98b9a3511c90e179607fe6aa2875b329ecaebc6d799"
+    },
+    {
+      "path": ".artifacts/videos/page@f5b4f410ec1da34abbac1453d475ed42.webm",
+      "bytes": 5555485,
+      "sha256": "72f7b909b36b1f52397de45af17552fce0de1f52f6761b481727520e403af9ec"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T11-48-35-598Z-30s.webm",
+      "bytes": 9094573,
+      "sha256": "377df0aec5d7ce76f7e8b18e8c892c4f6f210e27365aaaa486f23d4112f9395c"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T11-48-35-598Z-end.png",
+      "bytes": 658139,
+      "sha256": "628689c8cf567d0755aca52a25aa4b8e5f964e6db0b07a64d7b69dea857956ab"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T11-48-35-598Z.frames.json",
+      "bytes": 1866954,
+      "sha256": "7f2758487cad1a0f802f37494a85f10042e451e0760efffbf494dc04df69ab52"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T11-48-35-598Z.webm",
+      "bytes": 17744393,
+      "sha256": "b406533e7ba3d217bb1ff6863b6ec802501ba6bae30d07ae229ef07ce0a475f1"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T14-38-54-955Z-30s.webm",
+      "bytes": 14314742,
+      "sha256": "c95ddbac4c8f056f326be141ebc2b374e97a84600e2326b88036a7e70e2acc65"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T14-38-54-955Z-end.png",
+      "bytes": 657174,
+      "sha256": "aa2faea856caaed47b78ed13a36b57f16b3d1cf328c0ec246da01cc0f3736215"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T14-38-54-955Z.frames.json",
+      "bytes": 1904973,
+      "sha256": "a77533be9f35eea41e63416108c94e18830a95e226f4e9e726bfb8d583bc9281"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T14-38-54-955Z.webm",
+      "bytes": 22461854,
+      "sha256": "f30a1aac2edf3a7ea004eb95ebec20fdbdb4f11b776025e48e77f3ede98cdbfd"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T16-27-53-048Z-30s.webm",
+      "bytes": 14221088,
+      "sha256": "72609de2da44148ada5427b25e873abcb936fad6f979cadf41e4fe4b994c1d6a"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T16-27-53-048Z-end.png",
+      "bytes": 660302,
+      "sha256": "788f369b8f7bfef26715d388d4f92f13cfa619e9681437167b85eed6d15e0759"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T16-27-53-048Z.frames.json",
+      "bytes": 1904892,
+      "sha256": "218411afeb20494721f622e62db076d665c98d4a9b810d9de5aa4927cdad523f"
+    },
+    {
+      "path": ".artifacts/videos/ride-low-2026-09-08T16-27-53-048Z.webm",
+      "bytes": 22418147,
+      "sha256": "74e5ece5a3b59c79b1a059fec3e76e2fa5e8af6a86353b7e57fd67cebd342502"
+    },
+    {
+      "path": ".artifacts/videos/seed14-patrol-capture.log",
+      "bytes": 245505,
+      "sha256": "70a982f26f1827ac2caed445f9c93a667723f52fe413b83daf77a7da2171da67"
+    },
+    {
+      "path": ".artifacts/videos/seed14-patrol-fixed-2026-09-08T14-50-45-840Z-seed14-bank-wildlife.webm",
+      "bytes": 23890163,
+      "sha256": "5b64a800fb2b3e1d55685c9eb314467a1ea9a86bf99169bc404f2316aa923192"
+    },
+    {
+      "path": ".artifacts/videos/seed14-patrol-fixed-capture.log",
+      "bytes": 245897,
+      "sha256": "27da1c78c241306d44d60e503d7a592691d0b00e8a23ebb3a6f9c1d0afab05ae"
+    },
+    {
+      "path": ".artifacts/videos/seed14-patrol-review-2026-09-08T14-36-31-014Z-seed14-bank-wildlife.webm",
+      "bytes": 18652773,
+      "sha256": "58637311b9d2fe2970641afc142d2095ed2ae0c75155af4e3381891fa8301132"
+    },
+    {
+      "path": ".artifacts/videos/visual-2026-09-08T16-31-06-718Z-river-daylight-motion.webm",
+      "bytes": 738410,
+      "sha256": "bc8f46811f0ce07bcc2eab4463a7f4aea6dede568cfce73dbdbf23714865df9a"
+    },
+    {
+      "path": ".artifacts/videos/visual-2026-09-08T16-31-06-718Z-wagon-team-motion.webm",
+      "bytes": 5329656,
+      "sha256": "50ada8f8dfd6905cda64ea1eaa1cd41d31c8012055f5a809329627a4e80330a0"
+    },
+    {
+      "path": ".artifacts/videos/visual-2026-09-08T16-31-06-718Z-wildlife-deer-motion.webm",
+      "bytes": 2580863,
+      "sha256": "788491138a5fcbde36c3530c80f8e77295a37680f123be0dcaa0ed82a1f7ccb6"
+    },
+    {
+      "path": ".artifacts/videos/visual-2026-09-08T16-31-06-718Z-wildlife-rabbit-motion.webm",
+      "bytes": 2319598,
+      "sha256": "cd5db32d102b293b3a6fef024c2115f1be13e591c49fe8909eeefb143e36cf36"
+    },
+    {
+      "path": ".artifacts/videos/visual-river-daylight-motion.webm",
+      "bytes": 816709,
+      "sha256": "8bf5f089acc64a814a1000c47ee146d72a81022f7d8d7736d96067d1e3e0dade"
+    },
+    {
+      "path": ".artifacts/videos/visual-wagon-team-motion.webm",
+      "bytes": 5428502,
+      "sha256": "bbf42281513c7cbd2e6ba5e058808341e4b07a84f0c13c4000b67f06145f8b01"
+    },
+    {
+      "path": ".artifacts/videos/visual-wildlife-deer-motion.webm",
+      "bytes": 2545896,
+      "sha256": "9728e0720e9a0a034465b02db8b5bc8dc2117e18d414a2b46e54d6628d4f3634"
+    },
+    {
+      "path": ".artifacts/videos/visual-wildlife-rabbit-motion.webm",
+      "bytes": 2268842,
+      "sha256": "c4239d7c8c9121f3e7ebd516dd1babee122922b2fd4c5fb5739d06dd89dad095"
+    },
+    {
+      "path": ".artifacts/visual-inspection/river-daylight-1.png",
+      "bytes": 538608,
+      "sha256": "a286d1a791d9832dfbd2fb4fd36602e067e756119805004c7cc86cc3e52a8a10"
+    },
+    {
+      "path": ".artifacts/visual-inspection/river-daylight-3.png",
+      "bytes": 514658,
+      "sha256": "5281f3258278a53c27d90b0f28b77dd02a37551f466b2b631a5ab54b4cffc8e7"
+    },
+    {
+      "path": ".artifacts/visual-inspection/river-daylight-5.png",
+      "bytes": 508144,
+      "sha256": "ab09a89b2be31687782ad0c07e833b9dca03748a8e5cba223e0b176e0f1488bd"
+    },
+    {
+      "path": ".artifacts/visual-inspection/river-daylight-8.png",
+      "bytes": 498284,
+      "sha256": "a25df9c7623a308114e745276ace4e8438ff7df6ebd0f69723b22e7da58e4fa3"
+    },
+    {
+      "path": ".artifacts/visual-inspection/team-1.png",
+      "bytes": 821085,
+      "sha256": "aabb5e4ca1a58441f613d52d4011eb0a7470b588c215d239e4c70b8559be4998"
+    },
+    {
+      "path": ".artifacts/visual-inspection/team-13.png",
+      "bytes": 798116,
+      "sha256": "e4bafe8bedf0c0a816c5c8ae39ff98ebb673f99170b6da08a10323820bbdb66a"
+    },
+    {
+      "path": ".artifacts/visual-inspection/team-17.png",
+      "bytes": 667170,
+      "sha256": "a21ade565d02140926340f9586e02560d930e901a2bbe2e354299781b0f32183"
+    },
+    {
+      "path": ".artifacts/visual-inspection/team-20.png",
+      "bytes": 914791,
+      "sha256": "2012590afb536974a633878c6396fa8feb21debaf750f9fea70df8c650d567b8"
+    },
+    {
+      "path": ".artifacts/visual-inspection/team-5.png",
+      "bytes": 794152,
+      "sha256": "ab1ebae7aaba678f394303c02005b3dc40ce6457462641a9e8d5453623965f4f"
+    },
+    {
+      "path": ".artifacts/visual-inspection/team-9.png",
+      "bytes": 800892,
+      "sha256": "093dd79bc2268ca538c43839d15ced32541d4bb04909d3b6140db63e1c756098"
+    },
+    {
+      "path": ".artifacts/visual-inspection/wildlife-deer-1.png",
+      "bytes": 615472,
+      "sha256": "f6928d70fe9a746835a23ae34ce600fa15e9cf233ecd494f9003dc0cb1911a5f"
+    },
+    {
+      "path": ".artifacts/visual-inspection/wildlife-deer-3.png",
+      "bytes": 645977,
+      "sha256": "e6fca6049cbc6c14649bd458bd104c3c74b996ede169a4691d0a5c9ff7128f17"
+    },
+    {
+      "path": ".artifacts/visual-inspection/wildlife-deer-5.png",
+      "bytes": 612383,
+      "sha256": "180d2e742e9b9ea00cf70c36405381d5f51b0659f91e835ac64a709d07731d69"
+    },
+    {
+      "path": ".artifacts/visual-inspection/wildlife-deer-8.png",
+      "bytes": 636102,
+      "sha256": "18f8064a4064aadcf3360c3884fb83b18811f6bfc0dc4b23dd1267f5d66e3af1"
+    },
+    {
+      "path": ".artifacts/visual-inspection/wildlife-rabbit-1.png",
+      "bytes": 572248,
+      "sha256": "f38bc3834a680fe721b852af26b21f2c6a11f06cd85850c009fb271d5cef8d9c"
+    },
+    {
+      "path": ".artifacts/visual-inspection/wildlife-rabbit-3.png",
+      "bytes": 557028,
+      "sha256": "72159abd570c1771f89844edc024e7067ca5ec8b593f99745cd6bd5347ea6e2e"
+    },
+    {
+      "path": ".artifacts/visual-inspection/wildlife-rabbit-5.png",
+      "bytes": 503213,
+      "sha256": "d774288ce9c100ef75ec576b83116ca9dc829a48bfe2c34ae44dad6dd7923362"
+    },
+    {
+      "path": ".artifacts/visual-inspection/wildlife-rabbit-8.png",
+      "bytes": 613141,
+      "sha256": "4286187c80b9be88107b10a42ca28ce5973efcae3bc16794788179a012c75a2f"
+    },
+    {
+      "path": ".artifacts/walking-route-tests.log",
+      "bytes": 177,
+      "sha256": "a8a06a51280fbf0d9d63f86f45d35108297810260874c80c7a7a9db0dd028ba7"
+    },
+    {
+      "path": ".artifacts/world-rework.md",
+      "bytes": 1565,
+      "sha256": "e8b425c2318cc45dcf2fecc186e5cba8aeae507f2678ff5b78d06b5621377876"
+    },
+    {
+      "path": "docs/evidence/PAUSED-2026-09-08.md",
+      "bytes": 17948,
+      "sha256": "66b1e82c183b95d0e4520003b56b02bb3b53b6a03ee78fa9cd8411b70995d9a2"
+    },
+    {
+      "path": "docs/evidence/activity-capture-startup-failure/report.json",
+      "bytes": 18795,
+      "sha256": "31ce32f80fa805e185b7e59dfe3f7807e7e1bd6dacb46920ac9759f07e2f0400"
+    },
+    {
+      "path": "docs/evidence/activity-capture-startup-failure/seed14-bank-wildlife-failure.png",
+      "bytes": 22545,
+      "sha256": "63bb0a7000d588599378083a352cf6d535111b4d97119efea3fbdca71203aed0"
+    },
+    {
+      "path": "docs/evidence/activity-review/fishing-landed.png",
+      "bytes": 662696,
+      "sha256": "8c57129db0abbd6ceab9be7caec069af83ec635b894d9029512215da425286ad"
+    },
+    {
+      "path": "docs/evidence/activity-review/fishing-line-and-bobber.png",
+      "bytes": 701578,
+      "sha256": "047f00b4f60c261b58c225f96ab7ea8acdca0e4c5901d24d4e9b70eb772fd9b5"
+    },
+    {
+      "path": "docs/evidence/activity-review/fishing-ready.png",
+      "bytes": 705664,
+      "sha256": "dd3895257e1975a95a26e549224d80a5638cdfc7f15cf8bcd53ada66bfd1a4a0"
+    },
+    {
+      "path": "docs/evidence/activity-review/fishing-reeling.png",
+      "bytes": 740087,
+      "sha256": "d0dd5bef1598d47ea2466cd302ad5d5322a89328b60b5d40693ca4e8970b2e10"
+    },
+    {
+      "path": "docs/evidence/activity-review/hunt-aim.png",
+      "bytes": 751608,
+      "sha256": "d1a2b84569e046a445d3c8284317e74c0bed83f2c864e58a8208626bb2079c84"
+    },
+    {
+      "path": "docs/evidence/activity-review/hunt-grounded-carcass.png",
+      "bytes": 913039,
+      "sha256": "b68c3dd65d026d59e43e64e65f56dd6c2210e969313981167066c8b5e5d71746"
+    },
+    {
+      "path": "docs/evidence/activity-review/hunt-retrieved.png",
+      "bytes": 871129,
+      "sha256": "10119dc33abb2a3eb15ffd76e48b22aba813d88a3266c661558d8545e3b7a0e7"
+    },
+    {
+      "path": "docs/evidence/activity-review/rain-back-outside.png",
+      "bytes": 585891,
+      "sha256": "371a713ef614b40c1756d62482dce35c659855da238ddf79bc202a27d4b7ac81"
+    },
+    {
+      "path": "docs/evidence/activity-review/rain-outside-awning.png",
+      "bytes": 671041,
+      "sha256": "93c79f15193e279ac0afe665b981738f3a5c88da8931fafbd051df5d8cdd3ad1"
+    },
+    {
+      "path": "docs/evidence/activity-review/rain-under-awning.png",
+      "bytes": 888939,
+      "sha256": "658840870fe08f8c35d7ce01f8cceac619d75707e63430557b60fde619871ece"
+    },
+    {
+      "path": "docs/evidence/activity-review/report.json",
+      "bytes": 386569,
+      "sha256": "b8ce391e652ffe3521f7604c0c10a5b752e56900964d2e56f9aba91d45212199"
+    },
+    {
+      "path": "docs/evidence/activity-review/seed14-team-and-deer.png",
+      "bytes": 893148,
+      "sha256": "522b19a1034ae6d0489c7124b327e66d3f0e3e22b4420ec67eca069fd007185b"
+    },
+    {
+      "path": "docs/evidence/activity-review/seed14-trunk-and-dry-patrol.png",
+      "bytes": 791958,
+      "sha256": "4b40db480b1bf9d810ba9af18c141c627579e64e1825d8bec66e8ad831f4254f"
+    },
+    {
+      "path": "docs/evidence/camp-board.json",
+      "bytes": 13414,
+      "sha256": "39ee51fdd0a0f6e70f0532b45e82c8a046ca187f77da8322c018130ef70f45a6"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-2/failure.png",
+      "bytes": 790713,
+      "sha256": "86e7ca2d3f31112a1f60607fbdfde30826709786dc4860c2893a45425865a183"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-2/ride-frames.json",
+      "bytes": 461536,
+      "sha256": "65994cd069108f0879087ab00fc7f01ce1ae94b43993260e8ccd2c5ddfc8661b"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-2/walkthrough.json",
+      "bytes": 390919,
+      "sha256": "b523e58a09826a4bd6bb3de94ffb7d6144d64bbd6058ec5058458e64ef4a78b5"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-3/failure.png",
+      "bytes": 513826,
+      "sha256": "89855fd2a1def28e7dad42b4d94c720d3f3b3d66d55ba408acbb68abb715a370"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-3/ride-frames.json",
+      "bytes": 444977,
+      "sha256": "75abc76a54d030ce08892610d192b13381e3891e85d3ab710d85c6961019daea"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-3/walkthrough.json",
+      "bytes": 461698,
+      "sha256": "dadac854f46cd77f963dfb2b03b5610505b00c50b3fa75f1a22680e556313c2e"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-4/failure-save.json",
+      "bytes": 147251,
+      "sha256": "9cf6896c8a8c4cc2c12947524306e607083fb7a36c666a052790fe7b8d055b66"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-4/failure.png",
+      "bytes": 441953,
+      "sha256": "d5f708c2ccb862e0586bcf4151b4e260a53d92cc938f3b6f04ed58e087406548"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-4/region-0-save.json",
+      "bytes": 145415,
+      "sha256": "6ae9fa3fe2b8838f2dcbfcb8de7dd85543a3350113d55f6c8985627c4fa1e4a5"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-4/region-1-save.json",
+      "bytes": 146200,
+      "sha256": "6b1fd66a8d3a5b98277cc08064119be7df40088b1fc403bfbcf8c23f8dd202a3"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-4/region-2-save.json",
+      "bytes": 146285,
+      "sha256": "a44a4aa2b8e5e6029143ee9bcd79b6e8ff60f3bb4b73a6092507869a362c3483"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-4/region-3-save.json",
+      "bytes": 146524,
+      "sha256": "078727f13f3183ae18efd0ca28d6350a5c76a7fe24b4d599702968ff61dea9e8"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-4/ride-frames.json",
+      "bytes": 239302,
+      "sha256": "d480934ef8cedf420982f9abc139d6fa84e75bf5d32a2d12b308ce4bb18e0da9"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-4/walkthrough.json",
+      "bytes": 348255,
+      "sha256": "c42facc96fdbd09b3673b3323c03df6e541462d8e9676b91f24d5f10c6eeaa44"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-5/walkthrough.json",
+      "bytes": 10890,
+      "sha256": "ec7ad1642c170ac4fb9e2c83821294bee8e5ad74ac7be3c9a50ca97627634a29"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/failure-save.json",
+      "bytes": 147632,
+      "sha256": "41025ef48d80bcf2939ae9d93b611966a26fcbda861d87f1fc61c49402123595"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/failure.png",
+      "bytes": 679018,
+      "sha256": "ed4b603c08b0d0872a4193befed3701dd913bf7844bb4c1120988d619b7a35a3"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/region-0-save.json",
+      "bytes": 145415,
+      "sha256": "a9d1ac89b56cb30f31105b1343196a2654614dcfdeb49763178a704531aee7b1"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/region-1-save.json",
+      "bytes": 146265,
+      "sha256": "ce27ed16407a541f5ceadc15abb5d78efc8a239846126bc28efc7704d6ca0a27"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/region-2-save.json",
+      "bytes": 146285,
+      "sha256": "09993918e432182b043b500954c233654cc51c9ef550932db0a1b38af088f06d"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/region-3-save.json",
+      "bytes": 146519,
+      "sha256": "1bfa1f1804602470f1ef79663728278327a5a24ab8a31e11aa55a37db786ced5"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/region-4-save.json",
+      "bytes": 146702,
+      "sha256": "ef2e3b8f9291052e9a02aed317102d41bcf9ea4650b92b37da5bbd743c8da334"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/region-5-save.json",
+      "bytes": 146720,
+      "sha256": "fcedc3c767d7987aff61c1004ddadafeb26386728370a12d9a251ad27114b24b"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/region-6-save.json",
+      "bytes": 146886,
+      "sha256": "9251173ddc03d30f5ab4a24af0dd8adda8a99bd7094f2f2512ffa0529df6f3bc"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/region-7-save.json",
+      "bytes": 147408,
+      "sha256": "455a0045682e1c45b1cc224a274594491d86c4fd895d19e7d3dbfe3aa8b6fc3e"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/region-8-save.json",
+      "bytes": 147456,
+      "sha256": "3b417a6e57208807502de49a47f858c4d3af401e688ce58433ca41c50efa9198"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/region-9-save.json",
+      "bytes": 147624,
+      "sha256": "e3a351f261946fdc59e15ce5c7fadc3a1a8423606530127ce44fd8abb3955dbd"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/ride-frames.json",
+      "bytes": 460603,
+      "sha256": "d542be9c9e8a855624c3c173b217378ba9e51270e6a321787a09cc79e7e2e8be"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-6/walkthrough.json",
+      "bytes": 421932,
+      "sha256": "95a1a19c59539edeb4ec5a0d27f39bc215c6f4a251b858d68f333584eadf0c00"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/failure-save.json",
+      "bytes": 149220,
+      "sha256": "40deeea8d8489b29110a744f9e20ccfb3823351d7d3397c354c93746fe1bab55"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/failure.png",
+      "bytes": 579691,
+      "sha256": "ce81545bd02c00533c09367ba984aae32508bb85ff910a5a5c1b652bfb586082"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-0-save.json",
+      "bytes": 145415,
+      "sha256": "ddbdb33e424b3ebf85c08c47cc4fca066e08b858da1033e3225d09c8dc001f6e"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-1-save.json",
+      "bytes": 146201,
+      "sha256": "2c76c9197c2e45501f63bf4cd0e638d97e3ca43ba3145fab8c6cd89fe89b8d06"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-10-save.json",
+      "bytes": 147714,
+      "sha256": "cafeb433ae2160fd242d691214fabe9602429ef2999b993014988447639ed583"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-11-save.json",
+      "bytes": 148136,
+      "sha256": "d39666af5c36c5dca0a679f332a0ac7d7ad61fb384bce58de0a72c11ee3f9e56"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-12-save.json",
+      "bytes": 148369,
+      "sha256": "dd97a9d41242e534ede7833005b09ddc5f3d6fc085d63beb9a6bb514d4d2761f"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-14-save.json",
+      "bytes": 148489,
+      "sha256": "473007dd6170c0422af93556ba5acb2f09212f9395e741d903398e9b5def9614"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-15-save.json",
+      "bytes": 148737,
+      "sha256": "c51b16202a31ba9ffd9d03113647bd3c354aa1c79c1435a63bf34ee07f84ac16"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-2-save.json",
+      "bytes": 146285,
+      "sha256": "a10767012eb10e4d8827edc8161931db674727b8ce8fa998f95f72c3d977efd9"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-3-save.json",
+      "bytes": 146521,
+      "sha256": "ca0d0f6ef46d42093e47e461308432906e5836e0910ad7d8b27024cf79a5a76c"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-4-save.json",
+      "bytes": 146703,
+      "sha256": "e2ceca641974248cffc88b7cb187b1c7274e5bf715c83b1c3c4bd2740221a17c"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-5-save.json",
+      "bytes": 146693,
+      "sha256": "51331fb8d89f53b62901e7ded7736b8f6f0f044f711e79572e080e5b7e149a81"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-6-save.json",
+      "bytes": 146889,
+      "sha256": "90ba89c80ae17d5c5736b73aea2627fedc471ab3b49394cca445cedbceb21437"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-7-save.json",
+      "bytes": 147408,
+      "sha256": "08fcb0df7e68b2650d206cd8e2409086cf8a174a38ea3cd9f02e5b4767292a78"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-8-save.json",
+      "bytes": 147396,
+      "sha256": "73d492ad01a17b5fabb98353b8ade2c52abf5fccda535e7ba5781f4e1800d123"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/region-9-save.json",
+      "bytes": 147567,
+      "sha256": "7893f4838d4b51c13dcdf7d7f9ae8de57240b6660862e82a26153427d65a3e45"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/ride-frames.json",
+      "bytes": 458671,
+      "sha256": "9b05ff89c77db7ecffbfa4683c5cfabb326df60756e3f27643354ee80940f306"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-7/walkthrough.json",
+      "bytes": 503317,
+      "sha256": "d31fa9b3749b9d77f71e600eb6d56bd7032610eea5d6ae406c6b0fcf2a7c88ff"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/ending.png",
+      "bytes": 163252,
+      "sha256": "4b3cc98c25285cd54a8ed88aba2a394d8104201525ebcaaf96a073730a771439"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-0-save.json",
+      "bytes": 145415,
+      "sha256": "615f6a17a1753404b77413fccabe959b321b1c113ff5aae3b25f09bd02f16ddb"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-1-save.json",
+      "bytes": 146199,
+      "sha256": "20b1b1c8f4d0e93b860279e32a286795df3f4ae2d72c5e27adefe9785172ca77"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-10-save.json",
+      "bytes": 147714,
+      "sha256": "6f92150ef98b5c1c90bb240cdd9938d7d1bc05f8714fa80f826b105122e5c6cf"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-11-save.json",
+      "bytes": 148135,
+      "sha256": "9e25cffb70d7af7315ec01bbd234a1eda4a7e96feba9818696dd5a87a6e77cbb"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-12-save.json",
+      "bytes": 148371,
+      "sha256": "d85e5f32f5ca84efede6dbf4819fe61b8f05056e7d13158a972ebd3fc56dd92f"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-14-save.json",
+      "bytes": 148482,
+      "sha256": "9b2274f942df77b7ec60ccb561cba335aeb68a62b787f629d33c7ca9fe99ab3b"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-15-save.json",
+      "bytes": 148737,
+      "sha256": "8f9599c9ad992b92f061e955e4b75e47105cbb0d1848cdfa934d948c5c2e6659"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-16-save.json",
+      "bytes": 148675,
+      "sha256": "562368ba66c38e11ad55dc385aa0b0d1c76bbb353242cc85ef0778cf1edd7fed"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-17-save.json",
+      "bytes": 149465,
+      "sha256": "fe36ec0785ee974dc0d9cd350698b9a48ca01cc4fa05ed4c2f152636fdd09d3f"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-18-save.json",
+      "bytes": 149666,
+      "sha256": "ecd5393f6ab606762b0110b247a27fddeba13a12ba865b2f48b1bd67987789e5"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-19-save.json",
+      "bytes": 150217,
+      "sha256": "497d1aaf89f6c7a792a91051c6a2a5b0dd1aa52c759aefc4cbd5ae9d9c98757f"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-2-save.json",
+      "bytes": 146285,
+      "sha256": "61490af685243f9684380dab097c32eed076bfcb627c176c546bb270ab5457aa"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-20-save.json",
+      "bytes": 150234,
+      "sha256": "2f383747d2a677d944d04c1e4e58fa888aa3b9f313c63c34a37ff4410fe68ba7"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-21-save.json",
+      "bytes": 150418,
+      "sha256": "4b325e25b55e7c8ec22d48ee5b85cd9f9b68e5f5e0c6bf37b0837f7b2bb0fb1b"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-22-save.json",
+      "bytes": 150426,
+      "sha256": "c758d33deedb302d235d7e2d19056c334538cec87ed58ebde311688a6227a94c"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-23-save.json",
+      "bytes": 150413,
+      "sha256": "99d36586abba87432bfd560bcc28d850ec3eb9b54a77160ec4e8c0cc850a5600"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-24-save.json",
+      "bytes": 150625,
+      "sha256": "bc2affb0f873c1c4bc86320fc89358f6797859d9ada7301127ed18cccf4e9bc0"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-25-save.json",
+      "bytes": 150966,
+      "sha256": "090e340c83d7e68c4862c365f054b13bd20dbc232402ca96b56e1653b5f61d13"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-26-save.json",
+      "bytes": 151113,
+      "sha256": "40c1f67d97c662c9492943590ec93ff1909ff04bf5895158cc8155b879f32bd9"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-27-save.json",
+      "bytes": 151183,
+      "sha256": "07ed9adc14e992eb70abd73de9be5f7f0564d91c936f047550dee15fc5181494"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-28-save.json",
+      "bytes": 151299,
+      "sha256": "a72f1fc7de76e231000ca88c6f4a16daddd71723c4265d7d691c33ae7baaf40e"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-3-save.json",
+      "bytes": 146524,
+      "sha256": "1d36164d58f90fd8662f76d78db0f4e5f0d2a359f50197912e782b8587ccb3de"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-4-save.json",
+      "bytes": 146705,
+      "sha256": "e687759c158d969a46c1f0bdf597848fc669b0b86f471782a3838947fb07871a"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-5-save.json",
+      "bytes": 146721,
+      "sha256": "63afda293e668ff280d40afef652d4eab5fa1b6eace676cf4becbc69ba4422d5"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-6-save.json",
+      "bytes": 146889,
+      "sha256": "69d4ca5bba014695860daa6eb313b700b7e13be0badb94fe2f77ddbc77e133fb"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-7-save.json",
+      "bytes": 147384,
+      "sha256": "d917158904940395b3683caa7a5f7b122f12562f15e7bfe382bad100eeb9a78f"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-8-save.json",
+      "bytes": 147398,
+      "sha256": "2a738c4dbf57e6c7937c4cc4ae2b0e8dc82eac82e571c4308b39e7698c95e195"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/region-9-save.json",
+      "bytes": 147568,
+      "sha256": "095c86ca5a4c33812b2ade00a97db5ac5c0aed98c5b095550bf5d2fff45f0482"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/ride-frames.json",
+      "bytes": 451392,
+      "sha256": "de58a59256f5fb3c162eeb67d7256976bfaff860cbda5524094f0c567868ac38"
+    },
+    {
+      "path": "docs/evidence/campaign-attempt-8/walkthrough.json",
+      "bytes": 438785,
+      "sha256": "b3882ab690343276877cd1c36945a6a7eaddc86f26728e28830a0500622ee3a5"
+    },
+    {
+      "path": "docs/evidence/campaign-resumed-2026-09-08/failure.png",
+      "bytes": 445051,
+      "sha256": "4f3ea36c2e18548c4f197168c6dddd838b081c5ad48b9c72d9f45867515f88e9"
+    },
+    {
+      "path": "docs/evidence/campaign-resumed-2026-09-08/ride-frames.json",
+      "bytes": 458307,
+      "sha256": "9d4aedbf6fa3774bee3d4382c0170f849caa3f7fbf556592af55b35984951993"
+    },
+    {
+      "path": "docs/evidence/campaign-resumed-2026-09-08/walkthrough.json",
+      "bytes": 360907,
+      "sha256": "ca73824dd248668572c722a14b994e065f60b18ce18108e9cb64c25f788c80f7"
+    },
+    {
+      "path": "docs/evidence/campaign/failure.png",
+      "bytes": 470442,
+      "sha256": "d9a6b85b13ec61a0aba7ee5f3081e32b21132c42627c4582d6a32b16ef655085"
+    },
+    {
+      "path": "docs/evidence/campaign/ride-frames.json",
+      "bytes": 233136,
+      "sha256": "3488fd5e776ecc9266392fe2013e621ae0155126621272158f3d344e08fd684d"
+    },
+    {
+      "path": "docs/evidence/campaign/walkthrough.json",
+      "bytes": 326820,
+      "sha256": "cade24c0c37ad6cc399f6cc93220467d5ca2536d1530fda358794ccea7ed8ea9"
+    },
+    {
+      "path": "docs/evidence/caulk-reverse-failure.json",
+      "bytes": 300425,
+      "sha256": "37ddfd83d086eb81e2fd02fe124913256a3b0086f7f329b996915b943d0fc484"
+    },
+    {
+      "path": "docs/evidence/ci-rendering.md",
+      "bytes": 11341,
+      "sha256": "7dfbfe4274920baf522e95b34c79e7eaee9d8acb4534e99aa16da5f972b7b3d7"
+    },
+    {
+      "path": "docs/evidence/crossing-exit-before-braking.json",
+      "bytes": 37657,
+      "sha256": "e63d90e8ee1314a1486f2227cd1984c6781182ba4e67329ea905c152fc4c23e7"
+    },
+    {
+      "path": "docs/evidence/crossing-exit.json",
+      "bytes": 40407,
+      "sha256": "9d116cfefc5e87a88355339e369cd5d16aa35ec8e94a9716b19c987719a6228d"
+    },
+    {
+      "path": "docs/evidence/green-river-entry.json",
+      "bytes": 61710,
+      "sha256": "c44436ee23612ef4580b6fbff50b1e24266d44bf881082acb968ab10e24121a8"
+    },
+    {
+      "path": "docs/evidence/hills-road.json",
+      "bytes": 18849,
+      "sha256": "98e812fd26cb9df6c8a65cfbc47836ecaa5c5e4e66607d2c0a5c1e90b82a5249"
+    },
+    {
+      "path": "docs/evidence/independent-review.md",
+      "bytes": 90292,
+      "sha256": "60c049c536ea1e37495383feadef89e67c1f86acfcd43de3caf8265713c7dd19"
+    },
+    {
+      "path": "docs/evidence/integration-review.md",
+      "bytes": 17388,
+      "sha256": "06ad22e497fc5a4217f2e8c583c9fe9913bf2fd67a92a8a61afb67ee0dc8b6f5"
+    },
+    {
+      "path": "docs/evidence/m1-integration-first.png",
+      "bytes": 239183,
+      "sha256": "c568cfaa39608bac295672d82cc802717cd3e781281dd8dd00311affd3b75599"
+    },
+    {
+      "path": "docs/evidence/m1-seat-first.png",
+      "bytes": 713859,
+      "sha256": "facf46b66dd759833fbbd0ac2f5b255c668607746518d7ee27e07873cdcff82f"
+    },
+    {
+      "path": "docs/evidence/m1/drive.png",
+      "bytes": 728841,
+      "sha256": "3b54877f8da72f4db0e5070583aa144f294302dd551ee9b271c94fc8cf8b5ba2"
+    },
+    {
+      "path": "docs/evidence/m1/seat.png",
+      "bytes": 748781,
+      "sha256": "e943778a5f4bdcd2b99c8b9b4a34671e04419c82170addcbd207a23225524d1a"
+    },
+    {
+      "path": "docs/evidence/m1/smoke.json",
+      "bytes": 3788,
+      "sha256": "94ce551f67b9691d817cdcd91b9a30488223a084418762de897b7449ff7ca002"
+    },
+    {
+      "path": "docs/evidence/performance/cold-load-road-fix.json",
+      "bytes": 18142,
+      "sha256": "0f8e19ed05bb91bf746a418e6594dfdec3ef121c970f4ccd07dbbb342934206a"
+    },
+    {
+      "path": "docs/evidence/performance/cold-load.json",
+      "bytes": 16323,
+      "sha256": "2176a071d3fd4eb33160402defb088046e039fd5ee8a5e559d4f9a04dc47883d"
+    },
+    {
+      "path": "docs/evidence/performance/ride-30s.webm",
+      "bytes": 9094573,
+      "sha256": "377df0aec5d7ce76f7e8b18e8c892c4f6f210e27365aaaa486f23d4112f9395c"
+    },
+    {
+      "path": "docs/evidence/performance/ride-frames.json.gz",
+      "bytes": 193583,
+      "sha256": "c5bed8c0b81cf995999e4f9222534c0c9f8a6e230fb6273f7b606ef5e5372d7f"
+    },
+    {
+      "path": "docs/evidence/performance/ride-road-fix.json",
+      "bytes": 710760,
+      "sha256": "b1bfddfca6a7fa386898aea946bafee1e95ddff31acad761210bcc230a739bdb"
+    },
+    {
+      "path": "docs/evidence/performance/ride.json",
+      "bytes": 708934,
+      "sha256": "c63de1f00ad9202169131c7259db7ee987577aa11d95b62e63c3e5c25578611c"
+    },
+    {
+      "path": "docs/evidence/performance/scheduling-investigation.md",
+      "bytes": 4713,
+      "sha256": "52b94111a8df94235296882369be331d66998c06d6c2650237dd0263e3fd5c64"
+    },
+    {
+      "path": "docs/evidence/reference/environment.json",
+      "bytes": 235,
+      "sha256": "3fb4197b7cceebe6af75eeda2be5c2b1bdd4f72c96724b7b2ee2ccd75b94f306"
+    },
+    {
+      "path": "docs/evidence/reference/forward.png",
+      "bytes": 743866,
+      "sha256": "188edeff375ebcd377b238477ba9cd91800224ae055030762a547463d5193b30"
+    },
+    {
+      "path": "docs/evidence/reference/rear.png",
+      "bytes": 709410,
+      "sha256": "aeed968fbf91bb82843be65b3210cbe21987100ceaf19a769d4f990891d82d06"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-fixed/README.md",
+      "bytes": 3051,
+      "sha256": "f7f448744b69c7eb6d8d2785f0ca8a60801d0dfc822c044ec7181dc3dfd53911"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-fixed/report.json",
+      "bytes": 245896,
+      "sha256": "3663138a113ba304d32fcce866636b436d94208f12286166b4a95cf132722375"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-fixed/seed14-full-body-patrol-12.png",
+      "bytes": 779746,
+      "sha256": "83e737673cdfe7d4f302054103e45f186f3e69680ad326147f4218d940cc4b68"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-fixed/seed14-full-body-patrol-18.png",
+      "bytes": 798655,
+      "sha256": "13dc5ee95d96e04344c12764c6a6be3f69a9d3819c942545e9ee435be10aac1b"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-fixed/seed14-full-body-patrol-6.png",
+      "bytes": 781655,
+      "sha256": "9afad09b3c0f682194626a89bdd3843aa82324c841b020970a5d5c0ca8334a1f"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-fixed/seed14-team-and-deer.png",
+      "bytes": 1031515,
+      "sha256": "21240544da411ab9ea67274015defe63433f203f2a1b8376bb4577ed44b42c93"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-fixed/seed14-trunk-and-dry-patrol.png",
+      "bytes": 780563,
+      "sha256": "d5a9fea90815f4e55376f1ea612aa2981a79b3edb36e050b5e319a74396eed24"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-review/README.md",
+      "bytes": 3012,
+      "sha256": "9591a81b38bcd656fd5ebf90afc5052568bc5af48089b7d12874623dacacab13"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-review/report.json",
+      "bytes": 245504,
+      "sha256": "c729a2ca24af048d115b562dfa9c371a02f536e988edbdfe41851dc085e745cc"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-review/seed14-full-body-patrol-12.png",
+      "bytes": 724153,
+      "sha256": "de3279fb1636a72d6a859a6b6c84805f040872327d3d88c0663439534347946a"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-review/seed14-full-body-patrol-18.png",
+      "bytes": 727688,
+      "sha256": "c2e796c93296f84645bf5712e0321e0d8c55844b58e2d028200d99e84372731f"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-review/seed14-full-body-patrol-6.png",
+      "bytes": 725476,
+      "sha256": "f56d0391250937dfc3cfe15a7ea667bb2d094a3468e017de00773552df202e03"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-review/seed14-team-and-deer.png",
+      "bytes": 866415,
+      "sha256": "0f6eccfbc79d90155fbc1b1ad1430754f76f7c45fada438f215cbf48fd418054"
+    },
+    {
+      "path": "docs/evidence/seed14-patrol-review/seed14-trunk-and-dry-patrol.png",
+      "bytes": 723021,
+      "sha256": "5d73cf6fe5a64e5a4f22d00a549d6d6cb1c74cdc8a12cb11101b2bcba46b2ce5"
+    },
+    {
+      "path": "docs/evidence/standards-review.md",
+      "bytes": 4563,
+      "sha256": "2b1dfe6e0c135b84eadde944338389c9922ff2a8c756059f40ce011cf8ea1cf9"
+    },
+    {
+      "path": "docs/evidence/task-artifacts.json",
+      "bytes": 6160,
+      "sha256": "762582e7d4b7e82765e26474aea625e21d2950ee3a1dbddb6cfea896ecb4679b"
+    },
+    {
+      "path": "docs/evidence/trader-return.json",
+      "bytes": 613,
+      "sha256": "05a3542f29911ed7be15597167424f543bb36e964de69f579f627a19c857891b"
+    },
+    {
+      "path": "docs/evidence/visual-review/camp-night.png",
+      "bytes": 843818,
+      "sha256": "f11ddbf4fb2ecc17df6135f90ccd8e025de6496615fae8fd1a1a8f7a7a667709"
+    },
+    {
+      "path": "docs/evidence/visual-review/camp.png",
+      "bytes": 992954,
+      "sha256": "cca58c5321e566bad39708fa8eee73a57de3dc07568c26208cb0278c9b214e3d"
+    },
+    {
+      "path": "docs/evidence/visual-review/companion.png",
+      "bytes": 789702,
+      "sha256": "bad632b6355aff6ccdb89717e9cec874b259f16611f1e53dd21171b60ba6780c"
+    },
+    {
+      "path": "docs/evidence/visual-review/fog.png",
+      "bytes": 721433,
+      "sha256": "6532ffdcda25eed89c4ccff384b7fc1f1bc78fbd1ad59ccd68e6250aec386346"
+    },
+    {
+      "path": "docs/evidence/visual-review/mountains.png",
+      "bytes": 862633,
+      "sha256": "68d654a2c1d403dd8fd0c9b8c7cb3e3f36064b450248f550983722f6c19b77cf"
+    },
+    {
+      "path": "docs/evidence/visual-review/ox-front.png",
+      "bytes": 670144,
+      "sha256": "fdad3610372ed3b2f64778c2a04cbd58efd84b3e812c4d268dcc0e41ef94f420"
+    },
+    {
+      "path": "docs/evidence/visual-review/ox-hoof-contact.png",
+      "bytes": 961539,
+      "sha256": "95877ca9004535ee927023100fc78c2e5c896dd73a105ca6395bc21796f1770b"
+    },
+    {
+      "path": "docs/evidence/visual-review/ox-mountain-contact.png",
+      "bytes": 870038,
+      "sha256": "dab9f6555fa83a067142d0a11582f4d98058de8942cf45f8e36f83de7dd37a40"
+    },
+    {
+      "path": "docs/evidence/visual-review/ox-side.png",
+      "bytes": 884789,
+      "sha256": "e413585bbaa19f53c401233d4304ad7a1748dd71b620c1abba3aeb99bb1e98e7"
+    },
+    {
+      "path": "docs/evidence/visual-review/rain.png",
+      "bytes": 603328,
+      "sha256": "1fd9f9547b3b55bbbf824c134aa830b4aeb82b415c0ca7799ab08f29589064b1"
+    },
+    {
+      "path": "docs/evidence/visual-review/report.json",
+      "bytes": 285965,
+      "sha256": "aff426fcc1a11e6d73ffeea5e7f502b157e5b2863e88dfedd70e795cea97c8ab"
+    },
+    {
+      "path": "docs/evidence/visual-review/ride-rear-stopped.png",
+      "bytes": 1285921,
+      "sha256": "0a38e9c3ecd5165fefd28553664c0e90be0064a462bb9a0dfc49abd0749dfcc1"
+    },
+    {
+      "path": "docs/evidence/visual-review/river-daylight.png",
+      "bytes": 625136,
+      "sha256": "9702a579f90b72edd5206764b3048db497d34265e2a6301e655cedd6cabd2b05"
+    },
+    {
+      "path": "docs/evidence/visual-review/river.png",
+      "bytes": 557556,
+      "sha256": "bee66497f2245fb42ee4da9a89eadbf2232094794083a93563f2dcc3a195ab13"
+    },
+    {
+      "path": "docs/evidence/visual-review/seat-forward.png",
+      "bytes": 746026,
+      "sha256": "ae8113338ba7dfbcc0958de658b4486bbb8d3999ed3521d9f10d0c13c1725626"
+    },
+    {
+      "path": "docs/evidence/visual-review/seat-rear.png",
+      "bytes": 1284863,
+      "sha256": "0a923a4ea906e67978aa94a1ba7d0d34cf9e41b2cac544ea16623b0a04d47020"
+    },
+    {
+      "path": "docs/evidence/visual-review/snow.png",
+      "bytes": 663859,
+      "sha256": "24ae772c81fd1807d00468b2bede7fb62dc1d60fc4eceb7eced0ff02f4957e74"
+    },
+    {
+      "path": "docs/evidence/visual-review/wagon-exterior.png",
+      "bytes": 704947,
+      "sha256": "97f77069f8fbc8d0a07a9daf20d7c93a8fcc3416ff1e628df7d77f2e38f41e3e"
+    },
+    {
+      "path": "docs/evidence/visual-review/wildlife-deer.png",
+      "bytes": 701881,
+      "sha256": "649d1c675cb668d8f446338f9a86ae5794bff6d42907029b04ab231d1f34ef97"
+    },
+    {
+      "path": "docs/evidence/visual-review/wildlife-rabbit.png",
+      "bytes": 745875,
+      "sha256": "5c0d122daa27ada43381e91d812dc7b4b207fb3441c45391943c8483dbea382c"
+    },
+    {
+      "path": "docs/evidence/walking-navigation.json",
+      "bytes": 31004,
+      "sha256": "cadb4df6f81aa714348fce8687a45aabab4dd6e22cac204a59447220fb201449"
+    },
+    {
+      "path": "docs/evidence/world/quality-low-baseline.json",
+      "bytes": 250,
+      "sha256": "05aaa66c2c083ae1d46b6d2f5fe0c915004cd65c03592f5436d070f2fee67df7"
+    },
+    {
+      "path": "docs/evidence/world/quality-recipe-matrix.json",
+      "bytes": 87982,
+      "sha256": "5bf80e9b89474ca2f1378cc4f674522355b17fcf81fca852bba757eeef39598d"
+    }
+  ]
+}

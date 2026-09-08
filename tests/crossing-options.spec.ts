@@ -167,6 +167,9 @@ test('R03/R05 Columbia route selection launches a physical raft run to the endin
   page,
 }) => {
   test.setTimeout(gameplayTimeout(150_000))
+  const { finishCrossing } = (await import(
+    new URL('../scripts/campaign-walkthrough.mjs', import.meta.url).href
+  )) as { finishCrossing(page: Page, report: Record<string, unknown>): Promise<void> }
   await restore(page, bankApproach((await fixture('finale-fork')).raw))
   await expect(page.getByRole('heading', { name: 'Choose the trail', exact: true })).toBeVisible()
   await page.locator('.route-list button').filter({ hasText: 'Columbia' }).click()
@@ -189,11 +192,8 @@ test('R03/R05 Columbia route selection launches a physical raft run to the endin
 
   await driveTo(page, 0, 98)
   await driveTo(page, -8, 107)
-  await driveTo(page, -9, 140)
-  await holdUntil(page, 'w', (s) => !s.activity, {
-    timeout: gameplayTimeout(5000),
-    message: 'Clear the Columbia raft course',
-  })
+  await driveTo(page, -7, 132)
+  await finishCrossing(page, {})
   const arrived = await state(page)
   expect(arrived.activity).toBeNull()
   expect(arrived.view.status).toBe('Arrived')

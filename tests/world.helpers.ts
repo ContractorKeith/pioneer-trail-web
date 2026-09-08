@@ -259,8 +259,37 @@ export async function start(page: Page, trail = 'oregon', preset = 'Safe', seed 
   await page.getByRole('button', { name: 'Take the trail' }).click()
   await expect.poll(async () => (await state(page)).paused).toBe(false)
 }
+
+/** Navigation does not need to transfer the campaign catalog on every observation. */
+async function navigation(page: Page) {
+  const read = () => {
+    const snapshot = (
+      window as unknown as { __trail?: { snapshot(): RuntimeSnapshot } }
+    ).__trail?.snapshot()
+    return snapshot
+      ? {
+          mode: snapshot.mode,
+          position: snapshot.position,
+          heading: snapshot.heading,
+          wagon: snapshot.wagon,
+          regionIndex: snapshot.regionIndex,
+        }
+      : null
+  }
+  const snapshot = await page.evaluate(read)
+  if (snapshot) return snapshot
+  const ready = await page.waitForFunction(read, undefined, { timeout: 30_000 })
+  try {
+    const snapshot = await ready.jsonValue()
+    if (!snapshot) throw new Error('The world became unavailable during navigation startup')
+    return snapshot
+  } finally {
+    await ready.dispose()
+  }
+}
+
 export async function walkTo(page: Page, x: number, z: number) {
-  let snapshot = await state(page)
+  let snapshot = await navigation(page)
   expect(snapshot.mode).toBe('walking')
   const deadline = performance.now() + gameplayTimeout(45_000)
   let heldKey: string | undefined
@@ -275,13 +304,13 @@ export async function walkTo(page: Page, x: number, z: number) {
       const right = -Math.cos(yaw) * dx + Math.sin(yaw) * dz
       const key =
         Math.abs(forward) > Math.abs(right) ? (forward > 0 ? 'w' : 's') : right > 0 ? 'd' : 'a'
-      if (key !== heldKey) {
-        if (heldKey) await page.keyboard.up(heldKey)
-        await page.keyboard.down(key)
-        heldKey = key
-      }
-      await page.waitForTimeout(100)
-      snapshot = await state(page)
+      const distance = Math.max(Math.abs(forward), Math.abs(right))
+      const pulseMs = Math.min(1000, Math.max(40, ((distance - 0.2) / 3.2) * 1000))
+      // A single native press releases before slow observations can extend movement.
+      heldKey = key
+      await page.keyboard.press(key, { delay: pulseMs })
+      heldKey = undefined
+      snapshot = await navigation(page)
     }
     throw new Error(`Walking did not reach ${x},${z}; actual ${JSON.stringify(snapshot.position)}`)
   } finally {
@@ -317,26 +346,58 @@ export async function aimAt(page: Page, target: { x: number; y: number; z: numbe
         .player.pitch as number,
   )
   const dyaw = Math.atan2(Math.sin(yaw - pose.heading), Math.cos(yaw - pose.heading))
-  const desiredPitch = Math.atan2(
-    target.y - pose.position.y,
-    Math.hypot(target.x - pose.position.x, target.z - pose.position.z),
+  const desiredPitch = Math.max(
+    -1.25,
+    Math.min(
+      1.2,
+      Math.atan2(
+        target.y - pose.position.y,
+        Math.hypot(target.x - pose.position.x, target.z - pose.position.z),
+      ),
+    ),
   )
-  const size = page.viewportSize()!
-  await page.mouse.move(size.width / 2, size.height / 2)
-  await page.mouse.down()
-  await page.mouse.move(
-    size.width / 2 - dyaw / 0.0025,
-    size.height / 2 - (desiredPitch - pitch) / 0.0025,
-    { steps: 3 },
+  const canvas = await page.locator('canvas').boundingBox()
+  if (!canvas || canvas.width < 4 || canvas.height < 4)
+    throw new Error('Aiming requires a visible canvas')
+  const dx = Math.round(-dyaw / 0.0025),
+    dy = Math.round(-(desiredPitch - pitch) / 0.0025)
+  const segments = Math.ceil(
+    Math.max(Math.abs(dx) / (canvas.width / 4), Math.abs(dy) / (canvas.height / 4)),
   )
-  await page.mouse.up()
-  await page.waitForTimeout(60)
+  // Recenter between drags so every native pointer move stays inside the canvas.
+  for (let segment = 0; segment < segments; segment++) {
+    const x = canvas.x + canvas.width / 2,
+      y = canvas.y + canvas.height / 2
+    const stepX =
+      Math.round((dx * (segment + 1)) / segments) - Math.round((dx * segment) / segments)
+    const stepY =
+      Math.round((dy * (segment + 1)) / segments) - Math.round((dy * segment) / segments)
+    await page.mouse.move(x, y)
+    try {
+      await page.mouse.down()
+      await page.mouse.move(x + stepX, y + stepY, { steps: 3 })
+    } finally {
+      await page.mouse.up()
+    }
+  }
+  const aimed = await page.waitForFunction(
+    ({ yaw, pitch }) => {
+      const player = JSON.parse(
+        (window as unknown as { __trail: { save(): string } }).__trail.save(),
+      ).spatial.player as SpatialState['player']
+      const turn = Math.atan2(Math.sin(yaw - player.yaw), Math.cos(yaw - player.yaw))
+      return Math.abs(turn) < 0.02 && Math.abs(pitch - player.pitch) < 0.02
+    },
+    { yaw, pitch: desiredPitch },
+    { timeout: gameplayTimeout(3000) },
+  )
+  await aimed.dispose()
 }
 
 /** Steer with normal controls toward a visible waypoint; never mutate world state. */
 export async function driveTo(page: Page, x: number, z: number) {
   // Hold propulsion across observations, as a player does; IPC latency must not act as braking.
-  let snapshot = await state(page)
+  let snapshot = await navigation(page)
   const region = snapshot.regionIndex
   const deadline = performance.now() + gameplayTimeout(30_000)
   let steering: string | undefined
@@ -358,7 +419,7 @@ export async function driveTo(page: Page, x: number, z: number) {
         steering = key
       }
       await page.waitForTimeout(180)
-      snapshot = await state(page)
+      snapshot = await navigation(page)
     }
     throw new Error(`Drive did not reach ${x},${z}: ${JSON.stringify(snapshot.wagon)}`)
   } finally {

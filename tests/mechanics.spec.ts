@@ -18,6 +18,13 @@ test('hunting uses moving 3D targets, misses, reloads, retrieves game and surviv
   await page.keyboard.press('h')
   const before = (await state(page)).view
   await aimAt(page, { x: -4, y: 80, z: 50 })
+  expect(
+    await page.evaluate(
+      () =>
+        JSON.parse((window as unknown as { __trail: { save(): string } }).__trail.save()).spatial
+          .player.pitch as number,
+    ),
+  ).toBeGreaterThan(1.1)
   await page.keyboard.press('Space')
   await expect(page.locator('.notice')).toContainText('Miss')
   expect((await state(page)).view.activity?.shots).toBe(1)
