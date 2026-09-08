@@ -9,6 +9,9 @@ type WasmEngine = {
   minigame_action(action: string): string
   minigame_tick(frames: number): string
   finish_minigame(): string
+  begin_activity(request: string): string
+  record_activity(record: string): string
+  finish_activity(request: string): string
 }
 type WasmModule = {
   default(input?: RequestInfo | URL | Response | BufferSource): Promise<void>
@@ -56,6 +59,15 @@ export class TrailEngine {
   }
   load(save: string): GameView {
     return JSON.parse(this.wasm.load(save)) as GameView
+  }
+  beginActivity(request: unknown): EngineResult {
+    return JSON.parse(this.wasm.begin_activity(JSON.stringify(request))) as EngineResult
+  }
+  recordActivity(record: unknown): EngineResult {
+    return JSON.parse(this.wasm.record_activity(JSON.stringify(record))) as EngineResult
+  }
+  finishActivity(request: unknown): EngineResult {
+    return JSON.parse(this.wasm.finish_activity(JSON.stringify(request))) as EngineResult
   }
   minigameSnapshot(): unknown {
     return JSON.parse(this.wasm.minigame_snapshot()) as unknown

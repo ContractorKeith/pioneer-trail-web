@@ -1,0 +1,1865 @@
+{
+  "cases": 120,
+  "failures": [],
+  "rows": [
+    {
+      "seed": 11,
+      "terrain": "Plains",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 115,
+          "recipe": {
+            "obstacles": "adea473a43e3cd2f812ac580859a3024b00a3a8c691808eb7ea01b52374f46cd",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "7dfbbb2d7fe7b9e994135370badbd34c51d2c9614457488ef9bbf6b567815a51",
+            "wildlife": "6be3097cba3cafc20b4cd2d8f767eae4ee60dc31da5dd3d7db64fdf7a6c69475",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 115,
+          "recipe": {
+            "obstacles": "adea473a43e3cd2f812ac580859a3024b00a3a8c691808eb7ea01b52374f46cd",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "7dfbbb2d7fe7b9e994135370badbd34c51d2c9614457488ef9bbf6b567815a51",
+            "wildlife": "6be3097cba3cafc20b4cd2d8f767eae4ee60dc31da5dd3d7db64fdf7a6c69475",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 115,
+          "recipe": {
+            "obstacles": "adea473a43e3cd2f812ac580859a3024b00a3a8c691808eb7ea01b52374f46cd",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "7dfbbb2d7fe7b9e994135370badbd34c51d2c9614457488ef9bbf6b567815a51",
+            "wildlife": "6be3097cba3cafc20b4cd2d8f767eae4ee60dc31da5dd3d7db64fdf7a6c69475",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "terrain": "Plains",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 97,
+          "recipe": {
+            "obstacles": "bc1bc364814d854baeb9ded7871bb55f3973b9034fe32df4f052579bca7c8000",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "230f79a463de3849f3e73c3d514e0760f847aa1496e60bd0c0456970c1666014",
+            "wildlife": "69ba3b8056c38ebaf16d6a2c2a8557a800ca70fb85c5c89fca2feb383b3ba7d5",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 97,
+          "recipe": {
+            "obstacles": "bc1bc364814d854baeb9ded7871bb55f3973b9034fe32df4f052579bca7c8000",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "230f79a463de3849f3e73c3d514e0760f847aa1496e60bd0c0456970c1666014",
+            "wildlife": "69ba3b8056c38ebaf16d6a2c2a8557a800ca70fb85c5c89fca2feb383b3ba7d5",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 97,
+          "recipe": {
+            "obstacles": "bc1bc364814d854baeb9ded7871bb55f3973b9034fe32df4f052579bca7c8000",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "230f79a463de3849f3e73c3d514e0760f847aa1496e60bd0c0456970c1666014",
+            "wildlife": "69ba3b8056c38ebaf16d6a2c2a8557a800ca70fb85c5c89fca2feb383b3ba7d5",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "terrain": "Forest",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 378,
+          "recipe": {
+            "obstacles": "06b74193323ad13796168b660339dafa2fb7893537cbbc416052e5a05d2bb2b0",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "ecfdacc1fdb099bcd337cc4b2f61a63feb98cb8cab13e97d230820cb58b28303",
+            "wildlife": "a3ec11c923689c0abf2674d04599ab61043c351d07db7c625ccc2bd3d788bb36",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 378,
+          "recipe": {
+            "obstacles": "06b74193323ad13796168b660339dafa2fb7893537cbbc416052e5a05d2bb2b0",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "ecfdacc1fdb099bcd337cc4b2f61a63feb98cb8cab13e97d230820cb58b28303",
+            "wildlife": "a3ec11c923689c0abf2674d04599ab61043c351d07db7c625ccc2bd3d788bb36",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 378,
+          "recipe": {
+            "obstacles": "06b74193323ad13796168b660339dafa2fb7893537cbbc416052e5a05d2bb2b0",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "ecfdacc1fdb099bcd337cc4b2f61a63feb98cb8cab13e97d230820cb58b28303",
+            "wildlife": "a3ec11c923689c0abf2674d04599ab61043c351d07db7c625ccc2bd3d788bb36",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "terrain": "Forest",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 325,
+          "recipe": {
+            "obstacles": "f1f7bb712d662006cd32e04192710f2d69b30437d32dba082961f1949378965d",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "29aefd5919fad7be40a1b5f15e8cbf63574c2741e1bce2c5a98bb036a9fa912b",
+            "wildlife": "2746809cfbf211ba4dc01ea697b85136820d7d0b84c8e5d09ac19344d911f2db",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 325,
+          "recipe": {
+            "obstacles": "f1f7bb712d662006cd32e04192710f2d69b30437d32dba082961f1949378965d",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "29aefd5919fad7be40a1b5f15e8cbf63574c2741e1bce2c5a98bb036a9fa912b",
+            "wildlife": "2746809cfbf211ba4dc01ea697b85136820d7d0b84c8e5d09ac19344d911f2db",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 325,
+          "recipe": {
+            "obstacles": "f1f7bb712d662006cd32e04192710f2d69b30437d32dba082961f1949378965d",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "29aefd5919fad7be40a1b5f15e8cbf63574c2741e1bce2c5a98bb036a9fa912b",
+            "wildlife": "2746809cfbf211ba4dc01ea697b85136820d7d0b84c8e5d09ac19344d911f2db",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "terrain": "RiverValley",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 378,
+          "recipe": {
+            "obstacles": "06b74193323ad13796168b660339dafa2fb7893537cbbc416052e5a05d2bb2b0",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "ecfdacc1fdb099bcd337cc4b2f61a63feb98cb8cab13e97d230820cb58b28303",
+            "wildlife": "a3ec11c923689c0abf2674d04599ab61043c351d07db7c625ccc2bd3d788bb36",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 378,
+          "recipe": {
+            "obstacles": "06b74193323ad13796168b660339dafa2fb7893537cbbc416052e5a05d2bb2b0",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "ecfdacc1fdb099bcd337cc4b2f61a63feb98cb8cab13e97d230820cb58b28303",
+            "wildlife": "a3ec11c923689c0abf2674d04599ab61043c351d07db7c625ccc2bd3d788bb36",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 378,
+          "recipe": {
+            "obstacles": "06b74193323ad13796168b660339dafa2fb7893537cbbc416052e5a05d2bb2b0",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "ecfdacc1fdb099bcd337cc4b2f61a63feb98cb8cab13e97d230820cb58b28303",
+            "wildlife": "a3ec11c923689c0abf2674d04599ab61043c351d07db7c625ccc2bd3d788bb36",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "terrain": "RiverValley",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 325,
+          "recipe": {
+            "obstacles": "f1f7bb712d662006cd32e04192710f2d69b30437d32dba082961f1949378965d",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "29aefd5919fad7be40a1b5f15e8cbf63574c2741e1bce2c5a98bb036a9fa912b",
+            "wildlife": "2746809cfbf211ba4dc01ea697b85136820d7d0b84c8e5d09ac19344d911f2db",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 325,
+          "recipe": {
+            "obstacles": "f1f7bb712d662006cd32e04192710f2d69b30437d32dba082961f1949378965d",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "29aefd5919fad7be40a1b5f15e8cbf63574c2741e1bce2c5a98bb036a9fa912b",
+            "wildlife": "2746809cfbf211ba4dc01ea697b85136820d7d0b84c8e5d09ac19344d911f2db",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 325,
+          "recipe": {
+            "obstacles": "f1f7bb712d662006cd32e04192710f2d69b30437d32dba082961f1949378965d",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "29aefd5919fad7be40a1b5f15e8cbf63574c2741e1bce2c5a98bb036a9fa912b",
+            "wildlife": "2746809cfbf211ba4dc01ea697b85136820d7d0b84c8e5d09ac19344d911f2db",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "terrain": "Mountains",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 388,
+          "recipe": {
+            "obstacles": "9ea3f70ff7a8a2e7f1ff2b430859f75df1393811c348b085c69902abeeb2b8e9",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "19c4150560af6982b60b3342321b71a77af2fc9cc4a5c8c4d81a9909c9646fbd",
+            "wildlife": "5a377b2f4f3f6608cca62f250c7fb900eeb5835946466e1d91ce50fbb4d74d4f",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 388,
+          "recipe": {
+            "obstacles": "9ea3f70ff7a8a2e7f1ff2b430859f75df1393811c348b085c69902abeeb2b8e9",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "19c4150560af6982b60b3342321b71a77af2fc9cc4a5c8c4d81a9909c9646fbd",
+            "wildlife": "5a377b2f4f3f6608cca62f250c7fb900eeb5835946466e1d91ce50fbb4d74d4f",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 388,
+          "recipe": {
+            "obstacles": "9ea3f70ff7a8a2e7f1ff2b430859f75df1393811c348b085c69902abeeb2b8e9",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "19c4150560af6982b60b3342321b71a77af2fc9cc4a5c8c4d81a9909c9646fbd",
+            "wildlife": "5a377b2f4f3f6608cca62f250c7fb900eeb5835946466e1d91ce50fbb4d74d4f",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "terrain": "Mountains",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 341,
+          "recipe": {
+            "obstacles": "cb3a4cfd6c39bd19f35ba6c43b7e770bc10f5cac7cf9a8f3410c094c2e06db23",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "2ac00772d5df400af4ef0f180760b7a650ea5ec6bd225dc0126f4ce91da6ceee",
+            "wildlife": "44447ad8533dad268ce0a5acc5216ec760114b1b1f5abf663c6182a71e95a19e",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 341,
+          "recipe": {
+            "obstacles": "cb3a4cfd6c39bd19f35ba6c43b7e770bc10f5cac7cf9a8f3410c094c2e06db23",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "2ac00772d5df400af4ef0f180760b7a650ea5ec6bd225dc0126f4ce91da6ceee",
+            "wildlife": "44447ad8533dad268ce0a5acc5216ec760114b1b1f5abf663c6182a71e95a19e",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 341,
+          "recipe": {
+            "obstacles": "cb3a4cfd6c39bd19f35ba6c43b7e770bc10f5cac7cf9a8f3410c094c2e06db23",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "2ac00772d5df400af4ef0f180760b7a650ea5ec6bd225dc0126f4ce91da6ceee",
+            "wildlife": "44447ad8533dad268ce0a5acc5216ec760114b1b1f5abf663c6182a71e95a19e",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "terrain": "Desert",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 120,
+          "recipe": {
+            "obstacles": "897a762e744e4b6dfb19fa741881c993312dc6f7e8da46b022f636abb06a2343",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "16e07c5b42e7904620343b3464a837317bdd5099d8e070f45fb1426603c69e93",
+            "wildlife": "28af4a96457b1b2330e913a212b94e0b06fa2dd4860b77aaee5ab6e3f3571f9c",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 120,
+          "recipe": {
+            "obstacles": "897a762e744e4b6dfb19fa741881c993312dc6f7e8da46b022f636abb06a2343",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "16e07c5b42e7904620343b3464a837317bdd5099d8e070f45fb1426603c69e93",
+            "wildlife": "28af4a96457b1b2330e913a212b94e0b06fa2dd4860b77aaee5ab6e3f3571f9c",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 120,
+          "recipe": {
+            "obstacles": "897a762e744e4b6dfb19fa741881c993312dc6f7e8da46b022f636abb06a2343",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "16e07c5b42e7904620343b3464a837317bdd5099d8e070f45fb1426603c69e93",
+            "wildlife": "28af4a96457b1b2330e913a212b94e0b06fa2dd4860b77aaee5ab6e3f3571f9c",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "terrain": "Desert",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 105,
+          "recipe": {
+            "obstacles": "01f3b111000330a356c545d70d79e44ecdd93bf2c3ed309094260c4093efb074",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "b5b3b4e496440d4c559927fd6772bd5e0739c5ecc42bcb59832c43323a45781c",
+            "wildlife": "fd4bbda51efe07f010943e57afdf5bfaeab98306fe0974377a4839ee0a3254f5",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 105,
+          "recipe": {
+            "obstacles": "01f3b111000330a356c545d70d79e44ecdd93bf2c3ed309094260c4093efb074",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "b5b3b4e496440d4c559927fd6772bd5e0739c5ecc42bcb59832c43323a45781c",
+            "wildlife": "fd4bbda51efe07f010943e57afdf5bfaeab98306fe0974377a4839ee0a3254f5",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 105,
+          "recipe": {
+            "obstacles": "01f3b111000330a356c545d70d79e44ecdd93bf2c3ed309094260c4093efb074",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "b5b3b4e496440d4c559927fd6772bd5e0739c5ecc42bcb59832c43323a45781c",
+            "wildlife": "fd4bbda51efe07f010943e57afdf5bfaeab98306fe0974377a4839ee0a3254f5",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "terrain": "Plains",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 105,
+          "recipe": {
+            "obstacles": "5bc4575de6fc8b36a099b678169cc5791de8b30db6a11a3de1ad2d065d013db3",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "4bde8aff1171d63dea6cfa0b1fcb762712a38537d64535cd32559d225acb8cc0",
+            "wildlife": "69325b1b6afcb66a8c492d13424a9f1681a62dee1a542c1b94f95aa17aa30c1e",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 105,
+          "recipe": {
+            "obstacles": "5bc4575de6fc8b36a099b678169cc5791de8b30db6a11a3de1ad2d065d013db3",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "4bde8aff1171d63dea6cfa0b1fcb762712a38537d64535cd32559d225acb8cc0",
+            "wildlife": "69325b1b6afcb66a8c492d13424a9f1681a62dee1a542c1b94f95aa17aa30c1e",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 105,
+          "recipe": {
+            "obstacles": "5bc4575de6fc8b36a099b678169cc5791de8b30db6a11a3de1ad2d065d013db3",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "4bde8aff1171d63dea6cfa0b1fcb762712a38537d64535cd32559d225acb8cc0",
+            "wildlife": "69325b1b6afcb66a8c492d13424a9f1681a62dee1a542c1b94f95aa17aa30c1e",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "terrain": "Plains",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 94,
+          "recipe": {
+            "obstacles": "51761e04faa6bef030bc2856bbb8982663d0616e1cb14aaf40349c2985f6fdec",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "c40aae163e542a3a37f9803d0939e6377344d396acc65ead284b23bd8b81758c",
+            "wildlife": "f9dbd07283210c617340ae5fa4ca44639bf087026e9d99d4617ae8d3971f06c6",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 94,
+          "recipe": {
+            "obstacles": "51761e04faa6bef030bc2856bbb8982663d0616e1cb14aaf40349c2985f6fdec",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "c40aae163e542a3a37f9803d0939e6377344d396acc65ead284b23bd8b81758c",
+            "wildlife": "f9dbd07283210c617340ae5fa4ca44639bf087026e9d99d4617ae8d3971f06c6",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 94,
+          "recipe": {
+            "obstacles": "51761e04faa6bef030bc2856bbb8982663d0616e1cb14aaf40349c2985f6fdec",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "c40aae163e542a3a37f9803d0939e6377344d396acc65ead284b23bd8b81758c",
+            "wildlife": "f9dbd07283210c617340ae5fa4ca44639bf087026e9d99d4617ae8d3971f06c6",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "terrain": "Forest",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 373,
+          "recipe": {
+            "obstacles": "4bb8f38f948b49db7e1b7cb9628dd15faee7d67272e7d60bc1c523d6dea7e4fb",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "a1fe68c30800ad917d0e5e2d89690f540de01a93e0d1002301835c5dc6710899",
+            "wildlife": "6ee6a155b1703737aa2a4d107caa405a4a2e9b01d4f3374e084fc38956c3bc9f",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 373,
+          "recipe": {
+            "obstacles": "4bb8f38f948b49db7e1b7cb9628dd15faee7d67272e7d60bc1c523d6dea7e4fb",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "a1fe68c30800ad917d0e5e2d89690f540de01a93e0d1002301835c5dc6710899",
+            "wildlife": "6ee6a155b1703737aa2a4d107caa405a4a2e9b01d4f3374e084fc38956c3bc9f",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 373,
+          "recipe": {
+            "obstacles": "4bb8f38f948b49db7e1b7cb9628dd15faee7d67272e7d60bc1c523d6dea7e4fb",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "a1fe68c30800ad917d0e5e2d89690f540de01a93e0d1002301835c5dc6710899",
+            "wildlife": "6ee6a155b1703737aa2a4d107caa405a4a2e9b01d4f3374e084fc38956c3bc9f",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "terrain": "Forest",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 317,
+          "recipe": {
+            "obstacles": "d480a3c8395d5e07844e9739210a5370875282a9e0dec0a0c9f1f72d870d9c50",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "0e6befad68c6e6fd43df3134f95aa907897676eebde82b70f1b6cb8ccffb1420",
+            "wildlife": "4f3492dc015ae5a2b65bb44fd6bcd3c27ed7117035b781917d9fd3b8a555be7b",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 317,
+          "recipe": {
+            "obstacles": "d480a3c8395d5e07844e9739210a5370875282a9e0dec0a0c9f1f72d870d9c50",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "0e6befad68c6e6fd43df3134f95aa907897676eebde82b70f1b6cb8ccffb1420",
+            "wildlife": "4f3492dc015ae5a2b65bb44fd6bcd3c27ed7117035b781917d9fd3b8a555be7b",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 317,
+          "recipe": {
+            "obstacles": "d480a3c8395d5e07844e9739210a5370875282a9e0dec0a0c9f1f72d870d9c50",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "0e6befad68c6e6fd43df3134f95aa907897676eebde82b70f1b6cb8ccffb1420",
+            "wildlife": "4f3492dc015ae5a2b65bb44fd6bcd3c27ed7117035b781917d9fd3b8a555be7b",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "terrain": "RiverValley",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 373,
+          "recipe": {
+            "obstacles": "4bb8f38f948b49db7e1b7cb9628dd15faee7d67272e7d60bc1c523d6dea7e4fb",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "a1fe68c30800ad917d0e5e2d89690f540de01a93e0d1002301835c5dc6710899",
+            "wildlife": "6ee6a155b1703737aa2a4d107caa405a4a2e9b01d4f3374e084fc38956c3bc9f",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 373,
+          "recipe": {
+            "obstacles": "4bb8f38f948b49db7e1b7cb9628dd15faee7d67272e7d60bc1c523d6dea7e4fb",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "a1fe68c30800ad917d0e5e2d89690f540de01a93e0d1002301835c5dc6710899",
+            "wildlife": "6ee6a155b1703737aa2a4d107caa405a4a2e9b01d4f3374e084fc38956c3bc9f",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 373,
+          "recipe": {
+            "obstacles": "4bb8f38f948b49db7e1b7cb9628dd15faee7d67272e7d60bc1c523d6dea7e4fb",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "a1fe68c30800ad917d0e5e2d89690f540de01a93e0d1002301835c5dc6710899",
+            "wildlife": "6ee6a155b1703737aa2a4d107caa405a4a2e9b01d4f3374e084fc38956c3bc9f",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "terrain": "RiverValley",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 317,
+          "recipe": {
+            "obstacles": "d480a3c8395d5e07844e9739210a5370875282a9e0dec0a0c9f1f72d870d9c50",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "0e6befad68c6e6fd43df3134f95aa907897676eebde82b70f1b6cb8ccffb1420",
+            "wildlife": "4f3492dc015ae5a2b65bb44fd6bcd3c27ed7117035b781917d9fd3b8a555be7b",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 317,
+          "recipe": {
+            "obstacles": "d480a3c8395d5e07844e9739210a5370875282a9e0dec0a0c9f1f72d870d9c50",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "0e6befad68c6e6fd43df3134f95aa907897676eebde82b70f1b6cb8ccffb1420",
+            "wildlife": "4f3492dc015ae5a2b65bb44fd6bcd3c27ed7117035b781917d9fd3b8a555be7b",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 317,
+          "recipe": {
+            "obstacles": "d480a3c8395d5e07844e9739210a5370875282a9e0dec0a0c9f1f72d870d9c50",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "0e6befad68c6e6fd43df3134f95aa907897676eebde82b70f1b6cb8ccffb1420",
+            "wildlife": "4f3492dc015ae5a2b65bb44fd6bcd3c27ed7117035b781917d9fd3b8a555be7b",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "terrain": "Mountains",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 395,
+          "recipe": {
+            "obstacles": "af0e9132cc7c2c1f8d11fb15666b706350be9743c5ead7222f419deb1a348cf1",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "f5649a7619560dda123fd8ee43c210723bdb8d2a2aeb5ad76e2617e7e38e6f8c",
+            "wildlife": "5b06ae36e93cdef193703c6f8e3fffadc45e4f0838632ac62dae9d49a3b19398",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 395,
+          "recipe": {
+            "obstacles": "af0e9132cc7c2c1f8d11fb15666b706350be9743c5ead7222f419deb1a348cf1",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "f5649a7619560dda123fd8ee43c210723bdb8d2a2aeb5ad76e2617e7e38e6f8c",
+            "wildlife": "5b06ae36e93cdef193703c6f8e3fffadc45e4f0838632ac62dae9d49a3b19398",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 395,
+          "recipe": {
+            "obstacles": "af0e9132cc7c2c1f8d11fb15666b706350be9743c5ead7222f419deb1a348cf1",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "f5649a7619560dda123fd8ee43c210723bdb8d2a2aeb5ad76e2617e7e38e6f8c",
+            "wildlife": "5b06ae36e93cdef193703c6f8e3fffadc45e4f0838632ac62dae9d49a3b19398",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "terrain": "Mountains",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 335,
+          "recipe": {
+            "obstacles": "ef11e2f9f6a8d37c4f2c43c8ee478f81b993550f18bd7a1caac6729aedee228a",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "01fa775b463def80a00a90ce7a0509b7ff45946f1ba090b07cd271f259383cb4",
+            "wildlife": "288f7ea889224cad4530e7b0acb1f97307133c92e74f14994cbb8aa0c61f3040",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 335,
+          "recipe": {
+            "obstacles": "ef11e2f9f6a8d37c4f2c43c8ee478f81b993550f18bd7a1caac6729aedee228a",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "01fa775b463def80a00a90ce7a0509b7ff45946f1ba090b07cd271f259383cb4",
+            "wildlife": "288f7ea889224cad4530e7b0acb1f97307133c92e74f14994cbb8aa0c61f3040",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 335,
+          "recipe": {
+            "obstacles": "ef11e2f9f6a8d37c4f2c43c8ee478f81b993550f18bd7a1caac6729aedee228a",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "01fa775b463def80a00a90ce7a0509b7ff45946f1ba090b07cd271f259383cb4",
+            "wildlife": "288f7ea889224cad4530e7b0acb1f97307133c92e74f14994cbb8aa0c61f3040",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "terrain": "Desert",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 115,
+          "recipe": {
+            "obstacles": "28b4aefa71dcd01429b11ce3f7210ffcf6ace1eb8ceb7c026e635650cac0f406",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "57ba04191255713189aca34f6210893da2b4b0d45a91382df9c866590f495a7c",
+            "wildlife": "b311029f7425751a763979b7e1819a304cebd093696803182079796367e8c6d0",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 115,
+          "recipe": {
+            "obstacles": "28b4aefa71dcd01429b11ce3f7210ffcf6ace1eb8ceb7c026e635650cac0f406",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "57ba04191255713189aca34f6210893da2b4b0d45a91382df9c866590f495a7c",
+            "wildlife": "b311029f7425751a763979b7e1819a304cebd093696803182079796367e8c6d0",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 115,
+          "recipe": {
+            "obstacles": "28b4aefa71dcd01429b11ce3f7210ffcf6ace1eb8ceb7c026e635650cac0f406",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "57ba04191255713189aca34f6210893da2b4b0d45a91382df9c866590f495a7c",
+            "wildlife": "b311029f7425751a763979b7e1819a304cebd093696803182079796367e8c6d0",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "terrain": "Desert",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 98,
+          "recipe": {
+            "obstacles": "d6fb6add9133b6d981ce023142a7e95bdb8ee0882f210f461354ffcb57413821",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "2c3d65e3cafa9f6e51ff7ea36fc619527e5c25df27d3f50014becdf83fc2656c",
+            "wildlife": "a0a4d9a9827ba840fa83c166bcde922497cb7f88e118934af58b97821054dc59",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 98,
+          "recipe": {
+            "obstacles": "d6fb6add9133b6d981ce023142a7e95bdb8ee0882f210f461354ffcb57413821",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "2c3d65e3cafa9f6e51ff7ea36fc619527e5c25df27d3f50014becdf83fc2656c",
+            "wildlife": "a0a4d9a9827ba840fa83c166bcde922497cb7f88e118934af58b97821054dc59",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 98,
+          "recipe": {
+            "obstacles": "d6fb6add9133b6d981ce023142a7e95bdb8ee0882f210f461354ffcb57413821",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "2c3d65e3cafa9f6e51ff7ea36fc619527e5c25df27d3f50014becdf83fc2656c",
+            "wildlife": "a0a4d9a9827ba840fa83c166bcde922497cb7f88e118934af58b97821054dc59",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "terrain": "Plains",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 95,
+          "recipe": {
+            "obstacles": "b94183521a34e569248dc9aa98e5d45330f0c214ef1df2c7343922b30edcdc36",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "2937c09e9e8c65570b90516c8a19c45d3bf99c8d418f27d4843fa63211dafffd",
+            "wildlife": "e7ce048cf3e785ef4b97a7bb53059ce594789efef13bbf375c3b3a835568c443",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 95,
+          "recipe": {
+            "obstacles": "b94183521a34e569248dc9aa98e5d45330f0c214ef1df2c7343922b30edcdc36",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "2937c09e9e8c65570b90516c8a19c45d3bf99c8d418f27d4843fa63211dafffd",
+            "wildlife": "e7ce048cf3e785ef4b97a7bb53059ce594789efef13bbf375c3b3a835568c443",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 95,
+          "recipe": {
+            "obstacles": "b94183521a34e569248dc9aa98e5d45330f0c214ef1df2c7343922b30edcdc36",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "2937c09e9e8c65570b90516c8a19c45d3bf99c8d418f27d4843fa63211dafffd",
+            "wildlife": "e7ce048cf3e785ef4b97a7bb53059ce594789efef13bbf375c3b3a835568c443",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "terrain": "Plains",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 100,
+          "recipe": {
+            "obstacles": "aa9d1909b7ab6c7dd0a39d1cb6df7df8fa1db3561eabc3278f3ce929b7df3510",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "375a2652c1be96829b17649bb75fff107d695a5eb3a3966307de79041065bc04",
+            "wildlife": "5782ae6608edc41ff260a3a07d8dbc994948f3a2a2a8aea9f09348424a7559c1",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 100,
+          "recipe": {
+            "obstacles": "aa9d1909b7ab6c7dd0a39d1cb6df7df8fa1db3561eabc3278f3ce929b7df3510",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "375a2652c1be96829b17649bb75fff107d695a5eb3a3966307de79041065bc04",
+            "wildlife": "5782ae6608edc41ff260a3a07d8dbc994948f3a2a2a8aea9f09348424a7559c1",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 100,
+          "recipe": {
+            "obstacles": "aa9d1909b7ab6c7dd0a39d1cb6df7df8fa1db3561eabc3278f3ce929b7df3510",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "375a2652c1be96829b17649bb75fff107d695a5eb3a3966307de79041065bc04",
+            "wildlife": "5782ae6608edc41ff260a3a07d8dbc994948f3a2a2a8aea9f09348424a7559c1",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "terrain": "Forest",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 356,
+          "recipe": {
+            "obstacles": "33e29220de15de30e82335d06d9c5a00e0c314a870277c09fdddf8868fffa632",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e113898c3945a45b5277fd28d7351f1e4ce7e9756703c64155ea28cbb51dcd38",
+            "wildlife": "08de33339891b07efff2d28d329b8330893e6b07fa37876dbf748876c9340be6",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 356,
+          "recipe": {
+            "obstacles": "33e29220de15de30e82335d06d9c5a00e0c314a870277c09fdddf8868fffa632",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e113898c3945a45b5277fd28d7351f1e4ce7e9756703c64155ea28cbb51dcd38",
+            "wildlife": "08de33339891b07efff2d28d329b8330893e6b07fa37876dbf748876c9340be6",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 356,
+          "recipe": {
+            "obstacles": "33e29220de15de30e82335d06d9c5a00e0c314a870277c09fdddf8868fffa632",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e113898c3945a45b5277fd28d7351f1e4ce7e9756703c64155ea28cbb51dcd38",
+            "wildlife": "08de33339891b07efff2d28d329b8330893e6b07fa37876dbf748876c9340be6",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "terrain": "Forest",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 318,
+          "recipe": {
+            "obstacles": "6d0b0f989ccc9dd58b2dd7f90a0d523592154fb3a525c1fb19aae437efdf26d5",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "33d9e192ed5b4512f771d5760584387333c9ba8db6367075e0bbe9b8d91b9b64",
+            "wildlife": "efd94a879c0ff04b9d46aa8ac8f29e5668ca0d4552aa0be6f8e861d92d063b0f",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 318,
+          "recipe": {
+            "obstacles": "6d0b0f989ccc9dd58b2dd7f90a0d523592154fb3a525c1fb19aae437efdf26d5",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "33d9e192ed5b4512f771d5760584387333c9ba8db6367075e0bbe9b8d91b9b64",
+            "wildlife": "efd94a879c0ff04b9d46aa8ac8f29e5668ca0d4552aa0be6f8e861d92d063b0f",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 318,
+          "recipe": {
+            "obstacles": "6d0b0f989ccc9dd58b2dd7f90a0d523592154fb3a525c1fb19aae437efdf26d5",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "33d9e192ed5b4512f771d5760584387333c9ba8db6367075e0bbe9b8d91b9b64",
+            "wildlife": "efd94a879c0ff04b9d46aa8ac8f29e5668ca0d4552aa0be6f8e861d92d063b0f",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "terrain": "RiverValley",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 356,
+          "recipe": {
+            "obstacles": "33e29220de15de30e82335d06d9c5a00e0c314a870277c09fdddf8868fffa632",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e113898c3945a45b5277fd28d7351f1e4ce7e9756703c64155ea28cbb51dcd38",
+            "wildlife": "08de33339891b07efff2d28d329b8330893e6b07fa37876dbf748876c9340be6",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 356,
+          "recipe": {
+            "obstacles": "33e29220de15de30e82335d06d9c5a00e0c314a870277c09fdddf8868fffa632",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e113898c3945a45b5277fd28d7351f1e4ce7e9756703c64155ea28cbb51dcd38",
+            "wildlife": "08de33339891b07efff2d28d329b8330893e6b07fa37876dbf748876c9340be6",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 356,
+          "recipe": {
+            "obstacles": "33e29220de15de30e82335d06d9c5a00e0c314a870277c09fdddf8868fffa632",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e113898c3945a45b5277fd28d7351f1e4ce7e9756703c64155ea28cbb51dcd38",
+            "wildlife": "08de33339891b07efff2d28d329b8330893e6b07fa37876dbf748876c9340be6",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "terrain": "RiverValley",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 318,
+          "recipe": {
+            "obstacles": "6d0b0f989ccc9dd58b2dd7f90a0d523592154fb3a525c1fb19aae437efdf26d5",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "33d9e192ed5b4512f771d5760584387333c9ba8db6367075e0bbe9b8d91b9b64",
+            "wildlife": "efd94a879c0ff04b9d46aa8ac8f29e5668ca0d4552aa0be6f8e861d92d063b0f",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 318,
+          "recipe": {
+            "obstacles": "6d0b0f989ccc9dd58b2dd7f90a0d523592154fb3a525c1fb19aae437efdf26d5",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "33d9e192ed5b4512f771d5760584387333c9ba8db6367075e0bbe9b8d91b9b64",
+            "wildlife": "efd94a879c0ff04b9d46aa8ac8f29e5668ca0d4552aa0be6f8e861d92d063b0f",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 318,
+          "recipe": {
+            "obstacles": "6d0b0f989ccc9dd58b2dd7f90a0d523592154fb3a525c1fb19aae437efdf26d5",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "33d9e192ed5b4512f771d5760584387333c9ba8db6367075e0bbe9b8d91b9b64",
+            "wildlife": "efd94a879c0ff04b9d46aa8ac8f29e5668ca0d4552aa0be6f8e861d92d063b0f",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "terrain": "Mountains",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 382,
+          "recipe": {
+            "obstacles": "233c3b2f1a0017f1d851a044951e03ee32455a4fa96870114de3adcb283a2796",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e3f45f68e7fb63567866f4ac26ab8fd725975c9d1a830f3d2d454cbdee5aded6",
+            "wildlife": "304e6f28ff24587b9fa7f3117c5946951b9e61dfc8eebcbbd99b2031566fa27d",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 382,
+          "recipe": {
+            "obstacles": "233c3b2f1a0017f1d851a044951e03ee32455a4fa96870114de3adcb283a2796",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e3f45f68e7fb63567866f4ac26ab8fd725975c9d1a830f3d2d454cbdee5aded6",
+            "wildlife": "304e6f28ff24587b9fa7f3117c5946951b9e61dfc8eebcbbd99b2031566fa27d",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 382,
+          "recipe": {
+            "obstacles": "233c3b2f1a0017f1d851a044951e03ee32455a4fa96870114de3adcb283a2796",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e3f45f68e7fb63567866f4ac26ab8fd725975c9d1a830f3d2d454cbdee5aded6",
+            "wildlife": "304e6f28ff24587b9fa7f3117c5946951b9e61dfc8eebcbbd99b2031566fa27d",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "terrain": "Mountains",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 344,
+          "recipe": {
+            "obstacles": "b0a75ecfd6721d86e6139901050c0e18ea9f8e55a8a2feeea3ede510c13f57db",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "1dd68b414562e0119bb25d2f71907b846e1d1756a976adf44c4105c492c81312",
+            "wildlife": "f3e7e65e5f8ed679c5cf243e1586f44311a2350c5786b9e84ad16fe32946f6af",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 344,
+          "recipe": {
+            "obstacles": "b0a75ecfd6721d86e6139901050c0e18ea9f8e55a8a2feeea3ede510c13f57db",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "1dd68b414562e0119bb25d2f71907b846e1d1756a976adf44c4105c492c81312",
+            "wildlife": "f3e7e65e5f8ed679c5cf243e1586f44311a2350c5786b9e84ad16fe32946f6af",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 344,
+          "recipe": {
+            "obstacles": "b0a75ecfd6721d86e6139901050c0e18ea9f8e55a8a2feeea3ede510c13f57db",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "1dd68b414562e0119bb25d2f71907b846e1d1756a976adf44c4105c492c81312",
+            "wildlife": "f3e7e65e5f8ed679c5cf243e1586f44311a2350c5786b9e84ad16fe32946f6af",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "terrain": "Desert",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 104,
+          "recipe": {
+            "obstacles": "fc4f65fd057469103f6cc4a838203c191ac5c7f3683716c5e878acea5b896656",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "bfccd2cd428c1fec3562845f0c148642024096f4701341ead4d8cc0df0e26a60",
+            "wildlife": "e7ce048cf3e785ef4b97a7bb53059ce594789efef13bbf375c3b3a835568c443",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 104,
+          "recipe": {
+            "obstacles": "fc4f65fd057469103f6cc4a838203c191ac5c7f3683716c5e878acea5b896656",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "bfccd2cd428c1fec3562845f0c148642024096f4701341ead4d8cc0df0e26a60",
+            "wildlife": "e7ce048cf3e785ef4b97a7bb53059ce594789efef13bbf375c3b3a835568c443",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 104,
+          "recipe": {
+            "obstacles": "fc4f65fd057469103f6cc4a838203c191ac5c7f3683716c5e878acea5b896656",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "bfccd2cd428c1fec3562845f0c148642024096f4701341ead4d8cc0df0e26a60",
+            "wildlife": "e7ce048cf3e785ef4b97a7bb53059ce594789efef13bbf375c3b3a835568c443",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 18,
+      "terrain": "Desert",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 92,
+          "recipe": {
+            "obstacles": "db8671f9564d8a3f2c90c814495da7116b0c4cf41652d95b366fb657cb893f5e",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "64864e3755dc55417d4df4cdd2cf99b1073b95f8db4d03c7990d73d4391ef8bd",
+            "wildlife": "d65014de5f970a689d7816566ea70afd9846a1194205e6fc7b8ba6b89c1b2430",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 92,
+          "recipe": {
+            "obstacles": "db8671f9564d8a3f2c90c814495da7116b0c4cf41652d95b366fb657cb893f5e",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "64864e3755dc55417d4df4cdd2cf99b1073b95f8db4d03c7990d73d4391ef8bd",
+            "wildlife": "d65014de5f970a689d7816566ea70afd9846a1194205e6fc7b8ba6b89c1b2430",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 92,
+          "recipe": {
+            "obstacles": "db8671f9564d8a3f2c90c814495da7116b0c4cf41652d95b366fb657cb893f5e",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "64864e3755dc55417d4df4cdd2cf99b1073b95f8db4d03c7990d73d4391ef8bd",
+            "wildlife": "d65014de5f970a689d7816566ea70afd9846a1194205e6fc7b8ba6b89c1b2430",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "terrain": "Plains",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 110,
+          "recipe": {
+            "obstacles": "02d2c9dbd8366b158593e83b627f41f377f46a9ee19cca041cf437f672682fde",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "ba51ed7d39161b9e2fcecd92deb13100ebb96c938f64db06249f73a72e610060",
+            "wildlife": "c4126d8c224853c807bd32137b6754b43afafe9398053103e4fe44c6d911e6ca",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 110,
+          "recipe": {
+            "obstacles": "02d2c9dbd8366b158593e83b627f41f377f46a9ee19cca041cf437f672682fde",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "ba51ed7d39161b9e2fcecd92deb13100ebb96c938f64db06249f73a72e610060",
+            "wildlife": "c4126d8c224853c807bd32137b6754b43afafe9398053103e4fe44c6d911e6ca",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 110,
+          "recipe": {
+            "obstacles": "02d2c9dbd8366b158593e83b627f41f377f46a9ee19cca041cf437f672682fde",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "ba51ed7d39161b9e2fcecd92deb13100ebb96c938f64db06249f73a72e610060",
+            "wildlife": "c4126d8c224853c807bd32137b6754b43afafe9398053103e4fe44c6d911e6ca",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "terrain": "Plains",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 101,
+          "recipe": {
+            "obstacles": "848175edbc91fb13206291a56dcd03edbe36baa4f9456071555acf1689c62470",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "aefc1a250578b24dcb1a83a7fbec921501a6349b538a399a3550e8897f5ca1fd",
+            "wildlife": "2fa84e5d60415488828a2fce492ad4848effd51347e0b20e15830e9c9c05645e",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 101,
+          "recipe": {
+            "obstacles": "848175edbc91fb13206291a56dcd03edbe36baa4f9456071555acf1689c62470",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "aefc1a250578b24dcb1a83a7fbec921501a6349b538a399a3550e8897f5ca1fd",
+            "wildlife": "2fa84e5d60415488828a2fce492ad4848effd51347e0b20e15830e9c9c05645e",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 101,
+          "recipe": {
+            "obstacles": "848175edbc91fb13206291a56dcd03edbe36baa4f9456071555acf1689c62470",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "aefc1a250578b24dcb1a83a7fbec921501a6349b538a399a3550e8897f5ca1fd",
+            "wildlife": "2fa84e5d60415488828a2fce492ad4848effd51347e0b20e15830e9c9c05645e",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "terrain": "Forest",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 374,
+          "recipe": {
+            "obstacles": "d3526bb6e4fbf5131b68b0edebd071da7b601785e4323220990bb3dcba98acb8",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e73ae7f2daccc24a6f85d235f8c9d3a4187e9ce5df6f54722242b76d7c0512d6",
+            "wildlife": "7cc9ef1ed7c6221afa30c357d18f97157b8aa24179c9bacb7ed4b63695a28668",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 374,
+          "recipe": {
+            "obstacles": "d3526bb6e4fbf5131b68b0edebd071da7b601785e4323220990bb3dcba98acb8",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e73ae7f2daccc24a6f85d235f8c9d3a4187e9ce5df6f54722242b76d7c0512d6",
+            "wildlife": "7cc9ef1ed7c6221afa30c357d18f97157b8aa24179c9bacb7ed4b63695a28668",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 374,
+          "recipe": {
+            "obstacles": "d3526bb6e4fbf5131b68b0edebd071da7b601785e4323220990bb3dcba98acb8",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e73ae7f2daccc24a6f85d235f8c9d3a4187e9ce5df6f54722242b76d7c0512d6",
+            "wildlife": "7cc9ef1ed7c6221afa30c357d18f97157b8aa24179c9bacb7ed4b63695a28668",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "terrain": "Forest",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 320,
+          "recipe": {
+            "obstacles": "0dd1281be10914e9f422c3b47b18176b4029194ec7963bdf7544b1ea32375dfa",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "3a1803548745433da701855eab99e5302bf872ed8e97b2ba49d04bf681d1ee34",
+            "wildlife": "1653ca7f39e80d3840a619e162098c3e600d500d4e8cf50ec40d127622db907c",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 320,
+          "recipe": {
+            "obstacles": "0dd1281be10914e9f422c3b47b18176b4029194ec7963bdf7544b1ea32375dfa",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "3a1803548745433da701855eab99e5302bf872ed8e97b2ba49d04bf681d1ee34",
+            "wildlife": "1653ca7f39e80d3840a619e162098c3e600d500d4e8cf50ec40d127622db907c",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 320,
+          "recipe": {
+            "obstacles": "0dd1281be10914e9f422c3b47b18176b4029194ec7963bdf7544b1ea32375dfa",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "3a1803548745433da701855eab99e5302bf872ed8e97b2ba49d04bf681d1ee34",
+            "wildlife": "1653ca7f39e80d3840a619e162098c3e600d500d4e8cf50ec40d127622db907c",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "terrain": "RiverValley",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 374,
+          "recipe": {
+            "obstacles": "d3526bb6e4fbf5131b68b0edebd071da7b601785e4323220990bb3dcba98acb8",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e73ae7f2daccc24a6f85d235f8c9d3a4187e9ce5df6f54722242b76d7c0512d6",
+            "wildlife": "7cc9ef1ed7c6221afa30c357d18f97157b8aa24179c9bacb7ed4b63695a28668",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 374,
+          "recipe": {
+            "obstacles": "d3526bb6e4fbf5131b68b0edebd071da7b601785e4323220990bb3dcba98acb8",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e73ae7f2daccc24a6f85d235f8c9d3a4187e9ce5df6f54722242b76d7c0512d6",
+            "wildlife": "7cc9ef1ed7c6221afa30c357d18f97157b8aa24179c9bacb7ed4b63695a28668",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 374,
+          "recipe": {
+            "obstacles": "d3526bb6e4fbf5131b68b0edebd071da7b601785e4323220990bb3dcba98acb8",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "e73ae7f2daccc24a6f85d235f8c9d3a4187e9ce5df6f54722242b76d7c0512d6",
+            "wildlife": "7cc9ef1ed7c6221afa30c357d18f97157b8aa24179c9bacb7ed4b63695a28668",
+            "ground": "d1ecc6b26bd1123795028ded48b352c7ad8b2a51fe82ff9c6dd76337295d63b4",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "terrain": "RiverValley",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 320,
+          "recipe": {
+            "obstacles": "0dd1281be10914e9f422c3b47b18176b4029194ec7963bdf7544b1ea32375dfa",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "3a1803548745433da701855eab99e5302bf872ed8e97b2ba49d04bf681d1ee34",
+            "wildlife": "1653ca7f39e80d3840a619e162098c3e600d500d4e8cf50ec40d127622db907c",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 320,
+          "recipe": {
+            "obstacles": "0dd1281be10914e9f422c3b47b18176b4029194ec7963bdf7544b1ea32375dfa",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "3a1803548745433da701855eab99e5302bf872ed8e97b2ba49d04bf681d1ee34",
+            "wildlife": "1653ca7f39e80d3840a619e162098c3e600d500d4e8cf50ec40d127622db907c",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 320,
+          "recipe": {
+            "obstacles": "0dd1281be10914e9f422c3b47b18176b4029194ec7963bdf7544b1ea32375dfa",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "3a1803548745433da701855eab99e5302bf872ed8e97b2ba49d04bf681d1ee34",
+            "wildlife": "1653ca7f39e80d3840a619e162098c3e600d500d4e8cf50ec40d127622db907c",
+            "ground": "2aaff0cd7fbb2ddf1efc0c42fbe83e61513b831950e7d3e27707da667800ba93",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "terrain": "Mountains",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 398,
+          "recipe": {
+            "obstacles": "147ec7a09be816cd2eae4550060bc2673e9b9bfacf0bd7a76ff6a6ca8a7dc17d",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "f9aa18e5a0dd38d928353786ab2f9649f167ac77da84096bc533dc2dc7aa8229",
+            "wildlife": "8d23465b08bfb8541833329f8a7fac1969339bc0b091851ea1e244168778f151",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 398,
+          "recipe": {
+            "obstacles": "147ec7a09be816cd2eae4550060bc2673e9b9bfacf0bd7a76ff6a6ca8a7dc17d",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "f9aa18e5a0dd38d928353786ab2f9649f167ac77da84096bc533dc2dc7aa8229",
+            "wildlife": "8d23465b08bfb8541833329f8a7fac1969339bc0b091851ea1e244168778f151",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 398,
+          "recipe": {
+            "obstacles": "147ec7a09be816cd2eae4550060bc2673e9b9bfacf0bd7a76ff6a6ca8a7dc17d",
+            "locations": "449087e69bebe615fdec160b22e51206d80ae9c336a94dd0c493cdbedd9b1c2a",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "f9aa18e5a0dd38d928353786ab2f9649f167ac77da84096bc533dc2dc7aa8229",
+            "wildlife": "8d23465b08bfb8541833329f8a7fac1969339bc0b091851ea1e244168778f151",
+            "ground": "f846523ab2f51fb0d8f67784e0235e9e75f9fb57becf526951633da83e8bbd3a",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "terrain": "Mountains",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 337,
+          "recipe": {
+            "obstacles": "e42e184b6a26b096b55d25d9b16f81908ed9aa08ff31b93ed0d0367d90200588",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "20164b8bba161b2dbd3c5e9134881a82731f1860c9abefe2c57448225479ff84",
+            "wildlife": "c48660a6aa1b1927efcb35e54ad8439edafb904c90a36b67c1c8409bdd9c27e5",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 337,
+          "recipe": {
+            "obstacles": "e42e184b6a26b096b55d25d9b16f81908ed9aa08ff31b93ed0d0367d90200588",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "20164b8bba161b2dbd3c5e9134881a82731f1860c9abefe2c57448225479ff84",
+            "wildlife": "c48660a6aa1b1927efcb35e54ad8439edafb904c90a36b67c1c8409bdd9c27e5",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 337,
+          "recipe": {
+            "obstacles": "e42e184b6a26b096b55d25d9b16f81908ed9aa08ff31b93ed0d0367d90200588",
+            "locations": "0415c84573009b3dd30324c47c55f4fb294a659fa07944bb4ff1002cfefe60b0",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "20164b8bba161b2dbd3c5e9134881a82731f1860c9abefe2c57448225479ff84",
+            "wildlife": "c48660a6aa1b1927efcb35e54ad8439edafb904c90a36b67c1c8409bdd9c27e5",
+            "ground": "4c86bb1245db39c422cf97bdb648288ee2141f8ac7ca01d2d7b606ded581c7a0",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "terrain": "Desert",
+      "river": false,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 122,
+          "recipe": {
+            "obstacles": "73e57b4abe228a153e78294cfea49a98301a8db6cd5e75fd482a7f948d3d8c8f",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "0c0be2e95d3647eb3c25fdbb59cb2839cae2561a25522092b19fe6db03ad07e2",
+            "wildlife": "144866f66e488a79686698d3106eb04064b4fe86ae49d021b6b782710da925a0",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 122,
+          "recipe": {
+            "obstacles": "73e57b4abe228a153e78294cfea49a98301a8db6cd5e75fd482a7f948d3d8c8f",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "0c0be2e95d3647eb3c25fdbb59cb2839cae2561a25522092b19fe6db03ad07e2",
+            "wildlife": "144866f66e488a79686698d3106eb04064b4fe86ae49d021b6b782710da925a0",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 122,
+          "recipe": {
+            "obstacles": "73e57b4abe228a153e78294cfea49a98301a8db6cd5e75fd482a7f948d3d8c8f",
+            "locations": "d1d16bd7e8e1562924d91e6c3b3c45a091c4b2628cc978c91c6705270db0567c",
+            "river": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+            "visible": "0c0be2e95d3647eb3c25fdbb59cb2839cae2561a25522092b19fe6db03ad07e2",
+            "wildlife": "144866f66e488a79686698d3106eb04064b4fe86ae49d021b6b782710da925a0",
+            "ground": "e67631eb610507fd1b6fbb53ab3b0973c0c40cc53b87f4957882af140711ba17",
+            "savedPointClear": true
+          }
+        }
+      ]
+    },
+    {
+      "seed": 50,
+      "terrain": "Desert",
+      "river": true,
+      "recipes": [
+        {
+          "quality": "low",
+          "count": 108,
+          "recipe": {
+            "obstacles": "4529d2b9a59d3a36d239a8a257c37176c4c1f04899bdaf177c676c655fe570c6",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "eff9c72fd042c98f164a30f6ee44c5bb57b974c62c6aefef026850ddb47dc783",
+            "wildlife": "b9a06c19d0f0f464cfb917e006a3118487ff3118a2e249861ac5569f299a9281",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "balanced",
+          "count": 108,
+          "recipe": {
+            "obstacles": "4529d2b9a59d3a36d239a8a257c37176c4c1f04899bdaf177c676c655fe570c6",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "eff9c72fd042c98f164a30f6ee44c5bb57b974c62c6aefef026850ddb47dc783",
+            "wildlife": "b9a06c19d0f0f464cfb917e006a3118487ff3118a2e249861ac5569f299a9281",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        },
+        {
+          "quality": "high",
+          "count": 108,
+          "recipe": {
+            "obstacles": "4529d2b9a59d3a36d239a8a257c37176c4c1f04899bdaf177c676c655fe570c6",
+            "locations": "61cb1465d8df6e47d661e6e70b913b225cdb7ec0642b014dd11542e4f8cb78bd",
+            "river": "2b003fe68422dcc54e5521fc634968847c7078cfab71029780cfa5c2865947ef",
+            "visible": "eff9c72fd042c98f164a30f6ee44c5bb57b974c62c6aefef026850ddb47dc783",
+            "wildlife": "b9a06c19d0f0f464cfb917e006a3118487ff3118a2e249861ac5569f299a9281",
+            "ground": "1dcce8c8ff0bad125b4cf2799a61972c0c5dda65e2839e0a963dcaa3b6d25ef5",
+            "savedPointClear": true
+          }
+        }
+      ]
+    }
+  ],
+  "lowLayoutPreserved": [
+    {
+      "seed": 14,
+      "count": 317,
+      "sha256": "d480a3c8395d5e07844e9739210a5370875282a9e0dec0a0c9f1f72d870d9c50",
+      "pass": true
+    },
+    {
+      "seed": 18,
+      "count": 318,
+      "sha256": "6d0b0f989ccc9dd58b2dd7f90a0d523592154fb3a525c1fb19aae437efdf26d5",
+      "pass": true
+    }
+  ],
+  "furthestNearestTarget": 20.197053528315124,
+  "furthestFirstDeer": 31.899166450624048,
+  "started": 1788870157759,
+  "elapsedSeconds": 275.251,
+  "pass": true
+}

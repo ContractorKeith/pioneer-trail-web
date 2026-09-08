@@ -1,0 +1,90 @@
+{
+  "method": "CPU only, no WebGL renderer. One seed14 low RiverValley crossing.100 warmup +300 measured fixed60Hz ticks per pose; identical drive input, current gated104..136. Standalone timings include instrumentation.",
+  "cases": [
+    {
+      "label": "spawn",
+      "x": 0,
+      "z": 20,
+      "current": 0,
+      "ground": 0.2974322438240051,
+      "collisions": 0,
+      "iterations": 300,
+      "totalWallMs": 43.26958599999989,
+      "physicsMs": {
+        "mean": 0.021300636666663497,
+        "median": 0.014416999999866675,
+        "p95": 0.023959000000104425,
+        "max": 1.1725530000001072
+      },
+      "worldUpdateMs": {
+        "mean": 0.027264116666673697,
+        "median": 0.027166999999963082,
+        "p95": 0.032958000000007814,
+        "max": 0.03966699999978118
+      },
+      "sceneMatrixMs": {
+        "mean": 0.04184932666665721,
+        "median": 0.04104200000006131,
+        "p95": 0.04604199999994307,
+        "max": 0.06916700000010678
+      }
+    },
+    {
+      "label": "mid-channel",
+      "x": -9,
+      "z": 120,
+      "current": 0.8,
+      "ground": -1.1347054243087769,
+      "collisions": 0,
+      "iterations": 300,
+      "totalWallMs": 34.72012799999993,
+      "physicsMs": {
+        "mean": 0.018908453333340278,
+        "median": 0.016458000000056927,
+        "p95": 0.021250000000009095,
+        "max": 0.4975879999999506
+      },
+      "worldUpdateMs": {
+        "mean": 0.02526574333332898,
+        "median": 0.024666999999908512,
+        "p95": 0.029166999999915788,
+        "max": 0.04983400000014626
+      },
+      "sceneMatrixMs": {
+        "mean": 0.04190015666667326,
+        "median": 0.0411669999998594,
+        "p95": 0.047499999999899956,
+        "max": 0.06483400000001893
+      }
+    },
+    {
+      "label": "reported-failure-area",
+      "x": -8.55,
+      "z": 132,
+      "current": 0.8,
+      "ground": -1.198500669002533,
+      "collisions": 0,
+      "iterations": 300,
+      "totalWallMs": 33.43803200000002,
+      "physicsMs": {
+        "mean": 0.016831263333338786,
+        "median": 0.015041999999994005,
+        "p95": 0.017291999999997643,
+        "max": 0.3850039999999808
+      },
+      "worldUpdateMs": {
+        "mean": 0.025107773333332563,
+        "median": 0.02387599999997292,
+        "p95": 0.027041999999937616,
+        "max": 0.2961279999999533
+      },
+      "sceneMatrixMs": {
+        "mean": 0.041787636666667065,
+        "median": 0.04112500000019281,
+        "p95": 0.04466699999989032,
+        "max": 0.08000099999981103
+      }
+    }
+  ],
+  "obstacles": 317
+}

@@ -1,47 +1,46 @@
-# Acceptance evidence
+# First-person rebuild acceptance
 
-Implemented against the goal in [GOAL.md](GOAL.md). Initial work is tracked in GitHub issues #1–#4; the localhost buying failure, simpler onboarding/presets, and geographic map are tracked in #5–#7.
+Source: [full specification](PIONEER-TRAIL-3D-REBUILD-PROMPT.md). Parent [#8](https://github.com/ContractorKeith/pioneer-trail-web/issues/8). No acceptance is passed until implementation and independent fresh verification evidence are linked. Historical dashboard checks remain under archive/ and never establish these passes.
 
-## Engine
+| ID | Required capability | Evidence needed to pass |
+|---|---|---|
+| R01 | Genuine first person | Play from the wagon seat, look forward/back/sideways, stop, dismount, walk completely around the wagon, and reboard. Viewpoint and occlusion change correctly. |
+| R02 | Player-controlled travel | Acceleration/pace, stopping, steering, terrain following, and collision work. Position and campaign progress respond to actual actions, not just an animation timer. |
+| R03 | Connected journey | Outfitting leads into playable travel, encounters and region transitions, and a reachable success or failure ending. Preserve existing selectable routes/eras/content rather than silently deleting them to simplify verification. Shared regional assets are allowed. |
+| R04 | Terrain and scenery | Distinct plains, woodland/river-valley, and mountain-pass regions, with region-appropriate snow conditions. Ground is navigable and collision agrees with visible obstacles. |
+| R05 | River crossings | Approach a river in the world, see actionable depth/current/risk information, choose among meaningful crossing options, and execute at least one player-controlled crossing. Steering/collisions affect outcomes; ferry/wait/guide options have real costs and effects where supported. |
+| R06 | Hunting | Encounter moving 3D wildlife, aim, fire/reload, register actual hits/misses, spend ammunition, and collect bounded food through campaign rules. Not clicking HTML animal icons. |
+| R07 | Fishing | Approach suitable water, cast, detect a bite, react and reel with a meaningful success/failure mechanic, then commit the catch and time cost once. Not an instant random-reward button. |
+| R08 | Camp and survival | Stop at camp, interact with fire/supplies/companions, rest, manage rations, treat illness, gather resources, and repair damage. Time, supplies, health, and wagon condition change consistently. |
+| R09 | People and commerce | Approach a modeled trader/fort or fellow traveler, open contextual dialogue, buy, sell, barter, and return to the world. Money, stock, capacity, and prices are enforced; existing conversations/letters/party features remain usable. |
+| R10 | Atmosphere and audio | Day/night, rain, snow, fog, flame, smoke, and firelight appear in real scenes. Wagon, animals, water, footsteps, and camp have suitable audio; user gesture, mute, pause, and volume work correctly. |
+| R11 | Meaningful management | A readable compact HUD and contextual map, journal, inventory, party, and settings interfaces expose real state without recreating the old dashboard. |
+| R12 | Persistence | Autosave, resume, export/import, incompatible-save handling, and recovery from interrupted activities work without duplication, silent resets, or lost committed outcomes. |
+| R13 | Accessibility and browsers | Keyboard/mouse play, drag-look, reduced camera motion, focus/pause recovery, readable overlays, and desktop resizing work. Verify Chromium and Firefox gameplay. Touch layouts/controls should be usable on supported landscape devices; do not claim mobile or Safari support without actual checks. |
+| R14 | Finished visual presentation | The wagon, oxen, terrain, water, lighting, and interactions are visibly better resolved than the HTML reference. Independent visual review finds no blockout hero assets, missing materials, severe clipping, floating objects, or misleading previews. |
+| R15 | Engineering and performance | Production build, type checks, lint, domain/unit/contract tests, browser E2E, license checks, and the performance/stability checks below pass. |
+| R16 | Delivery | Final source and necessary assets are pushed and merged, required CI is green, documentation matches the implementation, evidence is linked, and task-owned branches/worktrees are safely cleaned up. |
 
-- The original simulation and content are unchanged at source baseline `c44bfea0651fc70a16d92d8c8449c6f3e6f9df38`. Every vendored sim/data file is checked against `scripts/engine-source-sha256.json`.
-- 117 native Rust tests pass: 89 simulation, 17 content, 11 bridge/minigame tests. Strict workspace Clippy passes.
-- `npm run test:engine` runs the actual shipped WebAssembly artifact: maximum-u64 repeatability, opaque save/load, malformed saves, rejected-command nonmutation, seeded active-minigame restart, and source integrity.
-- All 11 legal trail/era pairs arrive through actual commands: Oregon and California in 1843/1848/1852/1866; Mormon in 1848/1852/1866. Both Barlow and Columbia endings arrive; the Columbia run uses Rust-owned raft tick/finish controls.
-- Original hunting/rafting RNG streams, logical grids, sprite hit masks, 30 Hz ticks, ammunition, carrying limits, collision penalties, and result commands are retained. Presentation never draws simulation randomness.
+## Execution ownership and dependencies
 
-## Browser acceptance
+| Issue | Lane | Dependencies | Owner |
+|---|---|---|---|
+| #9 | Runtime, controls, architecture | baseline | Root / Astra |
+| #10 | World, models, atmosphere | #9 shared contracts | World / Astra |
+| #11 | Campaign and persistence | #9 shared contracts | Campaign / Astra |
+| #12 | Hunting, fishing, crossing | #9, #10, #11 | Activity implementation agent |
+| #13 | Shell, overlays, audio | #9, #11 | UX implementation agent |
+| #14 | Independent verification and delivery | all lanes | Independent Astra reviewer + root |
 
-The production browser suite runs at port 4173, with desktop and mobile Chromium projects. Separate development-server checks run at port 5181. Checkpoints for crossings, breakdowns, and rafting are generated through real engine commands rather than editing save fields.
+## Evidence status
 
-- Setup, purchases, sales/refunds, outfitting advice, and departure.
-- Camp, map, journal, conversations, pace, and rations without accidental day advancement.
-- Rest consumes food/time; autosave survives reload; failed imports preserve the current journey.
-- Sound/reduced-motion settings persist; WebGL scenes mount; non-WebGL fallback keeps the game playable.
-- Hunting uses Rust target actions and advances the game day on completion.
-- Waiting at a river consumes a day; quick fishing returns a result without losing its activity panel; ferry crossing returns to travel.
-- A saved wagon breakdown resumes in the repair view and a successful original spare repair clears the event.
-- A command-generated Columbia session can be steered, completed, and reach the ending in the browser.
-- A quiet welcome screen leads through names/trail choice, each supply preset, departure, a geographic map with zoom/reset, camp, rest, and reload. Advanced setup and manual shopping are optional disclosures.
-- All three supply presets are purchased through the actual shipped Rust engine for all nine occupations (27 flows), checking exact quote/cash/load agreement, zero remainder on repeating the plan, and successful departure.
-- Map data checks cover every actual content node and assert a valid clipped continental landmass (Independence on land, the Pacific outside), including historic Fort Boise and Fort Walla Walla display locations.
+- Baseline: main 90a8847. Saved prompt and demo preserved in commit 422c2da. No pre-existing tracked changes.
+- Reference demo: executed using system Chromium on Linux aarch64; WebGL renderer ANGLE (Mesa, AGX G13/G14, OpenGL 4.6), no page errors. Captures in evidence/reference/.
+- R01–R13: implementation and focused behavior coverage exist in the current world, activity, survival, recovery, and browser specs. The Playwright configuration has Chromium and Firefox projects, but the focused evidence does not substitute for a fresh full browser suite and complete campaign matrix. See [world coverage](../tests/world.spec.ts), [activity/commerce coverage](../tests/mechanics.spec.ts), [survival/accessibility coverage](../tests/survival.spec.ts), [audio coverage](../tests/audio.spec.ts), and [recovery coverage](../tests/recovery.spec.ts).
+- Candidate performance evidence: [ride.json](evidence/performance/ride.json) reports a `pass: true` 120.0169-second low-quality 720p Chromium ride on the M2 AGX path, with 7,070 frames, median 59.8802 FPS, and p95 17.9 ms. [cold-load.json](evidence/performance/cold-load.json) reports 1,957,266 initial gzip bytes, 5.6288 seconds to setup controls, and 7.2681 seconds to playable state under its fresh-context 10 Mbps down / 2 Mbps up / 150 ms profile. These are candidate artifacts, not final R15 acceptance.
+- R14: pending the latest independent visual review of wildlife, water, fog, and motion. The [visual-review report](evidence/visual-review/report.json) and captures provide inspection inputs; they do not by themselves establish the required review result.
+- R15: pending the full fresh suite, complete normal-input campaign, all route/config combinations, full CI result, and the required ten-minute multi-region transition soak. The two-minute candidate ride and cold-load candidate do not close this ID.
+- R16: pending final source/asset push and merge, green required CI, evidence linkage on the merged default commit, and task-worktree cleanup.
+- M1–M2 have focused implementation artifacts; M3–M4 and final independent delivery review remain pending.
 
-## Visual and interaction review
-
-Seven original cinematic environments cover trail, camp, snow, fishing, crossing, repairs, and conversations. Three.js adds subtle parallax, falling weather, embers, and water glints. Hunting targets use original vector silhouettes over the environment. Desktop/mobile screenshots were inspected, including activity dialogs. Fonts and runtime artwork are self-hosted.
-
-Keyboard/touch controls, focus-contained dialogs, readable errors inside dialogs, muted defaults, reduced motion, and storage failure handling are implemented. Modernization is in presentation; no balancing changes were made.
-
-## Review fixes
-
-The issue review loop fixed the Vite public-WASM import path, exact counteroffer acceptance, invalid setup choices, resumed repair routing, unwanted river/fork panel switching after optional actions, quick fish/forage command selection, logical coordinate mapping, keyboard hunting aim, mobile sales, and explicit raft abort/completion labels.
-
-The first release's production-only tests missed a real development-server defect. Concurrent cold `TrailEngine.create()` calls initialized wasm-bindgen more than once; its shared module dispatch then used Rust object pointers from different WASM instances. A no-app browser fixture reproduced cross-game cash changes and rejected configurations before the fix. A shared initialization promise now prevents it; the retained development-server regression checks eight cold concurrent engines configure and buy independently. CI runs that regression and real onboarding flows in development as well as the fixed production build.
-
-## Delivery status
-
-- Local build, lint, 12 unit tests (storage, preset planning, shipped-WASM purchases, and map geometry), artifact verification, 117 Rust tests, 30 desktop/mobile production checks, and 5 development-server checks pass. Final push/CI evidence is recorded in issues #5–#7.
-- The public repository includes a [CI workflow](../.github/workflows/ci.yml) that repeats build, lint, storage, Rust, shipped-artifact, and browser checks. Final push/CI evidence is recorded in [issue #4](https://github.com/ContractorKeith/pioneer-trail-web/issues/4).
-- Cloudflare Pages configuration is documented; deployment and custom-domain setup are deferred.
-
-An unfinished hunt or raft intentionally restarts from its seeded initial state after a browser reload, matching the original terminal game. Only the latest active journey is kept in browser storage; exported saves retain previous journeys.
+The required final evidence remains: complete normal-input browser campaign; all route/config combinations; failures; Chromium + Firefox; viewpoints/weather screenshots; 25–30s ride and longer walkthrough; cold-load profile/payload; two-minute hardware ride; ten-minute soak; independent full diff review; green CI and exact merged default smoke. The linked ride and cold-load files cover candidate measurements only.

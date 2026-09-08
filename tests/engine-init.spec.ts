@@ -14,7 +14,8 @@ test('cold concurrent engine creation keeps every Rust game independent', async 
   })
   await page.goto('/engine-cold-probe.html')
   const games = await page.evaluate(async () => {
-    const { TrailEngine } = await import('/src/engine.ts')
+    const modulePath = '/src/engine.ts'
+    const { TrailEngine } = await import(modulePath)
     const engines = await Promise.all(
       Array.from({ length: 8 }, (_, seed) => TrailEngine.create(String(seed))),
     )

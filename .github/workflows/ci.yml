@@ -17,11 +17,13 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: npm ci
       - run: npm run lint
+      - run: npm run test:types
       - run: npm test
       - run: npm run build
       - run: cargo test --manifest-path engine/Cargo.toml --locked
       - run: npm run test:engine
-      - run: npx playwright install --with-deps chromium
+      - run: npm run test:assets
+      - run: npx playwright install --with-deps chromium firefox
       - run: npm run test:dev
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v4

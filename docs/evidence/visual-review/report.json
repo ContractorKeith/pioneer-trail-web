@@ -1,0 +1,227 @@
+{
+  "baseURL": "http://localhost:4173",
+  "date": "2026-09-08T11:08:11.132Z",
+  "captures": [
+    {
+      "name": "seat-forward",
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+        "width": 1280,
+        "height": 720,
+        "quality": "balanced"
+      },
+      "position": {
+        "x": 0,
+        "y": 2.6527486340678714,
+        "z": 20.474325523083678
+      },
+      "heading": 0,
+      "weather": "Clear",
+      "day": 0,
+      "terrain": "RiverValley",
+      "region": "independence",
+      "drawCalls": 434,
+      "triangles": 953765,
+      "fps": 59.881652670958154
+    },
+    {
+      "name": "seat-rear",
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+        "width": 1280,
+        "height": 720,
+        "quality": "balanced"
+      },
+      "position": {
+        "x": 0,
+        "y": 2.6527486340678714,
+        "z": 20.474325523083678
+      },
+      "heading": 3.150000000000008,
+      "weather": "Clear",
+      "day": 0,
+      "terrain": "RiverValley",
+      "region": "independence",
+      "drawCalls": 220,
+      "triangles": 532501,
+      "fps": 46.184997583242286
+    },
+    {
+      "name": "wagon-exterior",
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+        "width": 1280,
+        "height": 720,
+        "quality": "balanced"
+      },
+      "position": {
+        "x": -3.7999999999999985,
+        "y": 1.9154786181449868,
+        "z": 14.239999999999927
+      },
+      "heading": 1.0033333333333327,
+      "weather": "Clear",
+      "day": 0,
+      "terrain": "RiverValley",
+      "region": "independence",
+      "drawCalls": 353,
+      "triangles": 899558,
+      "fps": 59.75804315263661
+    },
+    {
+      "name": "camp",
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+        "width": 1280,
+        "height": 720,
+        "quality": "balanced"
+      },
+      "position": {
+        "x": -6.818887999745061,
+        "y": 2.0076717662811276,
+        "z": 19.968548751695394
+      },
+      "heading": 0.012332763671875028,
+      "weather": "Clear",
+      "day": 0,
+      "terrain": "RiverValley",
+      "region": "independence",
+      "drawCalls": 419,
+      "triangles": 918361,
+      "fps": 58.96546531366325
+    },
+    {
+      "name": "ox-front",
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+        "width": 1280,
+        "height": 720,
+        "quality": "balanced"
+      },
+      "position": {
+        "x": -4.241430129909359,
+        "y": 2.156654947119442,
+        "z": 30.01752657900022
+      },
+      "heading": 2.431843058268235,
+      "weather": "Clear",
+      "day": 0,
+      "terrain": "RiverValley",
+      "region": "independence",
+      "drawCalls": 332,
+      "triangles": 653455,
+      "fps": 38.802751620621024
+    },
+    {
+      "name": "companion",
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+        "width": 1280,
+        "height": 720,
+        "quality": "balanced"
+      },
+      "position": {
+        "x": -3.781161652955179,
+        "y": 2.009775369184259,
+        "z": 27.108281232750166
+      },
+      "heading": 3.629487711588552,
+      "weather": "Clear",
+      "day": 0,
+      "terrain": "RiverValley",
+      "region": "independence",
+      "drawCalls": 295,
+      "triangles": 603126,
+      "fps": 34.78728295887603
+    },
+    {
+      "name": "river",
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+        "width": 1280,
+        "height": 720,
+        "quality": "balanced"
+      },
+      "position": {
+        "x": 0,
+        "y": 2.6684881844822477,
+        "z": 22.022045883589435
+      },
+      "heading": 0,
+      "weather": "Clear",
+      "day": 7,
+      "terrain": "RiverValley",
+      "region": "kansas_river",
+      "drawCalls": 417,
+      "triangles": 3273214,
+      "fps": 35.29676880309299
+    },
+    {
+      "name": "rain",
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+        "width": 1280,
+        "height": 720,
+        "quality": "balanced"
+      },
+      "position": {
+        "x": 0,
+        "y": 2.6679956861125143,
+        "z": 21.97179168796439
+      },
+      "heading": 0,
+      "weather": "Storm",
+      "day": 20,
+      "terrain": "Plains",
+      "region": "big_blue",
+      "drawCalls": 414,
+      "triangles": 937538,
+      "fps": 47.70344846935566
+    },
+    {
+      "name": "snow",
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+        "width": 1280,
+        "height": 720,
+        "quality": "balanced"
+      },
+      "position": {
+        "x": 0,
+        "y": 2.5831062910423825,
+        "z": 21.97619599970328
+      },
+      "heading": 0,
+      "weather": "Snow",
+      "day": 108,
+      "terrain": "Hills",
+      "region": "green_river",
+      "drawCalls": 415,
+      "triangles": 3206402,
+      "fps": 50.04544736176472
+    },
+    {
+      "name": "mountains",
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+        "width": 1280,
+        "height": 720,
+        "quality": "balanced"
+      },
+      "position": {
+        "x": 0,
+        "y": 2.5831062910423825,
+        "z": 21.97619599970328
+      },
+      "heading": 0,
+      "weather": "Warm",
+      "day": 78,
+      "terrain": "Mountains",
+      "region": "independence_rock",
+      "drawCalls": 414,
+      "triangles": 3206402,
+      "fps": 45.057480632791496
+    }
+  ],
+  "errors": []
+}

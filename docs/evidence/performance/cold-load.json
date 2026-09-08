@@ -1,0 +1,150 @@
+{
+  "baseURL": "http://localhost:4173",
+  "started": "2026-09-08T11:33:18.994Z",
+  "profile": {
+    "downloadMbps": 10,
+    "uploadMbps": 2,
+    "latencyMs": 150,
+    "cache": "disabled, fresh context"
+  },
+  "errors": [],
+  "coldInteractiveMs": 5628.769529,
+  "coldPlayableMs": 7268.1474100000005,
+  "renderer": {
+    "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)",
+    "width": 1280,
+    "height": 720,
+    "quality": "balanced"
+  },
+  "resources": [
+    {
+      "url": "http://localhost:4173/assets/index-CnnDm6Bb.js",
+      "transfer": 1374521,
+      "encoded": 1374221,
+      "decoded": 3866647,
+      "duration": 1318.1000000014901
+    },
+    {
+      "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
+      "transfer": 6671,
+      "encoded": 6371,
+      "decoded": 23999,
+      "duration": 165.19999999925494
+    },
+    {
+      "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
+      "transfer": 3149,
+      "encoded": 2849,
+      "decoded": 15385,
+      "duration": 161.80000000074506
+    },
+    {
+      "url": "http://localhost:4173/favicon.svg",
+      "transfer": 557,
+      "encoded": 257,
+      "decoded": 257,
+      "duration": 154.90000000223517
+    },
+    {
+      "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+      "transfer": 23176,
+      "encoded": 22876,
+      "decoded": 22876,
+      "duration": 174.69999999925494
+    },
+    {
+      "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
+      "transfer": 2152912,
+      "encoded": 2152612,
+      "decoded": 2152612,
+      "duration": 1944.800000000745
+    },
+    {
+      "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+      "transfer": 14500,
+      "encoded": 14200,
+      "decoded": 14200,
+      "duration": 166.10000000149012
+    },
+    {
+      "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+      "transfer": 14444,
+      "encoded": 14144,
+      "decoded": 14144,
+      "duration": 169.69999999925494
+    },
+    {
+      "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+      "transfer": 23612,
+      "encoded": 23312,
+      "decoded": 23312,
+      "duration": 170.89999999850988
+    }
+  ],
+  "payload": [
+    {
+      "file": "index.html",
+      "bytes": 724,
+      "gzipBytes": 434,
+      "sha256": "d691930dbe298087ded32a81fa3f07ab9ea8006ea28eab7a8c69ef92e7848ac0"
+    },
+    {
+      "file": "assets/index-CnnDm6Bb.js",
+      "bytes": 3866647,
+      "gzipBytes": 1374221,
+      "sha256": "890ec5140514834c687bbbfbd71e18d5d28dd0f79484306cf8711031430bafed"
+    },
+    {
+      "file": "assets/index-MwlfJe0p.css",
+      "bytes": 23999,
+      "gzipBytes": 6371,
+      "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+    },
+    {
+      "file": "wasm/pioneer_trail_web_engine.js",
+      "bytes": 15385,
+      "gzipBytes": 2849,
+      "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+    },
+    {
+      "file": "favicon.svg",
+      "bytes": 257,
+      "gzipBytes": 209,
+      "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+    },
+    {
+      "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+      "bytes": 22876,
+      "gzipBytes": 22904,
+      "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+    },
+    {
+      "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+      "bytes": 2152612,
+      "gzipBytes": 498645,
+      "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+    },
+    {
+      "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+      "bytes": 14200,
+      "gzipBytes": 14159,
+      "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+    },
+    {
+      "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+      "bytes": 14144,
+      "gzipBytes": 14134,
+      "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+    },
+    {
+      "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+      "bytes": 23312,
+      "gzipBytes": 23340,
+      "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+    }
+  ],
+  "initialRawBytes": 6134156,
+  "initialGzipBytes": 1957266,
+  "note": "Cold interactive time reaches the setup controls with the world loaded. Cold playable time also includes automated normal setup/outfitting clicks. This is local production preview under CDP throttling. Gzip independently compresses exact requested build bytes; preview transfer figures are reported separately and may be uncompressed.",
+  "pass": true
+}

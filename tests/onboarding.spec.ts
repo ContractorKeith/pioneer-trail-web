@@ -1,116 +1,80 @@
 import { expect, test } from '@playwright/test'
-
+import { start, state, walkTo } from './world.helpers'
+test('Escape cannot dismiss the required journey setup', async ({ page }) => {
+  await page.goto('/?evidence=1')
+  const setup = page.getByRole('heading', { name: 'Begin a journey', exact: true })
+  await expect(setup).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(setup).toBeVisible()
+  await page.getByRole('button', { name: 'Choose provisions' }).click()
+  await expect(page.getByRole('button', { name: 'Load this plan' })).toBeVisible()
+})
+test('whitespace-only traveler names keep the selected setup open without replacing a save', async ({
+  page,
+}) => {
+  await page.goto('/?evidence=1')
+  await page.getByRole('combobox', { name: 'Route', exact: true }).selectOption('california')
+  const traveler = page.getByLabel('Traveler 1', { exact: true })
+  await traveler.fill('   ')
+  await page.getByRole('button', { name: 'Choose provisions' }).click()
+  await expect(page.getByText('Every traveler needs a name.')).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Begin a journey', exact: true })).toHaveCount(1)
+  await expect(traveler).toHaveValue('   ')
+  await expect(page.getByRole('dialog')).toHaveCount(1)
+  await expect(page.getByRole('combobox', { name: 'Route', exact: true })).toHaveValue('california')
+  expect(await page.evaluate(() => localStorage.getItem('pioneer-trail:world:v2'))).toBeNull()
+})
 for (const [preset, trail] of [
   ['Safe', 'oregon'],
   ['Moderate', 'california'],
   ['Risky', 'mormon'],
 ] as const) {
-  test(`${preset} supplies take a named party onto the ${trail} trail and into camp`, async ({
-    page,
-  }, testInfo) => {
+  test(`${preset} outfitting leads a named party into the ${trail} world`, async ({ page }) => {
     const errors: string[] = []
-    page.on('pageerror', (error) => errors.push(error.message))
-    await page.goto('/')
-    await expect(
-      page.getByRole('button', { name: 'Begin your journey', exact: true }),
-    ).toBeVisible()
-    await expect(page.locator('.sidebar, .status-strip, .lower-grid')).toHaveCount(0)
-    if (preset === 'Safe')
-      await page.screenshot({
-        path: `/tmp/pioneer-welcome-${testInfo.project.name || 'dev'}.png`,
-        fullPage: true,
-      })
-    await page.getByRole('button', { name: 'Begin your journey', exact: true }).click()
-    await page.getByRole('combobox', { name: 'Your trail', exact: true }).selectOption(trail)
-    await page.getByLabel('Traveler 1 name', { exact: true }).fill('Keith')
-    await expect(page.locator('.setup-options')).not.toHaveAttribute('open')
-    if (preset === 'Safe')
-      await page.screenshot({
-        path: `/tmp/pioneer-setup-${testInfo.project.name || 'dev'}.png`,
-        fullPage: true,
-      })
-    await page.getByRole('button', { name: 'Outfit your wagon', exact: true }).click()
-    await page.getByRole('radio', { name: new RegExp(`^${preset}`) }).click()
-    await expect(page.locator('.store-table')).toBeHidden()
-    if (preset === 'Safe')
-      await page.screenshot({
-        path: `/tmp/pioneer-outfit-${testInfo.project.name || 'dev'}.png`,
-        fullPage: true,
-      })
-    const outfit = page.getByRole('button', {
-      name: 'Outfit with recommended supplies',
-      exact: true,
-    })
-    await outfit.click()
-    await expect(page.locator('.outfit-complete')).toContainText('Ready for the road.')
-    const packed = await page.evaluate(() =>
-      JSON.parse(localStorage.getItem('pioneer-trail:journey:v1')!),
-    )
-    expect(packed.party[0].name).toBe('Keith')
-    expect(packed.inventory.quantities.food).toBeGreaterThan(0)
-    expect(packed.inventory.quantities.oxen).toBeGreaterThanOrEqual(2)
-    await expect(page.getByRole('alert')).toHaveCount(0)
-    await page.getByRole('button', { name: /^Leave / }).click()
-    const deliberate = page.getByRole('button', { name: 'Depart with these supplies', exact: true })
-    if (await deliberate.isVisible()) await deliberate.click()
-    const fork = page.locator('dialog .choice-list .choice').first()
-    if (await fork.isVisible()) await fork.click()
-    await expect(page.getByRole('dialog')).toBeHidden()
-    await expect(page.getByRole('button', { name: 'Travel one day', exact: true })).toBeVisible()
-    await expect(page.locator('.status-stat')).toHaveCount(3)
-    await page.getByRole('button', { name: 'Trail map', exact: true }).click()
+    page.on('pageerror', (e) => errors.push(String(e)))
+    await start(page, trail, preset)
+    const packed = await state(page)
+    expect(packed.view.trail_id).toBe(trail)
+    expect(packed.view.inventory.food).toBeGreaterThan(0)
+    expect(packed.view.inventory.oxen).toBeGreaterThanOrEqual(2)
+    expect(packed.mode).toBe('riding')
+    expect(packed.position.y).toBeGreaterThan(2)
+    await expect(page.locator('.sidebar,.lower-grid,.scene-image')).toHaveCount(0)
+    await page.getByRole('button', { name: 'Map', exact: true }).click()
     const map = page.getByRole('img', { name: /Geographic map/ })
     await expect(map).toBeVisible()
-    await expect(page.locator('.map-land path').first()).toBeVisible()
     const position = await map.locator(':scope > g').first().getAttribute('transform')
     await page.getByRole('button', { name: 'Zoom in', exact: true }).click()
     await expect(map.locator(':scope > g').first()).not.toHaveAttribute('transform', position!)
     await page.getByRole('button', { name: 'Reset map position', exact: true }).click()
     await expect(map.locator(':scope > g').first()).toHaveAttribute('transform', position!)
-    if (preset === 'Safe')
-      await page.screenshot({
-        path: `/tmp/pioneer-map-${testInfo.project.name || 'dev'}.png`,
-        fullPage: true,
-      })
-    await page.getByRole('button', { name: 'Close panel', exact: true }).click()
-    await page.getByRole('button', { name: 'Make camp', exact: true }).click()
-    await expect(page.locator('.scene-camp')).toBeVisible()
-    await page.getByRole('button', { name: /^Rest Restore/ }).click()
-    await page.getByRole('button', { name: 'Rest 1 day', exact: true }).click()
-    await expect(page.locator('.journey-heading .eyebrow')).toContainText('DAY 2')
-    await page.getByRole('button', { name: 'Close panel', exact: true }).click()
+    await page.getByRole('button', { name: 'Close panel' }).click()
+    await page.keyboard.press('e')
+    await expect.poll(async () => (await state(page)).mode).toBe('walking')
+    await walkTo(page, -6.8, 20)
+    await page.keyboard.press('e')
+    await expect(page.getByRole('heading', { name: 'Camp', exact: true })).toBeVisible()
+    const day = (await state(page)).view.day
+    await page.getByRole('button', { name: 'Rest one day', exact: true }).click()
+    await expect.poll(async () => (await state(page)).view.day).toBe(day + 1)
     await page.reload()
-    await expect(page.locator('.journey-heading .eyebrow')).toContainText('DAY 2')
+    await expect(page.getByRole('button', { name: 'Resume journey' })).toBeVisible()
+    expect((await state(page)).view.day).toBe(day + 1)
     expect(errors).toEqual([])
-    if (preset === 'Safe')
-      await page.screenshot({
-        path: `/tmp/pioneer-playing-${testInfo.project.name || 'dev'}.png`,
-        fullPage: true,
-      })
   })
 }
-
-test('a farmer sees an honest budget-tailored package with food and spares', async ({ page }) => {
-  await page.goto('/')
-  await page.getByRole('button', { name: 'Begin your journey', exact: true }).click()
-  await page.locator('.setup-options summary').click()
-  await page.getByRole('combobox', { name: 'Your occupation', exact: true }).selectOption('farmer')
-  await page.getByRole('button', { name: 'Outfit your wagon', exact: true }).click()
-  await page.getByRole('button', { name: 'Outfit with recommended supplies', exact: true }).click()
-  await expect(page.locator('.outfit-budget-summary')).toContainText(
-    'Budget-tailored Safe supplies purchased',
-  )
-  await expect(
-    page.getByRole('heading', { name: 'Your wagon is packed.', exact: true }),
-  ).toHaveCount(0)
-  const packed = await page.evaluate(() =>
-    JSON.parse(localStorage.getItem('pioneer-trail:journey:v1')!),
-  )
-  expect(packed.inventory.quantities.food).toBeGreaterThanOrEqual(450)
+test('farmer outfit remains budget-aware and rejected configurations stay visible', async ({
+  page,
+}) => {
+  await page.goto('/?evidence=1')
+  await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
+  await page.getByRole('button', { name: 'Choose provisions' }).click()
+  await page.getByRole('button', { name: 'Load this plan' }).click()
+  const view = (await state(page)).view
+  expect(view.inventory.food).toBeGreaterThanOrEqual(450)
+  expect(view.cash_cents).toBeGreaterThanOrEqual(0)
   for (const item of ['wheel', 'axle', 'tongue'])
-    expect(packed.inventory.quantities[item]).toBeGreaterThanOrEqual(1)
-  await expect(page.getByRole('alert')).toHaveCount(0)
-  await page.getByRole('button', { name: /^Leave / }).click()
-  await expect(page.getByRole('dialog')).toBeHidden()
-  await expect(page.getByRole('button', { name: 'Travel one day', exact: true })).toBeVisible()
+    expect(view.inventory[item]).toBeGreaterThanOrEqual(1)
+  await page.getByRole('button', { name: 'Take the trail' }).click()
+  expect((await state(page)).view.status).toBe('Travelling')
 })

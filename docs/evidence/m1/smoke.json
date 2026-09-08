@@ -1,0 +1,192 @@
+{
+  "environment": {
+    "base": "http://localhost:4173",
+    "width": 1280,
+    "height": 720
+  },
+  "errors": [],
+  "start": {
+    "mode": "riding",
+    "paused": false,
+    "pos": {
+      "x": 0,
+      "y": 2.6527486340678714,
+      "z": 20.474325523083678
+    },
+    "wagon": {
+      "x": 0,
+      "z": 20,
+      "yaw": 0,
+      "speed": 0,
+      "y": 0.2974322438240051
+    },
+    "day": 0,
+    "miles": 0,
+    "status": "Travelling",
+    "food": 1800,
+    "interaction": {
+      "kind": "dismount",
+      "label": "E · Get down",
+      "distance": 0
+    },
+    "activity": null
+  },
+  "dismount": {
+    "mode": "walking",
+    "paused": false,
+    "pos": {
+      "x": -3.0000000000000004,
+      "y": 2.0076717662811276,
+      "z": 20
+    },
+    "wagon": {
+      "x": 0,
+      "z": 20,
+      "yaw": 0,
+      "speed": 0,
+      "y": 0.2974322438240051
+    },
+    "day": 0,
+    "miles": 0,
+    "status": "Travelling",
+    "food": 1800,
+    "interaction": {
+      "kind": "dismount",
+      "label": "E · Get down",
+      "distance": 0
+    },
+    "activity": null
+  },
+  "walk": {
+    "mode": "walking",
+    "paused": false,
+    "pos": {
+      "x": -7.162026666666687,
+      "y": 2.0076717662811276,
+      "z": 20
+    },
+    "wagon": {
+      "x": 0,
+      "z": 20,
+      "yaw": 0,
+      "speed": 0,
+      "y": 0.2974322438240051
+    },
+    "day": 0,
+    "miles": 0,
+    "status": "Travelling",
+    "food": 1800,
+    "interaction": {
+      "kind": "camp",
+      "label": "E · Campfire · rest and survival",
+      "distance": 1.5029008986327455
+    },
+    "activity": null
+  },
+  "camp": "DAY 1\nCamp\n\nRest, mend gear, and tend the people who brought you this far.\n\nPACE\nSteady\nStrenuous\nGrueling\nRATIONS\nFilling\nMeager\nBare bones\nRest one day\nRest three days\n Repair wagon\nHunt nearby\nFish the water\nForage",
+  "board": {
+    "mode": "riding",
+    "paused": false,
+    "pos": {
+      "x": 0,
+      "y": 2.6527486340678714,
+      "z": 20.474325523083678
+    },
+    "wagon": {
+      "x": 0,
+      "z": 20,
+      "yaw": 0,
+      "speed": 0,
+      "y": 0.2974322438240051
+    },
+    "day": 0,
+    "miles": 0,
+    "status": "Travelling",
+    "food": 1800,
+    "interaction": {
+      "kind": "dismount",
+      "label": "E · Get down",
+      "distance": 0
+    },
+    "activity": null
+  },
+  "drive": {
+    "mode": "riding",
+    "paused": false,
+    "pos": {
+      "x": 0,
+      "y": 2.6737065792535955,
+      "z": 71.54901038188272
+    },
+    "wagon": {
+      "x": 0,
+      "z": 71.0488490526275,
+      "yaw": 0,
+      "speed": 0,
+      "y": 0.3237409104155059
+    },
+    "day": 1,
+    "miles": 18,
+    "status": "Travelling",
+    "food": 1785,
+    "interaction": {
+      "kind": "dismount",
+      "label": "E · Get down",
+      "distance": 0
+    },
+    "activity": null
+  },
+  "beforeReload": {
+    "mode": "riding",
+    "paused": true,
+    "pos": {
+      "x": 0,
+      "y": 2.6737065792535955,
+      "z": 71.54901038188272
+    },
+    "wagon": {
+      "x": 0,
+      "z": 71.0488490526275,
+      "yaw": 0,
+      "speed": 0,
+      "y": 0.3237409104155059
+    },
+    "day": 1,
+    "miles": 18,
+    "status": "Travelling",
+    "food": 1785,
+    "interaction": {
+      "kind": "dismount",
+      "label": "E · Get down",
+      "distance": 0
+    },
+    "activity": null
+  },
+  "resume": {
+    "mode": "riding",
+    "paused": true,
+    "pos": {
+      "x": 0,
+      "y": 2.6737065792535955,
+      "z": 71.54901038188272
+    },
+    "wagon": {
+      "x": 0,
+      "z": 71.0488490526275,
+      "yaw": 0,
+      "speed": 0,
+      "y": 0.3237409104155059
+    },
+    "day": 1,
+    "miles": 18,
+    "status": "Travelling",
+    "food": 1785,
+    "interaction": {
+      "kind": "dismount",
+      "label": "E · Get down",
+      "distance": 0
+    },
+    "activity": null
+  },
+  "pass": true
+}

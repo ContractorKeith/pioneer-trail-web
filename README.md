@@ -1,10 +1,8 @@
 # Pioneer Trail Web
 
-An open road. An uncertain future. The people beside you make it worth taking.
+Pioneer Trail Web is a static browser game rebuild. The release target is a first-person 3D wagon journey, with the Rust/WebAssembly campaign engine remaining authoritative for rules, content, seeded outcomes, and saves. The former image-scene dashboard and the first-person demo page are historical/reference material while the rebuild is completed; they are not the runtime contract.
 
-A complete browser edition of Pioneer Trail, with cinematic landscapes, illustrated first-person activities, Three.js atmosphere, procedural sound, and the original deterministic Rust game running in WebAssembly.
-
-![Pioneer Trail's opening screen](docs/screenshots/trail.webp)
+The campaign content remains the original scope: **three trails** (Oregon, California, and Mormon), **four eras** (1843, 1848, 1852, and 1866), and **nine occupations** (Banker, Merchant, Doctor, Blacksmith, Carpenter, Hunter/Trapper, Preacher, Farmer, and Soldier). Survival, commerce, letters, route events, and the fishing, hunting, and crossing activities remain part of that campaign.
 
 ## Play locally
 
@@ -13,63 +11,67 @@ npm ci
 npm run dev
 ```
 
-Open **http://localhost:5173**. Node 22.12+ is required (CI uses Node 24). Rust is not needed to play or build the webapp: the browser engine is included.
+Open **http://localhost:5173**. The repository uses Node 24 in CI. Rust is only needed when rebuilding the checked-in browser engine; the shipped `public/wasm` files let the web app start without a Rust toolchain.
 
-Choose a trail and name your party, then select **Safe**, **Moderate**, or **Risky** supplies. **Outfit with recommended supplies** buys the whole quoted package; the next click leaves town. Plans adapt to your funds and wagon space. Expand **Shop item by item** to make your own purchases.
+Build and serve the static output locally with:
 
-Year, occupation, departure month, difficulty, and seed live under **More options**. Defaults are Banker, March, Oregon, 1848. The welcome screen keeps one primary start action; the trail view shows food, party health, distance, and the next action.
+```sh
+npm run build
+npm run preview -- --host 0.0.0.0 --port 4173
+```
 
-If you played the initial build and hit the buying-supplies error, reload the page once to load the corrected engine initializer. Your browser save is retained.
+## 3D runtime and controls
 
-## On the trail
+The rebuild runtime creates a WebGL 2 Three.js world and Rapier 3D physics scene. The fixed simulation owns movement, terrain and obstacle collision, wagon state, region interactions, and spatial activities. React renders menus and snapshots of that state; it does not move the player object. The runtime starts in the first-person wagon view, with walking and riding states represented by the same world.
 
-- Travel day by day or automatically, stopping for decisions and party care. Set pace and rations; manage food, money, weather, illness, morale, and supplies.
-- Make camp, rest, treat companions, forage, fish in river valleys, and meet named travelers. Trade, invite companions, and carry letters between supply stops.
-- Face river crossings, trail forks, wheel/axle/tongue breakdowns, and the original event choices. Hunt and raft using the original seeded minigame worlds.
-- Follow your route, read the field journal, and reach an ending with a scored journey.
+The current input seam is in [`src/game/input.ts`](src/game/input.ts). It uses `WASD` for movement/steering, `Space` for brake or the current primary action, and `E` for interaction such as boarding, dismounting, or using a nearby object. Look uses the configured drag or pointer-lock mode; the arrow keys also provide look input. `Escape` and `Tab` pause or close the active overlay. Activity controls are `H` for hunt, `F` for fish, `R` to reload, and `X` to finish or retreat. `M`, `J`, `I`, `P`, `C`, and `O` open map, journal, inventory, party, camp, and settings overlays. The settings contract includes look sensitivity, field of view, volume, mute, quality, and reduced motion.
 
-The zoomable, draggable [geographic map](docs/MAP.md) uses offline Natural Earth coastlines/rivers, historic landmark locations, and your actual game route. It is an original map in period styling; route lines are simplified between game landmarks.
+The runtime pauses and clears input when the page loses focus, visibility, pointer lock, or its WebGL context. Audio starts only after a user gesture and is silenced while paused or unfocused.
 
-Scenic and first-person views use original artwork with subtle parallax, falling weather, embers, and water glints. Sound is opt-in. Reduced motion provides still scenes and turn-based hunting/rafting; the game remains usable without WebGL.
-
-**Keyboard:** Enter advances; C opens camp; J journal; M map; P party; S supplies; R pace/rest; Escape closes a panel. In a hunt, arrows aim and Space fires. Raft controls steer left/right. Reduced-motion activities provide numbered actions and a one-second wait button. All actions also have pointer/touch controls.
+If WebGL 2 is unavailable, the app shows its compatibility message and preserves the saved journey: `Pioneer Trail needs WebGL 2. Enable hardware acceleration or use a compatible desktop browser. Your saved journey is preserved.` There is no dashboard, image-scene, or non-WebGL fallback. A browser verification run must record this failure path separately from a successful hardware-accelerated run.
 
 ## Saves
 
-The journey autosaves in this browser after each game command. Settings provides export/import for backups or another device. Saves include the embedded content, pending decisions, and exact Rust RNG state; the frontend stores that JSON as an opaque string to preserve 64-bit integers.
+The spatial save envelope in [`src/game/persistence.ts`](src/game/persistence.ts) wraps the Rust campaign save as opaque JSON so exact 64-bit values survive the browser boundary. It also stores the spatial player/wagon/region state and activity checkpoint in a versioned envelope. Writes keep the last good save and incompatible or failed imports available for recovery; an invalid import cannot replace the active journey. Legacy campaign bytes require an explicit migration choice.
 
-An unfinished hunt or raft restarts from its original session seed after a reload, matching the terminal game. Closing an activity panel pauses it in the current browser session. Starting a new journey replaces the browser save; export the old one first to keep it.
+The Rust engine remains the authority for campaign commands and content. Activity begin, progress, and finish calls cross the typed bridge, and a completed activity is committed once by the campaign adapter. The browser save is therefore a checkpoint of the campaign plus the 3D position, rather than a second rules engine.
 
-## Cloudflare Pages, later
+## Static hosting
 
-This app produces a static directory with no server, accounts, API keys, or paid runtime services.
-
-When ready, connect this public repository to Cloudflare Pages, select Node 24, set the build command to **`npm run build`**, and set the output directory to **`dist`**. Add `trail.contractorkeith.com` through the Pages custom-domain settings. These match the [Cloudflare Pages Vite instructions](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/).
-
-Deployment and domain configuration are deferred. `npm run preview` serves the production build locally at port 4173.
+The build produces a static `dist` directory. Deployment, DNS, accounts, API keys, and hosting configuration are outside this task; there is no deployment step in the repository workflow. A future static host only needs Node 24 and the build command **`npm run build`**, with **`dist`** as its output directory.
 
 ## Engine and architecture
 
-The exact original baseline is [`ContractorKeith/pioneer-trail` at `c44bfea0651fc70a16d92d8c8449c6f3e6f9df38`](https://github.com/ContractorKeith/pioneer-trail/tree/c44bfea0651fc70a16d92d8c8449c6f3e6f9df38). The original project is unmodified.
+Read [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the rebuild seams and [`docs/ASSETS.md`](docs/ASSETS.md) for art provenance. [`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md) records the current verification contract, and [`docs/TEST-MIGRATION.md`](docs/TEST-MIGRATION.md) maps the retired dashboard tests to required world coverage.
 
-- `engine/crates/sim` and `engine/crates/data` are byte-for-byte copies, verified against a committed hash manifest. The engine owns every game rule, cost, reward, and seeded outcome.
-- `engine/crates/web` provides the browser bridge and extracts the terminal hunting/rafting algorithms, including original sprite hit masks and fixed ticks.
-- `src` contains the React interface, browser persistence, and sound. React keeps the controls/state views manageable; Three.js supplies optional atmospheric depth and loads only when needed.
-- `public/wasm` contains the generated browser engine. `public/scenes` contains optimized original WebP art. Fonts are self-hosted for a self-contained runtime.
+The original source repository is [ContractorKeith/pioneer-trail](https://github.com/ContractorKeith/pioneer-trail). The checked-in engine keeps its deterministic campaign data and rules. The old image-scene UI, optional atmospheric overlay, and terminal-style activity presentation are historical architecture; the rebuild uses a required WebGL 2 world and actual 3D activity controls.
 
-To change Rust code, install Rust with the `wasm32-unknown-unknown` target and `wasm-bindgen-cli` matching `engine/Cargo.lock` (currently 0.2.126), then run `npm run build:engine`. Commit the regenerated WASM alongside its source changes.
+## Verification commands
 
-## Verification
+Run the checks that apply to the change:
 
 ```sh
 npm run lint
 npm test
+npm run test:types       # strict test/config TypeScript project
+npm run test:assets      # manifest, licenses, local paths, hotlink check
 npm run test:engine
 npm run build
-npx playwright install chromium
+npm run build:engine       # after Rust/WASM bridge or engine changes
+node scripts/verify-assets.mjs
 npm run test:dev
 npm run test:e2e
 cargo test --manifest-path engine/Cargo.toml --locked
 ```
 
-The artifact verifier completes all 11 legal trail/year combinations and both Oregon endings using real game commands. Unit tests purchase all three presets across all nine occupations against the shipped WASM. Browser tests exercise the production build on desktop/mobile and cold initialization plus onboarding against the development server. See [acceptance evidence](docs/ACCEPTANCE.md), [the build goal](docs/GOAL.md), and the repository's [GitHub issues](https://github.com/ContractorKeith/pioneer-trail-web/issues?q=is%3Aissue).
+The Playwright configuration includes Chromium and Firefox projects, with focused R01–R13 behavior coverage for both browser targets. A fresh full browser suite and complete campaign remain pending. CI installs both Chromium and Firefox. Preparing both browsers locally is:
+
+```sh
+npx playwright install chromium firefox
+```
+
+That command prepares browsers; it does not by itself prove the rebuild acceptance gates. `node scripts/verify-assets.mjs` is the underlying asset check used by `npm run test:assets`; it validates manifest fields and referenced local paths, compares copied package notices when `node_modules` is present, and rejects HTTP(S) URLs in runtime source. Dependency source URLs in the manifest are metadata only. The replacement matrix in [`docs/TEST-MIGRATION.md`](docs/TEST-MIGRATION.md) identifies the world movement, activity, focus/recovery, save, compatibility, trail/era/occupation, accessibility, and performance checks that still need fresh evidence.
+
+The current cold-load artifact is a conditional local candidate, not final R15 acceptance evidence: [`docs/evidence/performance/cold-load.json`](docs/evidence/performance/cold-load.json) records 1,957,266 initial gzip bytes, 5.628 seconds to setup controls, and 7.268 seconds to playable state including automated setup clicks under a fresh-context 10 Mbps down / 2 Mbps up, 150 ms latency profile. It has no page errors, but the artifact does not establish the required full-suite, hardware-ride, or ten-minute soak results.
+
+The [ride artifact](docs/evidence/performance/ride.json) is also a conditional candidate: a 120.0169-second low-quality 720p Chromium run on the M2 AGX path reports 7,070 frames, median 59.8802 FPS, and p95 17.9 ms. It does not close the full R15 campaign, CI, or soak requirements.

@@ -1,0 +1,14 @@
+{
+  "state": {
+    "demo": {
+      "time": 0.4141,
+      "paused": true,
+      "manual": true,
+      "finished": false,
+      "pace": 1,
+      "frames": 56
+    },
+    "gpu": "ANGLE (Mesa, AGX G13/G14, OpenGL 4.6)"
+  },
+  "errors": []
+}

@@ -6,7 +6,10 @@ const wasm = await readFile(new URL('../public/wasm/pioneer_trail_web_engine_bg.
 await init({ module_or_path: wasm });
 const hash = async (path) => createHash('sha256').update(await readFile(path)).digest('hex');
 const manifest = JSON.parse(await readFile(new URL('./engine-source-sha256.json', import.meta.url)));
-for (const [relative, expected] of Object.entries(manifest)) {
+const modifications = JSON.parse(await readFile(new URL('./engine-modified-sha256.json', import.meta.url)));
+for (const relative of Object.keys(modifications)) if (!(relative in manifest)) throw new Error(`override missing original baseline: ${relative}`);
+for (const [relative, baseline] of Object.entries(manifest)) {
+  const expected = modifications[relative]?.sha256 ?? baseline;
   const actual = await hash(`engine/crates/${relative}`);
   if (actual !== expected) throw new Error(`vendored source changed: ${relative}`);
 }
