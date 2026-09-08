@@ -37,6 +37,7 @@ test('first person looks back, walks a complete circuit, collides, reboards and 
   await walkTo(page, 4, 14)
   await walkTo(page, 4, 29)
   await walkTo(page, -4, 29)
+  await walkTo(page, -3, 29)
   await walkTo(page, -3, 20)
   const stopped = (await state(page)).position
   const contacts = (await state(page)).collisionCount

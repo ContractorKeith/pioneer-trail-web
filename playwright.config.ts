@@ -64,6 +64,8 @@ export default defineConfig({
       use: {
         ...devices['Desktop Firefox'],
         viewport: software ? { width: 640, height: 360 } : { width: 1280, height: 720 },
+        // Firefox's native WebGL path needs the X display supplied by CI's Xvfb wrapper.
+        headless: software ? false : undefined,
         launchOptions: software ? { firefoxUserPrefs: { 'webgl.force-enabled': true } } : undefined,
       },
     },

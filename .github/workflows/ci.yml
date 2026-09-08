@@ -21,13 +21,21 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npx playwright install --with-deps ${{ matrix.browser }}
+      - name: Install Firefox software OpenGL dependencies
+        if: matrix.browser == 'firefox'
+        run: sudo apt-get install -y --no-install-recommends libgl1-mesa-dri libglx-mesa0 mesa-utils
       - name: Run gameplay smoke tests
-        run: >-
-          npm run test:e2e -- tests/survival.spec.ts tests/crossing-options.spec.ts
-          tests/world.spec.ts tests/spatial-activity.spec.ts
-          --project=${{ matrix.browser }}
-          --grep 'landscape coarse-pointer controls$|at the riverbank$|collides, reboards and drives$|caught food and day exactly once$|day without a catch$|ordinary cold departure day$'
-          --reporter=line,json
+        shell: bash
+        run: |
+          browser_runner=()
+          if [[ '${{ matrix.browser }}' == 'firefox' ]]; then
+            browser_runner=(xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=true bash -e -c 'glxinfo -B; exec "$@"' --)
+          fi
+          "${browser_runner[@]}" npm run test:e2e -- tests/survival.spec.ts tests/crossing-options.spec.ts \
+            tests/world.spec.ts tests/spatial-activity.spec.ts \
+            --project=${{ matrix.browser }} \
+            --grep 'landscape coarse-pointer controls$|at the riverbank$|collides, reboards and drives$|caught food and day exactly once$|day without a catch$|ordinary cold departure day$' \
+            --reporter=line,json
         env:
           PLAYWRIGHT_JSON_OUTPUT_FILE: smoke-report.json
       - uses: actions/upload-artifact@v4
@@ -61,9 +69,19 @@ jobs:
       - run: npm run test:engine
       - run: npm run test:assets
       - run: npx playwright install --with-deps chromium firefox
+      - name: Install Firefox software OpenGL dependencies
+        if: matrix.browser == 'firefox'
+        run: sudo apt-get install -y --no-install-recommends libgl1-mesa-dri libglx-mesa0 mesa-utils
       - run: npm run test:dev
         if: matrix.browser == 'chromium' && matrix.shard == 1
-      - run: npm run test:e2e -- --project=${{ matrix.browser }} --shard=${{ matrix.shard }}/2
+      - name: Run production browser tests
+        shell: bash
+        run: |
+          browser_runner=()
+          if [[ '${{ matrix.browser }}' == 'firefox' ]]; then
+            browser_runner=(xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=true bash -e -c 'glxinfo -B; exec "$@"' --)
+          fi
+          "${browser_runner[@]}" npm run test:e2e -- --project=${{ matrix.browser }} --shard=${{ matrix.shard }}/2
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

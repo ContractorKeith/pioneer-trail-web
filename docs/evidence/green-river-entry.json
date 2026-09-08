@@ -1,0 +1,1809 @@
+{
+  "started": "2026-09-08T15:56:28.129Z",
+  "baseURL": "http://localhost:4173",
+  "browserLaunch": {
+    "executablePath": "/usr/bin/chromium",
+    "headless": true,
+    "args": [
+      "--ozone-platform=x11",
+      "--enable-gpu"
+    ]
+  },
+  "environment": {
+    "platform": "linux",
+    "release": "7.1.12-asahi-display+",
+    "architecture": "arm64",
+    "cpu": "unknown",
+    "browser": "151.0.7922.137",
+    "gpu": {
+      "devices": [
+        {
+          "vendorId": 0,
+          "deviceId": 0,
+          "vendorString": "Google Inc. (Mesa)",
+          "deviceString": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2 Mesa 26.1.8)",
+          "driverVendor": "Mesa",
+          "driverVersion": "26.1.8"
+        }
+      ],
+      "auxAttributes": {
+        "amdSwitchable": false,
+        "canSupportThreadedTextureMailbox": false,
+        "directRenderingVersion": "",
+        "displayType": "ANGLE_OPENGL",
+        "glExtensions": "GL_AMD_performance_monitor GL_ANGLE_blob_cache GL_ANGLE_client_arrays GL_ANGLE_clip_cull_distance GL_ANGLE_compressed_texture_etc GL_ANGLE_depth_texture GL_ANGLE_framebuffer_blit GL_ANGLE_framebuffer_multisample GL_ANGLE_get_serialized_context_string GL_ANGLE_get_tex_level_parameter GL_ANGLE_instanced_arrays GL_ANGLE_memory_size GL_ANGLE_program_binary_readiness_query GL_ANGLE_program_cache_control GL_ANGLE_renderability_validation GL_ANGLE_request_extension GL_ANGLE_robust_client_memory GL_ANGLE_shader_pixel_local_storage GL_ANGLE_shader_pixel_local_storage_coherent GL_ANGLE_stencil_texturing GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_ANGLE_texture_multisample GL_ANGLE_translated_shader_source GL_ARM_rgba8 GL_CHROMIUM_bind_generates_resource GL_CHROMIUM_bind_uniform_location GL_CHROMIUM_copy_texture GL_CHROMIUM_lose_context GL_EXT_blend_func_extended GL_EXT_blend_minmax GL_EXT_clear_texture GL_EXT_clip_control GL_EXT_clip_cull_distance GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_compressed_ETC1_RGB8_sub_texture GL_EXT_conservative_depth GL_EXT_debug_label GL_EXT_debug_marker GL_EXT_depth_clamp GL_EXT_discard_framebuffer GL_EXT_disjoint_timer_query GL_EXT_draw_buffers GL_EXT_draw_buffers_indexed GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_instanced_arrays GL_EXT_map_buffer_range GL_EXT_occlusion_query_boolean GL_EXT_polygon_offset_clamp GL_EXT_read_format_bgra GL_EXT_render_snorm GL_EXT_robustness GL_EXT_sRGB GL_EXT_sRGB_write_control GL_EXT_shader_framebuffer_fetch GL_EXT_shader_framebuffer_fetch_non_coherent GL_EXT_shadow_samplers GL_EXT_texture_border_clamp GL_EXT_texture_compression_bptc GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc_srgb GL_EXT_texture_cube_map_array GL_EXT_texture_filter_anisotropic GL_EXT_texture_format_BGRA8888 GL_EXT_texture_mirror_clamp_to_edge GL_EXT_texture_norm16 GL_EXT_texture_rg GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_RG8 GL_EXT_texture_sRGB_decode GL_EXT_texture_shadow_lod GL_EXT_texture_storage GL_EXT_texture_type_2_10_10_10_REV GL_EXT_unpack_subimage GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_KHR_debug GL_KHR_parallel_shader_compile GL_KHR_robustness GL_KHR_texture_compression_astc_hdr GL_KHR_texture_compression_astc_ldr GL_KHR_texture_compression_astc_sliced_3d GL_MESA_framebuffer_flip_y GL_NV_fence GL_NV_framebuffer_blit GL_NV_pack_subimage GL_NV_pixel_buffer_object GL_NV_read_depth GL_NV_read_stencil GL_NV_shader_noperspective_interpolation GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_EGL_image_external_essl3 GL_OES_EGL_sync GL_OES_compressed_EAC_R11_signed_texture GL_OES_compressed_EAC_R11_unsigned_texture GL_OES_compressed_EAC_RG11_signed_texture GL_OES_compressed_EAC_RG11_unsigned_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_compressed_ETC2_RGB8_texture GL_OES_compressed_ETC2_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_RGBA8_texture GL_OES_compressed_ETC2_punchthroughA_sRGB8_alpha_texture GL_OES_compressed_ETC2_sRGB8_alpha8_texture GL_OES_compressed_ETC2_sRGB8_texture GL_OES_depth24 GL_OES_draw_buffers_indexed GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_get_program_binary GL_OES_mapbuffer GL_OES_packed_depth_stencil GL_OES_required_internalformat GL_OES_rgb8_rgba8 GL_OES_sample_variables GL_OES_shader_multisample_interpolation GL_OES_standard_derivatives GL_OES_surfaceless_context GL_OES_texture_3D GL_OES_texture_border_clamp GL_OES_texture_cube_map_array GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_texture_npot GL_OES_texture_stencil8 GL_OES_texture_storage_multisample_2d_array GL_OES_vertex_array_object GL_WEBGL_video_texture ",
+        "glImplementationParts": "(gl=egl-angle,angle=opengl)",
+        "glRenderer": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2 Mesa 26.1.8)",
+        "glResetNotificationStrategy": 33362,
+        "glVendor": "Google Inc. (Mesa)",
+        "glVersion": "OpenGL ES 3.0 (ANGLE 2.1 git hash: unknown hash)",
+        "glWsExtensions": "EGL_EXT_create_context_robustness EGL_KHR_create_context EGL_KHR_image_base EGL_KHR_gl_colorspace EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_texture_3D_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_fence_sync EGL_KHR_wait_sync EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_KHR_swap_buffers_with_damage EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANDROID_native_fence_sync EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_KHR_create_context_no_error EGL_EXT_image_dma_buf_import EGL_EXT_image_dma_buf_import_modifiers EGL_KHR_reusable_sync EGL_ANGLE_external_context_and_surface EGL_EXT_buffer_age EGL_ANGLE_context_virtualization EGL_ANGLE_memory_usage_report EGL_ANGLE_create_context_passthrough_shaders ",
+        "glWsVendor": "Google Inc. (Mesa)",
+        "glWsVersion": "1.5 (ANGLE 2.1 git hash: unknown hash)",
+        "hardwareSupportsVulkan": false,
+        "inProcessGpu": false,
+        "initializationTime": 0.026781,
+        "isAsan": false,
+        "isClangCoverage": false,
+        "jpegDecodeAcceleratorSupported": false,
+        "maxMsaaSamples": "4",
+        "optimus": false,
+        "passthroughCmdDecoder": true,
+        "pixelShaderVersion": "3.00",
+        "processCrashCount": 0,
+        "sandboxed": false,
+        "skiaBackendType": "GaneshGL",
+        "subpixelFontRendering": true,
+        "targetCpuBits": 64,
+        "vertexShaderVersion": "3.00",
+        "visibilityCallbackCallCount": 0
+      },
+      "featureStatus": {
+        "2d_canvas": "enabled",
+        "direct_rendering_display_compositor": "disabled_off_ok",
+        "gpu_compositing": "enabled",
+        "multiple_raster_threads": "enabled_on",
+        "opengl": "enabled_on",
+        "rasterization": "enabled",
+        "raw_draw": "disabled_off_ok",
+        "skia_graphite": "disabled_off",
+        "trees_in_viz": "disabled_off",
+        "video_decode": "disabled_software",
+        "video_encode": "disabled_software",
+        "vulkan": "disabled_off",
+        "webgl": "enabled",
+        "webgpu": "enabled",
+        "webgpu_on_vk_via_gl_interop": "disabled_off",
+        "webnn": "disabled_off"
+      },
+      "driverBugWorkarounds": [
+        "enable_webgl_timer_query_extensions",
+        "exit_on_context_lost",
+        "disabled_extension_GL_KHR_blend_equation_advanced",
+        "disabled_extension_GL_KHR_blend_equation_advanced_coherent"
+      ],
+      "videoDecoding": [],
+      "videoEncoding": []
+    }
+  },
+  "procedure": "Unmodified exported campaign-7 saves. Actual imported normal controls, visible Caulk choice for the pre-crossing checkpoint, nearest visible road samples, early far-bank planner handoff. The failure checkpoint first uses S for 2 seconds. No runtime position/campaign mutations.",
+  "runs": [
+    {
+      "file": "docs/evidence/campaign-attempt-7/failure-save.json",
+      "sha256": "40deeea8d8489b29110a744f9e20ccfb3823351d7d3397c354c93746fe1bab55",
+      "started": "2026-09-08T15:56:28.233Z",
+      "errors": [],
+      "pass": true,
+      "servedBuild": {
+        "localBuildSha256": "b6c57bbe797aaa90dd398f9f2f109bbc5e001ebc7f3cdc3ec5b71325bb00c08a",
+        "responses": [
+          {
+            "url": "http://localhost:4173/?evidence=1",
+            "status": 200,
+            "matchesDist": true,
+            "file": "index.html",
+            "expectedSha256": "57770b6489cde1dac9d7524b1b484b9986bdb49efb08d70ce20c4c2e5ba23c91",
+            "bytes": 724,
+            "sha256": "57770b6489cde1dac9d7524b1b484b9986bdb49efb08d70ce20c4c2e5ba23c91"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-MwlfJe0p.css",
+            "expectedSha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d",
+            "bytes": 23999,
+            "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-3W13DD17.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-3W13DD17.js",
+            "expectedSha256": "0b5e6e5ec96b97356f8bb70240a1f977fefb4c43f8c19691c868838b918018f3",
+            "bytes": 3871540,
+            "sha256": "0b5e6e5ec96b97356f8bb70240a1f977fefb4c43f8c19691c868838b918018f3"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "expectedSha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2",
+            "bytes": 22876,
+            "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+          },
+          {
+            "url": "http://localhost:4173/favicon.svg",
+            "status": 200,
+            "matchesDist": true,
+            "file": "favicon.svg",
+            "expectedSha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d",
+            "bytes": 257,
+            "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine.js",
+            "expectedSha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff",
+            "bytes": 15385,
+            "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+            "expectedSha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5",
+            "bytes": 2152612,
+            "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "expectedSha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8",
+            "bytes": 23312,
+            "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "expectedSha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+            "bytes": 14144,
+            "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "expectedSha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+            "bytes": 14200,
+            "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+          }
+        ],
+        "missing": [],
+        "pass": true,
+        "verifiedAt": "2026-09-08T15:56:55.743Z"
+      },
+      "initial": {
+        "wagon": {
+          "x": 0,
+          "z": 85.39873786430091,
+          "yaw": 0,
+          "speed": 0,
+          "y": 0.07099988231118322
+        },
+        "mode": "riding",
+        "activity": {
+          "kind": "crossing",
+          "phase": "crossing",
+          "hint": "W forward · A/D steer · 0 lb cargo lost · X retreat",
+          "progress": 0
+        },
+        "day": 89,
+        "region": 15,
+        "status": {
+          "AwaitingRiver": "green_river"
+        },
+        "collisions": 0,
+        "paused": false
+      },
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2)",
+        "width": 1280,
+        "height": 720,
+        "quality": "low"
+      },
+      "waypoints": [
+        [
+          4.701009424552645,
+          80
+        ],
+        [
+          3.5070382111600082,
+          98
+        ],
+        [
+          -8,
+          107
+        ],
+        [
+          -9,
+          130
+        ]
+      ],
+      "reversed": {
+        "wagon": {
+          "x": 0,
+          "z": 82.17113694437302,
+          "yaw": 0,
+          "speed": -1.8,
+          "y": 0.13423022391217115
+        },
+        "mode": "riding",
+        "activity": {
+          "kind": "crossing",
+          "phase": "crossing",
+          "hint": "W forward · A/D steer · 0 lb cargo lost · X retreat",
+          "progress": 0
+        },
+        "day": 89,
+        "region": 15,
+        "status": {
+          "AwaitingRiver": "green_river"
+        },
+        "collisions": 0,
+        "paused": false
+      },
+      "handoff": {
+        "wagon": {
+          "x": -8.620440589471674,
+          "z": 129.6267281792529,
+          "yaw": -0.16296213676820165,
+          "speed": 6.4,
+          "y": -1.1833631196335785
+        },
+        "mode": "riding",
+        "activity": {
+          "kind": "crossing",
+          "phase": "crossing",
+          "hint": "W forward · A/D steer · 0 lb cargo lost · X retreat",
+          "progress": 0.8008352556016529
+        },
+        "day": 89,
+        "region": 15,
+        "status": {
+          "AwaitingRiver": "green_river"
+        },
+        "collisions": 0,
+        "paused": false
+      },
+      "crossingExits": [
+        {
+          "region": 15,
+          "start": {
+            "x": -8.088339181775346,
+            "z": 131.74051243813898,
+            "yaw": -0.16296213676820165,
+            "speed": 0,
+            "y": -1.1969722241950134
+          },
+          "inputs": [
+            {
+              "pose": {
+                "x": -7.102175918818663,
+                "z": 131.74051243813898,
+                "yaw": -0.16296213676820165,
+                "speed": 0,
+                "y": -1.196493612525725
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -6.907207000877149,
+                "z": 131.77136622793313,
+                "yaw": -0.15671213676820164,
+                "speed": 0.375,
+                "y": -1.1965517761269069
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -6.737019618599335,
+                "z": 131.87992486703868,
+                "yaw": -0.14054981021790866,
+                "speed": 0.7054108850097655,
+                "y": -1.1968786722203448
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -6.537925885516816,
+                "z": 132.08815711242931,
+                "yaw": -0.11343542316193256,
+                "speed": 0.941700071566217,
+                "y": -1.1972862458224574
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -6.362525194028416,
+                "z": 132.325749951405,
+                "yaw": -0.08291588274525619,
+                "speed": 1.183984680555879,
+                "y": -1.1976288957394334
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -6.158756099012843,
+                "z": 132.65339869755695,
+                "yaw": -0.04222047334749735,
+                "speed": 1.4083622819327652,
+                "y": -1.197932053084965
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -5.955891528853358,
+                "z": 133.01008231894954,
+                "yaw": -0.0005815011090268274,
+                "speed": 1.5546324079490177,
+                "y": -1.1982470411580795
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -5.72970384922151,
+                "z": 133.42915536664873,
+                "yaw": -0.0005815011090268274,
+                "speed": 1.7188137025470474,
+                "y": -1.1977504218761792
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -5.530144490850542,
+                "z": 133.83909957164838,
+                "yaw": -0.0005815011090268274,
+                "speed": 1.8515783672262534,
+                "y": -1.197302713777267
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -5.31728336189338,
+                "z": 134.28872894729471,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.0072989488150914,
+                "y": -1.1738433948820728
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -5.104225749744673,
+                "z": 134.76288307919975,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.1410735642752994,
+                "y": -1.1395889245280126
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.904484712182959,
+                "z": 135.20821741318548,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.2143284292323586,
+                "y": -1.083047266055898
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.691416363483878,
+                "z": 135.6639080391809,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.229702877572542,
+                "y": -0.9966517477693486
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.531669996851029,
+                "z": 136.1000780389092,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.2904670628276667,
+                "y": -0.913706901241037
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.53193337919537,
+                "z": 136.5530132277929,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.284100957012529,
+                "y": -0.7923096117786161
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.532210903370644,
+                "z": 137.03026793923843,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.2309401662909796,
+                "y": -0.673387834776348
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.53244402874221,
+                "z": 137.43117060591968,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.2915299783448932,
+                "y": -0.551194450322177
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.532709179149111,
+                "z": 137.88714630897195,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.2463820899614997,
+                "y": -0.4220056500378979
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.532956658334883,
+                "z": 138.31273304308502,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.2565507543401635,
+                "y": -0.29706392823859534
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.5332243260873994,
+                "z": 138.77303779262144,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.306734608807519,
+                "y": -0.1658742080816163
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.533491276418404,
+                "z": 139.23210880172394,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.3983092479714094,
+                "y": -0.04513995761452252
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.533772040868925,
+                "z": 139.71493577233045,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.476978117654946,
+                "y": 0.07336396788703967
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.534063527492362,
+                "z": 140.2162015241182,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.4496960486306305,
+                "y": 0.17617611156024368
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.534368781827759,
+                "z": 140.74114343093586,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.417469816962584,
+                "y": 0.2629174970181664
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.534674541398359,
+                "z": 141.2669541841567,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.5466889112186744,
+                "y": 0.3174812427186133
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.535017627116711,
+                "z": 141.85695422776314,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.5080852232958057,
+                "y": 0.34753958018543146
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.535369077598759,
+                "z": 142.46133904660158,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.4757510988135234,
+                "y": 0.3461886468961639
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.535743241512396,
+                "z": 143.1047838580644,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.3874516002648893,
+                "y": 0.33476083329631395
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.5360914031029065,
+                "z": 143.70351281294322,
+                "yaw": -0.0005815011090268274,
+                "speed": 2.4676506566865735,
+                "y": 0.32046806479578716
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            }
+          ],
+          "finish": {
+            "x": 0,
+            "z": 20,
+            "yaw": 0,
+            "speed": 0,
+            "y": 0.2149830162525177
+          },
+          "day": 90
+        }
+      ],
+      "after": {
+        "wagon": {
+          "x": 0,
+          "z": 20,
+          "yaw": 0,
+          "speed": 0,
+          "y": 0.2149830162525177
+        },
+        "mode": "riding",
+        "activity": null,
+        "day": 90,
+        "region": 16,
+        "status": "Travelling",
+        "collisions": 0,
+        "paused": false
+      },
+      "collisionMonitor": {
+        "frames": 1411,
+        "peakCollisionCount": 0,
+        "regions": [
+          15,
+          16
+        ],
+        "changes": [
+          {
+            "at": 1172.7000000029802,
+            "region": 15,
+            "collisions": 0,
+            "wagon": {
+              "x": 0,
+              "z": 85.39873786430091,
+              "yaw": 0,
+              "speed": 0,
+              "y": 0.07099988231118322
+            }
+          },
+          {
+            "at": 27187,
+            "region": 16,
+            "collisions": 0,
+            "wagon": {
+              "x": 0,
+              "z": 20,
+              "yaw": 0,
+              "speed": 0,
+              "y": 0.2149830162525177
+            }
+          }
+        ],
+        "errors": [],
+        "stopped": true
+      },
+      "video": "/home/contractorkeith/Projects/pioneer-trail-web/.artifacts/videos/page@9fa35cab20aab0269891cacc6682e647.webm",
+      "videoSha256": "95a8ef9a99c755f5cfaf81f313856b5eb966b5da2a5f67eecc6e665e2d3ba1ba",
+      "finished": "2026-09-08T15:56:55.857Z"
+    },
+    {
+      "file": "docs/evidence/campaign-attempt-7/region-15-save.json",
+      "sha256": "c51b16202a31ba9ffd9d03113647bd3c354aa1c79c1435a63bf34ee07f84ac16",
+      "started": "2026-09-08T15:56:55.859Z",
+      "errors": [],
+      "pass": true,
+      "servedBuild": {
+        "localBuildSha256": "b6c57bbe797aaa90dd398f9f2f109bbc5e001ebc7f3cdc3ec5b71325bb00c08a",
+        "responses": [
+          {
+            "url": "http://localhost:4173/?evidence=1",
+            "status": 200,
+            "matchesDist": true,
+            "file": "index.html",
+            "expectedSha256": "57770b6489cde1dac9d7524b1b484b9986bdb49efb08d70ce20c4c2e5ba23c91",
+            "bytes": 724,
+            "sha256": "57770b6489cde1dac9d7524b1b484b9986bdb49efb08d70ce20c4c2e5ba23c91"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-MwlfJe0p.css",
+            "expectedSha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d",
+            "bytes": 23999,
+            "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-3W13DD17.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-3W13DD17.js",
+            "expectedSha256": "0b5e6e5ec96b97356f8bb70240a1f977fefb4c43f8c19691c868838b918018f3",
+            "bytes": 3871540,
+            "sha256": "0b5e6e5ec96b97356f8bb70240a1f977fefb4c43f8c19691c868838b918018f3"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "expectedSha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2",
+            "bytes": 22876,
+            "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+          },
+          {
+            "url": "http://localhost:4173/favicon.svg",
+            "status": 200,
+            "matchesDist": true,
+            "file": "favicon.svg",
+            "expectedSha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d",
+            "bytes": 257,
+            "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine.js",
+            "expectedSha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff",
+            "bytes": 15385,
+            "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+            "expectedSha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5",
+            "bytes": 2152612,
+            "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "expectedSha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+            "bytes": 14144,
+            "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "expectedSha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8",
+            "bytes": 23312,
+            "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "expectedSha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+            "bytes": 14200,
+            "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+          }
+        ],
+        "missing": [],
+        "pass": true,
+        "verifiedAt": "2026-09-08T15:57:44.198Z"
+      },
+      "initial": {
+        "wagon": {
+          "x": 0,
+          "z": 20.179592766177787,
+          "yaw": 0,
+          "speed": 0.7154195800781248,
+          "y": 0.29934452837321357
+        },
+        "mode": "riding",
+        "activity": null,
+        "day": 89,
+        "region": 15,
+        "status": {
+          "AwaitingRiver": "green_river"
+        },
+        "collisions": 0,
+        "paused": false
+      },
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2)",
+        "width": 1280,
+        "height": 720,
+        "quality": "low"
+      },
+      "waypoints": [
+        [
+          4.701009424552645,
+          80
+        ],
+        [
+          3.5070382111600082,
+          98
+        ],
+        [
+          -8,
+          107
+        ],
+        [
+          -9,
+          130
+        ]
+      ],
+      "walkingRoutes": [
+        {
+          "region": 15,
+          "start": {
+            "x": 1.9569236799072813,
+            "y": 1.8139106718668772,
+            "z": 80.38701786249702
+          },
+          "target": {
+            "x": 4.08628312132877,
+            "z": 94
+          },
+          "route": [
+            {
+              "x": 2.0866845011343673,
+              "z": 81.17642405025745
+            },
+            {
+              "x": 2.2164453223614533,
+              "z": 81.9658302380179
+            },
+            {
+              "x": 2.346206143588539,
+              "z": 82.75523642577834
+            },
+            {
+              "x": 2.475966964815625,
+              "z": 83.54464261353878
+            },
+            {
+              "x": 2.605727786042711,
+              "z": 84.33404880129922
+            },
+            {
+              "x": 2.7354886072697964,
+              "z": 85.12345498905967
+            },
+            {
+              "x": 2.8652494284968824,
+              "z": 85.9128611768201
+            },
+            {
+              "x": 2.9950102497239683,
+              "z": 86.70226736458055
+            },
+            {
+              "x": 3.1247710709510543,
+              "z": 87.49167355234098
+            },
+            {
+              "x": 3.2545318921781403,
+              "z": 88.28107974010143
+            },
+            {
+              "x": 3.384292713405226,
+              "z": 89.07048592786187
+            },
+            {
+              "x": 3.514053534632312,
+              "z": 89.8598921156223
+            },
+            {
+              "x": 3.643814355859398,
+              "z": 90.64929830338275
+            },
+            {
+              "x": 3.7735751770864834,
+              "z": 91.43870449114318
+            },
+            {
+              "x": 3.90333599831357,
+              "z": 92.22811067890363
+            },
+            {
+              "x": 4.033096819540655,
+              "z": 93.01751686666407
+            },
+            {
+              "x": 4.08628312132877,
+              "z": 94
+            }
+          ]
+        }
+      ],
+      "handoff": {
+        "wagon": {
+          "x": -8.637296579588137,
+          "z": 128.75247801210972,
+          "yaw": -0.2756903008276129,
+          "speed": 6.4,
+          "y": -1.1756298607921283
+        },
+        "mode": "riding",
+        "activity": {
+          "kind": "crossing",
+          "phase": "crossing",
+          "hint": "W forward · A/D steer · 0 lb cargo lost · X retreat",
+          "progress": 0.7735149378784287
+        },
+        "day": 89,
+        "region": 15,
+        "status": {
+          "AwaitingRiver": "green_river"
+        },
+        "collisions": 0,
+        "paused": false
+      },
+      "crossingExits": [
+        {
+          "region": 15,
+          "start": {
+            "x": -8.344863127444253,
+            "z": 130.78233083426045,
+            "yaw": -0.2756903008276129,
+            "speed": 0,
+            "y": -1.191994639774923
+          },
+          "inputs": [
+            {
+              "pose": {
+                "x": -7.704863127444238,
+                "z": 130.78233083426045,
+                "yaw": -0.2756903008276129,
+                "speed": 0,
+                "y": -1.1922949423231757
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -7.541544079286263,
+                "z": 130.81830669401396,
+                "yaw": -0.26822155082761295,
+                "speed": 0.365625,
+                "y": -1.1925045722086094
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -7.360311598068043,
+                "z": 130.938115727691,
+                "yaw": -0.2512986454007407,
+                "speed": 0.7307635142290749,
+                "y": -1.1931672005212806
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -7.173929410830565,
+                "z": 131.15523070675286,
+                "yaw": -0.22398698228104463,
+                "speed": 0.947484858397103,
+                "y": -1.1942470092720676
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -7.015160231929805,
+                "z": 131.4088979744143,
+                "yaw": -0.18945425487999112,
+                "speed": 1.15923035236172,
+                "y": -1.195140213552976
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -6.855589461697644,
+                "z": 131.71325421223392,
+                "yaw": -0.14887322474075124,
+                "speed": 1.3365865980679368,
+                "y": -1.1963302535906408
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -6.677399236981168,
+                "z": 132.06417306532302,
+                "yaw": -0.10987744905886163,
+                "speed": 1.466525856062988,
+                "y": -1.1973359934792887
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -6.488036888928031,
+                "z": 132.46011002852143,
+                "yaw": -0.061293569213693,
+                "speed": 1.6450163953550587,
+                "y": -1.1979782959654393
+              },
+              "input": {
+                "forward": 1,
+                "turn": 1,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -6.2940209208741535,
+                "z": 132.88403224239775,
+                "yaw": -0.011398126016195505,
+                "speed": 1.8298481065832497,
+                "y": -1.1984385323904745
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -6.099186865262499,
+                "z": 133.31847169974446,
+                "yaw": -0.011398126016195505,
+                "speed": 1.9469645040570007,
+                "y": -1.1982031128007815
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -5.891558174996739,
+                "z": 133.79954223976452,
+                "yaw": -0.011398126016195505,
+                "speed": 2.005761101440566,
+                "y": -1.1976874243550348
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -5.683827906583533,
+                "z": 134.27249264392108,
+                "yaw": -0.011398126016195505,
+                "speed": 2.0550086371354293,
+                "y": -1.1755080251694356
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -5.475967994539021,
+                "z": 134.74227563072373,
+                "yaw": -0.011398126016195505,
+                "speed": 2.0962579590340256,
+                "y": -1.1392360226773823
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -5.267824693642488,
+                "z": 135.1975967658991,
+                "yaw": -0.011398126016195505,
+                "speed": 2.130808044293855,
+                "y": -1.0800533506171468
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -5.059491697948262,
+                "z": 135.63627599147665,
+                "yaw": -0.011398126016195505,
+                "speed": 2.1597469052621876,
+                "y": -0.9990734931461153
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.877850973821873,
+                "z": 136.0772015330085,
+                "yaw": -0.011398126016195505,
+                "speed": 2.1839858519347217,
+                "y": -0.9123488096571905
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.882987302176094,
+                "z": 136.52781121326632,
+                "yaw": -0.011398126016195505,
+                "speed": 2.1491809851553514,
+                "y": -0.7909713705988357
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.887531634425149,
+                "z": 136.92648512204192,
+                "yaw": -0.011398126016195505,
+                "speed": 2.221293257513482,
+                "y": -0.6845078170621206
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.892642648678191,
+                "z": 137.3748739982055,
+                "yaw": -0.011398126016195505,
+                "speed": 2.1796481452112055,
+                "y": -0.5519859944580026
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.897316077995959,
+                "z": 137.78487358260844,
+                "yaw": -0.011398126016195505,
+                "speed": 2.20065496321624,
+                "y": -0.42681840053823317
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.902266770312892,
+                "z": 138.2191974279981,
+                "yaw": -0.011398126016195505,
+                "speed": 2.172168844948851,
+                "y": -0.2980914368726536
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.907057798571718,
+                "z": 138.63951395819842,
+                "yaw": -0.011398126016195505,
+                "speed": 2.1850153641912318,
+                "y": -0.1718792993725004
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.911939235578769,
+                "z": 139.06776204072983,
+                "yaw": -0.011398126016195505,
+                "speed": 2.2937441032968016,
+                "y": -0.04878433737569801
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.917255188325611,
+                "z": 139.53413015474493,
+                "yaw": -0.011398126016195505,
+                "speed": 2.24819025909701,
+                "y": 0.07040578992597221
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.922046694056217,
+                "z": 139.9544885735069,
+                "yaw": -0.011398126016195505,
+                "speed": 2.3063489862643,
+                "y": 0.17705536223492976
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.927506761143429,
+                "z": 140.43349982720403,
+                "yaw": -0.011398126016195505,
+                "speed": 2.30677852257166,
+                "y": 0.2626463432118664
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.9329923046618624,
+                "z": 140.91474612619706,
+                "yaw": -0.011398126016195505,
+                "speed": 2.307138298571808,
+                "y": 0.3459556718079385
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.93872923621457,
+                "z": 141.41804667755352,
+                "yaw": -0.011398126016195505,
+                "speed": 2.356989378384692,
+                "y": 0.38278730139726413
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.944953003173098,
+                "z": 141.96405726055627,
+                "yaw": -0.011398126016195505,
+                "speed": 2.3491944893032315,
+                "y": 0.41294184742314916
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.951760995662924,
+                "z": 142.56132190321048,
+                "yaw": -0.011398126016195505,
+                "speed": 2.293473916842929,
+                "y": 0.4055487211031104
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.958161028049183,
+                "z": 143.12279623824634,
+                "yaw": -0.011398126016195505,
+                "speed": 2.295994472658594,
+                "y": 0.3955605553976878
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            },
+            {
+              "pose": {
+                "x": -4.964567702698857,
+                "z": 143.68485329852626,
+                "yaw": -0.011398126016195505,
+                "speed": 2.2981056690207415,
+                "y": 0.38235569539781405
+              },
+              "input": {
+                "forward": 1,
+                "turn": 0,
+                "brake": false,
+                "seconds": 0.15
+              }
+            }
+          ],
+          "finish": {
+            "x": 0,
+            "z": 20,
+            "yaw": 0,
+            "speed": 0,
+            "y": 0.2149830162525177
+          },
+          "day": 90
+        }
+      ],
+      "after": {
+        "wagon": {
+          "x": 0,
+          "z": 20,
+          "yaw": 0,
+          "speed": 0,
+          "y": 0.2149830162525177
+        },
+        "mode": "riding",
+        "activity": null,
+        "day": 90,
+        "region": 16,
+        "status": "Travelling",
+        "collisions": 0,
+        "paused": false
+      },
+      "collisionMonitor": {
+        "frames": 2567,
+        "peakCollisionCount": 0,
+        "regions": [
+          15,
+          16
+        ],
+        "changes": [
+          {
+            "at": 1226.6000000014901,
+            "region": 15,
+            "collisions": 0,
+            "wagon": {
+              "x": 0,
+              "z": 20.130554316062593,
+              "yaw": 0,
+              "speed": 0.7916666666666664,
+              "y": 0.2988223722058566
+            }
+          },
+          {
+            "at": 47984.70000000298,
+            "region": 16,
+            "collisions": 0,
+            "wagon": {
+              "x": 0,
+              "z": 20,
+              "yaw": 0,
+              "speed": 0,
+              "y": 0.2149830162525177
+            }
+          }
+        ],
+        "errors": [],
+        "stopped": true
+      },
+      "video": "/home/contractorkeith/Projects/pioneer-trail-web/.artifacts/videos/page@83b8818deff2da4cc1295442b73a9afb.webm",
+      "videoSha256": "52e8f8706ad04be45c32f65470b87a0eb79dd8d6d86b9e4e0b3d19673353295b",
+      "finished": "2026-09-08T15:57:44.325Z"
+    }
+  ],
+  "errors": [],
+  "pass": true,
+  "build": {
+    "commit": "de1b4f8c2308bc0212151db282987ce775bc3754",
+    "dirty": true,
+    "sourceStatus": "M docs/evidence/performance/cold-load.json\n M scripts/campaign-walkthrough.mjs\n M tests/world.spec.ts",
+    "distSha256": "b6c57bbe797aaa90dd398f9f2f109bbc5e001ebc7f3cdc3ec5b71325bb00c08a",
+    "files": [
+      {
+        "file": "_headers",
+        "bytes": 197,
+        "sha256": "17c27f16152cc4999dcbaae81bd92104156cd0032d2f5d380fb39c4bb4bb42cc"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-italic-BLh7T8o8.woff",
+        "bytes": 32888,
+        "sha256": "337d07118277acbf5a0eb19c602aaf917b2485585360f2c7139ce42d9d4e6cc1"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-italic-Dc_OZ8oc.woff2",
+        "bytes": 23660,
+        "sha256": "e48e58027030df56869b795ca6f19b7012158275f7ad7cde1900b4a0b68d02e2"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+        "bytes": 22876,
+        "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-normal-B7YtguxJ.woff",
+        "bytes": 30980,
+        "sha256": "b926f33f9d3d5cb64e639b8fe9ad5380560a63f3e7a29d212f2b80a2d22ec051"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+        "bytes": 23312,
+        "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-500-normal-zIXX3Q-H.woff",
+        "bytes": 31372,
+        "sha256": "314ee3edd5ddcdef5cf2374c1126b8be9f7f1ebd6c5c66a23c237f3b836a3ec1"
+      },
+      {
+        "file": "assets/dm-sans-latin-400-normal-BwCSEQnW.woff",
+        "bytes": 18356,
+        "sha256": "38702875fe179437d200e7ba6f7fab4d497ffe48117ef332029b2081751186ad"
+      },
+      {
+        "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+        "bytes": 14200,
+        "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+      },
+      {
+        "file": "assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+        "bytes": 14304,
+        "sha256": "19bf1984956517c35c2bd35b6cdedac12a21d6fcd3596c614ecdfb88b648909d"
+      },
+      {
+        "file": "assets/dm-sans-latin-500-normal-Dr3UlScf.woff",
+        "bytes": 18520,
+        "sha256": "7deb957e430b780ee3272d801af4f9f2211b1330ec40a312a8f25309eacb4034"
+      },
+      {
+        "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+        "bytes": 14144,
+        "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+      },
+      {
+        "file": "assets/dm-sans-latin-600-normal-BmdmIIQ2.woff",
+        "bytes": 18320,
+        "sha256": "e7351257e49400eff05aca30a2007289194a900860d30c30770d8b8732897564"
+      },
+      {
+        "file": "assets/index-3W13DD17.js",
+        "bytes": 3871540,
+        "sha256": "0b5e6e5ec96b97356f8bb70240a1f977fefb4c43f8c19691c868838b918018f3"
+      },
+      {
+        "file": "assets/index-MwlfJe0p.css",
+        "bytes": 23999,
+        "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+      },
+      {
+        "file": "assets/licenses/CORMORANT-GARAMOND-OFL.txt",
+        "bytes": 4504,
+        "sha256": "732f37009943e7f4378cf37113c9bcc4716af002a8583511aa91ed5d37683e73"
+      },
+      {
+        "file": "assets/licenses/DM-SANS-OFL.txt",
+        "bytes": 4502,
+        "sha256": "6fbd040a29c2037a765dfb9f2561e9965b5c95c6dcb5dce516089d63d5f17af7"
+      },
+      {
+        "file": "assets/licenses/LUCIDE-ISC-MIT.txt",
+        "bytes": 3208,
+        "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+      },
+      {
+        "file": "assets/licenses/ORIGINAL-ASSETS-MIT.txt",
+        "bytes": 1092,
+        "sha256": "2b95f2ed41687da0593a607cf3bda9085579a7382a502326cbc13cc9757791b4"
+      },
+      {
+        "file": "assets/licenses/RAPIER-APACHE-2.0.txt",
+        "bytes": 11343,
+        "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+      },
+      {
+        "file": "assets/licenses/REACT-DOM-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "file": "assets/licenses/REACT-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "file": "assets/licenses/THREE-MIT.txt",
+        "bytes": 1081,
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "file": "assets/manifest.json",
+        "bytes": 15265,
+        "sha256": "ffacfa51562e9f622e65b040d4ba64763b8c68369128f649ebbcd2c5866905f3"
+      },
+      {
+        "file": "favicon.svg",
+        "bytes": 257,
+        "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+      },
+      {
+        "file": "index.html",
+        "bytes": 724,
+        "sha256": "57770b6489cde1dac9d7524b1b484b9986bdb49efb08d70ce20c4c2e5ba23c91"
+      },
+      {
+        "file": "scenes/camp.webp",
+        "bytes": 140648,
+        "sha256": "1a0d76b89dc6ad150d9b6a54161a5fbc08d535df3f7c9a51a65dd8e9f75df0bf"
+      },
+      {
+        "file": "scenes/fish.webp",
+        "bytes": 333648,
+        "sha256": "35b31007280d43db63f28fc917d26341c506603156412ea3e81cf2d9eacacf01"
+      },
+      {
+        "file": "scenes/repair.webp",
+        "bytes": 182868,
+        "sha256": "738b2dd5d09261f92ecae5d6ed7ea24812b0fe3528e355cdec4288be907eea90"
+      },
+      {
+        "file": "scenes/river.webp",
+        "bytes": 260144,
+        "sha256": "10573dd2636566df68f0ff7e43bb6916e8506711fa9faa4456d6b138164371d1"
+      },
+      {
+        "file": "scenes/snow.webp",
+        "bytes": 162108,
+        "sha256": "0585399582541e4acf59ede3d485bf0774757c04351eb276ed3c2998f63781a5"
+      },
+      {
+        "file": "scenes/talk.webp",
+        "bytes": 113184,
+        "sha256": "4b81de95a97afc21f6bf2b2583ca4237ba19a5602276dcaba4b1309dc09d1d44"
+      },
+      {
+        "file": "scenes/trail.webp",
+        "bytes": 171428,
+        "sha256": "51b6c593a7b9dd25826a025881cd4f7361c2f84e5e544cee582bccbb132b172d"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+        "bytes": 2152612,
+        "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine_bg.wasm.d.ts",
+        "bytes": 1689,
+        "sha256": "e712fbd275354b6d00f496977768573c36c83021a4e9b077300008281f8cba89"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine.d.ts",
+        "bytes": 3426,
+        "sha256": "0f4fccf19553599391ad0d7f753481c93478c881fbabe81dbac3e6963e427dbd"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine.js",
+        "bytes": 15385,
+        "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+      }
+    ]
+  },
+  "finished": "2026-09-08T15:57:44.435Z"
+}

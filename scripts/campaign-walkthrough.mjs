@@ -643,9 +643,13 @@ export async function main() {
       }
       if (status === 'AwaitingRiver' && !s.activity) {
         await board()
-        const river = (await world(page)).river
+        const crossingWorld = await world(page)
+        const river = crossingWorld.river
         assert.ok(river)
-        await driveTo(page, 0, river.startZ - 24)
+        // Follow the visible road as it curves toward the bank; x=0 can cross valid scenery.
+        const roadX = (z) =>
+          crossingWorld.trail.reduce((a, b) => (Math.abs(b.z - z) < Math.abs(a.z - z) ? b : a)).x
+        await driveTo(page, roadX(river.startZ - 24), river.startZ - 24)
         await stopAndDismount()
         const bank = (await world(page)).locations.find((location) => location.id === 'riverbank')
         assert.ok(bank)
@@ -664,10 +668,10 @@ export async function main() {
             'crossing',
             'Caulk must launch controlled crossing',
           )
-          await driveTo(page, 0, river.startZ - 6)
+          await driveTo(page, roadX(river.startZ - 6), river.startZ - 6)
           await driveTo(page, -8, river.startZ + 3)
-          // Stop short of the completion plane; driveTo must not chase a waypoint after region reset.
-          await driveTo(page, -9, river.endZ + 4)
+          // Give the exit planner control before the front of the team reaches bank scenery.
+          await driveTo(page, -9, river.endZ - 6)
           if ((await state(page)).activity) await finishCrossing(page, report)
         }
         const after = await state(page)

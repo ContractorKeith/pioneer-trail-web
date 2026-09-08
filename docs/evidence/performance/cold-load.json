@@ -19,7 +19,7 @@
       "height": 720
     }
   },
-  "started": "2026-09-08T14:41:59.681Z",
+  "started": "2026-09-08T15:53:34.352Z",
   "profile": {
     "downloadMbps": 10,
     "uploadMbps": 2,
@@ -29,10 +29,10 @@
   "errors": [],
   "pass": true,
   "build": {
-    "commit": "5ec9d8951dbd39317a1db5668797e6eb0197c8a6",
+    "commit": "de1b4f8c2308bc0212151db282987ce775bc3754",
     "dirty": true,
-    "sourceStatus": "M docs/ACCEPTANCE.md\n M docs/evidence/independent-review.md\n M docs/evidence/performance/ride.json\n M docs/evidence/visual-review/camp.png\n M docs/evidence/visual-review/companion.png\n M docs/evidence/visual-review/mountains.png\n M docs/evidence/visual-review/ox-front.png\n M docs/evidence/visual-review/rain.png\n M docs/evidence/visual-review/report.json\n M docs/evidence/visual-review/river.png\n M docs/evidence/visual-review/seat-forward.png\n M docs/evidence/visual-review/seat-rear.png\n M docs/evidence/visual-review/snow.png\n M docs/evidence/visual-review/wagon-exterior.png\n M scripts/campaign-walkthrough.mjs\n M scripts/capture-world.mjs\n M scripts/measure-load.mjs\n M scripts/measure-ride.mjs\n?? docs/evidence/activity-capture-startup-failure/\n?? docs/evidence/activity-review/\n?? docs/evidence/campaign-attempt-2/\n?? docs/evidence/campaign-attempt-3/\n?? docs/evidence/campaign-attempt-4/\n?? docs/evidence/campaign-resumed-2026-09-08/\n?? docs/evidence/integration-review.md\n?? docs/evidence/performance/scheduling-investigation.md\n?? docs/evidence/seed14-patrol-review/\n?? docs/evidence/trader-return.json\n?? docs/evidence/visual-review/camp-night.png\n?? docs/evidence/visual-review/fog.png\n?? docs/evidence/visual-review/ox-hoof-contact.png\n?? docs/evidence/visual-review/ox-mountain-contact.png\n?? docs/evidence/visual-review/ox-side.png\n?? docs/evidence/visual-review/ride-rear-stopped.png\n?? docs/evidence/visual-review/river-daylight.png\n?? docs/evidence/visual-review/wildlife-deer.png\n?? docs/evidence/visual-review/wildlife-rabbit.png\n?? docs/evidence/walking-navigation.json\n?? scripts/capture-activities.mjs\n?? scripts/crossing-route.ts\n?? scripts/load-world-tools.mjs\n?? scripts/served-build.mjs\n?? scripts/walking-route.ts\n?? tests/crossing-route.unit.test.ts\n?? tests/walking-route.unit.test.ts",
-    "distSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+    "sourceStatus": "M scripts/campaign-walkthrough.mjs\n M tests/world.spec.ts",
+    "distSha256": "b6c57bbe797aaa90dd398f9f2f109bbc5e001ebc7f3cdc3ec5b71325bb00c08a",
     "files": [
       {
         "file": "_headers",
@@ -100,9 +100,9 @@
         "sha256": "e7351257e49400eff05aca30a2007289194a900860d30c30770d8b8732897564"
       },
       {
-        "file": "assets/index-C5Tcy4bJ.js",
-        "bytes": 3871460,
-        "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+        "file": "assets/index-3W13DD17.js",
+        "bytes": 3871540,
+        "sha256": "0b5e6e5ec96b97356f8bb70240a1f977fefb4c43f8c19691c868838b918018f3"
       },
       {
         "file": "assets/index-MwlfJe0p.css",
@@ -162,7 +162,7 @@
       {
         "file": "index.html",
         "bytes": 724,
-        "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+        "sha256": "57770b6489cde1dac9d7524b1b484b9986bdb49efb08d70ce20c4c2e5ba23c91"
       },
       {
         "file": "scenes/camp.webp",
@@ -222,16 +222,16 @@
     ]
   },
   "servedBuild": {
-    "localBuildSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+    "localBuildSha256": "b6c57bbe797aaa90dd398f9f2f109bbc5e001ebc7f3cdc3ec5b71325bb00c08a",
     "responses": [
       {
         "url": "http://localhost:4173/?evidence=1",
         "status": 200,
         "matchesDist": true,
         "file": "index.html",
-        "expectedSha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650",
+        "expectedSha256": "57770b6489cde1dac9d7524b1b484b9986bdb49efb08d70ce20c4c2e5ba23c91",
         "bytes": 724,
-        "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+        "sha256": "57770b6489cde1dac9d7524b1b484b9986bdb49efb08d70ce20c4c2e5ba23c91"
       },
       {
         "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
@@ -243,13 +243,13 @@
         "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
       },
       {
-        "url": "http://localhost:4173/assets/index-C5Tcy4bJ.js",
+        "url": "http://localhost:4173/assets/index-3W13DD17.js",
         "status": 200,
         "matchesDist": true,
-        "file": "assets/index-C5Tcy4bJ.js",
-        "expectedSha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5",
-        "bytes": 3871460,
-        "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+        "file": "assets/index-3W13DD17.js",
+        "expectedSha256": "0b5e6e5ec96b97356f8bb70240a1f977fefb4c43f8c19691c868838b918018f3",
+        "bytes": 3871540,
+        "sha256": "0b5e6e5ec96b97356f8bb70240a1f977fefb4c43f8c19691c868838b918018f3"
       },
       {
         "url": "http://localhost:4173/favicon.svg",
@@ -317,10 +317,10 @@
     ],
     "missing": [],
     "pass": true,
-    "verifiedAt": "2026-09-08T14:42:06.900Z"
+    "verifiedAt": "2026-09-08T15:53:42.154Z"
   },
-  "coldInteractiveMs": 5714.056759,
-  "coldPlayableMs": 6899.379739,
+  "coldInteractiveMs": 5920.587041,
+  "coldPlayableMs": 7435.0086,
   "renderer": {
     "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2)",
     "width": 1280,
@@ -329,67 +329,67 @@
   },
   "resources": [
     {
-      "url": "http://localhost:4173/assets/index-C5Tcy4bJ.js",
-      "transfer": 1376059,
-      "encoded": 1375759,
-      "decoded": 3871460,
-      "duration": 1424.0999999940395
+      "url": "http://localhost:4173/assets/index-3W13DD17.js",
+      "transfer": 1376100,
+      "encoded": 1375800,
+      "decoded": 3871540,
+      "duration": 1446
     },
     {
       "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
       "transfer": 6671,
       "encoded": 6371,
       "decoded": 23999,
-      "duration": 163.60000000149012
+      "duration": 164.79999999701977
     },
     {
       "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
       "transfer": 3149,
       "encoded": 2849,
       "decoded": 15385,
-      "duration": 158.79999999701977
+      "duration": 160.90000000596046
     },
     {
       "url": "http://localhost:4173/favicon.svg",
       "transfer": 557,
       "encoded": 257,
       "decoded": 257,
-      "duration": 154.89999999850988
+      "duration": 155.60000000149012
     },
     {
       "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
       "transfer": 23176,
       "encoded": 22876,
       "decoded": 22876,
-      "duration": 172.39999999850988
+      "duration": 177
     },
     {
       "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
       "transfer": 2152912,
       "encoded": 2152612,
       "decoded": 2152612,
-      "duration": 1881.3999999985099
+      "duration": 1920.8000000044703
     },
     {
       "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
       "transfer": 14500,
       "encoded": 14200,
       "decoded": 14200,
-      "duration": 164.5
+      "duration": 165.89999999850988
     },
     {
       "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
       "transfer": 14444,
       "encoded": 14144,
       "decoded": 14144,
-      "duration": 163.40000000596046
+      "duration": 168.80000000447035
     },
     {
       "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
       "transfer": 23612,
       "encoded": 23312,
       "decoded": 23312,
-      "duration": 170.89999999850988
+      "duration": 172.29999999701977
     }
   ],
   "payload": [
@@ -397,7 +397,7 @@
       "file": "index.html",
       "bytes": 724,
       "gzipBytes": 435,
-      "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+      "sha256": "57770b6489cde1dac9d7524b1b484b9986bdb49efb08d70ce20c4c2e5ba23c91"
     },
     {
       "file": "assets/index-MwlfJe0p.css",
@@ -406,10 +406,10 @@
       "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
     },
     {
-      "file": "assets/index-C5Tcy4bJ.js",
-      "bytes": 3871460,
-      "gzipBytes": 1375759,
-      "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+      "file": "assets/index-3W13DD17.js",
+      "bytes": 3871540,
+      "gzipBytes": 1375800,
+      "sha256": "0b5e6e5ec96b97356f8bb70240a1f977fefb4c43f8c19691c868838b918018f3"
     },
     {
       "file": "favicon.svg",
@@ -454,7 +454,7 @@
       "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
     }
   ],
-  "initialRawBytes": 6138969,
-  "initialGzipBytes": 1958805,
+  "initialRawBytes": 6139049,
+  "initialGzipBytes": 1958846,
   "note": "Cold interactive time reaches the setup controls with the world loaded. Cold playable time also includes automated normal setup/outfitting clicks. This is production preview under CDP throttling. Gzip independently compresses actual response bodies verified against the local build manifest; preview transfer figures are reported separately and may be uncompressed."
 }
