@@ -23,6 +23,7 @@ async function beginOutfitting(page: Page) {
 }
 
 async function depart(page: Page) {
+  await page.getByText('Shop item by item', { exact: true }).click()
   await buy(page, 'Oxen', 3)
   await buy(page, 'Food', 1200)
   await sell(page, 'Food', 100, 1100)
@@ -81,7 +82,9 @@ test.describe('journey acceptance', () => {
     page,
   }, testInfo) => {
     await beginOutfitting(page)
-    await expect(page.getByText('Starter target:')).toBeVisible()
+    await expect(
+      page.getByRole('button', { name: 'Outfit with recommended supplies', exact: true }),
+    ).toBeVisible()
     await depart(page)
     await expect
       .poll(() => page.evaluate(() => localStorage.getItem('pioneer-trail:journey:v1')))
@@ -111,6 +114,7 @@ test.describe('journey acceptance', () => {
     await expect(page.getByRole('dialog')).toBeVisible()
     await page.getByRole('button', { name: 'Close panel' }).click()
 
+    await page.getByText('Travel options', { exact: true }).click()
     await page.getByRole('button', { name: 'Pace & rest' }).click()
     await page.locator('select').first().selectOption('Strenuous')
     await page.locator('select').nth(1).selectOption('Meager')
@@ -133,6 +137,7 @@ test.describe('journey acceptance', () => {
     await depart(page)
     const initialDay = await dayLabel(page).textContent()
     const initialFood = await foodLabel(page).textContent()
+    await page.getByText('Travel options', { exact: true }).click()
     await page.getByRole('button', { name: 'Pace & rest' }).click()
     await page.getByRole('button', { name: 'Rest 1 day' }).click()
     await expect(dayLabel(page)).not.toHaveText(initialDay!)
@@ -155,13 +160,11 @@ test.describe('journey acceptance', () => {
     await reduced.click()
     await expect(sound).toHaveAttribute('aria-checked', 'true')
     await expect(reduced).toHaveAttribute('aria-checked', 'true')
-    await page
-      .getByLabel('Choose journey save')
-      .setInputFiles({
-        name: 'broken.json',
-        mimeType: 'application/json',
-        buffer: Buffer.from('{not valid json'),
-      })
+    await page.getByLabel('Choose journey save').setInputFiles({
+      name: 'broken.json',
+      mimeType: 'application/json',
+      buffer: Buffer.from('{not valid json'),
+    })
     await expect(page.getByRole('alert')).toContainText('could not be imported')
     await expect(dayLabel(page)).toHaveText(before!)
     await page.reload()

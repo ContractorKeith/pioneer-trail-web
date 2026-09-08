@@ -15,6 +15,25 @@ type WasmModule = {
   TrailEngine: new (seed: string) => WasmEngine
 }
 
+// `wasm-bindgen` writes exports into a mutable module global after an await.
+// Concurrent create calls can therefore construct pointers in separate instances
+// while later method calls dispatch through only the last instance.
+let wasmModulePromise: Promise<WasmModule> | null = null
+function loadWasmModule(): Promise<WasmModule> {
+  if (!wasmModulePromise) {
+    wasmModulePromise = (async () => {
+      const wasmUrl = new URL('/wasm/pioneer_trail_web_engine.js', window.location.href).href
+      const module = (await import(/* @vite-ignore */ wasmUrl)) as WasmModule
+      await module.default()
+      return module
+    })().catch((error) => {
+      wasmModulePromise = null
+      throw error
+    })
+  }
+  return wasmModulePromise
+}
+
 /** Keeps opaque Rust save JSON out of JS parsing so 64-bit RNG state remains exact. */
 export class TrailEngine {
   private readonly wasm: WasmEngine
@@ -23,10 +42,7 @@ export class TrailEngine {
   }
 
   static async create(seed = `${Date.now()}`): Promise<TrailEngine> {
-    // Kept in public/wasm so Cloudflare serves wasm-pack's sibling JS and .wasm unchanged.
-    const wasmUrl = new URL('/wasm/pioneer_trail_web_engine.js', window.location.href).href
-    const module = (await import(/* @vite-ignore */ wasmUrl)) as WasmModule
-    await module.default()
+    const module = await loadWasmModule()
     return new TrailEngine(new module.TrailEngine(seed))
   }
   apply(command: GameCommand): EngineResult {

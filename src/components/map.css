@@ -1,0 +1,249 @@
+.trail-map {
+  color: #223d34;
+  background: #f8f0dc;
+  border: 1px solid #c8af76;
+  border-radius: 1rem;
+  overflow: hidden;
+  font-family: Georgia, serif;
+}
+.trail-map header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: end;
+  padding: 1rem 1.15rem 0.75rem;
+}
+.trail-map h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.map-kicker {
+  margin: 0 0 0.25rem;
+  color: #976e2c;
+  font:
+    700 0.67rem/1 DM Sans,
+    sans-serif;
+  letter-spacing: 0.16em;
+}
+.map-legend {
+  color: #6a604f;
+  font:
+    600 0.75rem DM Sans,
+    sans-serif;
+}
+.map-legend i {
+  display: inline-block;
+  width: 1.4rem;
+  border-top: 3px solid #a7462d;
+  vertical-align: middle;
+}
+.map-legend span {
+  padding-left: 0.7rem;
+  color: #4b5d51;
+}
+.map-frame {
+  position: relative;
+  aspect-ratio: 1.6;
+  overflow: hidden;
+  border-block: 1px solid #9a8b69;
+  background: #b9d2d0;
+  touch-action: none;
+}
+.map-frame svg {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+.map-frame svg:active {
+  cursor: grabbing;
+}
+.map-rivers path {
+  fill: none;
+  stroke: #6e9da2;
+  stroke-width: 5;
+  opacity: 0.8;
+}
+.map-mountains path {
+  fill: none;
+  stroke: #9b8a67;
+  stroke-width: 3;
+  opacity: 0.65;
+}
+.map-route {
+  fill: none;
+  stroke-width: 4.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  filter: url(#shadow);
+}
+.map-route-other {
+  stroke-width: 2.5;
+  stroke-dasharray: 7 6;
+  opacity: 0.55;
+}
+.map-place circle {
+  fill: #f7e6b9;
+  stroke: #56452f;
+  stroke-width: 2;
+}
+.map-place path {
+  fill: #56452f;
+}
+.map-place text {
+  fill: #3e3529;
+  font:
+    600 12px Georgia,
+    serif;
+  paint-order: stroke;
+  stroke: #ecdfbd;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+.map-place.is-done circle {
+  fill: #657b62;
+}
+.map-place.is-current circle {
+  fill: #a7462d;
+  stroke: #fff3ce;
+  stroke-width: 3;
+}
+.map-place.is-current path {
+  fill: #a7462d;
+}
+.map-controls {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  display: grid;
+  box-shadow: 0 2px 8px #3b342633;
+}
+.map-controls button {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #8c7957;
+  background: #f8eed4;
+  color: #34493f;
+  font:
+    700 1.2rem Georgia,
+    serif;
+  cursor: pointer;
+}
+.map-controls button + button {
+  border-top: 0;
+}
+.trail-map footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.8rem 1.15rem;
+  color: #655b48;
+  font:
+    600 0.76rem DM Sans,
+    sans-serif;
+}
+.trail-map footer b {
+  color: #254539;
+}
+.map-forks {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+.map-forks button {
+  border: 1px solid #af8b4c;
+  border-radius: 0.25rem;
+  background: #fff7e5;
+  color: #513d25;
+  padding: 0.3rem 0.45rem;
+  font: inherit;
+  cursor: pointer;
+}
+.map-forks button:disabled {
+  opacity: 0.45;
+}
+@media (max-width: 600px) {
+  .trail-map header,
+  .trail-map footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .map-legend {
+    display: none;
+  }
+  .map-place text {
+    font-size: 10px;
+  }
+  .map-frame {
+    aspect-ratio: 1.1;
+  }
+}
+.map-route-traveled {
+  stroke: #355c4e;
+  stroke-width: 7;
+  opacity: 0.92;
+}
+.map-land path {
+  fill: #e9ddb8;
+  stroke: #66553a;
+  stroke-width: 1.1;
+}
+.map-edges path {
+  fill: none;
+  stroke: #a7462d;
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.68;
+}
+.map-traveled path {
+  fill: none;
+  stroke: #355c4e;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.94;
+}
+.map-graticule path {
+  stroke: #81735b;
+  stroke-width: 0.55;
+  stroke-dasharray: 2 5;
+  opacity: 0.36;
+}
+.map-land .map-paper {
+  fill: url(#paper);
+  stroke: none;
+}
+.map-rivers path {
+  stroke-width: 1.5;
+  opacity: 0.74;
+}
+.map-geography {
+  fill: #526f77;
+  font:
+    italic 18px Georgia,
+    serif;
+  letter-spacing: 0.06em;
+  opacity: 0.82;
+  pointer-events: none;
+}
+.map-geography.ocean {
+  transform: rotate(-82deg);
+  transform-origin: center;
+}
+.map-geography.mountains {
+  fill: #806d4e;
+  font-size: 15px;
+}
+.map-place text {
+  font-size: 11px;
+}
+.map-controls button {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.map-geography.ocean {
+  transform: none;
+}

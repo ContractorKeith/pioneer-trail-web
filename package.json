@@ -11,6 +11,7 @@
     "test": "vitest run",
     "test:engine": "node scripts/verify-engine.mjs",
     "test:e2e": "playwright test",
+    "test:dev": "playwright test -c playwright.engine.config.ts",
     "build:engine": "bash scripts/build-engine.sh",
     "format": "prettier --write src tests *.ts *.json *.html *.md docs/*.md"
   },

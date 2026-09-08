@@ -3,13 +3,11 @@ import {
   ArrowRight,
   BookOpen,
   CalendarDays,
-  Check,
   ChevronRight,
   Compass,
   Crosshair,
   Download,
   Fish,
-  Flag,
   Heart,
   Map,
   MapPin,
@@ -28,15 +26,7 @@ import {
 } from 'lucide-react'
 import { TrailEngine } from './engine'
 import type { EngineResult, GameCommand, GameView, Outcome } from './engine-types'
-import {
-  describeOutcome,
-  humanize,
-  isRejected,
-  money,
-  phase,
-  placeName,
-  trailFor,
-} from './presentation'
+import { describeOutcome, humanize, isRejected, phase, placeName, trailFor } from './presentation'
 import { downloadSave, loadSettings, readJourney, SETTINGS_KEY, storeJourney } from './storage'
 import { trailAudio } from './audio'
 import { Dialog } from './components/Dialog'
@@ -380,8 +370,6 @@ export default function App() {
   const status = phase(view)
   const welcome = status === 'Setup'
   const trail = trailFor(view)
-  const goal = trail?.nodes.find((node) => node.id === trail.goal_node_id)
-  const progress = goal ? Math.min(100, (view.miles / goal.mile) * 100) : 0
   const aliveParty = view.party.filter((person) => person.alive)
   const health = aliveParty.length
     ? Math.round(aliveParty.reduce((sum, member) => sum + member.health, 0) / aliveParty.length)
@@ -425,8 +413,6 @@ export default function App() {
                 : ['Arrived', 'Failed'].includes(status)
                   ? 'Read your ending'
                   : 'Travel one day'
-  const latestJournal =
-    view.journal.at(-1)?.text ?? '“There is a kind of hope you can only find on the open road.”'
   const lastMessages = outcomes
     .map((outcome) => describeOutcome(outcome, view))
     .filter((text): text is string => !!text)
@@ -496,69 +482,53 @@ export default function App() {
     : undefined
 
   return (
-    <div className={`app-shell ${settings.reducedMotion ? 'reduced-motion' : ''}`}>
-      <aside className="sidebar">
-        <a
-          className="brand"
-          href="#"
-          aria-label="Pioneer Trail home"
-          onClick={(event) => {
-            event.preventDefault()
-            closePanel()
-          }}
-        >
-          <span className="brand-symbol">
-            <Mountain size={49} strokeWidth={1} />
-          </span>
-          <strong>PIONEER</strong>
-          <small>TRAIL</small>
-        </a>
-        <div className="side-kicker">YOUR JOURNEY</div>
-        <nav className="nav-list" aria-label="Journey navigation">
-          {nav.map((item) => (
-            <button
-              key={item.title}
-              className={`nav-item ${panel === item.panel ? 'active' : ''}`}
-              onClick={() =>
-                item.panel ? open(welcome ? 'setup' : (item.panel as Panel)) : closePanel()
-              }
-            >
-              <item.icon size={18} strokeWidth={1.4} />
-              {item.title}
-              {item.panel === null && <span className="nav-dot" />}
-            </button>
-          ))}
-        </nav>
-        <div className="side-journey">
-          <span className="eyebrow" style={{ fontSize: 8, letterSpacing: 1.5 }}>
-            TAKE THE LONG WAY HOME
-          </span>
-          <blockquote>
-            “Not all who wander
-            <br />
-            are lost. Some are
-            <br />
-            building a new life.”
-          </blockquote>
-          <div className="side-foot">
-            <span>EST. {view.date.year}</span>
-            <button
-              className="icon-button"
-              aria-label="Open settings"
-              onClick={() => open('settings')}
-            >
-              <SettingsIcon size={17} strokeWidth={1.4} />
-            </button>
-          </div>
-        </div>
-      </aside>
+    <div
+      className={`app-shell ${welcome ? 'welcome-shell' : 'playing-shell'} ${settings.reducedMotion ? 'reduced-motion' : ''}`}
+    >
+      {!welcome && (
+        <aside className="sidebar">
+          <a
+            className="brand"
+            href="#"
+            aria-label="Pioneer Trail home"
+            onClick={(event) => {
+              event.preventDefault()
+              closePanel()
+            }}
+          >
+            <span className="brand-symbol">
+              <Mountain size={49} strokeWidth={1} />
+            </span>
+            <strong>PIONEER</strong>
+            <small>TRAIL</small>
+          </a>
+          <div className="side-kicker">YOUR JOURNEY</div>
+          <nav className="nav-list" aria-label="Journey navigation">
+            {nav.map((item) => (
+              <button
+                key={item.title}
+                className={`nav-item ${panel === item.panel ? 'active' : ''}`}
+                onClick={() =>
+                  item.panel ? open(welcome ? 'setup' : (item.panel as Panel)) : closePanel()
+                }
+              >
+                <item.icon size={18} strokeWidth={1.4} />
+                {item.title}
+                {item.panel === null && <span className="nav-dot" />}
+              </button>
+            ))}
+          </nav>
+        </aside>
+      )}
       <main className="app-main">
         <header className="topbar">
-          <div className="breadcrumb">
-            <span>Your journey</span>
-            <ChevronRight size={12} />
-            {trail?.name ?? 'The Oregon Trail'}
-          </div>
+          {!welcome && (
+            <div className="breadcrumb">
+              <span>Your journey</span>
+              <ChevronRight size={12} />
+              {trail?.name ?? 'The Oregon Trail'}
+            </div>
+          )}
           <div className="mobile-brand">
             <Mountain size={22} strokeWidth={1.2} />
             Pioneer Trail
@@ -567,7 +537,7 @@ export default function App() {
             <span className="saved-label">
               <i className="saved-dot" />
               {welcome
-                ? 'A new adventure awaits'
+                ? 'Your adventure starts here'
                 : saved
                   ? 'Journey saved on this device'
                   : 'Save unavailable'}
@@ -590,24 +560,26 @@ export default function App() {
           </div>
         </header>
         <div className="page-content">
-          <div className="journey-heading">
-            <div>
-              <span className="eyebrow">
-                {welcome ? 'A NEW CHAPTER AWAITS' : `DAY ${view.day + 1} OF YOUR JOURNEY`}
-              </span>
-              <h1>
-                {welcome
-                  ? 'The call of the west.'
-                  : campView
-                    ? 'Home, for tonight.'
-                    : 'Another day. A little farther.'}
-              </h1>
+          {!welcome && (
+            <div className="journey-heading">
+              <div>
+                <span className="eyebrow">
+                  {welcome ? 'A NEW CHAPTER AWAITS' : `DAY ${view.day + 1} OF YOUR JOURNEY`}
+                </span>
+                <h1>
+                  {welcome
+                    ? 'The call of the west.'
+                    : campView
+                      ? 'Home, for tonight.'
+                      : 'Another day. A little farther.'}
+                </h1>
+              </div>
+              <div className="date-chip">
+                <CalendarDays size={15} strokeWidth={1.3} />
+                {date}
+              </div>
             </div>
-            <div className="date-chip">
-              <CalendarDays size={15} strokeWidth={1.3} />
-              {date}
-            </div>
-          </div>
+          )}
           <section className="hero" aria-label="A view of the Pioneer Trail">
             <img
               className="hero-background"
@@ -734,68 +706,62 @@ export default function App() {
               </div>
             </div>
           </section>
-          <div className="status-strip">
-            {[
-              {
-                label: 'DISTANCE',
-                value: welcome ? '0' : view.miles.toLocaleString(),
-                unit: 'miles',
-                icon: Compass,
-              },
-              {
-                label: 'FOOD',
-                value: welcome ? '—' : (view.inventory.food ?? 0).toLocaleString(),
-                unit: 'lbs',
-                icon: Sprout,
-              },
-              {
-                label: 'PARTY HEALTH',
-                value: welcome ? 'Ready' : `${health}%`,
-                unit: welcome ? '' : health > 75 ? 'good' : health > 40 ? 'fair' : 'poor',
-                icon: Heart,
-              },
-              {
-                label: 'PROVISIONS',
-                value: welcome ? '—' : money(view.cash_cents),
-                unit: 'available',
-                icon: Package,
-              },
-              {
-                label: 'TRAVEL PACE',
-                value: welcome ? 'Your call' : humanize(view.pace),
-                unit: welcome ? '' : humanize(view.rations),
-                icon: Wind,
-              },
-            ].map((stat) => (
-              <div className="status-stat" key={stat.label}>
-                <stat.icon strokeWidth={1.4} />
-                <div>
-                  <span>{stat.label}</span>
-                  <strong>
-                    {stat.value}
-                    <small>{stat.unit}</small>
-                  </strong>
+          {welcome ? (
+            <div className="welcome-steps" aria-label="How to begin">
+              <span>
+                <b>1</b> Choose your trail
+              </span>
+              <span>
+                <b>2</b> Name your travelers
+              </span>
+              <span>
+                <b>3</b> Pack up & go
+              </span>
+              <small>On the road in a minute or two.</small>
+            </div>
+          ) : (
+            <>
+              <div className="trail-toolbar">
+                <div className="status-strip">
+                  {[
+                    {
+                      label: 'DISTANCE',
+                      value: view.miles.toLocaleString(),
+                      unit: 'miles',
+                      icon: Compass,
+                    },
+                    {
+                      label: 'FOOD',
+                      value: Math.floor((view.inventory.food ?? 0) / (view.daily_food_lbs || 1)),
+                      unit: 'days',
+                      icon: Sprout,
+                    },
+                    { label: 'PARTY HEALTH', value: `${health}%`, unit: '', icon: Heart },
+                  ].map((stat) => (
+                    <div className="status-stat" key={stat.label}>
+                      <stat.icon strokeWidth={1.4} />
+                      <div>
+                        <span>{stat.label}</span>
+                        <strong>
+                          {stat.value}
+                          <small>{stat.unit}</small>
+                        </strong>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
-            ))}
-          </div>
-          <div className="lower-grid">
-            <section>
-              <div className="section-heading">
-                <h3>Life along the trail</h3>
-                <button className="text-button" onClick={() => open(welcome ? 'setup' : 'camp')}>
-                  Explore camp
-                  <ArrowRight size={12} />
+                <button className="button journey-advance" onClick={advance}>
+                  {advanceLabel}
+                  <ArrowRight size={17} />
                 </button>
               </div>
-              <div className="activity-grid">
+              <div className="trail-activities">
                 {actions.map((action) => (
                   <button
+                    className="trail-activity"
                     key={action.title}
-                    className="activity-card"
                     onClick={() => {
-                      if (welcome) open('setup')
-                      else if (action.panel === 'hunt') {
+                      if (action.panel === 'hunt') {
                         if (view.active_minigame) open('hunt')
                         else if (view.can_hunt) command('BeginHunt')
                         else {
@@ -808,111 +774,40 @@ export default function App() {
                       } else open(action.panel)
                     }}
                   >
-                    <action.icon size={25} strokeWidth={1.3} />
-                    <strong>{action.title}</strong>
-                    <small>{action.sub}</small>
-                    <span>{action.shortcut}</span>
+                    <action.icon size={22} strokeWidth={1.4} />
+                    {action.title}
                   </button>
                 ))}
               </div>
-              <div className="action-footer">
-                <p>
-                  {welcome
-                    ? 'The little moments make the journey.'
-                    : `${view.daily_food_lbs} lb of food per day. ${view.daily_food_lbs ? Math.floor((view.inventory.food ?? 0) / view.daily_food_lbs) : 0} days of meals in the wagon.`}
-                </p>
-                <button className="button" onClick={advance}>
-                  {advanceLabel}
-                  <ArrowRight size={15} />
-                </button>
-              </div>
-              {!welcome && status === 'Travelling' && !view.pending_event && (
-                <div className="button-row" style={{ marginTop: 14, justifyContent: 'flex-end' }}>
-                  <button className="text-button muted" onClick={() => open('travel')}>
-                    Pace & rest
-                  </button>
-                  <span className="muted">·</span>
-                  <button
-                    className="text-button"
-                    onClick={() => {
-                      setAuto((old) => !old)
-                      setPanel(null)
-                    }}
-                  >
-                    {auto ? 'Pause travel' : 'Travel automatically'}
-                  </button>
-                </div>
+              {status === 'Travelling' && !view.pending_event && (
+                <details className="travel-options">
+                  <summary>Travel options</summary>
+                  <div className="button-row">
+                    <button className="text-button" onClick={() => open('travel')}>
+                      Pace & rest
+                    </button>
+                    <button
+                      className="text-button"
+                      onClick={() => {
+                        setAuto((old) => !old)
+                        setPanel(null)
+                      }}
+                    >
+                      {auto ? 'Pause travel' : 'Travel automatically'}
+                    </button>
+                    <span className="small muted">
+                      {humanize(view.pace)} pace · {humanize(view.rations)} meals
+                    </span>
+                  </div>
+                </details>
               )}
-              <div className="journal-preview">
-                <BookOpen size={21} strokeWidth={1.2} />
-                <div>
-                  <span className="eyebrow">
-                    {welcome ? 'A NOTE FOR THE ROAD' : 'FROM YOUR FIELD JOURNAL'}
-                  </span>
-                  <p>{latestJournal}</p>
-                </div>
-              </div>
-            </section>
-            <section>
-              <div className="section-heading">
-                <h3>The way ahead</h3>
-                <button className="text-button" onClick={() => open(welcome ? 'setup' : 'map')}>
-                  View map
-                  <ArrowRight size={12} />
-                </button>
-              </div>
-              <div className="route-card">
-                <span className="eyebrow" style={{ color: '#788868', fontSize: 9 }}>
-                  NEXT ON THE HORIZON
-                </span>
-                <div className="next-stop">{welcome ? 'Kansas River Crossing' : nextStop}</div>
-                <div className="route-endpoints">
-                  <span>{welcome ? 'Independence' : 'Your departure'}</span>
-                  <Flag size={13} strokeWidth={1.2} />
-                  <span>{goal?.name ?? 'Oregon'}</span>
-                </div>
-                <div className="route-line">
-                  <span style={{ width: `${progress}%` }} />
-                </div>
-                <p>
-                  {welcome
-                    ? 'About 2,000 miles of possibility.'
-                    : `${Math.round(progress)}% of the distance west · ${view.route_miles_remaining} miles to your next stop.`}
-                  <br />
-                  {welcome
-                    ? 'One day, one decision, one memory at a time.'
-                    : 'Take what you need. Leave room for a little hope.'}
-                </p>
-              </div>
-              {!welcome && (
-                <button
-                  className="text-button muted"
-                  style={{ marginTop: 17 }}
-                  onClick={() => open('journal')}
-                >
-                  <BookOpen size={13} />
-                  {view.journal.length} memories in your journal
-                  <ArrowRight size={12} />
+              {auto && (
+                <button className="button secondary full" onClick={() => setAuto(false)}>
+                  Pause travel
                 </button>
               )}
-            </section>
-          </div>
-          <footer className="page-footer">
-            <span>
-              <Mountain size={14} strokeWidth={1} />
-              PIONEER TRAIL · THE JOURNEY IS THE STORY
-            </span>
-            <span>
-              {welcome ? (
-                'MADE FOR THE WANDERER IN YOU'
-              ) : (
-                <>
-                  <Check size={11} />
-                  {saved ? 'Saved locally' : 'Export to keep your journey'} · Seed {view.seed}
-                </>
-              )}
-            </span>
-          </footer>
+            </>
+          )}
         </div>
       </main>
       {toast && !panel && (
@@ -934,9 +829,11 @@ export default function App() {
               ? 'Down the Columbia'
               : panelTitles[panel]
           }
-          eyebrow={panel === 'setup' ? 'WRITE YOUR OWN STORY' : `${location} · DAY ${view.day + 1}`}
+          eyebrow={
+            panel === 'setup' ? 'YOUR JOURNEY BEGINS HERE' : `${location} · DAY ${view.day + 1}`
+          }
           onClose={closePanel}
-          wide={['store', 'camp', 'setup', 'hunt'].includes(panel)}
+          wide={['store', 'camp', 'setup', 'hunt', 'map'].includes(panel)}
         >
           {toast?.error && (
             <div className="note error-note" role="alert" style={{ marginBottom: 18 }}>

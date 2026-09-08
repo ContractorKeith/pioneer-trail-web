@@ -16,8 +16,9 @@ import {
   Waves,
 } from 'lucide-react'
 import type { EngineResult, GameCommand, GameView, Outcome } from '../engine-types'
-import { humanize, money, phase, placeName, trailFor } from '../presentation'
+import { humanize, money, phase, placeName } from '../presentation'
 import { TrailScene } from './TrailScene'
+import { TrailMap } from './TrailMap'
 import type { SceneMode } from './TrailScene'
 
 export type Panel =
@@ -324,47 +325,8 @@ export function GamePanels({
           )}
         </>
       )
-    case 'map': {
-      const trail = trailFor(view)
-      const visited = new Set(
-        (view.visited_landmarks as Array<{ landmark_id: string }>).map((item) => item.landmark_id),
-      )
-      return (
-        <>
-          <div className="route-card">
-            <span className="eyebrow">{trail?.name}</span>
-            <p className="next-stop">{view.miles.toLocaleString()} miles behind you.</p>
-            <p>
-              {view.target_node_id
-                ? `${view.route_miles_remaining} miles to ${placeName(view, view.target_node_id)}.`
-                : 'The next chapter begins at the next fork.'}
-            </p>
-          </div>
-          <p className="small muted" style={{ marginTop: 18 }}>
-            Filled stops are places you have reached. Open circles show the possible road ahead,
-            including alternate branches.
-          </p>
-          <div className="map-list">
-            {trail?.nodes.map((node) => (
-              <div
-                className={`map-stop ${visited.has(node.id) ? 'visited' : ''} ${view.current_node?.id === node.id ? 'current' : ''}`}
-                key={node.id}
-              >
-                <span className="map-dot" />
-                <div>
-                  <strong>{node.name}</strong>
-                  <small>
-                    Mile {node.mile.toLocaleString()} ·{' '}
-                    {node.store ? 'Supply stop' : humanize(node.kind)}
-                    {visited.has(node.id) ? ' · Visited' : ''}
-                  </small>
-                </div>
-              </div>
-            ))}
-          </div>
-        </>
-      )
-    }
+    case 'map':
+      return <TrailMap view={view} />
     case 'talk':
       return (
         <>

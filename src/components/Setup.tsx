@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import type { GameView } from '../engine-types'
-import { money } from '../presentation'
+import { money, phase } from '../presentation'
 
 export interface JourneySetup {
   seed: string
@@ -45,6 +45,7 @@ export function Setup({
     setSetup((current) => ({ ...current, [key]: value }))
   return (
     <form
+      className="journey-setup"
       onSubmit={async (event) => {
         event.preventDefault()
         if (problem) return
@@ -56,12 +57,15 @@ export function Setup({
         }
       }}
     >
+      <div className="onboarding-steps" aria-label="Journey setup progress">
+        <span aria-current="step">1. People & trail</span>
+        <span>2. Supplies & departure</span>
+      </div>
       <p className="setup-intro">
-        A wagon. Five travelers. A new life somewhere beyond the horizon. Choose the people and the
-        path that will make this journey yours.
+        Pick your road. Name your people. We’ll help pack the wagon next.
       </p>
       <div className="form-grid">
-        <label className="field">
+        <label className="field span-full">
           <span>Your trail</span>
           <select
             value={setup.trail_id}
@@ -74,59 +78,6 @@ export function Setup({
             ))}
           </select>
         </label>
-        <label className="field">
-          <span>The year</span>
-          <select value={setup.era_id} onChange={(event) => field('era_id', event.target.value)}>
-            {view.content.eras.map((era) => (
-              <option
-                key={era.id}
-                value={era.id}
-                disabled={setup.trail_id === 'mormon' && era.id === '1843'}
-              >
-                {era.name}
-                {setup.trail_id === 'mormon' && era.id === '1843'
-                  ? ' · unavailable on this trail'
-                  : ''}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="field">
-          <span>Your occupation</span>
-          <select
-            value={setup.occupation_id}
-            onChange={(event) => field('occupation_id', event.target.value)}
-          >
-            {view.content.occupations.map((item) => (
-              <option
-                key={item.id}
-                value={item.id}
-                disabled={item.id === 'soldier' && setup.era_id !== '1866'}
-              >
-                {item.name} · {money(item.starting_cash_cents)}
-                {item.id === 'soldier' && setup.era_id !== '1866' ? ' · available in 1866' : ''}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="field">
-          <span>Departure month</span>
-          <select
-            value={setup.departure_month}
-            onChange={(event) => field('departure_month', Number(event.target.value))}
-          >
-            {['March', 'April', 'May', 'June', 'July'].map((name, index) => (
-              <option key={name} value={index + 3}>
-                {name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <p className="occupation-note span-full">
-          {occupation?.perk}{' '}
-          {setup.occupation_id === 'banker' &&
-            'A banker leaving in March is a forgiving first journey.'}
-        </p>
         <div className="field span-full">
           <span>Your traveling party</span>
           <div className="party-names">
@@ -147,39 +98,101 @@ export function Setup({
             ))}
           </div>
         </div>
-        <label className="field">
-          <span>Difficulty</span>
-          <select
-            value={setup.difficulty}
-            onChange={(event) => field('difficulty', event.target.value)}
-          >
-            <option>Easy</option>
-            <option>Normal</option>
-            <option>Hard</option>
-          </select>
-        </label>
-        <label className="field">
-          <span>Journey seed · repeatable adventure</span>
-          <input
-            value={setup.seed}
-            onChange={(event) => field('seed', event.target.value)}
-            inputMode="numeric"
-            pattern="[0-9]+"
-            maxLength={20}
-            required
-          />
-        </label>
       </div>
+      <details className="setup-options">
+        <summary>
+          More options <span>Year, occupation & difficulty</span>
+        </summary>
+        <p className="small muted">March 1848 and Banker are a forgiving first journey.</p>
+        <div className="form-grid">
+          <label className="field">
+            <span>The year</span>
+            <select value={setup.era_id} onChange={(event) => field('era_id', event.target.value)}>
+              {view.content.eras.map((era) => (
+                <option
+                  key={era.id}
+                  value={era.id}
+                  disabled={setup.trail_id === 'mormon' && era.id === '1843'}
+                >
+                  {era.name}
+                  {setup.trail_id === 'mormon' && era.id === '1843'
+                    ? ' · unavailable on this trail'
+                    : ''}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="field">
+            <span>Your occupation</span>
+            <select
+              value={setup.occupation_id}
+              onChange={(event) => field('occupation_id', event.target.value)}
+            >
+              {view.content.occupations.map((item) => (
+                <option
+                  key={item.id}
+                  value={item.id}
+                  disabled={item.id === 'soldier' && setup.era_id !== '1866'}
+                >
+                  {item.name} · {money(item.starting_cash_cents)}
+                  {item.id === 'soldier' && setup.era_id !== '1866' ? ' · available in 1866' : ''}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="field">
+            <span>Departure month</span>
+            <select
+              value={setup.departure_month}
+              onChange={(event) => field('departure_month', Number(event.target.value))}
+            >
+              {['March', 'April', 'May', 'June', 'July'].map((name, index) => (
+                <option key={name} value={index + 3}>
+                  {name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <p className="occupation-note span-full">
+            {occupation?.perk}{' '}
+            {setup.occupation_id === 'banker' &&
+              'A banker leaving in March is a forgiving first journey.'}
+          </p>
+          <label className="field">
+            <span>Difficulty</span>
+            <select
+              value={setup.difficulty}
+              onChange={(event) => field('difficulty', event.target.value)}
+            >
+              <option>Easy</option>
+              <option>Normal</option>
+              <option>Hard</option>
+            </select>
+          </label>
+          <label className="field">
+            <span>Journey seed · repeatable adventure</span>
+            <input
+              value={setup.seed}
+              onChange={(event) => field('seed', event.target.value)}
+              inputMode="numeric"
+              pattern="[0-9]+"
+              maxLength={20}
+              required
+            />
+          </label>
+        </div>
+      </details>
       {problem && (
         <p className="note" role="alert">
           {problem} Choose an available year or occupation to continue.
         </p>
       )}
-      <div className="divider" />
-      <p className="small muted">
-        Starting a new journey replaces the current browser save. Export it from Settings first if
-        you want to keep it.
-      </p>
+      {phase(view) !== 'Setup' && (
+        <p className="small muted">
+          Starting a new journey replaces the current browser save. Export it from Settings first if
+          you want to keep it.
+        </p>
+      )}
       <div className="button-row" style={{ marginTop: 22 }}>
         <button className="button full" disabled={busy || !!problem} type="submit">
           {busy ? 'Preparing your wagon…' : 'Outfit your wagon'}
