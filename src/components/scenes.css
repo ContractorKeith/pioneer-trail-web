@@ -1,0 +1,254 @@
+.trail-scene {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  min-height: 22rem;
+  background: #68796f;
+  border-radius: 1.25rem;
+  box-shadow:
+    inset 0 0 5rem #13221b88,
+    0 1.5rem 4rem #19251c26;
+}
+.trail-scene canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.scene-vignette {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 35%, #17251b45 100%),
+    linear-gradient(180deg, #10221d22, transparent 40%, #10201b4d);
+}
+.scene-fallback {
+  --look-x: 0%;
+  --look-y: 0%;
+  display: grid;
+  place-items: end start;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 22rem;
+  padding: 2rem;
+  color: #f4e7ca;
+  font:
+    600 1rem/1.3 Georgia,
+    serif;
+  letter-spacing: 0.03em;
+  text-shadow: 0 2px 12px #102018;
+  background:
+    linear-gradient(#10231a44, #10231a99),
+    url('/scenes/trail.webp') calc(50% + var(--look-x)) calc(50% + var(--look-y)) / 104% auto,
+    #465f4c;
+}
+.scene-camp .scene-fallback,
+.scene-talk .scene-fallback {
+  background:
+    linear-gradient(#13211a28, #13211a99),
+    url('/scenes/camp.webp') calc(50% + var(--look-x)) calc(50% + var(--look-y)) / 104% auto,
+    #263b55;
+}
+.scene-river .scene-fallback {
+  background:
+    linear-gradient(#12282622, #10201b66),
+    url('/scenes/river.webp') calc(50% + var(--look-x)) calc(50% + var(--look-y)) / 104% auto,
+    #365d61;
+}
+.scene-fish .scene-fallback {
+  background:
+    linear-gradient(#10231a18, #10231a66),
+    url('/scenes/fish.webp') calc(50% + var(--look-x)) calc(50% + var(--look-y)) / 104% auto,
+    #365d61;
+}
+.scene-snow .scene-fallback {
+  background:
+    linear-gradient(#dce8e544, #31505a55),
+    url('/scenes/snow.webp') calc(50% + var(--look-x)) calc(50% + var(--look-y)) / 104% auto,
+    #bccbd1;
+  color: #16313a;
+  text-shadow: 0 1px #fff8;
+}
+.scene-repair .scene-fallback {
+  background:
+    linear-gradient(#20251b18, #1a211a77),
+    url('/scenes/repair.webp') calc(50% + var(--look-x)) calc(50% + var(--look-y)) / 104% auto,
+    #514432;
+}
+.scene-talk .scene-fallback {
+  background:
+    linear-gradient(#13211a20, #13211a88),
+    url('/scenes/talk.webp') calc(50% + var(--look-x)) calc(50% + var(--look-y)) / 104% auto,
+    #263b55;
+}
+@media (prefers-reduced-motion: reduce) {
+  .trail-scene {
+    box-shadow: inset 0 0 4rem #13221b66;
+  }
+}
+.minigame {
+  color: #f7ead1;
+  background: #132b25;
+  border: 1px solid #c39151;
+  border-radius: 1rem;
+  overflow: hidden;
+  font-family: Georgia, serif;
+}
+.minigame header,
+.minigame footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #10211d;
+}
+.minigame header span {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.minigame small {
+  color: #dcb777;
+}
+.minigame-field {
+  position: relative;
+  min-height: 17rem;
+  overflow: hidden;
+  background: linear-gradient(#6d9ca1 0 45%, #2f6449 46% 100%);
+}
+.minigame-raft .minigame-field {
+  background: repeating-linear-gradient(90deg, #1e555e 0 14%, #397b7a 15% 26%, #174750 27% 39%);
+}
+.minigame-target {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  transform: translate(-50%, -50%);
+  border: 0;
+  background: transparent;
+  cursor: crosshair;
+  filter: drop-shadow(0 0.16rem 0.2rem #13241dcc);
+}
+.minigame-target svg {
+  width: 2.25rem;
+  height: 2.25rem;
+  fill: #382619;
+  stroke: #d5a964;
+  stroke-width: 0.7;
+  filter: drop-shadow(0 0.14rem 0.1rem #173127bb);
+}
+.minigame-reticle {
+  position: absolute;
+  z-index: 4;
+  width: 1.8rem;
+  height: 1.8rem;
+  transform: translate(-50%, -50%);
+  border: 1px solid #f7e9c9;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px #2b1c11aa,
+    inset 0 0 0 1px #2b1c11aa;
+  pointer-events: none;
+}
+.minigame-reticle::before,
+.minigame-reticle::after {
+  content: '';
+  position: absolute;
+  background: #f7e9c9;
+  box-shadow: 0 0 0 1px #2b1c11aa;
+}
+.minigame-reticle::before {
+  width: 1px;
+  inset-block: 0.16rem;
+  left: calc(50% - 0.5px);
+}
+.minigame-reticle::after {
+  height: 1px;
+  inset-inline: 0.16rem;
+  top: calc(50% - 0.5px);
+}
+.minigame-target::after {
+  content: '';
+  position: absolute;
+  inset: 0.12rem;
+  border: 1px solid #f6d383aa;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.minigame-target:hover::after,
+.minigame-target:focus-visible::after {
+  opacity: 1;
+}
+.minigame-bank {
+  position: absolute;
+  z-index: 1;
+  inset-block: 0;
+  width: 12%;
+  background: linear-gradient(90deg, #293d2f 10%, #597348 44%, #a78351 100%);
+  box-shadow: inset -0.4rem 0 #d4b47755;
+}
+.minigame-bank-left {
+  left: 0;
+}
+.minigame-bank-right {
+  right: 0;
+  transform: scaleX(-1);
+}
+.minigame-rock {
+  position: absolute;
+  z-index: 2;
+  width: 2.5rem;
+  height: 1.4rem;
+  transform: translate(-50%, -50%);
+  border-radius: 65% 35% 48% 42%;
+  background: #263a37;
+  box-shadow:
+    inset 0.3rem 0.2rem #69736a,
+    0 0.15rem 0.15rem #143d4280;
+}
+.minigame-raft-marker {
+  position: absolute;
+  z-index: 3;
+  bottom: 0.9rem;
+  width: 3.5rem;
+  height: 1.1rem;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 0.3rem 0.3rem;
+  background: repeating-linear-gradient(90deg, #82512c 0 0.65rem, #bd8a4d 0.68rem 1.25rem);
+  box-shadow:
+    0 0.25rem 0 #57371f,
+    0 0.55rem 0.65rem #133c4b88;
+}
+.minigame footer {
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+.minigame button {
+  color: #f8e8c9;
+  background: #634329;
+  border: 1px solid #c39151;
+  border-radius: 0.35rem;
+  padding: 0.45rem 0.65rem;
+  font: inherit;
+  cursor: pointer;
+}
+.minigame footer span:last-of-type {
+  display: flex;
+  gap: 0.4rem;
+}
+.minigame button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.minigame-loading {
+  padding: 1.5rem;
+}

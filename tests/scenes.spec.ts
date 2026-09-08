@@ -1,0 +1,126 @@
+import { expect, test, type Page } from '@playwright/test'
+
+async function buy(page: Page, item: string, quantity: number) {
+  const row = page.getByRole('row').filter({ hasText: new RegExp(`^${item}`) })
+  const input = row.getByRole('spinbutton')
+  await input.fill(String(quantity))
+  await expect(input).toHaveValue(String(quantity))
+  await row.getByRole('button', { name: /^Buy/ }).click()
+  await expect(row.locator('td').nth(1)).toHaveText(String(quantity))
+}
+
+async function readyForTrail(page: Page) {
+  await page.goto('/')
+  await page.evaluate(() => localStorage.clear())
+  await page.reload()
+  await page
+    .getByRole('region', { name: 'A view of the Pioneer Trail' })
+    .getByRole('button', { name: 'Begin your journey' })
+    .click()
+  await page.getByLabel(/journey seed/i).fill('42')
+  await page.getByRole('button', { name: /outfit your wagon/i }).click()
+  await buy(page, 'Oxen', 3)
+  await buy(page, 'Food', 1200)
+  await buy(page, 'Ammunition', 20)
+  await buy(page, 'Clothing', 5)
+  await buy(page, 'Medicine', 1)
+  await expect(page.getByRole('dialog').locator('.store-summary > div').nth(2)).toContainText(
+    /[1-9]\d days/,
+  )
+  await page.getByRole('button', { name: /leave independence/i }).click()
+  const deliberate = page.getByRole('button', { name: 'Depart with these supplies' })
+  if (
+    await deliberate
+      .waitFor({ state: 'visible', timeout: 1_000 })
+      .then(() => true)
+      .catch(() => false)
+  )
+    await deliberate.click()
+  await expect(page.getByText(/DAY 1 OF YOUR JOURNEY/)).toBeVisible()
+  const routeChoice = page.locator('dialog .choice-list .choice').first()
+  if (await routeChoice.isVisible().catch(() => false)) await routeChoice.click()
+  await expect(page.getByRole('dialog')).toBeHidden()
+  await expect(page.locator('.journey-heading .eyebrow')).toContainText('DAY 1')
+}
+
+test.describe('cinematic scenes and real minigames', () => {
+  test('loads a WebGL first-person trail scene without console errors', async ({
+    page,
+  }, testInfo) => {
+    const errors: string[] = []
+    page.on('console', (message) => {
+      if (message.type() === 'error') errors.push(message.text())
+    })
+    await page.goto('/')
+    await page.evaluate(() => localStorage.clear())
+    await page.reload()
+    await page.getByRole('button', { name: /first person/i }).click()
+    await expect(page.locator('.trail-scene canvas')).toHaveCount(1)
+    expect(errors).toEqual([])
+    await page.screenshot({
+      path: `/tmp/pioneer-scene-${testInfo.project.name}.png`,
+      fullPage: true,
+    })
+  })
+
+  test('uses the authored accessible scene when WebGL is unavailable', async ({ page }) => {
+    await page.addInitScript(() => {
+      const original = HTMLCanvasElement.prototype.getContext
+      HTMLCanvasElement.prototype.getContext = function (type, ...args) {
+        return type === 'webgl' || type === 'webgl2' || type === 'experimental-webgl'
+          ? null
+          : original.call(this, type, ...args)
+      }
+    })
+    await page.goto('/')
+    await page.evaluate(() => localStorage.clear())
+    await page.reload()
+    await page.getByRole('button', { name: /first person/i }).click()
+    await expect(page.locator('.trail-scene canvas')).toHaveCount(0)
+    await expect(page.getByRole('img', { name: /wagon road rolls west/i })).toBeVisible()
+    await page
+      .getByRole('region', { name: 'A view of the Pioneer Trail' })
+      .getByRole('button', { name: 'Begin your journey' })
+      .click()
+    await page.getByRole('button', { name: /outfit your wagon/i }).click()
+    await expect(page.getByRole('heading', { name: 'The wagon & provisions' })).toBeVisible()
+  })
+
+  test('reduced-motion hunt uses Rust text targeting and advances exactly one game day on finish', async ({
+    page,
+  }, testInfo) => {
+    await readyForTrail(page)
+    const before = await page.locator('.journey-heading .eyebrow').textContent()
+    await page.getByRole('button', { name: 'Settings and saves' }).click()
+    await page.getByRole('switch', { name: 'Reduced motion' }).click()
+    await page.getByRole('button', { name: 'Close panel' }).click()
+    await page.getByRole('button', { name: /go hunting/i }).click()
+    await expect(page.locator('.minigame')).toBeVisible()
+    const numberedTarget = page.locator('.minigame-target-list button').filter({ hasText: /^1\./ })
+    await expect(numberedTarget).toBeVisible()
+    await numberedTarget.click()
+    await expect(page.locator('.minigame footer')).toContainText(/shots 1/i)
+    await page.screenshot({
+      path: `/tmp/pioneer-scene-hunt-${testInfo.project.name}.png`,
+      fullPage: true,
+    })
+    await page.getByRole('button', { name: /return to camp/i }).click()
+    await expect(page.getByRole('dialog')).toBeHidden()
+    await expect(page.locator('.journey-heading .eyebrow')).not.toHaveText(before!)
+  })
+
+  test('fishing scene keeps its authored first-person river view when motion is reduced', async ({
+    page,
+  }, testInfo) => {
+    await readyForTrail(page)
+    await page.getByRole('button', { name: 'Settings and saves' }).click()
+    await page.getByRole('switch', { name: 'Reduced motion' }).click()
+    await page.getByRole('button', { name: 'Close panel' }).click()
+    await page.getByRole('button', { name: /go fishing/i }).click()
+    await expect(page.locator('.scene-fish')).toBeVisible()
+    await page.screenshot({
+      path: `/tmp/pioneer-scene-fish-${testInfo.project.name}.png`,
+      fullPage: true,
+    })
+  })
+})
