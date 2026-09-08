@@ -1,0 +1,444 @@
+{
+  "date": "2026-09-08T13:52:57.850Z",
+  "build": {
+    "commit": "fce3b5180b8f1495d2858d3350e72d1b096c676b",
+    "dirty": true,
+    "sourceStatus": "M docs/evidence/independent-review.md\n M docs/evidence/visual-review/camp.png\n M docs/evidence/visual-review/companion.png\n M docs/evidence/visual-review/mountains.png\n M docs/evidence/visual-review/ox-front.png\n M docs/evidence/visual-review/rain.png\n M docs/evidence/visual-review/report.json\n M docs/evidence/visual-review/river.png\n M docs/evidence/visual-review/seat-forward.png\n M docs/evidence/visual-review/seat-rear.png\n M docs/evidence/visual-review/snow.png\n M docs/evidence/visual-review/wagon-exterior.png\n M scripts/campaign-walkthrough.mjs\n M scripts/capture-world.mjs\n M scripts/measure-load.mjs\n M scripts/measure-ride.mjs\n M src/game/world/terrain.ts\n M src/game/world/world.test.ts\n?? docs/evidence/campaign-attempt-2/\n?? docs/evidence/campaign-resumed-2026-09-08/\n?? docs/evidence/performance/scheduling-investigation.md\n?? docs/evidence/trader-return.json\n?? docs/evidence/visual-review/camp-night.png\n?? docs/evidence/visual-review/fog.png\n?? docs/evidence/visual-review/ox-hoof-contact.png\n?? docs/evidence/visual-review/ox-mountain-contact.png\n?? docs/evidence/visual-review/ox-side.png\n?? docs/evidence/visual-review/ride-rear-stopped.png\n?? docs/evidence/visual-review/river-daylight.png\n?? docs/evidence/visual-review/wildlife-deer.png\n?? docs/evidence/visual-review/wildlife-rabbit.png\n?? scripts/served-build.mjs",
+    "distSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+    "files": [
+      {
+        "file": "_headers",
+        "bytes": 197,
+        "sha256": "17c27f16152cc4999dcbaae81bd92104156cd0032d2f5d380fb39c4bb4bb42cc"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-italic-BLh7T8o8.woff",
+        "bytes": 32888,
+        "sha256": "337d07118277acbf5a0eb19c602aaf917b2485585360f2c7139ce42d9d4e6cc1"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-italic-Dc_OZ8oc.woff2",
+        "bytes": 23660,
+        "sha256": "e48e58027030df56869b795ca6f19b7012158275f7ad7cde1900b4a0b68d02e2"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+        "bytes": 22876,
+        "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-400-normal-B7YtguxJ.woff",
+        "bytes": 30980,
+        "sha256": "b926f33f9d3d5cb64e639b8fe9ad5380560a63f3e7a29d212f2b80a2d22ec051"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+        "bytes": 23312,
+        "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+      },
+      {
+        "file": "assets/cormorant-garamond-latin-500-normal-zIXX3Q-H.woff",
+        "bytes": 31372,
+        "sha256": "314ee3edd5ddcdef5cf2374c1126b8be9f7f1ebd6c5c66a23c237f3b836a3ec1"
+      },
+      {
+        "file": "assets/dm-sans-latin-400-normal-BwCSEQnW.woff",
+        "bytes": 18356,
+        "sha256": "38702875fe179437d200e7ba6f7fab4d497ffe48117ef332029b2081751186ad"
+      },
+      {
+        "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+        "bytes": 14200,
+        "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+      },
+      {
+        "file": "assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+        "bytes": 14304,
+        "sha256": "19bf1984956517c35c2bd35b6cdedac12a21d6fcd3596c614ecdfb88b648909d"
+      },
+      {
+        "file": "assets/dm-sans-latin-500-normal-Dr3UlScf.woff",
+        "bytes": 18520,
+        "sha256": "7deb957e430b780ee3272d801af4f9f2211b1330ec40a312a8f25309eacb4034"
+      },
+      {
+        "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+        "bytes": 14144,
+        "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+      },
+      {
+        "file": "assets/dm-sans-latin-600-normal-BmdmIIQ2.woff",
+        "bytes": 18320,
+        "sha256": "e7351257e49400eff05aca30a2007289194a900860d30c30770d8b8732897564"
+      },
+      {
+        "file": "assets/index-C5Tcy4bJ.js",
+        "bytes": 3871460,
+        "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+      },
+      {
+        "file": "assets/index-MwlfJe0p.css",
+        "bytes": 23999,
+        "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+      },
+      {
+        "file": "assets/licenses/CORMORANT-GARAMOND-OFL.txt",
+        "bytes": 4504,
+        "sha256": "732f37009943e7f4378cf37113c9bcc4716af002a8583511aa91ed5d37683e73"
+      },
+      {
+        "file": "assets/licenses/DM-SANS-OFL.txt",
+        "bytes": 4502,
+        "sha256": "6fbd040a29c2037a765dfb9f2561e9965b5c95c6dcb5dce516089d63d5f17af7"
+      },
+      {
+        "file": "assets/licenses/LUCIDE-ISC-MIT.txt",
+        "bytes": 3208,
+        "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+      },
+      {
+        "file": "assets/licenses/ORIGINAL-ASSETS-MIT.txt",
+        "bytes": 1092,
+        "sha256": "2b95f2ed41687da0593a607cf3bda9085579a7382a502326cbc13cc9757791b4"
+      },
+      {
+        "file": "assets/licenses/RAPIER-APACHE-2.0.txt",
+        "bytes": 11343,
+        "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+      },
+      {
+        "file": "assets/licenses/REACT-DOM-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "file": "assets/licenses/REACT-MIT.txt",
+        "bytes": 1088,
+        "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+      },
+      {
+        "file": "assets/licenses/THREE-MIT.txt",
+        "bytes": 1081,
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "file": "assets/manifest.json",
+        "bytes": 15265,
+        "sha256": "ffacfa51562e9f622e65b040d4ba64763b8c68369128f649ebbcd2c5866905f3"
+      },
+      {
+        "file": "favicon.svg",
+        "bytes": 257,
+        "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+      },
+      {
+        "file": "index.html",
+        "bytes": 724,
+        "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+      },
+      {
+        "file": "scenes/camp.webp",
+        "bytes": 140648,
+        "sha256": "1a0d76b89dc6ad150d9b6a54161a5fbc08d535df3f7c9a51a65dd8e9f75df0bf"
+      },
+      {
+        "file": "scenes/fish.webp",
+        "bytes": 333648,
+        "sha256": "35b31007280d43db63f28fc917d26341c506603156412ea3e81cf2d9eacacf01"
+      },
+      {
+        "file": "scenes/repair.webp",
+        "bytes": 182868,
+        "sha256": "738b2dd5d09261f92ecae5d6ed7ea24812b0fe3528e355cdec4288be907eea90"
+      },
+      {
+        "file": "scenes/river.webp",
+        "bytes": 260144,
+        "sha256": "10573dd2636566df68f0ff7e43bb6916e8506711fa9faa4456d6b138164371d1"
+      },
+      {
+        "file": "scenes/snow.webp",
+        "bytes": 162108,
+        "sha256": "0585399582541e4acf59ede3d485bf0774757c04351eb276ed3c2998f63781a5"
+      },
+      {
+        "file": "scenes/talk.webp",
+        "bytes": 113184,
+        "sha256": "4b81de95a97afc21f6bf2b2583ca4237ba19a5602276dcaba4b1309dc09d1d44"
+      },
+      {
+        "file": "scenes/trail.webp",
+        "bytes": 171428,
+        "sha256": "51b6c593a7b9dd25826a025881cd4f7361c2f84e5e544cee582bccbb132b172d"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+        "bytes": 2152612,
+        "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine_bg.wasm.d.ts",
+        "bytes": 1689,
+        "sha256": "e712fbd275354b6d00f496977768573c36c83021a4e9b077300008281f8cba89"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine.d.ts",
+        "bytes": 3426,
+        "sha256": "0f4fccf19553599391ad0d7f753481c93478c881fbabe81dbac3e6963e427dbd"
+      },
+      {
+        "file": "wasm/pioneer_trail_web_engine.js",
+        "bytes": 15385,
+        "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+      }
+    ]
+  },
+  "fixture": "Legal seed11 departed WASM campaign; isolated Hills region8 (world seed19) and spawn/captured-contact poses. Movement uses normal keys.",
+  "runs": [
+    {
+      "before": {
+        "x": 0.15870369284219163,
+        "z": 33.93221768321818,
+        "yaw": 0.12208333333333499,
+        "speed": 0,
+        "y": 0.31916020769760617
+      },
+      "after": {
+        "x": 4.220432995389866,
+        "z": 74.07989193575392,
+        "yaw": -0.019583333333331725,
+        "speed": 6.24,
+        "y": 1.3052439838364374
+      },
+      "seconds": 7.798,
+      "collisions": 0,
+      "served": {
+        "localBuildSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+        "responses": [
+          {
+            "url": "http://localhost:4173/?evidence=1",
+            "status": 200,
+            "matchesDist": true,
+            "file": "index.html",
+            "expectedSha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650",
+            "bytes": 724,
+            "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-MwlfJe0p.css",
+            "expectedSha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d",
+            "bytes": 23999,
+            "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-C5Tcy4bJ.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-C5Tcy4bJ.js",
+            "expectedSha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5",
+            "bytes": 3871460,
+            "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+          },
+          {
+            "url": "http://localhost:4173/favicon.svg",
+            "status": 200,
+            "matchesDist": true,
+            "file": "favicon.svg",
+            "expectedSha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d",
+            "bytes": 257,
+            "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "expectedSha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2",
+            "bytes": 22876,
+            "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine.js",
+            "expectedSha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff",
+            "bytes": 15385,
+            "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+            "expectedSha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5",
+            "bytes": 2152612,
+            "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "expectedSha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8",
+            "bytes": 23312,
+            "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "expectedSha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+            "bytes": 14144,
+            "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "expectedSha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+            "bytes": 14200,
+            "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+          }
+        ],
+        "missing": [],
+        "pass": true,
+        "verifiedAt": "2026-09-08T13:53:08.119Z"
+      },
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2)",
+        "width": 1280,
+        "height": 720,
+        "quality": "low"
+      }
+    },
+    {
+      "before": {
+        "x": 0,
+        "z": 20,
+        "yaw": 0,
+        "speed": 0,
+        "y": 0.2149830162525177
+      },
+      "after": {
+        "x": 4.309300559496863,
+        "z": 73.57110048721235,
+        "yaw": -0.013333333333333358,
+        "speed": 6.4,
+        "y": 1.2965565058437987
+      },
+      "seconds": 9.953,
+      "collisions": 0,
+      "served": {
+        "localBuildSha256": "ff1960aff3e1933b74200f0fb7d21c37ea34f13148af6275b66460e7de5f8b50",
+        "responses": [
+          {
+            "url": "http://localhost:4173/?evidence=1",
+            "status": 200,
+            "matchesDist": true,
+            "file": "index.html",
+            "expectedSha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650",
+            "bytes": 724,
+            "sha256": "02dfedd3111477a91775b771a8228b66e032f3b56f1a815fa27724798d966650"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-MwlfJe0p.css",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-MwlfJe0p.css",
+            "expectedSha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d",
+            "bytes": 23999,
+            "sha256": "793d87210a7e1370102150224f3135121cb86fd1fa58f1872e8181b4e388322d"
+          },
+          {
+            "url": "http://localhost:4173/assets/index-C5Tcy4bJ.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/index-C5Tcy4bJ.js",
+            "expectedSha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5",
+            "bytes": 3871460,
+            "sha256": "e478fdb169dc8db50aca00cc247fd7f844352b4ac8551e07738bd69d3a911ba5"
+          },
+          {
+            "url": "http://localhost:4173/favicon.svg",
+            "status": 200,
+            "matchesDist": true,
+            "file": "favicon.svg",
+            "expectedSha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d",
+            "bytes": 257,
+            "sha256": "b69001f44e5e31d58d67b2f74d9a5278829178c807d0cd79ca802ca53594a06d"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+            "expectedSha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2",
+            "bytes": 22876,
+            "sha256": "8048ac209bec741e1c29cd0cfac5aac1c0c2ba8c3ddbd4a58fa9bd92ef5c63c2"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine.js",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine.js",
+            "expectedSha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff",
+            "bytes": 15385,
+            "sha256": "640cc7af719e8267432b054b7d2ceb636b22e484aaf9e853b9855987202672ff"
+          },
+          {
+            "url": "http://localhost:4173/wasm/pioneer_trail_web_engine_bg.wasm",
+            "status": 200,
+            "matchesDist": true,
+            "file": "wasm/pioneer_trail_web_engine_bg.wasm",
+            "expectedSha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5",
+            "bytes": 2152612,
+            "sha256": "8f583dff9a6362bff7769a219e523e04a560e2dbf38e3b5672d38604a74750d5"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+            "expectedSha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+            "bytes": 14144,
+            "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120"
+          },
+          {
+            "url": "http://localhost:4173/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+            "expectedSha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+            "bytes": 14200,
+            "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006"
+          },
+          {
+            "url": "http://localhost:4173/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "status": 200,
+            "matchesDist": true,
+            "file": "assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+            "expectedSha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8",
+            "bytes": 23312,
+            "sha256": "8197bf53615ddc8c423f444c7f0eec63b7fa0ba093fcfbec60dfdd28429b0fc8"
+          }
+        ],
+        "missing": [],
+        "pass": true,
+        "verifiedAt": "2026-09-08T13:53:19.853Z"
+      },
+      "renderer": {
+        "renderer": "ANGLE (Mesa, AGX G13/G14, OpenGL ES 3.2)",
+        "width": 1280,
+        "height": 720,
+        "quality": "low"
+      }
+    }
+  ],
+  "pass": true
+}

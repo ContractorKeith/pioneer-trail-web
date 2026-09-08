@@ -235,6 +235,72 @@ it('maps campaign terrain names and produces different region relief', () => {
   expect(plains.heightAt(-65, 200) - plains.heightAt(0, 200)).toBeLessThan(5)
 })
 
+it('can leave the captured Hills road contact and drive the sampled trail from spawn', async () => {
+  await initPhysics()
+  const world = createWorld(new THREE.Scene(), {
+    seed: 19,
+    terrain: 'Hills',
+    river: false,
+    quality: 'low',
+  })
+  const idle = { forward: 1, turn: 0, strafe: 0, brake: false, sprint: false }
+  const starts = [
+    { x: 0.15870369284219163, z: 33.93221768321818, yaw: 0.12208333333333499, speed: 0 },
+    { x: 0, z: 20, yaw: 0, speed: 0 },
+  ]
+  const trail = Array.from({ length: 24 }, (_, i) => ({ x: world.trailX(i * 10), z: i * 10 }))
+  try {
+    for (const start of starts) {
+      const physics = new MotionWorld(world)
+      let pose = { ...start },
+        turn = 0
+      physics.setWagon(pose)
+      try {
+        for (let tick = 0; tick < 60 * 45 && pose.z < 225; tick++) {
+          // Match the normal-input walkthrough's 200ms road observations and lookahead.
+          if (tick % 12 === 0) {
+            const target = trail.reduce((a, b) =>
+              Math.abs(b.z - (pose.z + 14)) < Math.abs(a.z - (pose.z + 14)) ? b : a,
+            )
+            const desired = Math.atan2(target.x - pose.x, Math.max(8, target.z - pose.z))
+            const delta = Math.atan2(Math.sin(desired - pose.yaw), Math.cos(desired - pose.yaw))
+            turn = Math.abs(delta) > 0.04 ? Math.sign(delta) : 0
+          }
+          pose = physics.drive(pose, { ...idle, turn }, 1 / 60)
+          expect(physics.lastObstacle, `Road contact from ${JSON.stringify(start)}`).toBeNull()
+        }
+        expect(pose.z).toBeGreaterThan(225)
+        expect(physics.collisions).toBe(0)
+      } finally {
+        physics.dispose()
+      }
+    }
+  } finally {
+    world.dispose()
+  }
+})
+
+it.each(
+  ['Plains', 'Forest', 'Hills', 'Mountains', 'Desert'].flatMap((terrain) =>
+    [11, 17, 19, 50, 64, 70].map((seed) => ({ terrain, seed })),
+  ),
+)('keeps the full rock footprints outside the road in $terrain seed $seed', ({ terrain, seed }) => {
+  const world = createWorld(new THREE.Scene(), { terrain, seed, river: false, quality: 'low' })
+  try {
+    const rocks = world.obstacles.filter((obstacle) => obstacle.id.startsWith('rock-'))
+    expect(rocks.length).toBeGreaterThan(0)
+    for (const rock of rocks) {
+      // Check the entire longitudinal footprint, including bends away from its center sample.
+      for (let z = rock.z - rock.halfZ; z <= rock.z + rock.halfZ; z += 0.1) {
+        const distance = Math.abs(rock.x - world.trailX(z)) - rock.halfX
+        expect(distance, `${rock.id} intrudes into the road at z=${z}`).toBeGreaterThanOrEqual(4)
+      }
+    }
+  } finally {
+    world.dispose()
+  }
+})
+
 it('preserves saved walkable space, visible solids and wildlife across graphics presets', async () => {
   await initPhysics()
   const recipes = []
@@ -282,7 +348,8 @@ it('preserves saved walkable space, visible solids and wildlife across graphics 
       world.dispose()
     }
   }
-  expect(recipes[0].obstacles).toHaveLength(318)
+  // Seed 18's road-overlapping rock-77 was removed; retained solids still match at every preset.
+  expect(recipes[0].obstacles).toHaveLength(317)
   expect(recipes[1]).toEqual(recipes[0])
   expect(recipes[2]).toEqual(recipes[0])
 }, 15_000)

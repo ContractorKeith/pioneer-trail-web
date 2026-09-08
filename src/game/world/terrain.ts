@@ -416,8 +416,10 @@ export function createLandscape(
     )
   }
   stoneGeo.computeVertexNormals()
+  stoneGeo.computeBoundingBox()
   mesh(stones, stoneGeo, m.rock)
-  const rockTransforms: THREE.Matrix4[] = []
+  const rockTransforms: THREE.Matrix4[] = [],
+    rockBounds = new THREE.Box3()
   for (let i = 0; i < 180; i++) {
     const z = -25 + random() * 300,
       x = -86 + random() * 172
@@ -428,6 +430,25 @@ export function createLandscape(
     dummy.rotation.set(0.1, random() * 6.28, 0.12)
     dummy.scale.set(scale, scale * 0.68, scale * 0.86)
     dummy.updateMatrix()
+    if (scale > 0.65) {
+      // Check the visible rock and its collider after consuming the original RNG draws.
+      rockBounds.copy(stoneGeo.boundingBox!).applyMatrix4(dummy.matrix)
+      const minX = Math.min(rockBounds.min.x, x - scale * 0.61),
+        maxX = Math.max(rockBounds.max.x, x + scale * 0.61),
+        minZ = Math.min(rockBounds.min.z, z - scale * 0.55),
+        maxZ = Math.max(rockBounds.max.z, z + scale * 0.55),
+        samples = Math.ceil((maxZ - minZ) * 4)
+      let blocksRoad = false
+      for (let sample = 0; sample <= samples; sample++) {
+        const roadX = field.trailX(THREE.MathUtils.lerp(minZ, maxZ, sample / samples))
+        // Preserve the 4m road clearance along bends; 10cm covers curvature between samples.
+        if (minX < roadX + 4.1 && maxX > roadX - 4.1) {
+          blocksRoad = true
+          break
+        }
+      }
+      if (blocksRoad) continue
+    }
     rockTransforms.push(dummy.matrix.clone())
     if (scale > 0.65)
       obstacles.push({
