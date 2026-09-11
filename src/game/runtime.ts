@@ -212,6 +212,10 @@ export class GameRuntime {
             })),
           }),
           renderer: () => this.rendererInfo(),
+          forceNight: () => {
+            this.elapsed = (Math.PI * 1.5 - 0.65) / 0.009
+            this.renderDirty = true
+          },
         },
       })
     }
@@ -445,6 +449,10 @@ export class GameRuntime {
     }
     const wagon = this.spatial.wagon
     if (this.spatial.mode === 'riding') {
+      if (this.atRiverHalt()) {
+        this.open('river')
+        return
+      }
       if (Math.abs(wagon.speed) > 0.2) {
         this.callbacks.onNotice('Hold Space to stop before getting down.')
         return
@@ -465,6 +473,10 @@ export class GameRuntime {
       return
     }
     const p = this.spatial.player
+    if (this.inRiverInspectionArea(p)) {
+      this.open('river')
+      return
+    }
     if (Math.hypot(p.x - wagon.x, p.z - wagon.z) < 4.5) {
       this.spatial.mode = 'riding'
       this.spatial.player.yaw = wagon.yaw
@@ -501,10 +513,18 @@ export class GameRuntime {
     const p = this.spatial.mode === 'riding' ? this.spatial.wagon : this.spatial.player
     if (this.spatial.mode === 'riding') {
       this.interaction = {
-        kind: 'dismount',
-        label: Math.abs(this.spatial.wagon.speed) > 0.2 ? 'Space · Stop the wagon' : 'E · Get down',
+        kind: this.atRiverHalt() ? 'water' : 'dismount',
+        label: this.atRiverHalt()
+          ? 'E · Inspect the crossing'
+          : Math.abs(this.spatial.wagon.speed) > 0.2
+            ? 'Space · Stop the wagon'
+            : 'E · Get down',
         distance: 0,
       }
+      return
+    }
+    if (this.inRiverInspectionArea(p)) {
+      this.interaction = { kind: 'water', label: 'E · Inspect the crossing', distance: 0 }
       return
     }
     let closest: RuntimeSnapshot['interaction'] =
@@ -526,6 +546,36 @@ export class GameRuntime {
         closest = { kind: location.kind, label: `E · ${location.label}`, distance: d }
     }
     this.interaction = closest
+  }
+  /** The river halt is a stable interaction zone, rather than a single scenery marker. */
+  private atRiverHalt() {
+    const river = this.world.river
+    return (
+      !!river &&
+      phase(this.campaign.view().status) === 'AwaitingRiver' &&
+      Math.abs(this.spatial.wagon.speed) <= 0.2 &&
+      Math.abs(this.spatial.wagon.z - (river.startZ - 12)) <= 22
+    )
+  }
+  private inRiverInspectionArea(position: { x: number; z: number }) {
+    const river = this.world.river
+    if (!river || phase(this.campaign.view().status) !== 'AwaitingRiver') return false
+    const wagon = this.spatial.wagon
+    return (
+      Math.abs(position.x - wagon.x) <= 20 &&
+      position.z >= wagon.z - 7 &&
+      position.z <= river.startZ + 5
+    )
+  }
+  private isBlockedRiverWade(position: { x: number; z: number }) {
+    const river = this.world.river
+    return (
+      !!river &&
+      phase(this.campaign.view().status) === 'AwaitingRiver' &&
+      position.z > river.startZ - 1 &&
+      position.z < river.endZ + 2 &&
+      Math.abs(position.x - this.world.trailX(position.z)) < 110
+    )
   }
   private frame = (now: number) => {
     if (this.disposed) return
@@ -665,8 +715,12 @@ export class GameRuntime {
       if (pose.z > this.world.length - 14 && canTravel) this.transition(false)
     } else {
       const p = this.physics.walk({ ...this.spatial.player, speed: 0 }, this.input.movement(), dt)
-      this.spatial.player.x = p.x
-      this.spatial.player.z = p.z
+      if (this.isBlockedRiverWade(p)) {
+        this.callbacks.onNotice('The wagon cannot follow on foot. Return and inspect the crossing (E).')
+      } else {
+        this.spatial.player.x = p.x
+        this.spatial.player.z = p.z
+      }
     }
     if (this.saveElapsed > 2) {
       this.saveElapsed = 0

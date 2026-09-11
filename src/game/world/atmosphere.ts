@@ -275,7 +275,7 @@ export function createAtmosphere(
   root.add(sun, sun.target)
   const hemi = new THREE.HemisphereLight('#a9c4db', '#5d6040', 1.35)
   root.add(hemi)
-  const moon = new THREE.DirectionalLight('#90b3ed', 0.04)
+  const moon = new THREE.DirectionalLight('#9dbce9', 0.28)
   moon.position.set(30, 60, -20)
   root.add(moon)
   const fog = new THREE.FogExp2('#c4cbbd', 0.0038)
@@ -381,9 +381,10 @@ export function createAtmosphere(
     sun.target.position.z += 12
     sun.intensity = (weather === 'clear' ? 2.5 : 0.85) * day
     sun.color.set(weather === 'clear' && light < 0.7 ? '#ffc38b' : '#fff0d5')
-    hemi.intensity = 0.17 + day * (weather === 'clear' ? 1.35 : 0.78)
-    moon.intensity = (1 - day) * 0.32
-    scene.environmentIntensity = 0.12 + day * 0.42
+    // A bright moon keeps the wagon, oxen and trail legible without washing out the stars.
+    hemi.intensity = 0.42 + day * (weather === 'clear' ? 0.93 : 0.36)
+    moon.intensity = (1 - day) * 0.7
+    scene.environmentIntensity = 0.28 + day * 0.27
     starsMaterial.opacity = (1 - day) * (1 - storm.value)
     fog.color
       .copy(nightFog)
