@@ -12,6 +12,7 @@ export interface OverlayProps {
   view: GameView
   onClose: () => void
   command: (command: GameCommand) => unknown
+  onAction: (action: 'dismount') => void
   onNewJourney: () => void
   settings: React.ReactNode
   activity: {
@@ -59,7 +60,7 @@ export function GameOverlay(props: OverlayProps) {
       {overlay === 'camp' && <Camp view={view} command={command} activity={props.activity} />}
       {overlay === 'trader' && <Trader view={view} command={command} />}
       {overlay === 'dialogue' && <Conversation view={view} command={command} />}
-      {overlay === 'river' && <River view={view} command={command} />}
+      {overlay === 'river' && <River view={view} command={command} onAction={props.onAction} />}
       {overlay === 'encounter' && <Encounter view={view} command={command} />}
       {overlay === 'route' && <Route view={view} command={command} />}
       {overlay === 'ending' && <Ending view={view} onNewJourney={props.onNewJourney} />}
@@ -100,16 +101,13 @@ function Journal({ view }: { view: GameView }) {
   )
 }
 function Inventory({ view }: { view: GameView }) {
-  const outfitting = phase(view) === 'Outfitting'
   return (
     <>
-      {!outfitting && (
-        <div className="resource-strip">
-          <Metric label="Cash" value={money(view.cash_cents)} />
-          <Metric label="Load" value={`${view.weight_lbs.toLocaleString()} lb`} />
-          <Metric label="Food" value={`${view.inventory.food ?? 0} lb`} />
-        </div>
-      )}
+      <div className="resource-strip">
+        <Metric label="Cash" value={money(view.cash_cents)} />
+        <Metric label="Load" value={`${view.weight_lbs.toLocaleString()} lb`} />
+        <Metric label="Food" value={`${view.inventory.food ?? 0} lb`} />
+      </div>
       <ul className="inventory-list">
         {Object.entries(view.inventory)
           .sort(([a], [b]) => a.localeCompare(b))
@@ -494,7 +492,15 @@ function Conversation({
     </>
   )
 }
-function River({ view, command }: { view: GameView; command: (command: GameCommand) => void }) {
+function River({
+  view,
+  command,
+  onAction,
+}: {
+  view: GameView
+  command: (command: GameCommand) => void
+  onAction: (action: 'dismount') => void
+}) {
   const river = view.river
   if (!river) return <Empty icon={MapPin} text="The crossing is no longer ahead." />
   return (
@@ -544,6 +550,11 @@ function River({ view, command }: { view: GameView; command: (command: GameComma
           )
         })}
       </div>
+      {phase(view) === 'AwaitingRiver' && (
+        <button className="quiet-action" onClick={() => onAction('dismount')}>
+          Get down and look around
+        </button>
+      )}
     </>
   )
 }

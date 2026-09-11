@@ -123,12 +123,16 @@ async function inspectRiver(page: Page) {
   await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
 }
 
-test('R05 driver discovers, starts, and commits one river crossing from the halted wagon', async ({ page }) => {
+test('R05 driver discovers, starts, and commits one river crossing from the halted wagon', async ({
+  page,
+}) => {
   await restore(page, bankApproach((await fixture('river')).raw))
   await inspectRiver(page)
-  await page.screenshot({ path: 'docs/evidence/visual-review/crossing-prompt-after.png' })
   const before = await state(page)
-  await page.getByRole('button', { name: /^(Ford|Caulk)/ }).first().click()
+  await page
+    .getByRole('button', { name: /^(Ford|Caulk)/ })
+    .first()
+    .click()
   await expect.poll(async () => (await state(page)).activity?.kind).toBe('crossing')
   await expect.poll(async () => (await state(page)).mode).toBe('riding')
   await page.keyboard.press('x')
@@ -138,17 +142,29 @@ test('R05 driver discovers, starts, and commits one river crossing from the halt
   expect(phase(after.view)).toBe('AwaitingRiver')
 })
 
-test('R05 a driver can reboard beside the bank before inspecting from the seat', async ({ page }) => {
-  const outer = JSON.parse(bankApproach((await fixture('river')).raw))
-  outer.spatial.mode = 'walking'
-  outer.spatial.player = { x: -3, z: 80, yaw: 0, pitch: 0 }
-  await restore(page, JSON.stringify(outer))
+test('R05 driver can get down and reboard beside the halted wagon before inspecting from the seat', async ({
+  page,
+}) => {
+  await restore(page, bankApproach((await fixture('river')).raw))
   await resume(page)
+  await page.keyboard.press('e')
+  await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Get down and look around', exact: true }).click()
+  await expect.poll(async () => (await state(page)).mode).toBe('walking')
   await expect(page.getByRole('button', { name: /Board the wagon/ })).toBeVisible()
   await page.keyboard.press('e')
   await expect.poll(async () => (await state(page)).mode).toBe('riding')
   await page.keyboard.press('e')
   await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
+})
+
+test('R05 nearby locations win over the river inspection band on foot', async ({ page }) => {
+  const outer = JSON.parse(bankApproach((await fixture('river')).raw))
+  outer.spatial.mode = 'walking'
+  outer.spatial.player = { x: 8.4, z: 28.4, yaw: 0, pitch: 0 }
+  await restore(page, JSON.stringify(outer))
+  await resume(page)
+  await expect.poll(async () => (await state(page)).interaction?.label).toBe('E · Trail trader')
 })
 
 test('R05 Wait costs a camp day and food while keeping the wagon at the riverbank', async ({
