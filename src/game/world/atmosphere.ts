@@ -381,10 +381,11 @@ export function createAtmosphere(
     sun.target.position.z += 12
     sun.intensity = (weather === 'clear' ? 2.5 : 0.85) * day
     sun.color.set(weather === 'clear' && light < 0.7 ? '#ffc38b' : '#fff0d5')
-    // A bright moon keeps the wagon, oxen and trail legible without washing out the stars.
-    hemi.intensity = 0.42 + day * (weather === 'clear' ? 1.10 : 0.53)
-    moon.intensity = (1 - day) * 0.7
-    scene.environmentIntensity = 0.28 + day * 0.26
+    // Keep the original daylight values intact; the legibility lift fades out before dawn.
+    const nightBoost = 1 - THREE.MathUtils.smoothstep(day, 0, 0.35)
+    hemi.intensity = 0.17 + day * (weather === 'clear' ? 1.35 : 0.78) + 0.25 * nightBoost
+    moon.intensity = (1 - day) * 0.32 + 0.38 * nightBoost
+    scene.environmentIntensity = 0.12 + day * 0.42 + 0.16 * nightBoost
     starsMaterial.opacity = (1 - day) * (1 - storm.value)
     fog.color
       .copy(nightFog)
