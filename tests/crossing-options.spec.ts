@@ -13,6 +13,7 @@ import {
   restore,
   resume,
   state,
+  world,
 } from './world.helpers'
 
 const guideReady = init({
@@ -184,7 +185,8 @@ test('R03/R05 Columbia route selection launches a physical raft run to the endin
   await expect.poll(async () => (await state(page)).view.active_minigame?.kind).toBe('Raft')
   await page.getByRole('button', { name: 'Close panel' }).click()
   await resume(page)
-  await driveTo(page, 0, 80)
+  const river = (await world(page)).river!
+  await driveTo(page, 0, river.startZ - 12)
   await holdUntil(page, 'Space', (s) => s.speed === 0, {
     timeout: gameplayTimeout(3000),
     message: 'Stop the wagon through its brake control',

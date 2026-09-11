@@ -317,6 +317,7 @@ export async function walkTo(page: Page, x: number, z: number) {
 
 export type WorldObservation = {
   locations: Array<{ id: string; position: [number, number, number]; radius: number }>
+  river: { startZ: number; endZ: number } | null
   wildlife: Array<{
     id: string
     animal: string

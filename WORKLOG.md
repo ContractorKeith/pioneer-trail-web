@@ -7,3 +7,10 @@
 - Checks: Headed test:dev passed 8/8. Headed test:e2e completed 77/92; its preview build was stale for the first run, and the source-specific river tests remain incompatible with the committed seat-side crossing flow. cargo test, test:engine, build, lint, test:types, test:assets, and npm test passed.
 - Remaining: A matching main night-before capture needs an explicit main-compatible fixture; headed e2e source test updates remain separate follow-up work.
 - Next: Resolve the remaining production browser-suite test expectations before merging.
+
+### 2026-09-11 10:22 EDT - Seated-crossing browser-suite alignment
+
+- Outcome: Aligned river tests with seat-side crossing interaction, moved fishing evidence to the permanent stream bank, and made a selected Columbia raft launch from the wagon seat at its river launch point.
+- Checks: Headed Playwright passed 92/92 (46 Chromium, 46 Firefox); lint, test types, and 269 Vitest tests passed.
+- Remaining: A matching `main` night-before evidence capture remains unavailable because that revision lacks the test-only night hook.
+- Next: None.

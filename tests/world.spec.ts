@@ -11,7 +11,6 @@ import {
   start,
   state,
   walkTo,
-  world,
   WORLD_KEY,
 } from './world.helpers'
 
@@ -104,11 +103,7 @@ for (const method of ['Ferry', 'Caulk'] as const)
       message: 'Stop the wagon through its brake control',
     })
     await expect.poll(async () => (await state(page)).speed).toBe(0)
-    await page.keyboard.press('e')
-    await expect.poll(async () => (await state(page)).mode).toBe('walking')
-    await walkTo(page, -3, 94)
-    const bank = (await world(page)).locations.find((l) => l.id === 'riverbank')!
-    await walkTo(page, bank.position[0], 94)
+    await expect(page.getByRole('button', { name: /Inspect the crossing/ })).toBeVisible()
     await page.keyboard.press('e')
     await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
     const before = (await state(page)).view

@@ -39,25 +39,20 @@ async function savedCast(page: Page): Promise<{ castX: number; castZ: number }> 
   })
 }
 
-test('fishing casts a visible target from the crossing bank and preserves it through reload', async ({
+test('fishing casts a visible target from the stream bank and preserves it through reload', async ({
   page,
 }) => {
   const outer = JSON.parse((await fixture('river')).raw)
-  outer.spatial.wagon = { x: 0, z: 80, yaw: 0, speed: 0 }
-  outer.spatial.player = { x: -3, z: 80, yaw: 0, pitch: 0 }
-  outer.spatial.frontierZ = 80
+  outer.spatial.wagon = { x: 0, z: 20, yaw: 0, speed: 0 }
+  outer.spatial.player = { x: -3, z: 20, yaw: 0, pitch: 0 }
+  outer.spatial.frontierZ = 20
   await restore(page, JSON.stringify(outer))
   await resume(page)
-  await hold(page, 'w', 800)
-  await holdUntil(page, 'Space', (s) => s.speed === 0, {
-    timeout: gameplayTimeout(3000),
-    message: 'Stop the wagon through its brake control',
-  })
   await page.keyboard.press('e')
   await expect.poll(async () => (await state(page)).mode).toBe('walking')
-  await walkTo(page, -3, 94)
-  const bank = (await world(page)).locations.find((location) => location.id === 'riverbank')!
-  await walkTo(page, bank.position[0], 94)
+  await walkTo(page, -3, 34)
+  const bank = (await world(page)).locations.find((location) => location.id === 'fishing-water')!
+  await walkTo(page, bank.position[0], bank.position[2])
   await expect.poll(async () => (await state(page)).interaction?.kind).toBe('water')
 
   const beforeCast = await state(page)
@@ -70,12 +65,9 @@ test('fishing casts a visible target from the crossing bank and preserves it thr
   const observed = await fishingObservation(page)
   const target = observed.fishingTarget
   expect(target).not.toBeNull()
-  expect(observed.river).not.toBeNull()
   const [x, , z] = target!
-  expect(z).toBeGreaterThan(observed.river!.startZ)
-  expect(z).toBeLessThan(observed.river!.endZ)
-  expect(Math.abs(x - bank.position[0])).toBeLessThan(0.5)
-  expect(z).toBeGreaterThan(90)
+  expect(x).toBeCloseTo(bank.position[0] + 4)
+  expect(Math.abs(z - bank.position[2])).toBeLessThan(8)
   const cast = await savedCast(page)
   expect(cast.castX).toBeCloseTo(x)
   expect(cast.castZ).toBeCloseTo(z)
