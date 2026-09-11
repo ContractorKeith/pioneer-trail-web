@@ -23,6 +23,12 @@ export interface OutfitPlan {
   unfilledItemIds: string[]
 }
 
+export interface OutfitPlanOverrides {
+  cashCents?: number
+  partySize?: number
+  dailyFoodLbs?: number
+}
+
 const WAGON_CAPACITY_LBS = 2_400
 
 const presets: Record<
@@ -103,13 +109,19 @@ function availableQuantity(
 }
 
 /** Quotes the live store catalogue only; the Rust engine remains the purchase authority. */
-export function planOutfit(view: GameView, preset: OutfitPreset): OutfitPlan {
+export function planOutfit(
+  view: GameView,
+  preset: OutfitPreset,
+  overrides: OutfitPlanOverrides = {},
+): OutfitPlan {
   const definition = presets[preset]
   const inventory = { ...view.inventory }
-  let cashCents = view.cash_cents
+  const startingCashCents = overrides.cashCents ?? view.cash_cents
+  let cashCents = startingCashCents
   let loadLbs = view.weight_lbs
   const purchases: PlannedPurchase[] = []
-  const partySize = view.party.filter((person) => person.alive).length
+  const partySize = overrides.partySize ?? view.party.filter((person) => person.alive).length
+  const dailyFoodLbs = overrides.dailyFoodLbs ?? view.daily_food_lbs
 
   for (const [itemId, target] of definition.targets(partySize)) {
     const item = view.items.find((entry) => entry.id === itemId)
@@ -152,12 +164,12 @@ export function planOutfit(view: GameView, preset: OutfitPreset): OutfitPlan {
     label: definition.label,
     tradeoff: definition.tradeoff,
     purchases: mergedPurchases,
-    costCents: view.cash_cents - cashCents,
+    costCents: startingCashCents - cashCents,
     addedWeightLbs: loadLbs - view.weight_lbs,
     fundsAfterCents: cashCents,
     loadAfterLbs: loadLbs,
     foodAfterLbs,
-    foodDaysAfter: view.daily_food_lbs ? Math.floor(foodAfterLbs / view.daily_food_lbs) : 0,
+    foodDaysAfter: dailyFoodLbs ? Math.floor(foodAfterLbs / dailyFoodLbs) : 0,
     unfilledItemIds,
   }
 }

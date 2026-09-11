@@ -137,6 +137,22 @@ describe('outfitting plans', () => {
     expect(planOutfit(view(40_000), 'safe').unfilledItemIds).not.toEqual([])
   })
 
+  it('quotes setup supplies with the configured party and ration values', () => {
+    for (const preset of outfitPresets) {
+      const configured = planOutfit(view(80_000), preset)
+      const setupPreview = planOutfit(view(0), preset, {
+        cashCents: 80_000,
+        partySize: 5,
+        dailyFoodLbs: 15,
+      })
+      expect(setupPreview).toMatchObject({
+        costCents: configured.costCents,
+        fundsAfterCents: configured.fundsAfterCents,
+        foodDaysAfter: configured.foodDaysAfter,
+      })
+    }
+  })
+
   it('only quotes the missing portions of supplies already owned', () => {
     const current = view(
       80000,

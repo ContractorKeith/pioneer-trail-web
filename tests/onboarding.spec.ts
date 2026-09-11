@@ -77,12 +77,17 @@ test('farmer outfit remains budget-aware and rejected configurations stay visibl
   expect((await state(page)).view.status).toBe('Travelling')
 })
 
-test('setup keeps only the journey decisions and loads Moderate supplies by default', async ({ page }) => {
+test('setup keeps only the journey decisions and loads Moderate supplies by default', async ({
+  page,
+}) => {
   await page.goto('/?evidence=1')
   await expect(page.getByLabel('Year')).toHaveCount(0)
   await expect(page.getByLabel('Difficulty')).toHaveCount(0)
   await expect(page.getByLabel('Journey seed')).toHaveCount(0)
-  await expect(page.getByRole('radio', { name: /^Moderate/ })).toHaveAttribute('aria-checked', 'true')
+  await expect(page.getByRole('radio', { name: /^Moderate/ })).toHaveAttribute(
+    'aria-checked',
+    'true',
+  )
   await expect(page.getByLabel('Traveler 4')).toHaveCount(1)
   await expect(page.getByLabel('Traveler 5')).toHaveCount(0)
   await page.getByRole('button', { name: 'Take the trail' }).click()
@@ -95,4 +100,20 @@ test('setup supply preview uses the selected occupation starting cash', async ({
   const banker = await quote.textContent()
   await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
   await expect(quote).not.toHaveText(banker!)
+})
+
+test('setup food days match the loaded wagon supplies', async ({ page }) => {
+  await page.goto('/?evidence=1&seed=11')
+  const food = page.locator('.plan-quote').getByText(/days$/)
+  const preview = await food.textContent()
+  expect(Number(preview?.match(/\d+/)?.[0] ?? 0)).toBeGreaterThan(0)
+  await page.getByRole('button', { name: 'Take the trail' }).click()
+  await page.getByRole('button', { name: 'Wagon', exact: true }).click()
+  const pounds = await page.locator('.resource-strip').getByText(/lb$/).last().textContent()
+  const view = (await state(page)).view
+  expect(Number(preview?.match(/\d+/)?.[0])).toBe(
+    Math.floor(
+      Number(pounds?.match(/\d[\d,]*/)?.[0]?.replaceAll(',', '') ?? 0) / view.daily_food_lbs,
+    ),
+  )
 })

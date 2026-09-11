@@ -18,7 +18,9 @@ export interface JourneySetup {
 const months = ['March', 'April', 'May', 'June', 'July']
 
 function journeySeed() {
-  const evidenceSeed = new URLSearchParams(window.location.search).get('seed')
+  const parameters = new URLSearchParams(window.location.search)
+  const evidenceSeed =
+    import.meta.env.DEV || parameters.get('evidence') === '1' ? parameters.get('seed') : null
   return evidenceSeed ?? String(crypto.getRandomValues(new Uint32Array(1))[0])
 }
 
@@ -124,7 +126,13 @@ export function SetupOverlay({
           </label>
         ))}
       </fieldset>
-      <StartingSupplies view={view} occupation={occupation} preset={setup.preset} onChoose={(preset) => set('preset', preset)} />
+      <StartingSupplies
+        view={view}
+        occupation={occupation}
+        partySize={setup.party.length}
+        preset={setup.preset}
+        onChoose={(preset) => set('preset', preset)}
+      />
       {problem && (
         <p className="overlay-warning" role="alert">
           {problem}
@@ -140,22 +148,28 @@ export function SetupOverlay({
 function StartingSupplies({
   view,
   occupation,
+  partySize,
   preset,
   onChoose,
 }: {
   view: GameView
   occupation: GameView['content']['occupations'][number] | undefined
+  partySize: number
   preset: OutfitPreset
   onChoose: (preset: OutfitPreset) => void
 }) {
-  const preview = { ...view, cash_cents: occupation?.starting_cash_cents ?? view.cash_cents }
-  const plan = planOutfit(preview, preset)
+  const overrides = {
+    cashCents: occupation?.starting_cash_cents ?? view.cash_cents,
+    partySize,
+    dailyFoodLbs: partySize * 3,
+  }
+  const plan = planOutfit(view, preset, overrides)
   return (
     <section className="starting-supplies" aria-labelledby="starting-supplies-title">
       <h3 id="starting-supplies-title">Starting supplies</h3>
       <div className="plan-picker" role="radiogroup" aria-label="Starting supplies">
         {outfitPresets.map((option) => {
-          const quote = planOutfit(preview, option)
+          const quote = planOutfit(view, option, overrides)
           return (
             <button
               type="button"
@@ -174,9 +188,18 @@ function StartingSupplies({
       <div className="plan-quote" aria-live="polite">
         <strong>{plan.tradeoff}</strong>
         <dl>
-          <div><dt>Cost</dt><dd>{money(plan.costCents)}</dd></div>
-          <div><dt>Cash after</dt><dd>{money(plan.fundsAfterCents)}</dd></div>
-          <div><dt>Food</dt><dd>{plan.foodDaysAfter} days</dd></div>
+          <div>
+            <dt>Cost</dt>
+            <dd>{money(plan.costCents)}</dd>
+          </div>
+          <div>
+            <dt>Cash after</dt>
+            <dd>{money(plan.fundsAfterCents)}</dd>
+          </div>
+          <div>
+            <dt>Food</dt>
+            <dd>{plan.foodDaysAfter} days</dd>
+          </div>
         </dl>
       </div>
     </section>
