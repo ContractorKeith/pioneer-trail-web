@@ -249,8 +249,8 @@ export async function holdUntil(
     await page.keyboard.up(key)
   }
 }
-export async function start(page: Page, trail = 'oregon', preset = 'Safe', _seed?: string) {
-  await page.goto('/?evidence=1')
+export async function start(page: Page, trail = 'oregon', preset = 'Safe', seed = '11') {
+  await page.goto(`/?evidence=1&seed=${encodeURIComponent(seed)}`)
   await page.getByRole('combobox', { name: 'Route', exact: true }).selectOption(trail)
   await page.getByRole('radio', { name: new RegExp(`^${preset}`) }).click()
   await page.getByRole('button', { name: 'Take the trail' }).click()

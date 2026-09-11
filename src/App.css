@@ -410,6 +410,7 @@ kbd {
 }
 .traveler-list label span {
   min-width: 72px;
+  white-space: nowrap;
   font-size: 0.82rem;
 }
 .primary-action {

@@ -11,7 +11,7 @@ test('settings starts a separately configured replay without replacing the archi
   expect(oldRaw).toBeTruthy()
   await page.getByRole('button', { name: 'New journey', exact: true }).click()
   await page.getByRole('combobox', { name: 'Route', exact: true }).selectOption('california')
-  await page.getByRole('button', { name: 'Choose provisions', exact: true }).click()
+  await page.getByRole('button', { name: 'Take the trail', exact: true }).click()
   expect((await state(page)).view.trail_id).toBe('california')
   expect((await state(page)).view.trail_id).not.toBe(oldTrail)
 

@@ -17,6 +17,11 @@ export interface JourneySetup {
 
 const months = ['March', 'April', 'May', 'June', 'July']
 
+function journeySeed() {
+  const evidenceSeed = new URLSearchParams(window.location.search).get('seed')
+  return evidenceSeed ?? String(crypto.getRandomValues(new Uint32Array(1))[0])
+}
+
 function unavailable(setup: JourneySetup) {
   if (setup.trail_id === 'mormon' && setup.era_id === '1843')
     return 'The Mormon Trail begins in 1848.'
@@ -32,15 +37,13 @@ export function SetupOverlay({
   view: GameView
   onStart: (setup: JourneySetup) => void
 }) {
-  const firstEra = view.content.eras[0]?.id ?? '1848'
   const [setup, setSetup] = useState<JourneySetup>({
-    seed: String(crypto.getRandomValues(new Uint32Array(1))[0]),
+    seed: journeySeed(),
     trail_id: 'oregon',
-    era_id: firstEra,
+    era_id: '1848',
     occupation_id: 'banker',
     departure_month: 3,
-    // The campaign currently validates exactly five original party members; saves depend on it.
-    party: ['James', 'Margaret', 'Thomas', 'Clara', 'William'],
+    party: ['James', 'Margaret', 'Thomas', 'Clara'],
     difficulty: 'Normal',
     preset: 'moderate',
   })

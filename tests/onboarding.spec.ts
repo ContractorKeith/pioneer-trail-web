@@ -68,6 +68,7 @@ test('farmer outfit remains budget-aware and rejected configurations stay visibl
 }) => {
   await page.goto('/?evidence=1')
   await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
+  await page.getByRole('button', { name: 'Take the trail' }).click()
   const view = (await state(page)).view
   expect(view.inventory.food).toBeGreaterThanOrEqual(450)
   expect(view.cash_cents).toBeGreaterThanOrEqual(0)
@@ -82,7 +83,8 @@ test('setup keeps only the journey decisions and loads Moderate supplies by defa
   await expect(page.getByLabel('Difficulty')).toHaveCount(0)
   await expect(page.getByLabel('Journey seed')).toHaveCount(0)
   await expect(page.getByRole('radio', { name: /^Moderate/ })).toHaveAttribute('aria-checked', 'true')
-  await expect(page.getByLabel('Traveler 5')).toHaveCount(1)
+  await expect(page.getByLabel('Traveler 4')).toHaveCount(1)
+  await expect(page.getByLabel('Traveler 5')).toHaveCount(0)
   await page.getByRole('button', { name: 'Take the trail' }).click()
-  expect((await state(page)).view.party).toHaveLength(5)
+  expect((await state(page)).view.party).toHaveLength(4)
 })
