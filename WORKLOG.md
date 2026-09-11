@@ -43,3 +43,10 @@
 - Checks: build, lint, test:types, and 272 Vitest tests passed. Headed test:dev passed 12/12; headed test:e2e passed 106/106 (53 Chromium, 53 Firefox).
 - Remaining: None.
 - Next: None.
+
+### 2026-09-11 13:35 EDT - Pass 12 WASM quote test budget
+
+- Outcome: Split the purchase and scratch-quote WASM matrices by occupation while retaining every preset and month combination.
+- Checks: npm test rerun passed 288 tests in 116.54s; slowest scratch-quote occupation case took 447ms.
+- Remaining: None.
+- Next: None.

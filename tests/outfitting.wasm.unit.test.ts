@@ -67,10 +67,10 @@ function configuredAt(occupationId: string, departureMonth: number) {
 }
 
 describe('shipped WebAssembly outfitting plans', () => {
-  it('quotes and purchases every preset for every actual occupation', () => {
-    const catalog = JSON.parse(configured('banker').view()) as GameView
+  const catalog = JSON.parse(configured('banker').view()) as GameView
+  for (const occupation of catalog.content.occupations)
+    it(`quotes and purchases every preset for ${occupation.id}`, () => {
     let cases = 0
-    for (const occupation of catalog.content.occupations)
       for (const preset of outfitPresets) {
         const engine = configured(occupation.id)
         const before = JSON.parse(engine.view()) as GameView
@@ -94,8 +94,8 @@ describe('shipped WebAssembly outfitting plans', () => {
         ).toBe(false)
         cases += 1
       }
-    expect(cases).toBe(catalog.content.occupations.length * outfitPresets.length)
-  })
+      expect(cases).toBe(outfitPresets.length)
+    })
 
   it('gives the cash-constrained farmer a safe base wagon before upgrades', () => {
     const engine = configured('farmer')
@@ -124,10 +124,9 @@ describe('shipped WebAssembly outfitting plans', () => {
     expect(after.inventory.tongue).toBeGreaterThanOrEqual(1)
   })
 
-  it('matches scratch setup quotes to configured purchases for every occupation, month, and preset', () => {
-    const catalog = JSON.parse(configured('banker').view()) as GameView
+  for (const occupation of catalog.content.occupations)
+    it(`matches scratch setup quotes to configured purchases for ${occupation.id}`, () => {
     let cases = 0
-    for (const occupation of catalog.content.occupations)
       for (let month = 3; month <= 7; month++)
         for (const preset of outfitPresets) {
           const engine = configuredAt(occupation.id, month)
@@ -148,6 +147,6 @@ describe('shipped WebAssembly outfitting plans', () => {
           )
           cases += 1
         }
-    expect(cases).toBe(catalog.content.occupations.length * 5 * outfitPresets.length)
-  })
+      expect(cases).toBe(5 * outfitPresets.length)
+    })
 })
