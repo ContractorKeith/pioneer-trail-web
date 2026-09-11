@@ -124,7 +124,7 @@ export function SetupOverlay({
           </label>
         ))}
       </fieldset>
-      <StartingSupplies view={view} preset={setup.preset} onChoose={(preset) => set('preset', preset)} />
+      <StartingSupplies view={view} occupation={occupation} preset={setup.preset} onChoose={(preset) => set('preset', preset)} />
       {problem && (
         <p className="overlay-warning" role="alert">
           {problem}
@@ -139,20 +139,23 @@ export function SetupOverlay({
 
 function StartingSupplies({
   view,
+  occupation,
   preset,
   onChoose,
 }: {
   view: GameView
+  occupation: GameView['content']['occupations'][number] | undefined
   preset: OutfitPreset
   onChoose: (preset: OutfitPreset) => void
 }) {
-  const plan = planOutfit(view, preset)
+  const preview = { ...view, cash_cents: occupation?.starting_cash_cents ?? view.cash_cents }
+  const plan = planOutfit(preview, preset)
   return (
     <section className="starting-supplies" aria-labelledby="starting-supplies-title">
       <h3 id="starting-supplies-title">Starting supplies</h3>
       <div className="plan-picker" role="radiogroup" aria-label="Starting supplies">
         {outfitPresets.map((option) => {
-          const quote = planOutfit(view, option)
+          const quote = planOutfit(preview, option)
           return (
             <button
               type="button"

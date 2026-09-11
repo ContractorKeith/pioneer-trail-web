@@ -88,3 +88,11 @@ test('setup keeps only the journey decisions and loads Moderate supplies by defa
   await page.getByRole('button', { name: 'Take the trail' }).click()
   expect((await state(page)).view.party).toHaveLength(4)
 })
+
+test('setup supply preview uses the selected occupation starting cash', async ({ page }) => {
+  await page.goto('/?evidence=1')
+  const quote = page.locator('.plan-quote')
+  const banker = await quote.textContent()
+  await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
+  await expect(quote).not.toHaveText(banker!)
+})
