@@ -439,6 +439,7 @@ export default function App() {
         <GameOverlay
           overlay={overlay}
           view={snapshot.view}
+          mode={snapshot.mode}
           onClose={close}
           command={command}
           onAction={action}

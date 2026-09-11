@@ -158,6 +158,20 @@ test('R05 driver can get down and reboard beside the halted wagon before inspect
   await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
 })
 
+test('R05 on-foot water-edge inspection does not offer a second dismount', async ({ page }) => {
+  const outer = JSON.parse(bankApproach((await fixture('river')).raw))
+  outer.spatial.mode = 'walking'
+  outer.spatial.player = { x: 0, z: 104, yaw: 0, pitch: 0 }
+  await restore(page, JSON.stringify(outer))
+  await resume(page)
+  await expect(page.getByRole('button', { name: /Inspect the crossing/ })).toBeVisible()
+  await page.keyboard.press('e')
+  await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
+  await expect(
+    page.getByRole('button', { name: 'Get down and look around', exact: true }),
+  ).toHaveCount(0)
+})
+
 test('R05 nearby locations win over the river inspection band on foot', async ({ page }) => {
   const outer = JSON.parse(bankApproach((await fixture('river')).raw))
   outer.spatial.mode = 'walking'
