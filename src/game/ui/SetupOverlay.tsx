@@ -1,7 +1,8 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
-import type { GameView } from '../../engine-types'
-import { outfitPresets, planOutfit, type OutfitPreset } from '../../outfitting'
+import type { GameCommand, GameView } from '../../engine-types'
+import { TrailEngine } from '../../engine'
+import { outfitPresets, planOutfit, type OutfitPlan, type OutfitPreset } from '../../outfitting'
 import { money } from '../../presentation'
 
 export interface JourneySetup {
@@ -54,6 +55,7 @@ export function SetupOverlay({
     () => view.content.occupations.find((candidate) => candidate.id === setup.occupation_id),
     [setup.occupation_id, view.content.occupations],
   )
+  const quotes = useSetupQuotes(setup)
   const set = <K extends keyof JourneySetup>(key: K, value: JourneySetup[K]) =>
     setSetup((current) => ({ ...current, [key]: value }))
 
@@ -128,8 +130,7 @@ export function SetupOverlay({
       </fieldset>
       <StartingSupplies
         view={view}
-        occupation={occupation}
-        partySize={setup.party.length}
+        quotes={quotes}
         preset={setup.preset}
         onChoose={(preset) => set('preset', preset)}
       />
@@ -138,7 +139,11 @@ export function SetupOverlay({
           {problem}
         </p>
       )}
-      <button className="primary-action" type="submit" disabled={!!problem}>
+      <button
+        className="primary-action"
+        type="submit"
+        disabled={!!problem || (setup.party.every((name) => name.trim()) && !quotes[setup.preset])}
+      >
         Take the trail <ArrowRight size={17} />
       </button>
     </form>
@@ -147,29 +152,22 @@ export function SetupOverlay({
 
 function StartingSupplies({
   view,
-  occupation,
-  partySize,
+  quotes,
   preset,
   onChoose,
 }: {
   view: GameView
-  occupation: GameView['content']['occupations'][number] | undefined
-  partySize: number
+  quotes: Partial<Record<OutfitPreset, OutfitPlan>>
   preset: OutfitPreset
   onChoose: (preset: OutfitPreset) => void
 }) {
-  const overrides = {
-    cashCents: occupation?.starting_cash_cents ?? view.cash_cents,
-    partySize,
-    dailyFoodLbs: partySize * 3,
-  }
-  const plan = planOutfit(view, preset, overrides)
+  const plan = quotes?.[preset] ?? planOutfit(view, preset)
   return (
     <section className="starting-supplies" aria-labelledby="starting-supplies-title">
       <h3 id="starting-supplies-title">Starting supplies</h3>
       <div className="plan-picker" role="radiogroup" aria-label="Starting supplies">
         {outfitPresets.map((option) => {
-          const quote = planOutfit(view, option, overrides)
+          const quote = quotes?.[option] ?? planOutfit(view, option)
           return (
             <button
               type="button"
@@ -204,4 +202,53 @@ function StartingSupplies({
       </div>
     </section>
   )
+}
+
+/** Quotes configured store prices without changing the live campaign. */
+function useSetupQuotes(setup: JourneySetup) {
+  const [resolved, setResolved] = useState<{
+    key: string
+    quotes: Partial<Record<OutfitPreset, OutfitPlan>>
+  }>({ key: '', quotes: {} })
+  const setupKey = `${setup.seed}/${setup.trail_id}/${setup.era_id}/${setup.occupation_id}/${setup.departure_month}/${setup.party.join('/')}`
+  useEffect(() => {
+    let cancelled = false
+    void (async () => {
+      const engine = await TrailEngine.create(setup.seed)
+      const command: GameCommand = {
+        Configure: {
+          trail_id: setup.trail_id,
+          era_id: setup.era_id,
+          occupation_id: setup.occupation_id,
+          departure_month: setup.departure_month,
+          party: setup.party,
+        },
+      }
+      const result = engine.apply(command)
+      if (
+        cancelled ||
+        result.outcomes.some((outcome) => typeof outcome === 'object' && 'Rejected' in outcome)
+      )
+        return
+      const configured = engine.view()
+      const next = Object.fromEntries(
+        outfitPresets.map((option) => [option, planOutfit(configured, option)]),
+      ) as Record<OutfitPreset, OutfitPlan>
+      if (!cancelled) setResolved({ key: setupKey, quotes: next })
+    })().catch(() => {
+      if (!cancelled) setResolved({ key: setupKey, quotes: {} })
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [
+    setup.departure_month,
+    setup.era_id,
+    setup.occupation_id,
+    setup.party,
+    setup.seed,
+    setup.trail_id,
+    setupKey,
+  ])
+  return resolved.key === setupKey ? resolved.quotes : {}
 }

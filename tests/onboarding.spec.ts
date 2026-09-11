@@ -105,8 +105,8 @@ test('setup supply preview uses the selected occupation starting cash', async ({
 test('setup food days match the loaded wagon supplies', async ({ page }) => {
   await page.goto('/?evidence=1&seed=11')
   const food = page.locator('.plan-quote').getByText(/days$/)
+  await expect(food).toHaveText(/[1-9]\d* days/)
   const preview = await food.textContent()
-  expect(Number(preview?.match(/\d+/)?.[0] ?? 0)).toBeGreaterThan(0)
   await page.getByRole('button', { name: 'Take the trail' }).click()
   await page.getByRole('button', { name: 'Wagon', exact: true }).click()
   const pounds = await page.locator('.resource-strip').getByText(/lb$/).last().textContent()
@@ -115,5 +115,23 @@ test('setup food days match the loaded wagon supplies', async ({ page }) => {
     Math.floor(
       Number(pounds?.match(/\d[\d,]*/)?.[0]?.replaceAll(',', '') ?? 0) / view.daily_food_lbs,
     ),
+  )
+})
+
+test('farmer July safe quote matches the cash and food loaded into the wagon', async ({ page }) => {
+  await page.goto('/?evidence=1&seed=11')
+  await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
+  await page.getByRole('combobox', { name: 'Leave in', exact: true }).selectOption('7')
+  await page.getByRole('radio', { name: /^Safe/ }).click()
+  const quote = page.locator('.plan-quote')
+  await expect(quote).toContainText('$')
+  const values = await quote.locator('dd').allTextContents()
+  await page.getByRole('button', { name: 'Take the trail' }).click()
+  const view = (await state(page)).view
+  const moneyValue = (text: string) => Math.round(Number(text.replace(/[^0-9.]/g, '')) * 100)
+  expect(moneyValue(values[0]!)).toBe(40_000 - view.cash_cents)
+  expect(moneyValue(values[1]!)).toBe(view.cash_cents)
+  expect(Number(values[2]!.match(/\d+/)?.[0])).toBe(
+    Math.floor((view.inventory.food ?? 0) / view.daily_food_lbs),
   )
 })
