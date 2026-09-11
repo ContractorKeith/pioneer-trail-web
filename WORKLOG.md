@@ -22,3 +22,10 @@
 - Checks: cargo test, test:engine, build, lint, test:types, test:assets, and 272 Vitest tests passed. Headed test:dev passed 10/10; headed test:e2e passed 100/100 (50 Chromium, 50 Firefox). Smoke, cold-load, and the normal 720p low ride completed; the walkthrough completed its first river crossing before being deliberately stopped.
 - Remaining: None.
 - Next: None.
+
+### 2026-09-11 12:20 EDT - Pass 9 configured setup quotes
+
+- Outcome: Setup supply cards now quote a throwaway engine after Configure, so route, occupation, month, party size, seasonal markups, and discounts match the supplies actually loaded. The river-panel dismount action is available only while riding; on-foot inspection retains no dead action. Removed the obsolete Mormon 1843 guard and corrected the retreat-test title.
+- Checks: build, lint, test:types, and 273 Vitest tests passed. Headed test:dev passed 11/11. Headed test:e2e passed 104/104 (52 Chromium, 52 Firefox). The WebAssembly quote matrix covers 9 occupations x 5 months x 3 presets = 135 cases.
+- Remaining: None.
+- Next: None.
