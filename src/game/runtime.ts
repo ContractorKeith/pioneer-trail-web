@@ -449,7 +449,17 @@ export class GameRuntime {
     }
     const wagon = this.spatial.wagon
     if (this.spatial.mode === 'riding') {
-      if (this.atRiverHalt()) {
+      const rafting = this.campaign.view().active_minigame?.kind === 'Raft'
+      const atRaftLaunch =
+        rafting &&
+        this.world.river &&
+        Math.abs(wagon.speed) <= 0.2 &&
+        Math.abs(wagon.z - (this.world.river.startZ - 12)) <= 22
+      if (this.atRiverHalt() || atRaftLaunch) {
+        if (rafting) {
+          this.beginActivity({ kind: 'crossing', method: 'Raft' })
+          return
+        }
         this.open('river')
         return
       }
