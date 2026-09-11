@@ -219,9 +219,12 @@ export async function main() {
   await mkdir('.artifacts/videos', { recursive: true })
   const headlessGpu = process.env.TRAIL_HEADLESS_GPU === '1'
   const browserLaunch = {
-    executablePath: process.env.TRAIL_CHROMIUM ?? '/usr/bin/chromium',
+    executablePath: process.env.TRAIL_CHROMIUM,
     headless: headlessGpu,
-    args: ['--ozone-platform=x11', ...(headlessGpu ? ['--enable-gpu'] : [])],
+    args: [
+      ...(process.platform === 'linux' ? ['--ozone-platform=x11'] : []),
+      ...(headlessGpu ? ['--enable-gpu'] : []),
+    ],
   }
   const build = await buildIdentity()
   const browser = await chromium.launch(browserLaunch)
@@ -547,16 +550,9 @@ export async function main() {
     await observe('Camp supplies and party checked')
   }
   try {
-    await page.goto('/?evidence=1')
+    await page.goto(`/?evidence=1&seed=${report.seed}`)
     await page.getByRole('combobox', { name: 'Route', exact: true }).selectOption(report.trail)
-    await page.getByLabel('Journey seed').fill(report.seed)
-    await page.getByRole('combobox', { name: 'Year', exact: true }).selectOption(report.era)
-    await page
-      .getByRole('combobox', { name: 'Difficulty', exact: true })
-      .selectOption(report.difficulty)
-    await page.getByRole('button', { name: 'Choose provisions', exact: true }).click()
     await page.getByRole('radio', { name: /^Safe/ }).click()
-    await page.getByRole('button', { name: 'Load this plan' }).click()
     await page.getByRole('button', { name: 'Take the trail' }).click()
     await served.verify()
     began = Date.now()
@@ -651,10 +647,8 @@ export async function main() {
         const roadX = (z) =>
           crossingWorld.trail.reduce((a, b) => (Math.abs(b.z - z) < Math.abs(a.z - z) ? b : a)).x
         await driveTo(page, roadX(river.startZ - 24), river.startZ - 24)
-        await stopAndDismount()
-        const bank = (await world(page)).locations.find((location) => location.id === 'riverbank')
-        assert.ok(bank)
-        await walkPlanned(page, { x: bank.position[0], z: bank.position[2] + 2 }, report)
+        await hold(page, 'Space', 1000)
+        assert.ok(Math.abs((await state(page)).speed) <= 0.2, 'Wagon must stop at the riverbank')
         await page.keyboard.press('e')
         await page.getByRole('heading', { name: 'River crossing', exact: true }).waitFor()
         const beforeDay = (await state(page)).view.day

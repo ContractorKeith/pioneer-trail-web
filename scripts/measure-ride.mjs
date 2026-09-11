@@ -226,7 +226,7 @@ function recordWindow(page) {
 export async function main() {
   const { chromium } = await import('playwright')
   const baseURL = process.env.TRAIL_URL ?? 'http://localhost:4173'
-  const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE ?? '/usr/bin/chromium'
+  const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE
   const headlessGpu = process.env.TRAIL_HEADLESS_GPU === '1'
   const stamp = new Date().toISOString().replaceAll(':', '-').replaceAll('.', '-')
   const artifactBase = `.artifacts/videos/ride-low-${stamp}`
@@ -244,7 +244,10 @@ export async function main() {
     browserLaunch: {
       executablePath,
       headless: headlessGpu,
-      args: ['--ozone-platform=x11', ...(headlessGpu ? ['--enable-gpu'] : [])],
+      args: [
+        ...(process.platform === 'linux' ? ['--ozone-platform=x11'] : []),
+        ...(headlessGpu ? ['--enable-gpu'] : []),
+      ],
     },
     environment: {
       platform: os.platform(),
@@ -367,12 +370,9 @@ export async function main() {
           .catch((event) => error('response-body', `${file}: ${event}`)),
       )
     })
-    await page.goto('/?evidence=1', { waitUntil: 'networkidle' })
+    await page.goto('/?evidence=1&seed=11', { waitUntil: 'networkidle' })
     await page.getByRole('combobox', { name: 'Route', exact: true }).selectOption('oregon')
-    await page.getByLabel('Journey seed').fill('11')
-    await page.getByRole('button', { name: 'Choose provisions' }).click()
     await page.getByRole('radio', { name: /^Safe/ }).click()
-    await page.getByRole('button', { name: 'Load this plan' }).click()
     await page.getByRole('button', { name: 'Take the trail' }).click()
     await page.waitForFunction(() => window.__trail?.snapshot().paused === false)
     await page.locator('canvas.game-canvas').click({ position: { x: 640, y: 300 } })
