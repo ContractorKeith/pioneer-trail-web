@@ -16,8 +16,9 @@ test('whitespace-only traveler names keep the selected setup open without replac
   await page.getByRole('combobox', { name: 'Route', exact: true }).selectOption('california')
   const traveler = page.getByLabel('Traveler 1', { exact: true })
   await traveler.fill('   ')
-  await page.getByRole('button', { name: 'Take the trail' }).click()
+  const start = page.getByRole('button', { name: 'Take the trail' })
   await expect(page.getByText('Every traveler needs a name.')).toBeVisible()
+  await expect(start).toBeDisabled()
   await expect(page.getByRole('heading', { name: 'Begin a journey', exact: true })).toHaveCount(1)
   await expect(traveler).toHaveValue('   ')
   await expect(page.getByRole('dialog')).toHaveCount(1)
@@ -118,18 +119,36 @@ test('setup food days match the loaded wagon supplies', async ({ page }) => {
   )
 })
 
+test('duplicate traveler names explain why setup cannot continue and recover when fixed', async ({
+  page,
+}) => {
+  await page.goto('/?evidence=1&seed=11')
+  const start = page.getByRole('button', { name: 'Take the trail' })
+  await expect(start).toBeEnabled()
+  await page.getByLabel('Traveler 1').fill('Margaret')
+  await expect(page.getByRole('alert')).toHaveText('Traveler names must be unique.')
+  await expect(start).toBeDisabled()
+  await page.getByLabel('Traveler 1').fill('James')
+  await expect(page.getByRole('alert')).toHaveCount(0)
+  await expect(start).toBeEnabled()
+})
+
 test('farmer July safe quote matches the cash and food loaded into the wagon', async ({ page }) => {
   await page.goto('/?evidence=1&seed=11')
   await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
   await page.getByRole('combobox', { name: 'Leave in', exact: true }).selectOption('7')
   await page.getByRole('radio', { name: /^Safe/ }).click()
   const quote = page.locator('.plan-quote')
-  await expect(quote).toContainText('$')
+  await expect(quote).toHaveAttribute('aria-busy', 'false')
+  await expect(quote).toContainText(/[1-9]\d* days/)
   const values = await quote.locator('dd').allTextContents()
   await page.getByRole('button', { name: 'Take the trail' }).click()
   const view = (await state(page)).view
+  const startingCash = view.content.occupations.find((occupation) => occupation.id === 'farmer')
+    ?.starting_cash_cents
+  expect(startingCash).not.toBeUndefined()
   const moneyValue = (text: string) => Math.round(Number(text.replace(/[^0-9.]/g, '')) * 100)
-  expect(moneyValue(values[0]!)).toBe(40_000 - view.cash_cents)
+  expect(moneyValue(values[0]!)).toBe((startingCash ?? 0) - view.cash_cents)
   expect(moneyValue(values[1]!)).toBe(view.cash_cents)
   expect(Number(values[2]!.match(/\d+/)?.[0])).toBe(
     Math.floor((view.inventory.food ?? 0) / view.daily_food_lbs),

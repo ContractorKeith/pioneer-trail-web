@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import type { GameCommand, GameView } from '../../engine-types'
 import { TrailEngine } from '../../engine'
 import { outfitPresets, planOutfit, type OutfitPlan, type OutfitPreset } from '../../outfitting'
-import { money } from '../../presentation'
+import { isRejected, money } from '../../presentation'
 
 export interface JourneySetup {
   seed: string
@@ -31,6 +31,14 @@ function unavailable(setup: JourneySetup) {
   return null
 }
 
+function partyProblem(party: string[]) {
+  const names = party.map((name) => name.trim())
+  if (names.some((name) => !name)) return 'Every traveler needs a name.'
+  if (names.some((name) => [...name].length > 24)) return 'Names must be 24 characters or fewer.'
+  if (new Set(names).size !== names.length) return 'Traveler names must be unique.'
+  return null
+}
+
 export function SetupOverlay({
   view,
   onStart,
@@ -48,12 +56,13 @@ export function SetupOverlay({
     difficulty: 'Normal',
     preset: 'moderate',
   })
-  const problem = unavailable(setup)
+  const namesProblem = partyProblem(setup.party)
   const occupation = useMemo(
     () => view.content.occupations.find((candidate) => candidate.id === setup.occupation_id),
     [setup.occupation_id, view.content.occupations],
   )
-  const quotes = useSetupQuotes(setup)
+  const quoteState = useSetupQuotes(setup, namesProblem)
+  const problem = unavailable(setup) ?? namesProblem ?? quoteState.error
   const set = <K extends keyof JourneySetup>(key: K, value: JourneySetup[K]) =>
     setSetup((current) => ({ ...current, [key]: value }))
 
@@ -114,7 +123,7 @@ export function SetupOverlay({
             <span>Traveler {index + 1}</span>
             <input
               value={name}
-              maxLength={30}
+              maxLength={24}
               required
               onChange={(event) =>
                 set(
@@ -127,8 +136,7 @@ export function SetupOverlay({
         ))}
       </fieldset>
       <StartingSupplies
-        view={view}
-        quotes={quotes}
+        quotes={quoteState.quotes}
         preset={setup.preset}
         onChoose={(preset) => set('preset', preset)}
       />
@@ -140,7 +148,7 @@ export function SetupOverlay({
       <button
         className="primary-action"
         type="submit"
-        disabled={!!problem || (setup.party.every((name) => name.trim()) && !quotes[setup.preset])}
+        disabled={!!problem || !quoteState.quotes[setup.preset]}
       >
         Take the trail <ArrowRight size={17} />
       </button>
@@ -149,23 +157,21 @@ export function SetupOverlay({
 }
 
 function StartingSupplies({
-  view,
   quotes,
   preset,
   onChoose,
 }: {
-  view: GameView
   quotes: Partial<Record<OutfitPreset, OutfitPlan>>
   preset: OutfitPreset
   onChoose: (preset: OutfitPreset) => void
 }) {
-  const plan = quotes?.[preset] ?? planOutfit(view, preset)
+  const plan = quotes[preset]
   return (
     <section className="starting-supplies" aria-labelledby="starting-supplies-title">
       <h3 id="starting-supplies-title">Starting supplies</h3>
       <div className="plan-picker" role="radiogroup" aria-label="Starting supplies">
         {outfitPresets.map((option) => {
-          const quote = quotes?.[option] ?? planOutfit(view, option)
+          const quote = quotes[option]
           return (
             <button
               type="button"
@@ -175,26 +181,26 @@ function StartingSupplies({
               key={option}
               onClick={() => onChoose(option)}
             >
-              <strong>{quote.label}</strong>
-              <span>{quote.tradeoff}</span>
+              <strong>{quote?.label ?? `${option[0]!.toUpperCase()}${option.slice(1)}`}</strong>
+              <span>{quote?.tradeoff ?? 'Calculating supplies…'}</span>
             </button>
           )
         })}
       </div>
-      <div className="plan-quote" aria-live="polite">
-        <strong>{plan.tradeoff}</strong>
+      <div className="plan-quote" aria-live="polite" aria-busy={!plan}>
+        <strong>{plan?.tradeoff ?? 'Calculating your wagon…'}</strong>
         <dl>
           <div>
             <dt>Cost</dt>
-            <dd>{money(plan.costCents)}</dd>
+            <dd>{plan ? money(plan.costCents) : '…'}</dd>
           </div>
           <div>
             <dt>Cash after</dt>
-            <dd>{money(plan.fundsAfterCents)}</dd>
+            <dd>{plan ? money(plan.fundsAfterCents) : '…'}</dd>
           </div>
           <div>
             <dt>Food</dt>
-            <dd>{plan.foodDaysAfter} days</dd>
+            <dd>{plan ? `${plan.foodDaysAfter} days` : '…'}</dd>
           </div>
         </dl>
       </div>
@@ -203,50 +209,69 @@ function StartingSupplies({
 }
 
 /** Quotes configured store prices without changing the live campaign. */
-function useSetupQuotes(setup: JourneySetup) {
+function useSetupQuotes(setup: JourneySetup, namesProblem: string | null) {
   const [resolved, setResolved] = useState<{
     key: string
     quotes: Partial<Record<OutfitPreset, OutfitPlan>>
-  }>({ key: '', quotes: {} })
-  const setupKey = `${setup.seed}/${setup.trail_id}/${setup.era_id}/${setup.occupation_id}/${setup.departure_month}/${setup.party.join('/')}`
+    error: string | null
+  }>({ key: '', quotes: {}, error: null })
+  const setupKey = `${setup.trail_id}/${setup.era_id}/${setup.occupation_id}/${setup.departure_month}/${setup.party.length}/${namesProblem ? 'invalid' : 'valid'}`
   useEffect(() => {
     let cancelled = false
+    let engine: TrailEngine | null = null
+    if (namesProblem) return
     void (async () => {
-      const engine = await TrailEngine.create(setup.seed)
+      engine = await TrailEngine.create('1848')
+      if (cancelled) return
       const command: GameCommand = {
         Configure: {
           trail_id: setup.trail_id,
           era_id: setup.era_id,
           occupation_id: setup.occupation_id,
           departure_month: setup.departure_month,
-          party: setup.party,
+          party: Array.from({ length: setup.party.length }, (_, index) => `Traveler ${index + 1}`),
         },
       }
       const result = engine.apply(command)
-      if (
-        cancelled ||
-        result.outcomes.some((outcome) => typeof outcome === 'object' && 'Rejected' in outcome)
-      )
+      if (cancelled) return
+      if (isRejected(result.outcomes)) {
+        setResolved({
+          key: setupKey,
+          quotes: {},
+          error: 'That setup is not available. Check the route, occupation, and departure month.',
+        })
         return
+      }
       const configured = engine.view()
       const next = Object.fromEntries(
         outfitPresets.map((option) => [option, planOutfit(configured, option)]),
       ) as Record<OutfitPreset, OutfitPlan>
-      if (!cancelled) setResolved({ key: setupKey, quotes: next })
+      if (!cancelled) setResolved({ key: setupKey, quotes: next, error: null })
     })().catch(() => {
-      if (!cancelled) setResolved({ key: setupKey, quotes: {} })
+      if (!cancelled)
+        setResolved({
+          key: setupKey,
+          quotes: {},
+          error: 'Unable to prepare this journey. Please try again.',
+        })
+    }).finally(() => {
+      engine?.dispose()
     })
     return () => {
       cancelled = true
+      engine?.dispose()
     }
   }, [
     setup.departure_month,
     setup.era_id,
     setup.occupation_id,
-    setup.party,
-    setup.seed,
+    setup.party.length,
     setup.trail_id,
     setupKey,
+    namesProblem,
   ])
-  return resolved.key === setupKey ? resolved.quotes : {}
+  if (namesProblem) return { quotes: {}, error: null }
+  return resolved.key === setupKey
+    ? { quotes: resolved.quotes, error: resolved.error }
+    : { quotes: {}, error: null }
 }

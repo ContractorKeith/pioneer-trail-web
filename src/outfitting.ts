@@ -23,12 +23,6 @@ export interface OutfitPlan {
   unfilledItemIds: string[]
 }
 
-export interface OutfitPlanOverrides {
-  cashCents?: number
-  partySize?: number
-  dailyFoodLbs?: number
-}
-
 const WAGON_CAPACITY_LBS = 2_400
 
 const presets: Record<
@@ -112,16 +106,15 @@ function availableQuantity(
 export function planOutfit(
   view: GameView,
   preset: OutfitPreset,
-  overrides: OutfitPlanOverrides = {},
 ): OutfitPlan {
   const definition = presets[preset]
   const inventory = { ...view.inventory }
-  const startingCashCents = overrides.cashCents ?? view.cash_cents
+  const startingCashCents = view.cash_cents
   let cashCents = startingCashCents
   let loadLbs = view.weight_lbs
   const purchases: PlannedPurchase[] = []
-  const partySize = overrides.partySize ?? view.party.filter((person) => person.alive).length
-  const dailyFoodLbs = overrides.dailyFoodLbs ?? view.daily_food_lbs
+  const partySize = view.party.filter((person) => person.alive).length
+  const dailyFoodLbs = view.daily_food_lbs
 
   for (const [itemId, target] of definition.targets(partySize)) {
     const item = view.items.find((entry) => entry.id === itemId)

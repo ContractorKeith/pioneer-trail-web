@@ -29,3 +29,10 @@
 - Checks: build, lint, test:types, and 273 Vitest tests passed. Headed test:dev passed 11/11. Headed test:e2e passed 104/104 (52 Chromium, 52 Firefox). The WebAssembly quote matrix covers 9 occupations x 5 months x 3 presets = 135 cases.
 - Remaining: None.
 - Next: None.
+
+### 2026-09-11 13:00 EDT - Pass 10 scratch quote lifecycle
+
+- Outcome: Setup quotes now have explicit pending, ready, and error states; invalid names explain the disabled action and recover without rebuilding WASM per keystroke. Scratch engines are disposed after quoting. Removed obsolete quote overrides.
+- Checks: build, lint, test:types, and 272 Vitest tests passed. Headed test:dev passed 12/12; headed test:e2e passed 106/106 (53 Chromium, 53 Firefox).
+- Remaining: None.
+- Next: None.

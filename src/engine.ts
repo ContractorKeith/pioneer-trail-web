@@ -1,6 +1,7 @@
 import type { EngineResult, GameCommand, GameView } from './engine-types'
 
 type WasmEngine = {
+  free(): void
   apply(command: string): string
   view(): string
   save(): string
@@ -40,6 +41,7 @@ function loadWasmModule(): Promise<WasmModule> {
 /** Keeps opaque Rust save JSON out of JS parsing so 64-bit RNG state remains exact. */
 export class TrailEngine {
   private readonly wasm: WasmEngine
+  private disposed = false
   private constructor(wasm: WasmEngine) {
     this.wasm = wasm
   }
@@ -47,6 +49,12 @@ export class TrailEngine {
   static async create(seed = `${Date.now()}`): Promise<TrailEngine> {
     const module = await loadWasmModule()
     return new TrailEngine(new module.TrailEngine(seed))
+  }
+  dispose() {
+    if (!this.disposed) {
+      this.wasm.free()
+      this.disposed = true
+    }
   }
   apply(command: GameCommand): EngineResult {
     return JSON.parse(this.wasm.apply(JSON.stringify(command))) as EngineResult
