@@ -58,3 +58,12 @@
 - Checks: Headed targeted Playwright passed 18/18 (9 Chromium, 9 Firefox); lint and test types passed; standalone npm test passed 288 tests in 67.28s. Local software-mode mechanics ran its trader case successfully; its independent hunting case stopped in collecting rather than aiming.
 - Remaining: None.
 - Next: None.
+
+### 2026-09-11 14:30 EDT - Onboarding UX merged (PR #16)
+
+- Outcome: PR #16 merged to `main` at `3423f67` (28 branch commits, 38 files). Readable UI scale; single-screen setup (Route, Occupation, Leave in, 4 travelers, preset cards with a scratch-engine quote, one "Take the trail" button); brighter night with unchanged daytime curve; seated `E · Inspect the crossing` at the riverbank with an overlay dismount action, location-priority on foot, blocked forward wading; Rust engine accepts 4..=5 party members with byte-identical 5-member save round-trip; macOS headed Playwright; verification scripts and evidence capture updated.
+- Process: Fable orchestrated, Codex `gpt-5.6-terra` implemented across 13 passes; three independent reviewer passes (15 initial findings, all verified fixed; two targeted follow-ups). Product decisions were the owner's (year/difficulty hidden, party of four).
+- Checks (orchestrator, exact head e1e4992 on macOS headed): build, lint, types, assets, 288 vitest, 130 Rust, test:engine, test:dev 12/12, test:e2e 106/106 (53 Chromium, 53 Firefox). GitHub CI run 34630-series all six jobs green on e1e4992. Merged `3423f67` rebuilt locally: build 0, headed test:dev 12/12, `npm run smoke` pass:true against a 4173 preview.
+- Decisions: headless swiftshader Playwright fails on `main` on macOS (environmental); Linux CI remains the headless gate. `night-before.png` from `main` is not reproducible (no night hook there) and is documented in the capture script.
+- Remaining: merged-default CI run 34631660989 was in progress at log time. `.claude/launch.json` (dev server config) is untracked, owner to decide.
+- Next: owner playtest of the merged build; Safari/mobile and 1080p performance remain unverified from the R16 baseline.
