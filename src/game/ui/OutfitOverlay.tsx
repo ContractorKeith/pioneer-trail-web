@@ -11,7 +11,7 @@ export function OutfitOverlay({
   view: GameView
   command: (command: GameCommand) => void
 }) {
-  const [preset, setPreset] = useState<OutfitPreset>('safe')
+  const [preset, setPreset] = useState<OutfitPreset>('moderate')
   const [manual, setManual] = useState(false)
   const plan = useMemo(() => planOutfit(view, preset), [view, preset])
   const foodDays = view.daily_food_lbs
@@ -25,11 +25,6 @@ export function OutfitOverlay({
 
   return (
     <section className="outfit-overlay">
-      <div className="resource-strip">
-        <Metric label="Cash" value={money(view.cash_cents)} />
-        <Metric label="Load" value={`${view.weight_lbs.toLocaleString()} / 2,400 lb`} />
-        <Metric label="Food" value={`${foodDays} days`} />
-      </div>
       <p className="overlay-lede">
         Pick a starting balance, then refine it if you wish. Three yokes means six oxen.
       </p>
@@ -125,14 +120,6 @@ export function OutfitOverlay({
   )
 }
 
-function Metric({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <span>{label}</span>
-      <strong>{value}</strong>
-    </div>
-  )
-}
 function Supply({
   item,
   owned,

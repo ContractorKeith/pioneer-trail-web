@@ -30,9 +30,11 @@ export default defineConfig({
     launchOptions: {
       executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE,
       args: headlessGpu
-        ? ['--ozone-platform=x11', '--enable-gpu']
+        ? [...(process.platform === 'linux' ? ['--ozone-platform=x11'] : []), '--enable-gpu']
         : process.env.TRAIL_HEADED === '1'
-          ? ['--ozone-platform=x11']
+          ? process.platform === 'linux'
+            ? ['--ozone-platform=x11']
+            : []
           : ['--enable-unsafe-swiftshader'],
     },
   },

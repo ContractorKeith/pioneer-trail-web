@@ -6,8 +6,8 @@ test('Escape cannot dismiss the required journey setup', async ({ page }) => {
   await expect(setup).toBeVisible()
   await page.keyboard.press('Escape')
   await expect(setup).toBeVisible()
-  await page.getByRole('button', { name: 'Choose provisions' }).click()
-  await expect(page.getByRole('button', { name: 'Load this plan' })).toBeVisible()
+  await page.getByRole('button', { name: 'Take the trail' }).click()
+  await expect(page.getByRole('heading', { name: 'Begin a journey', exact: true })).toHaveCount(0)
 })
 test('whitespace-only traveler names keep the selected setup open without replacing a save', async ({
   page,
@@ -16,8 +16,9 @@ test('whitespace-only traveler names keep the selected setup open without replac
   await page.getByRole('combobox', { name: 'Route', exact: true }).selectOption('california')
   const traveler = page.getByLabel('Traveler 1', { exact: true })
   await traveler.fill('   ')
-  await page.getByRole('button', { name: 'Choose provisions' }).click()
+  const start = page.getByRole('button', { name: 'Take the trail' })
   await expect(page.getByText('Every traveler needs a name.')).toBeVisible()
+  await expect(start).toBeDisabled()
   await expect(page.getByRole('heading', { name: 'Begin a journey', exact: true })).toHaveCount(1)
   await expect(traveler).toHaveValue('   ')
   await expect(page.getByRole('dialog')).toHaveCount(1)
@@ -68,13 +69,96 @@ test('farmer outfit remains budget-aware and rejected configurations stay visibl
 }) => {
   await page.goto('/?evidence=1')
   await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
-  await page.getByRole('button', { name: 'Choose provisions' }).click()
-  await page.getByRole('button', { name: 'Load this plan' }).click()
+  await page.getByRole('button', { name: 'Take the trail' }).click()
   const view = (await state(page)).view
   expect(view.inventory.food).toBeGreaterThanOrEqual(450)
   expect(view.cash_cents).toBeGreaterThanOrEqual(0)
   for (const item of ['wheel', 'axle', 'tongue'])
     expect(view.inventory[item]).toBeGreaterThanOrEqual(1)
-  await page.getByRole('button', { name: 'Take the trail' }).click()
   expect((await state(page)).view.status).toBe('Travelling')
+})
+
+test('setup keeps only the journey decisions and loads Moderate supplies by default', async ({
+  page,
+}) => {
+  await page.goto('/?evidence=1')
+  await expect(page.getByLabel('Year')).toHaveCount(0)
+  await expect(page.getByLabel('Difficulty')).toHaveCount(0)
+  await expect(page.getByLabel('Journey seed')).toHaveCount(0)
+  await expect(page.getByRole('radio', { name: /^Moderate/ })).toHaveAttribute(
+    'aria-checked',
+    'true',
+  )
+  await expect(page.getByLabel('Traveler 4')).toHaveCount(1)
+  await expect(page.getByLabel('Traveler 5')).toHaveCount(0)
+  await page.getByRole('button', { name: 'Take the trail' }).click()
+  expect((await state(page)).view.party).toHaveLength(4)
+})
+
+test('setup supply preview uses the selected occupation starting cash', async ({ page }) => {
+  await page.goto('/?evidence=1')
+  const quote = page.locator('.plan-quote')
+  await expect(quote).toHaveAttribute('aria-busy', 'false')
+  await expect(quote).toContainText(/[1-9]\d* days/)
+  const banker = await quote.textContent()
+  await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
+  await expect(quote).toHaveAttribute('aria-busy', 'false')
+  await expect(quote).toContainText(/[1-9]\d* days/)
+  await expect(quote).not.toHaveText(banker!)
+})
+
+test('setup food days match the loaded wagon supplies', async ({ page }) => {
+  await page.goto('/?evidence=1&seed=11')
+  const food = page.locator('.plan-quote').getByText(/days$/)
+  await expect(food).toHaveText(/[1-9]\d* days/)
+  const preview = await food.textContent()
+  await page.getByRole('button', { name: 'Take the trail' }).click()
+  await page.getByRole('button', { name: 'Wagon', exact: true }).click()
+  const pounds = await page.locator('.resource-strip').getByText(/lb$/).last().textContent()
+  const view = (await state(page)).view
+  expect(Number(preview?.match(/\d+/)?.[0])).toBe(
+    Math.floor(
+      Number(pounds?.match(/\d[\d,]*/)?.[0]?.replaceAll(',', '') ?? 0) / view.daily_food_lbs,
+    ),
+  )
+})
+
+test('duplicate traveler names explain why setup cannot continue and recover when fixed', async ({
+  page,
+}) => {
+  await page.goto('/?evidence=1&seed=11')
+  const start = page.getByRole('button', { name: 'Take the trail' })
+  const quote = page.locator('.plan-quote')
+  await expect(start).toBeEnabled()
+  const before = await quote.textContent()
+  await page.getByLabel('Traveler 1').fill('Margaret')
+  await expect(page.getByRole('alert')).toHaveText('Traveler names must be unique.')
+  await expect(start).toBeDisabled()
+  await expect(quote).toHaveAttribute('aria-busy', 'false')
+  await expect(quote).toHaveText(before!)
+  await page.getByLabel('Traveler 1').fill('James')
+  await expect(page.getByRole('alert')).toHaveCount(0)
+  await expect(start).toBeEnabled()
+})
+
+test('farmer July safe quote matches the cash and food loaded into the wagon', async ({ page }) => {
+  await page.goto('/?evidence=1&seed=11')
+  await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
+  await page.getByRole('combobox', { name: 'Leave in', exact: true }).selectOption('7')
+  await page.getByRole('radio', { name: /^Safe/ }).click()
+  const quote = page.locator('.plan-quote')
+  await expect(quote).toHaveAttribute('aria-busy', 'false')
+  await expect(quote).toContainText(/[1-9]\d* days/)
+  const values = await quote.locator('dd').allTextContents()
+  await page.getByRole('button', { name: 'Take the trail' }).click()
+  const view = (await state(page)).view
+  const startingCash = view.content.occupations.find((occupation) => occupation.id === 'farmer')
+    ?.starting_cash_cents
+  expect(startingCash).not.toBeUndefined()
+  const moneyValue = (text: string) => Math.round(Number(text.replace(/[^0-9.]/g, '')) * 100)
+  expect(moneyValue(values[0]!)).toBe((startingCash ?? 0) - view.cash_cents)
+  expect(moneyValue(values[1]!)).toBe(view.cash_cents)
+  expect(Number(values[2]!.match(/\d+/)?.[0])).toBe(
+    Math.floor((view.inventory.food ?? 0) / view.daily_food_lbs),
+  )
 })

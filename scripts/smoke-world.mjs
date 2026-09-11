@@ -3,9 +3,8 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import assert from 'node:assert/strict'
 const base = process.env.TRAIL_URL ?? 'http://localhost:4173'
 const browser = await chromium.launch({
-  executablePath: '/usr/bin/chromium',
   headless: false,
-  args: ['--ozone-platform=x11'],
+  args: process.platform === 'linux' ? ['--ozone-platform=x11'] : [],
 })
 const result = { environment: { base, width: 1280, height: 720 }, errors: [] }
 const page = await browser.newPage({ viewport: { width: 1280, height: 720 } })
@@ -33,9 +32,9 @@ const hold = async (key, ms) => {
 }
 await mkdir('docs/evidence/m1', { recursive: true })
 try {
-  await page.goto(`${base}/?evidence=1`)
-  await page.getByRole('button', { name: 'Choose provisions' }).click()
-  await page.getByRole('button', { name: 'Load this plan' }).click()
+  await page.goto(`${base}/?evidence=1&seed=11`)
+  await page.getByRole('heading', { name: 'Begin a journey', exact: true }).waitFor()
+  await page.getByRole('radio', { name: /^Moderate/ }).click()
   await page.getByRole('button', { name: 'Take the trail' }).click()
   await page.waitForTimeout(300)
   result.start = await read()

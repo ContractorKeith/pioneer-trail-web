@@ -275,7 +275,7 @@ export function createAtmosphere(
   root.add(sun, sun.target)
   const hemi = new THREE.HemisphereLight('#a9c4db', '#5d6040', 1.35)
   root.add(hemi)
-  const moon = new THREE.DirectionalLight('#90b3ed', 0.04)
+  const moon = new THREE.DirectionalLight('#9dbce9', 0.28)
   moon.position.set(30, 60, -20)
   root.add(moon)
   const fog = new THREE.FogExp2('#c4cbbd', 0.0038)
@@ -381,9 +381,11 @@ export function createAtmosphere(
     sun.target.position.z += 12
     sun.intensity = (weather === 'clear' ? 2.5 : 0.85) * day
     sun.color.set(weather === 'clear' && light < 0.7 ? '#ffc38b' : '#fff0d5')
-    hemi.intensity = 0.17 + day * (weather === 'clear' ? 1.35 : 0.78)
-    moon.intensity = (1 - day) * 0.32
-    scene.environmentIntensity = 0.12 + day * 0.42
+    // Keep the original daylight values intact; the legibility lift fades out before dawn.
+    const nightBoost = 1 - THREE.MathUtils.smoothstep(day, 0, 0.35)
+    hemi.intensity = 0.17 + day * (weather === 'clear' ? 1.35 : 0.78) + 0.25 * nightBoost
+    moon.intensity = (1 - day) * 0.32 + 0.38 * nightBoost
+    scene.environmentIntensity = 0.12 + day * 0.42 + 0.16 * nightBoost
     starsMaterial.opacity = (1 - day) * (1 - storm.value)
     fog.color
       .copy(nightFog)

@@ -39,11 +39,38 @@ function configured(occupationId: string) {
   throw new Error(`${occupationId} has no legal setup in shipped content`)
 }
 
+function configuredAt(occupationId: string, departureMonth: number) {
+  const seed = `setup-quote-${occupationId}-${departureMonth}`
+    .split('')
+    .reduce((sum, char) => sum + char.charCodeAt(0), 0)
+  for (const [trailId, eraId] of [
+    ['oregon', '1843'],
+    ['oregon', '1848'],
+    ['oregon', '1852'],
+    ['oregon', '1866'],
+    ['california', '1843'],
+    ['mormon', '1848'],
+  ]) {
+    const engine = new TrailEngine(seed.toString())
+    const result = apply(engine, {
+      Configure: {
+        trail_id: trailId,
+        era_id: eraId,
+        occupation_id: occupationId,
+        departure_month: departureMonth,
+        party: ['Ada', 'James', 'Ruth', 'Thomas'],
+      },
+    })
+    if (!isRejected(result.outcomes)) return engine
+  }
+  throw new Error(`${occupationId} has no legal setup in shipped content`)
+}
+
 describe('shipped WebAssembly outfitting plans', () => {
-  it('quotes and purchases every preset for every actual occupation', () => {
-    const catalog = JSON.parse(configured('banker').view()) as GameView
+  const catalog = JSON.parse(configured('banker').view()) as GameView
+  for (const occupation of catalog.content.occupations)
+    it(`quotes and purchases every preset for ${occupation.id}`, () => {
     let cases = 0
-    for (const occupation of catalog.content.occupations)
       for (const preset of outfitPresets) {
         const engine = configured(occupation.id)
         const before = JSON.parse(engine.view()) as GameView
@@ -67,8 +94,8 @@ describe('shipped WebAssembly outfitting plans', () => {
         ).toBe(false)
         cases += 1
       }
-    expect(cases).toBe(catalog.content.occupations.length * outfitPresets.length)
-  })
+      expect(cases).toBe(outfitPresets.length)
+    })
 
   it('gives the cash-constrained farmer a safe base wagon before upgrades', () => {
     const engine = configured('farmer')
@@ -96,4 +123,30 @@ describe('shipped WebAssembly outfitting plans', () => {
     expect(after.inventory.axle).toBeGreaterThanOrEqual(1)
     expect(after.inventory.tongue).toBeGreaterThanOrEqual(1)
   })
+
+  for (const occupation of catalog.content.occupations)
+    it(`matches scratch setup quotes to configured purchases for ${occupation.id}`, () => {
+    let cases = 0
+      for (let month = 3; month <= 7; month++)
+        for (const preset of outfitPresets) {
+          const engine = configuredAt(occupation.id, month)
+          const before = JSON.parse(engine.view()) as GameView
+          const preview = planOutfit(before, preset)
+          for (const purchase of preview.purchases)
+            expect(
+              isRejected(
+                apply(engine, { Buy: { item_id: purchase.itemId, quantity: purchase.quantity } })
+                  .outcomes,
+              ),
+            ).toBe(false)
+          const after = JSON.parse(engine.view()) as GameView
+          expect(preview.costCents).toBe(before.cash_cents - after.cash_cents)
+          expect(preview.fundsAfterCents).toBe(after.cash_cents)
+          expect(preview.foodDaysAfter).toBe(
+            Math.floor((after.inventory.food ?? 0) / after.daily_food_lbs),
+          )
+          cases += 1
+        }
+      expect(cases).toBe(5 * outfitPresets.length)
+    })
 })

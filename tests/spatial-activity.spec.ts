@@ -54,11 +54,16 @@ test('fishing casts a visible target from the crossing bank and preserves it thr
     message: 'Stop the wagon through its brake control',
   })
   await page.keyboard.press('e')
+  await page.getByRole('heading', { name: 'River crossing', exact: true }).waitFor()
+  await page.getByRole('button', { name: 'Get down and look around', exact: true }).click()
   await expect.poll(async () => (await state(page)).mode).toBe('walking')
   await walkTo(page, -3, 94)
   const bank = (await world(page)).locations.find((location) => location.id === 'riverbank')!
   await walkTo(page, bank.position[0], 94)
   await expect.poll(async () => (await state(page)).interaction?.kind).toBe('water')
+  await expect
+    .poll(async () => (await state(page)).interaction?.label)
+    .not.toBe('E · Inspect the crossing')
 
   const beforeCast = await state(page)
   await page.keyboard.press('f')
@@ -68,9 +73,9 @@ test('fishing casts a visible target from the crossing bank and preserves it thr
 
   await expect.poll(async () => (await fishingObservation(page)).fishingTarget).not.toBeNull()
   const observed = await fishingObservation(page)
+  expect(observed.river).not.toBeNull()
   const target = observed.fishingTarget
   expect(target).not.toBeNull()
-  expect(observed.river).not.toBeNull()
   const [x, , z] = target!
   expect(z).toBeGreaterThan(observed.river!.startZ)
   expect(z).toBeLessThan(observed.river!.endZ)

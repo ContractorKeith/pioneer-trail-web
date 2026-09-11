@@ -688,7 +688,7 @@ impl GameState {
     ) -> Result<Vec<Outcome>, CommandError> {
         let names = names.into_iter().map(|name| name.trim().to_owned()).collect::<Vec<_>>();
         if self.status != RunStatus::Setup
-            || names.len() != 5
+            || !(4..=5).contains(&names.len())
             || names.iter().collect::<BTreeSet<_>>().len() != names.len()
             || names.iter().any(|name| {
                 name.trim().is_empty()
@@ -3385,6 +3385,59 @@ mod tests {
         for _ in 0..5 {
             assert_eq!(a.apply(Command::TravelDay), b.apply(Command::TravelDay));
         }
+    }
+    #[test]
+    fn configure_accepts_four_members_and_rejects_other_party_sizes() {
+        let configure = |party: Vec<&str>| Command::Configure {
+            trail_id: "oregon".into(),
+            era_id: "1848".into(),
+            occupation_id: "farmer".into(),
+            party: party.into_iter().map(str::to_owned).collect(),
+            departure_month: 4,
+        };
+
+        let mut four = GameState::new(17);
+        assert!(!four
+            .apply(configure(vec!["Ada", "Ben", "Clara", "David"]))
+            .iter()
+            .any(|outcome| matches!(outcome, Outcome::Rejected(_))));
+        assert_eq!(four.party.len(), 4);
+
+        let mut three = GameState::new(17);
+        assert_rejected_without_mutation(&mut three, configure(vec!["Ada", "Ben", "Clara"]));
+
+        let mut six = GameState::new(17);
+        assert_rejected_without_mutation(
+            &mut six,
+            configure(vec!["Ada", "Ben", "Clara", "David", "Eve", "Frank"]),
+        );
+    }
+
+    #[test]
+    fn four_member_party_completes_a_short_journey() {
+        let mut game = GameState::new(27);
+        assert!(!game
+            .apply(Command::Configure {
+                trail_id: "oregon".into(),
+                era_id: "1848".into(),
+                occupation_id: "farmer".into(),
+                party: vec!["Ada".into(), "Ben".into(), "Clara".into(), "David".into()],
+                departure_month: 4,
+            })
+            .iter()
+            .any(|outcome| matches!(outcome, Outcome::Rejected(_))));
+        assert!(!game
+            .apply(Command::Buy { item_id: "food".into(), quantity: 100 })
+            .iter()
+            .any(|outcome| matches!(outcome, Outcome::Rejected(_))));
+        assert!(!game
+            .apply(Command::Buy { item_id: "oxen".into(), quantity: 3 })
+            .iter()
+            .any(|outcome| matches!(outcome, Outcome::Rejected(_))));
+        assert!(!game.apply(Command::Depart).iter().any(|outcome| matches!(outcome, Outcome::Rejected(_))));
+        assert!(!game.apply(Command::TravelDay).iter().any(|outcome| matches!(outcome, Outcome::Rejected(_))));
+        assert_eq!(game.party.len(), 4);
+        assert_eq!(game.day, 1);
     }
     #[test]
     fn seeded_family_pregnancy_is_eligible_and_reproducible() {

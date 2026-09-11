@@ -77,7 +77,10 @@ test('a modeled trader supports buy, sell, flexible barter and returns to the wo
   await page.keyboard.press('e')
   await walkTo(page, -3, 14)
   await walkTo(page, 5, 14)
-  await walkTo(page, 6, 27)
+  const trader = (await world(page)).locations.find((location) => location.id === 'trader')!
+  // Stop comfortably inside the interaction radius; walkTo intentionally permits a 0.45 m tolerance.
+  await walkTo(page, trader.position[0] - 2, trader.position[2] - 1)
+  await expect.poll(async () => (await state(page)).interaction?.label).toBe('E · Trail trader')
   await page.keyboard.press('e')
   await expect(page.getByRole('heading', { name: 'Trade', exact: true })).toBeVisible()
   const before = (await state(page)).view

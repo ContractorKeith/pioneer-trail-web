@@ -62,9 +62,11 @@ export default defineConfig({
                 '--ignore-gpu-blocklist',
               ]
             : headlessGpu
-              ? ['--ozone-platform=x11', '--enable-gpu']
+              ? [...(process.platform === 'linux' ? ['--ozone-platform=x11'] : []), '--enable-gpu']
               : process.env.TRAIL_HEADED === '1'
-                ? ['--ozone-platform=x11']
+                ? process.platform === 'linux'
+                  ? ['--ozone-platform=x11']
+                  : []
                 : ['--enable-unsafe-swiftshader'],
         },
       },

@@ -447,6 +447,24 @@ mod tests {
     }
 
     #[test]
+    fn five_member_campaign_save_still_loads() {
+        let game = configured(91);
+        assert_eq!(game.party.len(), 5);
+        let original = TrailEngine {
+            game,
+            world: None,
+            activity: None,
+            next_activity_id: 1,
+            last_commit: None,
+        };
+        let save = original.save();
+        let mut restored = TrailEngine::new("92".into()).unwrap();
+        restored.load_inner(&save).unwrap();
+        assert_eq!(restored.game.party.len(), 5);
+        assert_eq!(restored.save(), save);
+    }
+
+    #[test]
     fn rejected_command_is_a_non_mutating_bridge_result() {
         let mut game = configured(41);
         let before = serde_json::to_string(&game).unwrap();

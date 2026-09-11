@@ -9,9 +9,11 @@ import { trackServedBuild } from './served-build.mjs'
 const baseURL = process.env.TRAIL_URL ?? 'http://localhost:4173'
 const headlessGpu = process.env.TRAIL_HEADLESS_GPU === '1'
 const browserLaunch = {
-  executablePath: '/usr/bin/chromium',
   headless: headlessGpu,
-  args: ['--ozone-platform=x11', ...(headlessGpu ? ['--enable-gpu'] : [])],
+  args: [
+    ...(process.platform === 'linux' ? ['--ozone-platform=x11'] : []),
+    ...(headlessGpu ? ['--enable-gpu'] : []),
+  ],
 }
 let browser, page, served
 const report = {
@@ -45,13 +47,10 @@ try {
     uploadThroughput: 2_000_000 / 8,
   })
   const began = performance.now()
-  await page.goto('/?evidence=1')
-  await page.getByRole('button', { name: 'Choose provisions' }).waitFor()
+  await page.goto('/?evidence=1&seed=11')
+  await page.getByRole('heading', { name: 'Begin a journey', exact: true }).waitFor()
   report.coldInteractiveMs = performance.now() - began
-  await page.getByLabel('Journey seed').fill('11')
-  await page.getByRole('button', { name: 'Choose provisions' }).click()
   await page.getByRole('radio', { name: /^Safe/ }).click()
-  await page.getByRole('button', { name: 'Load this plan' }).click()
   await page.getByRole('button', { name: 'Take the trail' }).click()
   await page.waitForFunction(() => window.__trail.snapshot().paused === false)
   report.coldPlayableMs = performance.now() - began

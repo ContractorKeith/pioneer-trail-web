@@ -13,7 +13,6 @@ import {
   restore,
   resume,
   state,
-  walkTo,
   world,
 } from './world.helpers'
 
@@ -119,15 +118,68 @@ async function inspectRiver(page: Page) {
     message: 'Stop the wagon through its brake control',
   })
   await expect.poll(async () => (await state(page)).speed).toBe(0)
-  await page.keyboard.press('e')
-  await expect.poll(async () => (await state(page)).mode).toBe('walking')
-  await walkTo(page, -3, 94)
-  const bank = (await world(page)).locations.find((location) => location.id === 'riverbank')!
-  await walkTo(page, bank.position[0], 94)
-  await expect.poll(async () => (await state(page)).interaction?.kind).toBe('water')
+  await expect(page.getByRole('button', { name: /Inspect the crossing/ })).toBeVisible()
   await page.keyboard.press('e')
   await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
 }
+
+test('R05 driver discovers the crossing from the seat and a retreat costs exactly one day', async ({
+  page,
+}) => {
+  await restore(page, bankApproach((await fixture('river')).raw))
+  await inspectRiver(page)
+  const before = await state(page)
+  await page
+    .getByRole('button', { name: /^(Ford|Caulk)/ })
+    .first()
+    .click()
+  await expect.poll(async () => (await state(page)).activity?.kind).toBe('crossing')
+  await expect.poll(async () => (await state(page)).mode).toBe('riding')
+  await page.keyboard.press('x')
+  await expect.poll(async () => (await state(page)).activity).toBeNull()
+  const after = await state(page)
+  expect(after.view.day).toBe(before.view.day + 1)
+  expect(phase(after.view)).toBe('AwaitingRiver')
+})
+
+test('R05 driver can get down and reboard beside the halted wagon before inspecting from the seat', async ({
+  page,
+}) => {
+  await restore(page, bankApproach((await fixture('river')).raw))
+  await resume(page)
+  await page.keyboard.press('e')
+  await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Get down and look around', exact: true }).click()
+  await expect.poll(async () => (await state(page)).mode).toBe('walking')
+  await expect(page.getByRole('button', { name: /Board the wagon/ })).toBeVisible()
+  await page.keyboard.press('e')
+  await expect.poll(async () => (await state(page)).mode).toBe('riding')
+  await page.keyboard.press('e')
+  await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
+})
+
+test('R05 on-foot water-edge inspection does not offer a second dismount', async ({ page }) => {
+  const outer = JSON.parse(bankApproach((await fixture('river')).raw))
+  outer.spatial.mode = 'walking'
+  outer.spatial.player = { x: 0, z: 104, yaw: 0, pitch: 0 }
+  await restore(page, JSON.stringify(outer))
+  await resume(page)
+  await expect(page.getByRole('button', { name: /Inspect the crossing/ })).toBeVisible()
+  await page.keyboard.press('e')
+  await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
+  await expect(
+    page.getByRole('button', { name: 'Get down and look around', exact: true }),
+  ).toHaveCount(0)
+})
+
+test('R05 nearby locations win over the river inspection band on foot', async ({ page }) => {
+  const outer = JSON.parse(bankApproach((await fixture('river')).raw))
+  outer.spatial.mode = 'walking'
+  outer.spatial.player = { x: 8.4, z: 28.4, yaw: 0, pitch: 0 }
+  await restore(page, JSON.stringify(outer))
+  await resume(page)
+  await expect.poll(async () => (await state(page)).interaction?.label).toBe('E · Trail trader')
+})
 
 test('R05 Wait costs a camp day and food while keeping the wagon at the riverbank', async ({
   page,
@@ -176,17 +228,12 @@ test('R03/R05 Columbia route selection launches a physical raft run to the endin
   await expect.poll(async () => (await state(page)).view.active_minigame?.kind).toBe('Raft')
   await page.getByRole('button', { name: 'Close panel' }).click()
   await resume(page)
-  await driveTo(page, 0, 80)
+  const river = (await world(page)).river!
+  await driveTo(page, 0, river.startZ - 12)
   await holdUntil(page, 'Space', (s) => s.speed === 0, {
     timeout: gameplayTimeout(3000),
     message: 'Stop the wagon through its brake control',
   })
-  await page.keyboard.press('e')
-  await expect.poll(async () => (await state(page)).mode).toBe('walking')
-  await walkTo(page, -3, 94)
-  const bank = (await world(page)).locations.find((location) => location.id === 'riverbank')!
-  await walkTo(page, bank.position[0], 94)
-  await expect.poll(async () => (await state(page)).interaction?.kind).toBe('water')
   await page.keyboard.press('e')
   await expect.poll(async () => (await state(page)).activity?.kind).toBe('crossing')
 

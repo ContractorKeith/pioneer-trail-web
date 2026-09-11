@@ -15,7 +15,9 @@
     "build:engine": "bash scripts/build-engine.sh",
     "format": "prettier --write src tests *.ts *.json *.html *.md docs/*.md",
     "test:assets": "node scripts/verify-assets.mjs",
-    "test:types": "tsc -p tsconfig.tests.json"
+    "test:types": "tsc -p tsconfig.tests.json",
+    "smoke": "node scripts/smoke-world.mjs",
+    "capture:evidence": "node scripts/capture-evidence.mjs"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "0.20.0",

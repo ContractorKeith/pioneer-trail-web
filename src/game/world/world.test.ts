@@ -74,6 +74,44 @@ describe('authored region contract', () => {
     }
   })
 
+  it('preserves daylight while raising only the night lighting floor', () => {
+    let hemi: THREE.HemisphereLight | undefined
+    let moon: THREE.DirectionalLight | undefined
+    scene.traverse((child) => {
+      if (child instanceof THREE.HemisphereLight) hemi = child
+      if (child instanceof THREE.DirectionalLight) moon = child
+    })
+    for (const daylight of [1, 0.8, 0.5]) {
+      world.update({
+        dt: 1 / 60,
+        time: 12,
+        speed: 0,
+        distance: 0,
+        cameraPosition: new THREE.Vector3(),
+        sheltered: false,
+        weather: 'clear',
+        daylight,
+      })
+      const day = THREE.MathUtils.smoothstep(daylight, 0.06, 0.6)
+      expect(hemi!.intensity).toBeCloseTo(0.17 + day * 1.35)
+      expect(scene.environmentIntensity).toBeCloseTo(0.12 + day * 0.42)
+      expect(moon!.intensity).toBeCloseTo((1 - day) * 0.32)
+    }
+    world.update({
+      dt: 1 / 60,
+      time: 12,
+      speed: 0,
+      distance: 0,
+      cameraPosition: new THREE.Vector3(),
+      sheltered: false,
+      weather: 'clear',
+      daylight: 0,
+    })
+    expect(hemi!.intensity).toBeCloseTo(0.42)
+    expect(scene.environmentIntensity).toBeCloseTo(0.28)
+    expect(moon!.intensity).toBeCloseTo(0.7)
+  })
+
   it('exposes a traversable river, visible hazard IDs, and a dry bank interaction', () => {
     expect(world.river).toMatchObject({ startZ: 104, endZ: 136, depth: 1.2 })
     const bank = world.locations.find((location) => location.id === 'riverbank')!

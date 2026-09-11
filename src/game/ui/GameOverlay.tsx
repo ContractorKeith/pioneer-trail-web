@@ -10,8 +10,10 @@ import { OutfitOverlay } from './OutfitOverlay'
 export interface OverlayProps {
   overlay: Exclude<Overlay, null>
   view: GameView
+  mode: 'riding' | 'walking'
   onClose: () => void
   command: (command: GameCommand) => unknown
+  onAction: (action: 'dismount') => void
   onNewJourney: () => void
   settings: React.ReactNode
   activity: {
@@ -59,7 +61,9 @@ export function GameOverlay(props: OverlayProps) {
       {overlay === 'camp' && <Camp view={view} command={command} activity={props.activity} />}
       {overlay === 'trader' && <Trader view={view} command={command} />}
       {overlay === 'dialogue' && <Conversation view={view} command={command} />}
-      {overlay === 'river' && <River view={view} command={command} />}
+      {overlay === 'river' && (
+        <River view={view} mode={props.mode} command={command} onAction={props.onAction} />
+      )}
       {overlay === 'encounter' && <Encounter view={view} command={command} />}
       {overlay === 'route' && <Route view={view} command={command} />}
       {overlay === 'ending' && <Ending view={view} onNewJourney={props.onNewJourney} />}
@@ -491,7 +495,17 @@ function Conversation({
     </>
   )
 }
-function River({ view, command }: { view: GameView; command: (command: GameCommand) => void }) {
+function River({
+  view,
+  mode,
+  command,
+  onAction,
+}: {
+  view: GameView
+  mode: 'riding' | 'walking'
+  command: (command: GameCommand) => void
+  onAction: (action: 'dismount') => void
+}) {
   const river = view.river
   if (!river) return <Empty icon={MapPin} text="The crossing is no longer ahead." />
   return (
@@ -541,6 +555,11 @@ function River({ view, command }: { view: GameView; command: (command: GameComma
           )
         })}
       </div>
+      {phase(view) === 'AwaitingRiver' && mode === 'riding' && (
+        <button className="quiet-action" onClick={() => onAction('dismount')}>
+          Get down and look around
+        </button>
+      )}
     </>
   )
 }

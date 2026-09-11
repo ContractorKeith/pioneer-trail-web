@@ -3,6 +3,7 @@ import type { GameSettings, MoveInput } from './contracts'
 export type InputAction =
   | 'decision'
   | 'interact'
+  | 'dismount'
   | 'pause'
   | 'hunt'
   | 'fish'

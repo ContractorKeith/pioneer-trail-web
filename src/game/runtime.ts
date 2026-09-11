@@ -34,6 +34,7 @@ type Options = {
   persist?: boolean
 }
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value))
+export const elapsedAtNight = (day: number) => (Math.PI * 1.5 - 0.65 - day * 0.6) / 0.009
 function phase(status: string | Record<string, string>) {
   return typeof status === 'string' ? status : Object.keys(status)[0]
 }
@@ -78,6 +79,8 @@ export class GameRuntime {
   private lastEvent = ''
   private presentSavedDecision = true
   private renderDirty = true
+  private lastRiverNotice = -Infinity
+  private riverWadeBlocked = false
 
   static async create(
     canvas: HTMLCanvasElement,
@@ -212,6 +215,10 @@ export class GameRuntime {
             })),
           }),
           renderer: () => this.rendererInfo(),
+          forceNight: () => {
+            this.elapsed = elapsedAtNight(this.campaign.view().day)
+            this.renderDirty = true
+          },
         },
       })
     }
@@ -359,6 +366,10 @@ export class GameRuntime {
       else if (['Arrived', 'Failed'].includes(phase(view.status))) this.open('ending')
       return
     }
+    if (action === 'dismount') {
+      if (this.spatial.mode === 'riding' && this.atRiverHalt()) this.dismount(true)
+      return
+    }
     if (this.paused) return
     if (action === 'primary') {
       this.activities.primary()
@@ -445,23 +456,25 @@ export class GameRuntime {
     }
     const wagon = this.spatial.wagon
     if (this.spatial.mode === 'riding') {
+      const rafting = this.campaign.view().active_minigame?.kind === 'Raft'
+      const atRaftLaunch =
+        rafting &&
+        this.world.river &&
+        Math.abs(wagon.speed) <= 0.2 &&
+        Math.abs(wagon.z - (this.world.river.startZ - 12)) <= 22
+      if (this.atRiverHalt() || atRaftLaunch) {
+        if (rafting) {
+          this.beginActivity({ kind: 'crossing', method: 'Raft' })
+          return
+        }
+        this.open('river')
+        return
+      }
       if (Math.abs(wagon.speed) > 0.2) {
         this.callbacks.onNotice('Hold Space to stop before getting down.')
         return
       }
-      for (const side of [-1, 1]) {
-        const x = wagon.x + Math.cos(wagon.yaw) * 3 * side,
-          z = wagon.z - Math.sin(wagon.yaw) * 3 * side
-        if (!this.physics.canStand(x, z)) continue
-        this.spatial.mode = 'walking'
-        this.spatial.player = { x, z, yaw: wagon.yaw, pitch: 0 }
-        this.previousPlayer = { ...this.spatial.player }
-        this.trySave()
-        this.callbacks.onNotice('On foot. WASD to walk; E near the driver’s seat to board.')
-        this.publish()
-        return
-      }
-      this.callbacks.onNotice('Both sides are blocked. Move the wagon to a clear stopping place.')
+      this.dismount(false)
       return
     }
     const p = this.spatial.player
@@ -497,12 +510,38 @@ export class GameRuntime {
       this.callbacks.onNotice('Suitable fishing water. Press F to cast from the bank.')
     else this.open(map[this.interaction.kind] ?? 'dialogue')
   }
+  private dismount(fromRiverOverlay: boolean) {
+    const wagon = this.spatial.wagon
+    for (const side of [-1, 1]) {
+      const x = wagon.x + Math.cos(wagon.yaw) * 3 * side,
+        z = wagon.z - Math.sin(wagon.yaw) * 3 * side
+      if (!this.physics.canStand(x, z)) continue
+      this.spatial.mode = 'walking'
+      this.spatial.player = { x, z, yaw: wagon.yaw, pitch: 0 }
+      this.previousPlayer = { ...this.spatial.player }
+      this.trySave()
+      this.callbacks.onOpen(null)
+      this.callbacks.onNotice(
+        fromRiverOverlay
+          ? 'On foot at the riverbank. E near the wagon to board; E at the water to inspect.'
+          : 'On foot. WASD to walk; E near the driver’s seat to board.',
+      )
+      this.resume()
+      this.publish()
+      return
+    }
+    this.callbacks.onNotice('Both sides are blocked. Move the wagon to a clear stopping place.')
+  }
   private findInteraction() {
     const p = this.spatial.mode === 'riding' ? this.spatial.wagon : this.spatial.player
     if (this.spatial.mode === 'riding') {
       this.interaction = {
-        kind: 'dismount',
-        label: Math.abs(this.spatial.wagon.speed) > 0.2 ? 'Space · Stop the wagon' : 'E · Get down',
+        kind: this.atRiverHalt() ? 'water' : 'dismount',
+        label: this.atRiverHalt()
+          ? 'E · Inspect the crossing'
+          : Math.abs(this.spatial.wagon.speed) > 0.2
+            ? 'Space · Stop the wagon'
+            : 'E · Get down',
         distance: 0,
       }
       return
@@ -525,7 +564,38 @@ export class GameRuntime {
       if (d <= location.radius && (!closest || d < closest.distance))
         closest = { kind: location.kind, label: `E · ${location.label}`, distance: d }
     }
+    if (!closest && this.inRiverInspectionArea(p))
+      closest = { kind: 'water', label: 'E · Inspect the crossing', distance: 0 }
     this.interaction = closest
+  }
+  /** The river halt is a stable interaction zone, rather than a single scenery marker. */
+  private atRiverHalt() {
+    const river = this.world.river
+    return (
+      !!river &&
+      phase(this.campaign.view().status) === 'AwaitingRiver' &&
+      Math.abs(this.spatial.wagon.speed) <= 0.2 &&
+      Math.abs(this.spatial.wagon.z - (river.startZ - 12)) <= 22
+    )
+  }
+  private inRiverInspectionArea(position: { x: number; z: number }) {
+    const river = this.world.river
+    if (!river || phase(this.campaign.view().status) !== 'AwaitingRiver') return false
+    return (
+      Math.abs(position.x - this.world.trailX(river.startZ)) <= 20 &&
+      Math.abs(position.z - river.startZ) <= 8
+    )
+  }
+  private isBlockedRiverWade(from: { x: number; z: number }, position: { x: number; z: number }) {
+    const river = this.world.river
+    return (
+      !!river &&
+      phase(this.campaign.view().status) === 'AwaitingRiver' &&
+      position.z > from.z &&
+      position.z > river.startZ - 1 &&
+      position.z < river.endZ + 2 &&
+      Math.abs(position.x - this.world.trailX(position.z)) < 110
+    )
   }
   private frame = (now: number) => {
     if (this.disposed) return
@@ -645,9 +715,10 @@ export class GameRuntime {
       if (river && !crossing && pose.z > river.startZ - 9) {
         pose.z = river.startZ - 9
         pose.speed = 0
-        this.callbacks.onNotice(
-          'Stop at the riverbank. Get down and inspect the crossing before entering the water.',
-        )
+        if (this.elapsed - this.lastRiverNotice >= 3) {
+          this.lastRiverNotice = this.elapsed
+          this.callbacks.onNotice('Stop at the riverbank and press E to inspect the crossing.')
+        }
       }
       this.spatial.wagon = pose
       if (crossing) this.activities.crossing(pose, this.physics.lastObstacle)
@@ -665,8 +736,19 @@ export class GameRuntime {
       if (pose.z > this.world.length - 14 && canTravel) this.transition(false)
     } else {
       const p = this.physics.walk({ ...this.spatial.player, speed: 0 }, this.input.movement(), dt)
-      this.spatial.player.x = p.x
-      this.spatial.player.z = p.z
+      if (this.isBlockedRiverWade(this.spatial.player, p)) {
+        if (!this.riverWadeBlocked || this.elapsed - this.lastRiverNotice >= 3) {
+          this.lastRiverNotice = this.elapsed
+          this.callbacks.onNotice(
+            'The wagon cannot follow on foot. Return and inspect the crossing (E).',
+          )
+        }
+        this.riverWadeBlocked = true
+      } else {
+        this.riverWadeBlocked = false
+        this.spatial.player.x = p.x
+        this.spatial.player.z = p.z
+      }
     }
     if (this.saveElapsed > 2) {
       this.saveElapsed = 0

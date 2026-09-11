@@ -250,12 +250,9 @@ export async function holdUntil(
   }
 }
 export async function start(page: Page, trail = 'oregon', preset = 'Safe', seed = '11') {
-  await page.goto('/?evidence=1')
+  await page.goto(`/?evidence=1&seed=${encodeURIComponent(seed)}`)
   await page.getByRole('combobox', { name: 'Route', exact: true }).selectOption(trail)
-  await page.getByLabel('Journey seed').fill(seed)
-  await page.getByRole('button', { name: 'Choose provisions' }).click()
   await page.getByRole('radio', { name: new RegExp(`^${preset}`) }).click()
-  await page.getByRole('button', { name: 'Load this plan' }).click()
   await page.getByRole('button', { name: 'Take the trail' }).click()
   await expect.poll(async () => (await state(page)).paused).toBe(false)
 }
@@ -320,6 +317,7 @@ export async function walkTo(page: Page, x: number, z: number) {
 
 export type WorldObservation = {
   locations: Array<{ id: string; position: [number, number, number]; radius: number }>
+  river: { startZ: number; endZ: number } | null
   wildlife: Array<{
     id: string
     animal: string
