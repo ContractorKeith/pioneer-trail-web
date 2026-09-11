@@ -35,6 +35,8 @@ function partyProblem(party: string[]) {
   const names = party.map((name) => name.trim())
   if (names.some((name) => !name)) return 'Every traveler needs a name.'
   if (names.some((name) => [...name].length > 24)) return 'Names must be 24 characters or fewer.'
+  if (names.some((name) => /\p{Cc}/u.test(name)))
+    return 'Names can only use letters, spaces and punctuation.'
   if (new Set(names).size !== names.length) return 'Traveler names must be unique.'
   return null
 }
@@ -137,6 +139,7 @@ export function SetupOverlay({
       </fieldset>
       <StartingSupplies
         quotes={quoteState.quotes}
+        pending={quoteState.pending}
         preset={setup.preset}
         onChoose={(preset) => set('preset', preset)}
       />
@@ -158,10 +161,12 @@ export function SetupOverlay({
 
 function StartingSupplies({
   quotes,
+  pending,
   preset,
   onChoose,
 }: {
   quotes: Partial<Record<OutfitPreset, OutfitPlan>>
+  pending: boolean
   preset: OutfitPreset
   onChoose: (preset: OutfitPreset) => void
 }) {
@@ -182,13 +187,13 @@ function StartingSupplies({
               onClick={() => onChoose(option)}
             >
               <strong>{quote?.label ?? `${option[0]!.toUpperCase()}${option.slice(1)}`}</strong>
-              <span>{quote?.tradeoff ?? 'Calculating supplies…'}</span>
+              <span>{quote?.tradeoff ?? (pending ? 'Calculating supplies…' : 'Fix traveler names.')}</span>
             </button>
           )
         })}
       </div>
-      <div className="plan-quote" aria-live="polite" aria-busy={!plan}>
-        <strong>{plan?.tradeoff ?? 'Calculating your wagon…'}</strong>
+      <div className="plan-quote" aria-live="polite" aria-busy={pending}>
+        <strong>{plan?.tradeoff ?? (pending ? 'Calculating your wagon…' : 'Supplies unavailable.')}</strong>
         <dl>
           <div>
             <dt>Cost</dt>
@@ -215,7 +220,7 @@ function useSetupQuotes(setup: JourneySetup, namesProblem: string | null) {
     quotes: Partial<Record<OutfitPreset, OutfitPlan>>
     error: string | null
   }>({ key: '', quotes: {}, error: null })
-  const setupKey = `${setup.trail_id}/${setup.era_id}/${setup.occupation_id}/${setup.departure_month}/${setup.party.length}/${namesProblem ? 'invalid' : 'valid'}`
+  const setupKey = `${setup.trail_id}/${setup.era_id}/${setup.occupation_id}/${setup.departure_month}/${setup.party.length}`
   useEffect(() => {
     let cancelled = false
     let engine: TrailEngine | null = null
@@ -270,8 +275,14 @@ function useSetupQuotes(setup: JourneySetup, namesProblem: string | null) {
     setupKey,
     namesProblem,
   ])
-  if (namesProblem) return { quotes: {}, error: null }
-  return resolved.key === setupKey
-    ? { quotes: resolved.quotes, error: resolved.error }
-    : { quotes: {}, error: null }
+  const matchesSetup = resolved.key === setupKey
+  if (namesProblem)
+    return { quotes: matchesSetup ? resolved.quotes : {}, error: null, pending: false }
+  if (matchesSetup)
+    return {
+      quotes: resolved.quotes,
+      error: resolved.error,
+      pending: !resolved.error && Object.keys(resolved.quotes).length === 0,
+    }
+  return { quotes: {}, error: null, pending: true }
 }

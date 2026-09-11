@@ -98,8 +98,12 @@ test('setup keeps only the journey decisions and loads Moderate supplies by defa
 test('setup supply preview uses the selected occupation starting cash', async ({ page }) => {
   await page.goto('/?evidence=1')
   const quote = page.locator('.plan-quote')
+  await expect(quote).toHaveAttribute('aria-busy', 'false')
+  await expect(quote).toContainText(/[1-9]\d* days/)
   const banker = await quote.textContent()
   await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
+  await expect(quote).toHaveAttribute('aria-busy', 'false')
+  await expect(quote).toContainText(/[1-9]\d* days/)
   await expect(quote).not.toHaveText(banker!)
 })
 
@@ -124,10 +128,14 @@ test('duplicate traveler names explain why setup cannot continue and recover whe
 }) => {
   await page.goto('/?evidence=1&seed=11')
   const start = page.getByRole('button', { name: 'Take the trail' })
+  const quote = page.locator('.plan-quote')
   await expect(start).toBeEnabled()
+  const before = await quote.textContent()
   await page.getByLabel('Traveler 1').fill('Margaret')
   await expect(page.getByRole('alert')).toHaveText('Traveler names must be unique.')
   await expect(start).toBeDisabled()
+  await expect(quote).toHaveAttribute('aria-busy', 'false')
+  await expect(quote).toHaveText(before!)
   await page.getByLabel('Traveler 1').fill('James')
   await expect(page.getByRole('alert')).toHaveCount(0)
   await expect(start).toBeEnabled()

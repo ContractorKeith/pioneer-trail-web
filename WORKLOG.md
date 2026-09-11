@@ -36,3 +36,10 @@
 - Checks: build, lint, test:types, and 272 Vitest tests passed. Headed test:dev passed 12/12; headed test:e2e passed 106/106 (53 Chromium, 53 Firefox).
 - Remaining: None.
 - Next: None.
+
+### 2026-09-11 13:20 EDT - Pass 11 stable setup quotes
+
+- Outcome: Kept ready supply quotes visible while correcting invalid names, exposed only real quote work as busy, and matched the engine's control-character validation.
+- Checks: build, lint, test:types, and 272 Vitest tests passed. Headed test:dev passed 12/12; headed test:e2e passed 106/106 (53 Chromium, 53 Firefox).
+- Remaining: None.
+- Next: None.
