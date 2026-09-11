@@ -26,8 +26,6 @@ function journeySeed() {
 }
 
 function unavailable(setup: JourneySetup) {
-  if (setup.trail_id === 'mormon' && setup.era_id === '1843')
-    return 'The Mormon Trail begins in 1848.'
   if (setup.occupation_id === 'soldier' && setup.era_id !== '1866')
     return 'Soldier is available in 1866.'
   return null
