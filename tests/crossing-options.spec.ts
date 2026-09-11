@@ -123,7 +123,7 @@ async function inspectRiver(page: Page) {
   await expect(page.getByRole('heading', { name: 'River crossing', exact: true })).toBeVisible()
 }
 
-test('R05 driver discovers, starts, and commits one river crossing from the halted wagon', async ({
+test('R05 driver discovers the crossing from the seat and a retreat costs exactly one day', async ({
   page,
 }) => {
   await restore(page, bankApproach((await fixture('river')).raw))
