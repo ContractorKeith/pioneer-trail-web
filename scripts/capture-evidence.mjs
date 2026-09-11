@@ -31,6 +31,7 @@ try {
     await page.screenshot({ path: `${output}/onboarding-after-cta.png` })
 
     await start(page)
+    await page.screenshot({ path: `${output}/day-after.png` })
     await page.evaluate(() => window.__trail.forceNight())
     await page.waitForTimeout(500)
     await page.screenshot({ path: `${output}/night-after.png` })
