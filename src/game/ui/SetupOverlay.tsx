@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import type { GameView } from '../../engine-types'
+import { outfitPresets, planOutfit, type OutfitPreset } from '../../outfitting'
+import { money } from '../../presentation'
 
 export interface JourneySetup {
   seed: string
@@ -10,6 +12,7 @@ export interface JourneySetup {
   departure_month: number
   party: string[]
   difficulty: 'Easy' | 'Normal' | 'Hard'
+  preset: OutfitPreset
 }
 
 const months = ['March', 'April', 'May', 'June', 'July']
@@ -29,14 +32,17 @@ export function SetupOverlay({
   view: GameView
   onStart: (setup: JourneySetup) => void
 }) {
+  const firstEra = view.content.eras[0]?.id ?? '1848'
   const [setup, setSetup] = useState<JourneySetup>({
-    seed: '1848',
+    seed: String(crypto.getRandomValues(new Uint32Array(1))[0]),
     trail_id: 'oregon',
-    era_id: '1848',
+    era_id: firstEra,
     occupation_id: 'banker',
     departure_month: 3,
+    // The campaign currently validates exactly five original party members; saves depend on it.
     party: ['James', 'Margaret', 'Thomas', 'Clara', 'William'],
     difficulty: 'Normal',
+    preset: 'moderate',
   })
   const problem = unavailable(setup)
   const occupation = useMemo(
@@ -54,7 +60,7 @@ export function SetupOverlay({
         if (!problem) onStart(setup)
       }}
     >
-      <p className="overlay-lede">Choose the people, season, and road. Supplies come next.</p>
+      <p className="overlay-lede">Choose the people, season, road, and starting supplies.</p>
       <div className="setup-grid">
         <label>
           <span>Route</span>
@@ -62,16 +68,6 @@ export function SetupOverlay({
             {view.content.trails.map((trail) => (
               <option key={trail.id} value={trail.id}>
                 {trail.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          <span>Year</span>
-          <select value={setup.era_id} onChange={(event) => set('era_id', event.target.value)}>
-            {view.content.eras.map((era) => (
-              <option key={era.id} value={era.id}>
-                {era.name}
               </option>
             ))}
           </select>
@@ -102,27 +98,6 @@ export function SetupOverlay({
             ))}
           </select>
         </label>
-        <label>
-          <span>Difficulty</span>
-          <select
-            value={setup.difficulty}
-            onChange={(event) =>
-              set('difficulty', event.target.value as JourneySetup['difficulty'])
-            }
-          >
-            <option>Easy</option>
-            <option>Normal</option>
-            <option>Hard</option>
-          </select>
-        </label>
-        <label>
-          <span>Journey seed</span>
-          <input
-            value={setup.seed}
-            inputMode="numeric"
-            onChange={(event) => set('seed', event.target.value)}
-          />
-        </label>
       </div>
       <p className="occupation-copy">
         {occupation?.perk ?? 'Every occupation begins with a different stake in the journey.'}
@@ -146,14 +121,58 @@ export function SetupOverlay({
           </label>
         ))}
       </fieldset>
+      <StartingSupplies view={view} preset={setup.preset} onChoose={(preset) => set('preset', preset)} />
       {problem && (
         <p className="overlay-warning" role="alert">
           {problem}
         </p>
       )}
       <button className="primary-action" type="submit" disabled={!!problem}>
-        Choose provisions <ArrowRight size={17} />
+        Take the trail <ArrowRight size={17} />
       </button>
     </form>
+  )
+}
+
+function StartingSupplies({
+  view,
+  preset,
+  onChoose,
+}: {
+  view: GameView
+  preset: OutfitPreset
+  onChoose: (preset: OutfitPreset) => void
+}) {
+  const plan = planOutfit(view, preset)
+  return (
+    <section className="starting-supplies" aria-labelledby="starting-supplies-title">
+      <h3 id="starting-supplies-title">Starting supplies</h3>
+      <div className="plan-picker" role="radiogroup" aria-label="Starting supplies">
+        {outfitPresets.map((option) => {
+          const quote = planOutfit(view, option)
+          return (
+            <button
+              type="button"
+              role="radio"
+              aria-checked={preset === option}
+              className={preset === option ? 'selected' : ''}
+              key={option}
+              onClick={() => onChoose(option)}
+            >
+              <strong>{quote.label}</strong>
+              <span>{quote.tradeoff}</span>
+            </button>
+          )
+        })}
+      </div>
+      <div className="plan-quote" aria-live="polite">
+        <strong>{plan.tradeoff}</strong>
+        <dl>
+          <div><dt>Cost</dt><dd>{money(plan.costCents)}</dd></div>
+          <div><dt>Cash after</dt><dd>{money(plan.fundsAfterCents)}</dd></div>
+          <div><dt>Food</dt><dd>{plan.foodDaysAfter} days</dd></div>
+        </dl>
+      </div>
+    </section>
   )
 }

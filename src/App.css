@@ -1,4 +1,5 @@
 :root {
+  --ui-scale: 1;
   --ink: #f6edd9;
   --paper: #201d18;
   --panel: rgba(25, 28, 25, 0.93);
@@ -11,6 +12,7 @@
     system-ui,
     sans-serif;
   color: var(--ink);
+  font-size: calc(16px * var(--ui-scale));
 }
 * {
   box-sizing: border-box;
@@ -86,7 +88,7 @@ button:disabled {
   align-items: center;
   gap: 0.55rem;
   text-shadow: 0 1px 3px #000;
-  font-size: 0.77rem;
+  font-size: 0.94rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -147,12 +149,13 @@ button:disabled {
   background: #192019d1;
   border-left: 2px solid var(--leaf);
   box-shadow: 0 2px 8px #0004;
-  font-size: 0.7rem;
+  font-size: 0.82rem;
 }
 .vitals strong {
   color: #f4dda9;
   font-variant-numeric: tabular-nums;
 }
+.vitals strong { font-size: 1.12rem; }
 .vitals span {
   color: #d7d4c8;
 }
@@ -172,12 +175,13 @@ button:disabled {
   border-radius: 5px;
   box-shadow: 0 3px 18px #0008;
 }
+.interact-prompt { font-size: 1rem; }
 kbd {
   border: 1px solid #e8c982;
   border-bottom-width: 3px;
   border-radius: 3px;
   padding: 0.1rem 0.28rem;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
 }
 .activity-readout {
   position: fixed;
@@ -188,7 +192,7 @@ kbd {
   width: min(330px, 80vw);
   text-align: center;
   text-shadow: 0 1px 3px #000;
-  font-size: 0.75rem;
+  font-size: 0.94rem;
 }
 .activity-readout strong,
 .activity-readout span {
@@ -234,7 +238,7 @@ kbd {
   padding: 4px;
   border-color: transparent;
   background: transparent;
-  font-size: 0.61rem;
+  font-size: 0.78rem;
 }
 .hud-nav button:hover,
 .hud-nav button:focus-visible {
@@ -249,7 +253,7 @@ kbd {
   display: flex;
   gap: 6px;
   align-items: center;
-  font-size: 0.68rem;
+  font-size: 0.88rem;
   color: #e8dfc8;
   text-shadow: 0 1px 3px #000;
   pointer-events: none;
@@ -269,7 +273,7 @@ kbd {
   border: 1px solid #8aaf76;
   box-shadow: 0 4px 22px #0008;
   border-radius: 5px;
-  font-size: 0.82rem;
+  font-size: 1rem;
 }
 .notice.is-error {
   background: #4a2925ee;
@@ -309,7 +313,7 @@ kbd {
   line-height: 1;
 }
 .dialog-heading .eyebrow {
-  font-size: 0.62rem;
+  font-size: 0.82rem;
   color: var(--gold);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -330,10 +334,22 @@ kbd {
   line-height: 1.55;
   margin: 0 0 1rem;
 }
+.dialog-body { font-size: 1rem; }
 .setup-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
+}
+.starting-supplies {
+  margin: 1rem 0;
+  border-top: 1px solid var(--line);
+  padding-top: 0.9rem;
+}
+.starting-supplies h3 {
+  margin: 0;
+  color: var(--gold);
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 .setup-overlay label,
 .settings-panel label,
@@ -341,7 +357,7 @@ kbd {
   display: grid;
   gap: 0.35rem;
   color: #cfc8b8;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -365,7 +381,7 @@ kbd {
   padding: 0.65rem 0.75rem;
   border-left: 2px solid var(--gold);
   background: #47391952;
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 1.45;
 }
 .overlay-warning {
@@ -382,7 +398,7 @@ kbd {
 }
 .traveler-list legend {
   color: var(--gold);
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   padding: 0 0.35rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -394,7 +410,7 @@ kbd {
 }
 .traveler-list label span {
   min-width: 72px;
-  font-size: 0.62rem;
+  font-size: 0.82rem;
 }
 .primary-action {
   display: flex;
@@ -406,6 +422,7 @@ kbd {
   background: #b77a36;
   color: #19130b;
   border-radius: 4px;
+  min-height: 44px;
   padding: 0.7rem 1rem;
   font-weight: 800;
 }
@@ -428,7 +445,7 @@ kbd {
 .party-list span {
   display: block;
   color: #aaa99d;
-  font-size: 0.66rem;
+  font-size: 0.82rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -436,7 +453,7 @@ kbd {
   display: block;
   margin-top: 0.22rem;
   color: #f1d794;
-  font-size: 0.93rem;
+  font-size: 1.12rem;
 }
 .plan-picker {
   display: grid;
@@ -470,7 +487,7 @@ kbd {
 .plan-picker span {
   margin-top: 0.32rem;
   color: #c7c3b6;
-  font-size: 0.7rem;
+  font-size: 0.88rem;
   line-height: 1.35;
 }
 .plan-quote {
@@ -483,7 +500,7 @@ kbd {
   display: block;
   line-height: 1.45;
   margin: 0.3rem 0 0.7rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .plan-quote dl {
   display: flex;
@@ -492,13 +509,21 @@ kbd {
 }
 .plan-quote dt {
   color: #a7a195;
-  font-size: 0.63rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
 }
 .plan-quote dd {
   margin: 0.15rem 0 0;
   color: #edcf8f;
   font-weight: 700;
+}
+@media (max-height: 760px) {
+  .dialog-body { max-height: calc(100dvh - 124px); padding-block: 0.85rem 1rem; }
+  .setup-overlay .overlay-lede { margin-bottom: 0.65rem; }
+  .setup-overlay .plan-picker { margin: 0.55rem 0; }
+  .setup-overlay .plan-picker button { min-height: 84px; padding: 0.55rem; }
+  .setup-overlay .traveler-list { margin: 0.65rem 0; padding: 0.55rem; }
+  .setup-overlay .starting-supplies { margin: 0.65rem 0; padding-top: 0.65rem; }
 }
 .quiet-action {
   display: block;

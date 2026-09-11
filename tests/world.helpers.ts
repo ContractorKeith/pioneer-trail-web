@@ -249,13 +249,10 @@ export async function holdUntil(
     await page.keyboard.up(key)
   }
 }
-export async function start(page: Page, trail = 'oregon', preset = 'Safe', seed = '11') {
+export async function start(page: Page, trail = 'oregon', preset = 'Safe', _seed?: string) {
   await page.goto('/?evidence=1')
   await page.getByRole('combobox', { name: 'Route', exact: true }).selectOption(trail)
-  await page.getByLabel('Journey seed').fill(seed)
-  await page.getByRole('button', { name: 'Choose provisions' }).click()
   await page.getByRole('radio', { name: new RegExp(`^${preset}`) }).click()
-  await page.getByRole('button', { name: 'Load this plan' }).click()
   await page.getByRole('button', { name: 'Take the trail' }).click()
   await expect.poll(async () => (await state(page)).paused).toBe(false)
 }

@@ -100,13 +100,16 @@ function Journal({ view }: { view: GameView }) {
   )
 }
 function Inventory({ view }: { view: GameView }) {
+  const outfitting = phase(view) === 'Outfitting'
   return (
     <>
-      <div className="resource-strip">
-        <Metric label="Cash" value={money(view.cash_cents)} />
-        <Metric label="Load" value={`${view.weight_lbs.toLocaleString()} lb`} />
-        <Metric label="Food" value={`${view.inventory.food ?? 0} lb`} />
-      </div>
+      {!outfitting && (
+        <div className="resource-strip">
+          <Metric label="Cash" value={money(view.cash_cents)} />
+          <Metric label="Load" value={`${view.weight_lbs.toLocaleString()} lb`} />
+          <Metric label="Food" value={`${view.inventory.food ?? 0} lb`} />
+        </div>
+      )}
       <ul className="inventory-list">
         {Object.entries(view.inventory)
           .sort(([a], [b]) => a.localeCompare(b))

@@ -6,8 +6,8 @@ test('Escape cannot dismiss the required journey setup', async ({ page }) => {
   await expect(setup).toBeVisible()
   await page.keyboard.press('Escape')
   await expect(setup).toBeVisible()
-  await page.getByRole('button', { name: 'Choose provisions' }).click()
-  await expect(page.getByRole('button', { name: 'Load this plan' })).toBeVisible()
+  await page.getByRole('button', { name: 'Take the trail' }).click()
+  await expect(page.getByRole('heading', { name: 'Begin a journey', exact: true })).toHaveCount(0)
 })
 test('whitespace-only traveler names keep the selected setup open without replacing a save', async ({
   page,
@@ -16,7 +16,7 @@ test('whitespace-only traveler names keep the selected setup open without replac
   await page.getByRole('combobox', { name: 'Route', exact: true }).selectOption('california')
   const traveler = page.getByLabel('Traveler 1', { exact: true })
   await traveler.fill('   ')
-  await page.getByRole('button', { name: 'Choose provisions' }).click()
+  await page.getByRole('button', { name: 'Take the trail' }).click()
   await expect(page.getByText('Every traveler needs a name.')).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Begin a journey', exact: true })).toHaveCount(1)
   await expect(traveler).toHaveValue('   ')
@@ -68,13 +68,21 @@ test('farmer outfit remains budget-aware and rejected configurations stay visibl
 }) => {
   await page.goto('/?evidence=1')
   await page.getByRole('combobox', { name: 'Occupation', exact: true }).selectOption('farmer')
-  await page.getByRole('button', { name: 'Choose provisions' }).click()
-  await page.getByRole('button', { name: 'Load this plan' }).click()
   const view = (await state(page)).view
   expect(view.inventory.food).toBeGreaterThanOrEqual(450)
   expect(view.cash_cents).toBeGreaterThanOrEqual(0)
   for (const item of ['wheel', 'axle', 'tongue'])
     expect(view.inventory[item]).toBeGreaterThanOrEqual(1)
-  await page.getByRole('button', { name: 'Take the trail' }).click()
   expect((await state(page)).view.status).toBe('Travelling')
+})
+
+test('setup keeps only the journey decisions and loads Moderate supplies by default', async ({ page }) => {
+  await page.goto('/?evidence=1')
+  await expect(page.getByLabel('Year')).toHaveCount(0)
+  await expect(page.getByLabel('Difficulty')).toHaveCount(0)
+  await expect(page.getByLabel('Journey seed')).toHaveCount(0)
+  await expect(page.getByRole('radio', { name: /^Moderate/ })).toHaveAttribute('aria-checked', 'true')
+  await expect(page.getByLabel('Traveler 5')).toHaveCount(1)
+  await page.getByRole('button', { name: 'Take the trail' }).click()
+  expect((await state(page)).view.party).toHaveLength(5)
 })

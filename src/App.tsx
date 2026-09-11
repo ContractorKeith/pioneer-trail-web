@@ -24,6 +24,7 @@ import { Dialog } from './components/Dialog'
 import { GameOverlay } from './game/ui/GameOverlay'
 import { Hud } from './game/ui/Hud'
 import { SetupOverlay, type JourneySetup } from './game/ui/SetupOverlay'
+import { planOutfit } from './outfitting'
 import './App.css'
 
 const SETTINGS_KEY = 'pioneer-trail:settings:v2'
@@ -254,10 +255,19 @@ export default function App() {
         })
         return
       }
+      const plan = planOutfit(campaign.view(), setup.preset)
+      for (const purchase of plan.purchases) {
+        const purchaseResult = campaign.command({
+          Buy: { item_id: purchase.itemId, quantity: purchase.quantity },
+        })
+        if (isRejected(purchaseResult.outcomes)) throw new Error('Starting supplies could not be loaded.')
+      }
+      const departure = campaign.command('Depart')
+      if (isRejected(departure.outcomes)) throw new Error('The wagon could not depart with these supplies.')
       await mount(campaign, initialSpatial(), true)
+      runtime.current?.resume()
       if (result.outcomes.length)
-        setNotice({ text: 'Your party is ready. Outfit the wagon before you leave.' })
-      open('inventory')
+        setNotice({ text: 'Your party is ready. The wagon is loaded and on the trail.' })
     } catch (error) {
       setNotice({ text: `Could not begin this journey: ${String(error)}`, error: true })
     }

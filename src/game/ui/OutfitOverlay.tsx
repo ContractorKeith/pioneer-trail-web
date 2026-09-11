@@ -11,7 +11,7 @@ export function OutfitOverlay({
   view: GameView
   command: (command: GameCommand) => void
 }) {
-  const [preset, setPreset] = useState<OutfitPreset>('safe')
+  const [preset, setPreset] = useState<OutfitPreset>('moderate')
   const [manual, setManual] = useState(false)
   const plan = useMemo(() => planOutfit(view, preset), [view, preset])
   const foodDays = view.daily_food_lbs
