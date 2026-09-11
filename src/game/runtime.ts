@@ -483,10 +483,6 @@ export class GameRuntime {
       return
     }
     const p = this.spatial.player
-    if (this.inRiverInspectionArea(p)) {
-      this.open('river')
-      return
-    }
     if (Math.hypot(p.x - wagon.x, p.z - wagon.z) < 4.5) {
       this.spatial.mode = 'riding'
       this.spatial.player.yaw = wagon.yaw
@@ -494,6 +490,10 @@ export class GameRuntime {
       this.trySave()
       this.callbacks.onNotice('Seated. Hold W to move, A/D to steer, Space to brake.')
       this.publish()
+      return
+    }
+    if (this.inRiverInspectionArea(p)) {
+      this.open('river')
       return
     }
     this.findInteraction()
@@ -533,10 +533,6 @@ export class GameRuntime {
       }
       return
     }
-    if (this.inRiverInspectionArea(p)) {
-      this.interaction = { kind: 'water', label: 'E · Inspect the crossing', distance: 0 }
-      return
-    }
     let closest: RuntimeSnapshot['interaction'] =
       Math.hypot(p.x - this.spatial.wagon.x, p.z - this.spatial.wagon.z) < 4.5
         ? {
@@ -548,6 +544,10 @@ export class GameRuntime {
     // Boarding has the same priority here as in interact(), so the hint describes E's action.
     if (closest) {
       this.interaction = closest
+      return
+    }
+    if (this.inRiverInspectionArea(p)) {
+      this.interaction = { kind: 'water', label: 'E · Inspect the crossing', distance: 0 }
       return
     }
     for (const location of this.world.locations) {
