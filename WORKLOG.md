@@ -50,3 +50,11 @@
 - Checks: npm test rerun passed 288 tests in 116.54s; slowest scratch-quote occupation case took 447ms.
 - Remaining: None.
 - Next: None.
+
+### 2026-09-11 14:00 EDT - Pass 13 CI trader interaction endpoint
+
+- Outcome: Fixed the trader browser test's navigation endpoint to stop comfortably within the modeled trader's interaction radius and assert the `E · Trail trader` prompt before opening Trade.
+- Evidence: CI trace from run 34628165519 ended at `(5.64, 26.75)`, 3.215 m from the trader center `(8.4, 28.4)`, narrowly outside its 3.2 m radius; no interaction prompt was rendered. This was endpoint tolerance, not river-inspection priority.
+- Checks: Headed targeted Playwright passed 18/18 (9 Chromium, 9 Firefox); lint and test types passed; standalone npm test passed 288 tests in 67.28s. Local software-mode mechanics ran its trader case successfully; its independent hunting case stopped in collecting rather than aiming.
+- Remaining: None.
+- Next: None.
